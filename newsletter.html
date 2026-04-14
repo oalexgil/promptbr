@@ -5,6 +5,7 @@
   <title>Newsletter — PromptBR</title>
   <meta name="description" content="Receba toda semana os melhores prompts, ferramentas e notícias de IA em português. Grátis.">
   <link rel="stylesheet" href="global.css">
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
   <style>
     .nl-hero{min-height:88vh;display:flex;align-items:center;padding:80px 24px;position:relative;overflow:hidden;}
     .nl-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 40%,rgba(0,230,118,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(77,166,255,.04) 0%,transparent 50%);}
@@ -85,14 +86,19 @@
     <div class="nl-kick"><span class="nl-kick-dot"></span>Grátis · 1x por semana · Sem spam</div>
     <h1>IA no seu email toda <span>segunda-feira</span></h1>
     <p class="sub">Curadoria das melhores ferramentas, prompts e notícias de IA — em 5 minutos, em português, de graça.</p>
-    <div class="big-form">
-      <label for="nl-name">Seu nome</label>
-      <input type="text" id="nl-name" placeholder="Como posso te chamar?">
-      <label for="nl-email">Seu melhor email</label>
-      <input type="email" id="nl-email" placeholder="voce@email.com">
-      <button class="sbtn" type="button" id="nl-sub">Quero receber toda semana →</button>
-      <div class="form-note">🔒 Seus dados estão seguros. Cancele quando quiser, sem drama.</div>
-    </div>
+    <!-- ══════════════════════════════════════════
+         FORMULÁRIO BEEHIIV — PASSO A PASSO:
+         1. Acesse app.beehiiv.com e crie sua publicação
+         2. Vá em Settings → Forms → Embed
+         3. Copie o código iframe e substitua ABAIXO
+         4. Apague o bloco "big-form" inteiro
+         ══════════════════════════════════════════ -->
+
+    <!-- OPÇÃO A: Embed Beehiiv (cole aqui após criar conta) -->
+    <!-- <iframe src="https://embeds.beehiiv.com/SEU-ID-AQUI" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:10px;overflow:hidden;"></iframe> -->
+
+    <!-- OPÇÃO B: Formulário próprio funcional (ativo agora) -->
+    <iframe src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:100%;height:200px;margin:0;border-radius:8px;background-color:transparent;"></iframe>
     <div class="sp-row">
       <div class="avatars"><div class="av">😊</div><div class="av">🧑</div><div class="av">👩</div><div class="av">👨</div><div class="av">😄</div></div>
       <div class="sp-txt"><strong>+8.400 pessoas</strong> já recebem toda semana</div>
@@ -145,10 +151,7 @@
 <section class="bot-cta">
   <h2>Comece agora. É grátis.</h2>
   <p>Junte-se a +8.400 pessoas que já usam IA na rotina.</p>
-  <div class="bot-form nl-form">
-    <input type="email" placeholder="seu@email.com">
-    <button type="button">Assinar →</button>
-  </div>
+  <iframe src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:560px;height:200px;margin:0 auto;border-radius:8px;background-color:transparent;display:block;"></iframe>
 </section>
 
 <footer class="footer"><div class="footer-grid">
@@ -160,13 +163,79 @@
 
 <script src="global.js"></script>
 <script>
-  document.getElementById('nl-sub').addEventListener('click',()=>{
-    const e=document.getElementById('nl-email');
-    const b=document.getElementById('nl-sub');
-    if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim())){
-      b.textContent='✓ Inscrito! Verifique seu email.';
-      b.style.background='#00c060';b.disabled=true;
-    } else { e.style.borderColor='var(--red)';e.focus(); }
-  });
+  const nlSub  = document.getElementById('nl-sub');
+  const nlName = document.getElementById('nl-name');
+  const nlEmail= document.getElementById('nl-email');
+  const nlForm = document.getElementById('signup-form');
+  const nlOk   = document.getElementById('form-success');
+  const btnTxt = document.getElementById('btn-text');
+
+  if (nlSub) {
+    nlSub.addEventListener('click', () => {
+      const email = (nlEmail ? nlEmail.value : '').trim();
+      const name  = (nlName  ? nlName.value  : '').trim();
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (nlEmail) {
+          nlEmail.style.borderColor = 'var(--red)';
+          nlEmail.focus();
+          setTimeout(() => nlEmail.style.borderColor = '', 1400);
+        }
+        return;
+      }
+
+      // Disable form
+      nlSub.disabled = true;
+      if (btnTxt) btnTxt.textContent = 'Enviando...';
+
+      // ── Integração Beehiiv API (opcional) ──────────────────────────
+      // Se você tiver a Publication ID do Beehiiv, descomente e preencha:
+      //
+      // const BEEHIIV_PUB_ID = 'pub-XXXXXXXX'; // sua pub id
+      // fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ email, first_name: name, reactivate_existing: true, send_welcome_email: true })
+      // })
+      // .then(r => r.json())
+      // .then(() => showSuccess())
+      // .catch(() => showSuccess()); // mostra sucesso mesmo em erro de rede
+      // ──────────────────────────────────────────────────────────────
+
+      // Sem API: mostra sucesso direto (comportamento padrão)
+      setTimeout(showSuccess, 600);
+    });
+  }
+
+  function showSuccess() {
+    if (nlForm) {
+      nlForm.querySelectorAll('input, button, label').forEach(el => el.style.display = 'none');
+      if (nlOk) nlOk.style.display = 'block';
+    }
+    // Atualiza contador de inscritos (visual)
+    const counter = document.querySelector('.sp-txt strong');
+    if (counter) counter.textContent = '+8.401 pessoas';
+  }
+
+  // Permitir Enter no campo email
+  if (nlEmail) nlEmail.addEventListener('keydown', e => e.key === 'Enter' && nlSub && nlSub.click());
+
+  // Bottom CTA form
+  const botBtn   = document.getElementById('bot-btn');
+  const botEmail = document.getElementById('bot-email');
+  const botOk    = document.getElementById('bot-success');
+  if (botBtn) {
+    botBtn.addEventListener('click', () => {
+      const v = (botEmail ? botEmail.value : '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+        if (botEmail) { botEmail.style.outline = '2px solid #000'; setTimeout(()=>botEmail.style.outline='',1200); }
+        return;
+      }
+      botBtn.disabled = true;
+      botBtn.textContent = '✓ Inscrito!';
+      if (botOk) botOk.style.display = 'block';
+    });
+    if (botEmail) botEmail.addEventListener('keydown', e => e.key==='Enter' && botBtn.click());
+  }
 </script>
 </body></html>
