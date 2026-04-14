@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════
-   PROMPTBR — Global JS
+   PROMPTBR v2 — Global JS
    ══════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
     }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
     reveals.forEach(el => io.observe(el));
   } else { reveals.forEach(el => el.classList.add('visible')); }
@@ -69,9 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Prompt filter ── */
+  /* ── Prompt filter + divider hide ── */
   const filterBtns = document.querySelectorAll('[data-filter]');
-  const cards = document.querySelectorAll('[data-category]');
+  const cards      = document.querySelectorAll('[data-category]');
+  const dividers   = document.querySelectorAll('.cat-div');
+
+  // Strip accents for comparison (handles "Programação" vs "programacao" etc.)
+  function norm(str) {
+    return (str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  }
+
+  // Hide dividers whose category has zero visible cards
+  function syncDividers() {
+    dividers.forEach(div => {
+      const labelEl = div.querySelector('.cat-div-label');
+      if (!labelEl) return;
+      const labelNorm = norm(labelEl.textContent);
+      const hasVisible = Array.from(cards).some(c =>
+        norm(c.dataset.category) === labelNorm && c.style.display !== 'none'
+      );
+      div.style.display = hasVisible ? '' : 'none';
+    });
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -83,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         c.style.display = show ? '' : 'none';
         if (show) count++;
       });
+      syncDividers();
       const counter = document.getElementById('prompt-count');
       if (counter) counter.textContent = count;
     });
@@ -99,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         c.style.display = show ? '' : 'none';
         if (show) count++;
       });
+      syncDividers();
       const counter = document.getElementById('prompt-count');
       if (counter) counter.textContent = count;
     });
