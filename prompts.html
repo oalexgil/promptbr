@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Prompts — PromptBR</title>
+  <meta name="description" content="300+ prompts prontos em português para ChatGPT, Claude e Gemini. Filtro por categoria, busca e copiar em 1 clique.">
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .ph{background:var(--bg-2);border-bottom:1px solid var(--border);padding:56px 24px 44px;position:relative;overflow:hidden;}
+    .ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,230,118,.08) 0%,transparent 60%);}
+    .ph-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1;}
+    .ph-kick{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .ph-kick::before{content:'';width:24px;height:2px;background:var(--green);}
+    .ph h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;}
+    .ph h1 span{color:var(--green);}
+    .ph p{color:var(--text-2);font-size:.95rem;max-width:520px;line-height:1.7;}
+    .ph-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+
+    .filter-bar{background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:var(--nav-h);z-index:100;padding:14px 24px;}
+    .filter-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+    .search-box{position:relative;flex:1;min-width:200px;}
+    .search-box::before{content:'⌕';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-3);}
+    #prompt-search{width:100%;padding:10px 14px 10px 38px;background:var(--bg-3);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);font-size:13.5px;outline:none;transition:border-color .2s;font-family:var(--font-body);}
+    #prompt-search:focus{border-color:var(--green);}
+    .filter-pills{display:flex;gap:7px;flex-wrap:wrap;}
+    .fp{padding:7px 15px;background:var(--bg-3);border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);white-space:nowrap;}
+    .fp:hover{border-color:var(--green);color:var(--green);}
+    .fp.active{background:var(--green);color:#000;border-color:var(--green);}
+
+    .prompts-page{max-width:var(--max-w);margin:0 auto;padding:36px 24px 80px;}
+    .pc{font-family:var(--font-mono);font-size:12px;color:var(--text-3);margin-bottom:24px;}
+    .pc strong{color:var(--green);}
+    .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;}
+
+    .pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,transform .2s;}
+    .pcard:hover{border-color:rgba(0,230,118,.3);transform:translateY(-2px);}
+    .pc-head{padding:16px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+    .pc-title{font-family:var(--font-display);font-size:.97rem;font-weight:800;line-height:1.25;color:var(--text);}
+    .pc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;}
+    .pc-body{padding:14px 18px;}
+    .prompt-txt{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:13px 14px;font-family:var(--font-mono);font-size:11.5px;line-height:1.75;color:var(--text-2);white-space:pre-wrap;max-height:155px;overflow-y:auto;margin-bottom:13px;scrollbar-width:thin;}
+    .pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .tool-chips{display:flex;gap:5px;}
+    .tc{font-family:var(--font-mono);font-size:9.5px;padding:3px 7px;border-radius:3px;background:var(--bg-4);color:var(--text-3);border:1px solid var(--border);}
+    .copy-btn{display:inline-flex;align-items:center;gap:5px;background:var(--bg-4);color:var(--text-2);border:1px solid var(--border);padding:8px 16px;font-size:12px;font-weight:600;border-radius:var(--radius);cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+    .copy-btn:hover{background:var(--green);color:#000;border-color:var(--green);}
+    .ad-ig{grid-column:1/-1;margin:4px 0;}
+    @media(max-width:600px){.pg{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="nav-logo">Prompt<span class="dot">.</span>BR<span class="br-tag">🇧🇷</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Início</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="active hot">⚡ Prompts</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="ph">
+  <div class="ph-inner">
+    <div class="ph-kick">Biblioteca · 300+ prompts</div>
+    <h1>Prompts prontos para usar <span>agora</span></h1>
+    <p>Copie, cole e produza mais. Testados com ChatGPT, Claude e Gemini — 100% em português.</p>
+    <div class="ph-badges">
+      <span class="badge badge-green">✓ ChatGPT</span>
+      <span class="badge badge-blue">✓ Claude</span>
+      <span class="badge badge-amber">✓ Gemini</span>
+      <span class="badge badge-dim">🇧🇷 Em português</span>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:12px 24px;">
+  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;"><div class="ad-box">📢 Anúncio Leaderboard — cole AdSense aqui</div></div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="search-box"><input type="text" id="prompt-search" placeholder="Buscar prompts..."></div>
+    <div class="filter-pills">
+      <button class="fp active" data-filter="todos">Todos</button>
+      <button class="fp" data-filter="trabalho">💼 Trabalho</button>
+      <button class="fp" data-filter="escrita">✍️ Escrita</button>
+      <button class="fp" data-filter="estudo">📚 Estudo</button>
+      <button class="fp" data-filter="programacao">💻 Código</button>
+      <button class="fp" data-filter="marketing">📣 Marketing</button>
+      <button class="fp" data-filter="financas">💰 Finanças</button>
+      <button class="fp" data-filter="criatividade">🎨 Criatividade</button>
+    </div>
+  </div>
+</div>
+
+<div class="prompts-page">
+  <div class="pc">Exibindo <strong id="prompt-count">20</strong> prompts</div>
+  <div class="pg">
+
+    <div class="pcard reveal" data-category="trabalho">
+      <div class="pc-head"><div><div class="pc-title">Resumo de reunião profissional</div><div class="pc-tags"><span class="badge badge-dim">Trabalho</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p01">Você é um assistente executivo. Recebi anotações brutas de uma reunião e preciso de um resumo profissional.
+
+Formato de saída:
+- **Objetivo:** (1 frase)
+- **Decisões tomadas:** (lista)
+- **Próximos passos:** (responsável + prazo)
+- **Pontos em aberto:** (sem definição)
+
+Anotações: [cole aqui]</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p01">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="trabalho">
+      <div class="pc-head"><div><div class="pc-title">Email profissional difícil</div><div class="pc-tags"><span class="badge badge-dim">Trabalho</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p02">Escreva um email profissional para situação delicada.
+
+Situação: [descreva]
+Destinatário: [cargo/relação]
+Objetivo: [o que quero conseguir]
+Tom: [firme / conciliador / assertivo]
+
+Escreva 2 versões: uma direta e uma diplomática. Inclua assunto em ambas.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span><span class="tc">Gemini</span></div><button class="copy-btn" data-target="p02">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="trabalho">
+      <div class="pc-head"><div><div class="pc-title">Plano de projeto rápido</div><div class="pc-tags"><span class="badge badge-dim">Trabalho</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p03">Crie um plano de projeto simples e executável.
+
+Projeto: [nome e descrição]
+Objetivo: [resultado esperado]
+Prazo: [data ou duração]
+Recursos: [pessoas, ferramentas, orçamento]
+
+Inclua: fases, tarefas, marcos, riscos e métricas de sucesso.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p03">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="escrita">
+      <div class="pc-head"><div><div class="pc-title">Post de LinkedIn que engaja</div><div class="pc-tags"><span class="badge badge-dim">Escrita</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p04">Escreva um post de LinkedIn que gere engajamento.
+
+Tema: [o que quer contar]
+Minha área: [profissão/nicho]
+Tom: [inspiracional / educativo / pessoal]
+
+Regras:
+- Primeira frase que para o scroll
+- Máx. 1.300 caracteres
+- 3 hashtags no final
+- Termine com pergunta para comentários
+- Sem frases genéricas</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p04">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="escrita">
+      <div class="pc-head"><div><div class="pc-title">Artigo SEO completo</div><div class="pc-tags"><span class="badge badge-dim">Escrita</span><span class="badge badge-red">Avançado</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p05">Escreva um artigo otimizado para SEO.
+
+Keyword principal: [keyword]
+Keywords secundárias: [lista]
+Público-alvo: [quem vai ler]
+Extensão: [800 / 1500 / 2500 palavras]
+
+Inclua:
+- Título com keyword (máx. 60 chars)
+- Meta description (máx. 155 chars)
+- H1, H2, H3 com keywords naturais
+- Introdução com gancho forte
+- CTA no final</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span></div><button class="copy-btn" data-target="p05">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="escrita">
+      <div class="pc-head"><div><div class="pc-title">Revisor de texto profissional</div><div class="pc-tags"><span class="badge badge-dim">Escrita</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p06">Revise o texto abaixo em português brasileiro.
+
+Corrija:
+1. Erros gramaticais e ortográficos
+2. Concordância verbal e nominal
+3. Pontuação
+4. Frases longas ou confusas
+5. Palavras repetidas
+
+Entregue: versão corrigida + lista das mudanças.
+
+Texto: [cole aqui]</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span><span class="tc">Gemini</span></div><button class="copy-btn" data-target="p06">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="ad-ig"><div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio In-Grid — cole AdSense aqui</div></div></div>
+
+    <div class="pcard reveal" data-category="estudo">
+      <div class="pc-head"><div><div class="pc-title">Professor particular de qualquer tema</div><div class="pc-tags"><span class="badge badge-dim">Estudo</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p07">Seja meu professor particular de [tema].
+
+Nível atual: [iniciante / intermediário / avançado]
+Objetivo: [o que quero aprender]
+Tempo disponível: [horas por semana]
+
+Crie plano de estudos com:
+- Ordem dos conteúdos
+- Recursos gratuitos
+- Exercícios práticos
+- Como medir progresso</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p07">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="estudo">
+      <div class="pc-head"><div><div class="pc-title">Flashcards para memorização</div><div class="pc-tags"><span class="badge badge-dim">Estudo</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p08">Crie 20 flashcards para memorizar [tema].
+
+Formato:
+FRENTE: [pergunta ou conceito]
+VERSO: [resposta curta e clara]
+
+Organize do mais simples ao mais complexo. Inclua os conceitos mais importantes.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span><span class="tc">Gemini</span></div><button class="copy-btn" data-target="p08">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="estudo">
+      <div class="pc-head"><div><div class="pc-title">Resumo de 10 minutos</div><div class="pc-tags"><span class="badge badge-dim">Estudo</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p09">Resuma o conteúdo abaixo como se eu tivesse 10 min para absorver o essencial.
+
+Foque em:
+- 3 ideias principais
+- Conceitos que não posso esquecer
+- Exemplos práticos
+- O que aplicar agora
+
+Conteúdo: [cole o texto ou descreva o vídeo]</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span></div><button class="copy-btn" data-target="p09">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="programacao">
+      <div class="pc-head"><div><div class="pc-title">Debugar código com explicação</div><div class="pc-tags"><span class="badge badge-dim">Código</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p10">Você é desenvolvedor sênior. Analise o código:
+
+1. Identifique todos os bugs
+2. Explique POR QUE cada erro acontece
+3. Forneça o código corrigido
+4. Sugira melhorias de performance
+
+Linguagem: [Python/JS/etc.]
+Código:
+```
+[cole aqui]
+```</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span></div><button class="copy-btn" data-target="p10">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="programacao">
+      <div class="pc-head"><div><div class="pc-title">Criar função do zero</div><div class="pc-tags"><span class="badge badge-dim">Código</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p11">Crie uma função em [linguagem] que:
+
+Função: [descreva o que deve fazer]
+Input: [parâmetros]
+Output: [o que retorna]
+Restrições: [performance, sem libs externas, etc.]
+
+Inclua código + comentários + 3 exemplos + tratamento de erros.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span><span class="tc">Gemini</span></div><button class="copy-btn" data-target="p11">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="marketing">
+      <div class="pc-head"><div><div class="pc-title">Copy de vendas persuasivo</div><div class="pc-tags"><span class="badge badge-dim">Marketing</span><span class="badge badge-red">Avançado</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p12">Escreva um copy persuasivo para:
+
+Produto/serviço: [descreva]
+Público-alvo: [cliente ideal]
+Dor que resolve: [problema central]
+Diferencial: [por que é melhor]
+Canal: [landing page / email / anúncio]
+
+Use o framework PAS (Problema → Agitação → Solução).</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p12">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="marketing">
+      <div class="pc-head"><div><div class="pc-title">Calendário de conteúdo 30 dias</div><div class="pc-tags"><span class="badge badge-dim">Marketing</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p13">Crie calendário de conteúdo para 30 dias.
+
+Nicho: [seu nicho]
+Redes: [Instagram, LinkedIn, TikTok...]
+Frequência: [posts por semana]
+Objetivo: [engajamento / vendas / autoridade]
+
+Para cada post: data, formato, tema, ângulo e CTA.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p13">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="financas">
+      <div class="pc-head"><div><div class="pc-title">Analisar meus gastos</div><div class="pc-tags"><span class="badge badge-dim">Finanças</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p14">Analise meus gastos mensais.
+
+Renda: R$[valor]
+Gastos:
+- Moradia: R$
+- Alimentação: R$
+- Transporte: R$
+- Lazer: R$
+- Outros: R$
+
+Me diga: onde gasto demais, percentual ideal por categoria e 3 ações concretas para melhorar em 60 dias.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p14">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="criatividade">
+      <div class="pc-head"><div><div class="pc-title">Prompt para Midjourney v7</div><div class="pc-tags"><span class="badge badge-dim">Criatividade</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p15">Crie 5 prompts para Midjourney v7.
+
+Tema: [imagem desejada]
+Estilo: [fotorrealista / ilustração / 3D / aquarela]
+Ambiente: [cenário/contexto]
+Mood: [emoção/atmosfera]
+
+Para cada prompt inclua: cena, iluminação, paleta, referência e parâmetros (--ar 16:9 --v 7).</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p15">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="criatividade">
+      <div class="pc-head"><div><div class="pc-title">Roteiro de Reels/TikTok</div><div class="pc-tags"><span class="badge badge-dim">Criatividade</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p16">Crie roteiro para vídeo de [30/60/90] segundos.
+
+Tema: [assunto]
+Objetivo: [educar / entreter / vender]
+Público: [quem vai ver]
+
+Inclua:
+- Hook nos primeiros 3 segundos
+- Cena a cena
+- CTA final
+- Legenda + hashtags</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span><span class="tc">Gemini</span></div><button class="copy-btn" data-target="p16">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="trabalho">
+      <div class="pc-head"><div><div class="pc-title">Preparação para entrevista de emprego</div><div class="pc-tags"><span class="badge badge-dim">Carreira</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p17">Atue como entrevistador experiente e me prepare para:
+
+Vaga: [título da posição]
+Empresa: [nome e segmento]
+Minha experiência: [resumo rápido]
+
+Gere:
+1. 10 perguntas prováveis com respostas modelo
+2. 3 perguntas técnicas da área
+3. Como responder "fale sobre você" de forma impactante
+4. Perguntas que DEVO fazer ao entrevistador</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span></div><button class="copy-btn" data-target="p17">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="estudo">
+      <div class="pc-head"><div><div class="pc-title">Aprender inglês com IA</div><div class="pc-tags"><span class="badge badge-dim">Estudo</span><span class="badge badge-green">Iniciante</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p18">Seja meu professor de inglês conversacional.
+
+Nível atual: [básico / intermediário / avançado]
+Foco: [conversação / escrita / gramática / vocabulário]
+Objetivo: [viagem / trabalho / certificação]
+
+Crie um diálogo simulado comigo sobre [tema]. Corrija meus erros com explicação e sugira expressões mais naturais.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p18">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="financas">
+      <div class="pc-head"><div><div class="pc-title">Simular independência financeira</div><div class="pc-tags"><span class="badge badge-dim">Finanças</span><span class="badge badge-amber">Médio</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p19">Simule meu caminho para independência financeira.
+
+Idade atual: [anos]
+Renda mensal: R$[valor]
+Investimento mensal: R$[valor]
+Patrimônio atual: R$[valor]
+Rendimento estimado: [% ao ano]
+Renda necessária para viver: R$[valor]
+
+Calcule: anos até lá, quanto acumular (regra dos 25x) e como acelerar.</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">ChatGPT</span><span class="tc">Claude</span></div><button class="copy-btn" data-target="p19">📋 Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" data-category="marketing">
+      <div class="pc-head"><div><div class="pc-title">Análise de concorrentes</div><div class="pc-tags"><span class="badge badge-dim">Marketing</span><span class="badge badge-red">Avançado</span></div></div></div>
+      <div class="pc-body">
+        <pre class="prompt-txt" id="p20">Faça uma análise competitiva do meu mercado.
+
+Meu negócio: [descreva]
+Concorrentes principais: [liste 3-5]
+Meu diferencial: [o que me destaca]
+
+Analise para cada concorrente:
+- Pontos fortes e fracos
+- Posicionamento de preço
+- Como se comunicam
+- Oportunidades que não exploram
+- O que posso fazer melhor</pre>
+        <div class="pc-foot"><div class="tool-chips"><span class="tc">Claude</span><span class="tc">ChatGPT</span></div><button class="copy-btn" data-target="p20">📋 Copiar</button></div>
+      </div>
+    </div>
+
+  </div><!-- /pg -->
+
+  <div class="nl-block reveal" style="margin-top:56px;">
+    <h3>Prompt novo toda <span>semana</span></h3>
+    <p>Assine a newsletter e receba os melhores prompts direto no seu email — de graça.</p>
+    <div class="nl-form"><input type="email" placeholder="seu@email.com"><button type="button">Receber prompts →</button></div>
+  </div>
+</div>
+
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
+  <div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio Footer — cole AdSense aqui</div></div>
+</div>
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="../index.html" class="nav-logo" style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text);">Prompt<span style="color:var(--green)">.</span>BR</a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="../index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="#">Trabalho</a></li><li><a href="#">Escrita</a></li><li><a href="#">Estudo</a></li><li><a href="#">Programação</a></li><li><a href="#">Marketing</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="#">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="../js/global.js"></script>
+</body></html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptBR — Prompts, IA e dicas para o seu dia a dia</title>
+  <meta name="description" content="A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter semanal para você produzir mais.">
+  <link rel="stylesheet" href="css/global.css">
+
+  <!-- Google AdSense — cole seu script aqui após aprovação -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <style>
+    /* ══ HERO ══ */
+    .hero {
+      min-height: 88vh; display: flex; align-items: center;
+      padding: 80px 24px 60px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,230,118,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,166,255,.04) 0%, transparent 50%);
+    }
+    /* grid decorativo */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-inner {
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 440px;
+      gap: 64px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2);
+      color: var(--green); padding: 6px 14px; border-radius: 20px;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;
+      margin-bottom: 24px;
+    }
+    .hero-kicker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    h1.hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 800; line-height: 1.0;
+      letter-spacing: -.04em; margin-bottom: 24px;
+    }
+    h1.hero-title .green { color: var(--green); animation: glow-pulse 3s ease-in-out infinite; }
+    .hero-desc { color: var(--text-2); font-size: 1.05rem; line-height: 1.75; max-width: 500px; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats { display: flex; gap: 36px; }
+    .hero-stat span { display: block; font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .hero-stat small { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: .05em; }
+
+    /* terminal card */
+    .hero-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .hc-topbar {
+      background: var(--bg-3); padding: 12px 16px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hc-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .hc-dot:nth-child(1){background:#ff5f57;} .hc-dot:nth-child(2){background:#febc2e;} .hc-dot:nth-child(3){background:#28c840;}
+    .hc-title { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); margin-left: 8px; }
+    .hc-body { padding: 24px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.85; }
+    .tc-p  { color: var(--green); } .tc-c  { color: var(--text); }
+    .tc-ok { color: #4ade80; }      .tc-d  { color: var(--text-3); }
+    .tc-cursor { display: inline-block; width: 8px; height: 13px; background: var(--green); animation: blink 1s step-end infinite; vertical-align: middle; }
+
+    /* ══ TICKER ══ */
+    .ticker { background: var(--green); padding: 9px 0; overflow: hidden; }
+    .ticker-track { display: flex; animation: ticker 36s linear infinite; white-space: nowrap; }
+    .ticker-item { padding: 0 32px; font-size: 12px; font-weight: 700; letter-spacing: .03em; color: #000; border-right: 1px solid rgba(0,0,0,.15); flex-shrink: 0; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ══ AD TOPO ══ */
+    .ad-top { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 24px; }
+
+    /* ══ MAIN LAYOUT ══ */
+    .main-wrap {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid; grid-template-columns: 1fr 290px;
+      gap: 48px; align-items: start;
+    }
+
+    /* ══ FEATURED ARTICLES ══ */
+    .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 56px; }
+    .feat-big { grid-column: span 2; display: grid; grid-template-columns: 1.1fr 1fr; }
+    .feat-big .card-thumb { aspect-ratio: auto; min-height: 260px; font-size: 4rem; }
+    .feat-big .card-body { padding: 36px; display: flex; flex-direction: column; justify-content: center; }
+    .feat-big h3 { font-size: 1.55rem; margin-bottom: 14px; }
+    .feat-big p  { font-size: 14.5px; margin-bottom: 22px; }
+    .grad-1{background:linear-gradient(145deg,#031a08,#065c20);} .grad-2{background:linear-gradient(145deg,#1a0d03,#5c2a06);}
+    .grad-3{background:linear-gradient(145deg,#030d1a,#063a5c);} .grad-4{background:linear-gradient(145deg,#1a1703,#5c520a);}
+    .grad-5{background:linear-gradient(145deg,#170316,#540a50);}
+    .card-emoji { position: absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:3rem; opacity:.3; }
+
+    /* ══ TOOLS ══ */
+    .tools-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 56px; }
+    .tool-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 22px; cursor: pointer; transition: all .2s;
+    }
+    .tool-card:hover { border-color: rgba(0,230,118,.3); transform: translateY(-2px); }
+    .tool-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .tool-card h4 { font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--text); }
+    .tool-card p  { font-size: 12.5px; color: var(--text-2); line-height: 1.55; margin-bottom: 12px; }
+
+    /* ══ ARTICLE LIST ══ */
+    .art-list { margin-bottom: 56px; }
+    .art-row {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 14px; align-items: start;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .art-row:hover .art-title { color: var(--green); }
+    .art-num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; color: var(--bg-4); line-height:1; text-align:right; padding-right: 10px; border-right: 2px solid var(--bg-4); }
+    .art-cat { font-family: var(--font-mono); font-size: 9px; letter-spacing: .15em; color: var(--green); text-transform: uppercase; margin-bottom: 4px; }
+    .art-title { font-family: var(--font-display); font-size: .97rem; font-weight: 800; line-height: 1.25; transition: color .15s; color: var(--text); }
+    .art-meta  { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); margin-top: 4px; }
+
+    /* ══ SIDEBAR ══ */
+    .sidebar { position: sticky; top: calc(var(--nav-h) + 20px); }
+    .sb-block { margin-bottom: 32px; }
+    .trend-list { list-style: none; }
+    .trend-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .trend-item:hover .tr-title { color: var(--green); }
+    .tr-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--bg-4); line-height:1; min-width: 28px; }
+    .tr-title { font-size: 12.5px; font-weight: 600; line-height: 1.35; transition: color .15s; color: var(--text); }
+    .tr-meta  { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); margin-top: 3px; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag-cloud a {
+      background: var(--bg-3); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: var(--radius);
+      font-size: 12px; font-weight: 500; color: var(--text-2); transition: all .15s;
+    }
+    .tag-cloud a:hover { background: var(--green); color: #000; border-color: var(--green); }
+
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;} .hero-card{display:none;}
+      .main-wrap{grid-template-columns:1fr;} .feat-grid{grid-template-columns:1fr;}
+      .feat-big{grid-column:span 1;grid-template-columns:1fr;}
+      .feat-big .card-thumb{min-height:180px;}
+      .tools-grid{grid-template-columns:repeat(2,1fr);}
+      .sidebar{position:static;}
+    }
+    @media(max-width:560px){ .tools-grid{grid-template-columns:1fr;} .hero-stats{gap:20px;} }
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Prompt<span class="dot">.</span>BR<span class="br-tag">🇧🇷</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="pages/blog.html">Blog</a></li>
+      <li><a href="pages/prompts.html" class="hot">⚡ Prompts</a></li>
+      <li><a href="pages/noticias.html">Notícias</a></li>
+      <li><a href="pages/newsletter.html" class="nav-cta">Newsletter →</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 300+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 300+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<!-- AD LEADERBOARD TOPO -->
+<div class="ad-top">
+  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;">
+    <!-- Cole aqui o código do AdSense após aprovação -->
+    <div class="ad-box">📢 Espaço publicitário 728×90 — Leaderboard topo</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker"><span class="hero-kicker-dot"></span>Biblioteca #1 de prompts em português</div>
+      <h1 class="hero-title">Usa IA.<br>Produz <span class="green">mais.</span></h1>
+      <p class="hero-desc">Prompts prontos, ferramentas testadas e notícias da semana — tudo que você precisa para usar Inteligência Artificial de verdade no dia a dia.</p>
+      <div class="hero-btns">
+        <a href="pages/prompts.html" class="btn btn-green">Ver todos os prompts →</a>
+        <a href="pages/newsletter.html" class="btn btn-outline">Assinar newsletter</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>300+</span><small>PROMPTS</small></div>
+        <div class="hero-stat"><span>48k</span><small>LEITORES/MÊS</small></div>
+        <div class="hero-stat"><span>100%</span><small>GRATUITO</small></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-topbar">
+        <div class="hc-dot"></div><div class="hc-dot"></div><div class="hc-dot"></div>
+        <span class="hc-title">promptbr — terminal</span>
+      </div>
+      <div class="hc-body">
+        <div><span class="tc-p">$</span> <span class="tc-c">promptbr --status</span></div>
+        <div class="tc-ok">▶ Carregando sistema...</div>
+        <div class="tc-d">─────────────────────</div>
+        <div class="tc-ok">✓ 300 prompts ativos</div>
+        <div class="tc-ok">✓ ChatGPT / Claude / Gemini</div>
+        <div class="tc-ok">✓ Newsletter #48 enviada</div>
+        <div class="tc-ok">✓ 6 notícias hoje</div>
+        <div class="tc-ok">✓ 100% em português 🇧🇷</div>
+        <div class="tc-d">─────────────────────</div>
+        <div><span class="tc-p">$</span> <span class="tc-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="main-wrap">
+  <main>
+
+    <!-- DESTAQUES -->
+    <div class="sec-head reveal">
+      <div class="sec-head-left"><h2>Em Destaque</h2><div class="sec-line"></div></div>
+      <a href="pages/blog.html">Ver todos →</a>
+    </div>
+
+    <div class="feat-grid">
+      <div class="card feat-big reveal">
+        <div class="card-thumb grad-1"><div class="card-emoji">🤖</div></div>
+        <div class="card-body">
+          <div class="card-cat">Guia Completo</div>
+          <h3>ChatGPT do zero ao avançado: o guia definitivo em português</h3>
+          <p>Prompts, GPTs personalizados, Custom Instructions — tudo testado e explicado passo a passo.</p>
+          <a href="pages/artigo-chatgpt.html" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler agora →</a>
+          <div class="card-meta" style="margin-top:auto;padding-top:16px;"><span>Equipe PromptBR</span><span>14 min · Abr 2026</span></div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-thumb grad-2"><div class="card-emoji">⚡</div></div>
+        <div class="card-body">
+          <div class="card-cat">Automação</div>
+          <h3>Make vs n8n vs Zapier: qual usar em 2026?</h3>
+          <p>Comparativo completo para você escolher sem errar.</p>
+          <div class="card-meta"><span>Comparativo</span><span>10 min</span></div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-thumb grad-3"><div class="card-emoji">🎨</div></div>
+        <div class="card-body">
+          <div class="card-cat">Criatividade</div>
+          <h3>Midjourney v7: prompts que geram imagens profissionais</h3>
+          <p>Técnicas e parâmetros para resultados de outro nível.</p>
+          <div class="card-meta"><span>Tutorial</span><span>6 min</span></div>
+        </div>
+      </div>
+
+      <!-- AD IN-FEED -->
+      <div style="grid-column:span 2;" class="reveal">
+        <div class="ad-unit ad-leader">
+          <div class="ad-box">📣 Anúncio In-Feed — cole código AdSense aqui</div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-thumb grad-4"><div class="card-emoji">💼</div></div>
+        <div class="card-body">
+          <div class="card-cat">Carreira</div>
+          <h3>5 profissões que crescem por causa da IA em 2026</h3>
+          <p>O mercado mudou. Veja onde estão as oportunidades.</p>
+          <div class="card-meta"><span>Análise</span><span>5 min</span></div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-thumb grad-5"><div class="card-emoji">📝</div></div>
+        <div class="card-body">
+          <div class="card-cat">Produtividade</div>
+          <h3>Notion AI vs Obsidian + IA: qual vale seu tempo?</h3>
+          <p>30 dias testando para organizar projetos e notas.</p>
+          <div class="card-meta"><span>Review</span><span>8 min</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FERRAMENTAS -->
+    <div class="sec-head reveal">
+      <div class="sec-head-left"><h2>Ferramentas da Semana</h2><div class="sec-line"></div></div>
+      <a href="pages/blog.html">Ver todas →</a>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card reveal"><div class="tool-icon">🔍</div><h4>Perplexity AI</h4><p>Busca com IA que cita fontes em tempo real. Substitui o Google em 80% das pesquisas.</p><span class="badge badge-green">Grátis</span></div>
+      <div class="tool-card reveal"><div class="tool-icon">✍️</div><h4>Claude 3.5 Sonnet</h4><p>Melhor modelo para escrita longa e análise de documentos.</p><span class="badge badge-dim">Grátis + Pro</span></div>
+      <div class="tool-card reveal"><div class="tool-icon">💻</div><h4>Cursor IDE</h4><p>Editor de código com IA. Desenvolvedores ganham 40% de velocidade.</p><span class="badge badge-amber">Pago</span></div>
+      <div class="tool-card reveal"><div class="tool-icon">🎬</div><h4>Runway Gen-3</h4><p>Geração de vídeo por IA com qualidade cinematográfica.</p><span class="badge badge-amber">Pago</span></div>
+      <div class="tool-card reveal"><div class="tool-icon">🗣️</div><h4>ElevenLabs</h4><p>Síntese de voz hiper-realista. Ideal para podcasts e cursos.</p><span class="badge badge-dim">Grátis + Pro</span></div>
+      <div class="tool-card reveal"><div class="tool-icon">📊</div><h4>Julius AI</h4><p>Análise de dados em linguagem natural — pergunte sobre sua planilha.</p><span class="badge badge-green">Grátis</span></div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="nl-block reveal">
+      <h3>IA toda semana no seu <span>email</span></h3>
+      <p>Curadoria de ferramentas, prompts e notícias — sem spam, em 5 min de leitura.</p>
+      <div class="nl-form">
+        <input type="email" placeholder="seu@email.com">
+        <button type="button">Assinar grátis →</button>
+      </div>
+    </div>
+
+    <!-- AD RETÂNGULO -->
+    <div style="margin:48px 0;text-align:center;" class="reveal">
+      <div class="ad-unit ad-rect">
+        <div class="ad-box">💡 Anúncio 336×280 — cole AdSense aqui</div>
+      </div>
+    </div>
+
+    <!-- MAIS LIDOS -->
+    <div class="sec-head reveal">
+      <div class="sec-head-left"><h2>Mais Lidos</h2><div class="sec-line"></div></div>
+      <a href="pages/blog.html">Ver todos →</a>
+    </div>
+    <div class="art-list">
+      <div class="art-row reveal"><div class="art-num">01</div><div><div class="art-cat">ChatGPT</div><div class="art-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="art-meta">12 min · 4.2k leituras · Abr 2026</div></div></div>
+      <div class="art-row reveal"><div class="art-num">02</div><div><div class="art-cat">Automação</div><div class="art-title">Automatize seu email com IA: triagem, resposta e arquivamento automático</div><div class="art-meta">9 min · 3.8k leituras · Abr 2026</div></div></div>
+      <div class="art-row reveal"><div class="art-num">03</div><div><div class="art-cat">Produtividade</div><div class="art-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="art-meta">14 min · 3.1k leituras · Mar 2026</div></div></div>
+      <div class="art-row reveal"><div class="art-num">04</div><div><div class="art-cat">Carreira</div><div class="art-title">Currículo, carta de apresentação e simulação de entrevista com IA</div><div class="art-meta">8 min · 2.9k leituras · Mar 2026</div></div></div>
+      <div class="art-row reveal"><div class="art-num">05</div><div><div class="art-cat">Finanças</div><div class="art-title">Como usar IA para analisar gastos e criar um orçamento automático</div><div class="art-meta">7 min · 2.5k leituras · Mar 2026</div></div></div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-block">
+      <div class="ad-unit ad-half">
+        <div class="ad-box" style="flex-direction:column;gap:6px;">🎯<span>300×600</span><span style="font-size:10px;opacity:.5">Sidebar Premium</span></div>
+      </div>
+    </div>
+    <div class="sb-block">
+      <div class="sec-head"><div class="sec-head-left"><h2>Em Alta</h2></div></div>
+      <ul class="trend-list">
+        <li class="trend-item"><span class="tr-num">1</span><div><div class="tr-title">Claude 4 x GPT-5: quem vence?</div><div class="tr-meta">1.2k leituras hoje</div></div></li>
+        <li class="trend-item"><span class="tr-num">2</span><div><div class="tr-title">10 prompts para estudar mais rápido</div><div class="tr-meta">980 leituras hoje</div></div></li>
+        <li class="trend-item"><span class="tr-num">3</span><div><div class="tr-title">IA para freelancers: kit essencial</div><div class="tr-meta">754 leituras hoje</div></div></li>
+        <li class="trend-item"><span class="tr-num">4</span><div><div class="tr-title">Como IA está mudando o Excel</div><div class="tr-meta">623 leituras hoje</div></div></li>
+        <li class="trend-item"><span class="tr-num">5</span><div><div class="tr-title">Gemini Deep Research: vale a pena?</div><div class="tr-meta">501 leituras hoje</div></div></li>
+      </ul>
+    </div>
+    <div class="sb-block">
+      <div class="ad-unit ad-rect">
+        <div class="ad-box" style="flex-direction:column;gap:6px;">📱<span>300×250 Sidebar</span></div>
+      </div>
+    </div>
+    <div class="sb-block">
+      <div class="sec-head"><div class="sec-head-left"><h2>Categorias</h2></div></div>
+      <div class="tag-cloud">
+        <a href="#">ChatGPT</a><a href="#">Claude</a><a href="#">Gemini</a>
+        <a href="#">Prompts</a><a href="#">Automação</a><a href="#">Carreira</a>
+        <a href="#">Design IA</a><a href="#">Vídeo IA</a><a href="#">n8n</a>
+        <a href="#">Programação</a><a href="#">Finanças</a><a href="#">Estudo</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- AD FOOTER -->
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
+  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;">
+    <div class="ad-box">📣 Anúncio Footer Leaderboard 728×90</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-about">
+      <a href="index.html" class="nav-logo" style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;color:var(--text);">Prompt<span style="color:var(--green)">.</span>BR<span style="font-family:var(--font-mono);font-size:9px;background:var(--green);color:#000;padding:2px 5px;border-radius:3px;margin-left:4px;">🇧🇷</span></a>
+      <p>A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter para você produzir mais.</p>
+    </div>
+    <div class="footer-col"><h4>Conteúdo</h4><ul>
+      <li><a href="pages/blog.html">Blog</a></li>
+      <li><a href="pages/prompts.html">Biblioteca de Prompts</a></li>
+      <li><a href="pages/noticias.html">Notícias</a></li>
+      <li><a href="pages/newsletter.html">Newsletter</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Categorias</h4><ul>
+      <li><a href="#">Produtividade</a></li><li><a href="#">Carreira</a></li>
+      <li><a href="#">Automação</a></li><li><a href="#">Criatividade</a></li>
+      <li><a href="#">Programação</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Institucional</h4><ul>
+      <li><a href="pages/sobre.html">Sobre</a></li>
+      <li><a href="#">Anuncie aqui</a></li>
+      <li><a href="pages/privacidade.html">Privacidade</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 PromptBR — Todos os direitos reservados</span>
+    <span>Feito com IA no Brasil 🇧🇷</span>
+  </div>
+</footer>
+
+<script src="js/global.js"></script>
+</body>
+</html>

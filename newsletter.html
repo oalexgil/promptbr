@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter — PromptBR</title>
+  <meta name="description" content="Receba toda semana os melhores prompts, ferramentas e notícias de IA em português. Grátis.">
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .nl-hero{min-height:88vh;display:flex;align-items:center;padding:80px 24px;position:relative;overflow:hidden;}
+    .nl-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 40%,rgba(0,230,118,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(77,166,255,.04) 0%,transparent 50%);}
+    .nl-hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;}
+    .nl-hero-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+    .nl-kick{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.2);color:var(--green);padding:7px 18px;border-radius:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;margin-bottom:28px;}
+    .nl-kick-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+    .nl-hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-.04em;line-height:1.02;margin-bottom:20px;}
+    .nl-hero h1 span{color:var(--green);}
+    .nl-hero .sub{color:var(--text-2);font-size:1.05rem;line-height:1.75;max-width:500px;margin:0 auto 40px;}
+    .big-form{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;max-width:500px;margin:0 auto 36px;}
+    .big-form label{display:block;text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:7px;}
+    .big-form input{width:100%;background:var(--bg-3);border:1px solid var(--border);color:var(--text);padding:14px 18px;font-size:14.5px;border-radius:var(--radius);outline:none;margin-bottom:14px;transition:border-color .2s;font-family:var(--font-body);}
+    .big-form input:focus{border-color:var(--green);}
+    .big-form input::placeholder{color:var(--text-3);}
+    .big-form .sbtn{width:100%;background:var(--green);color:#000;border:none;padding:16px;font-size:15px;font-weight:800;border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;font-family:var(--font-body);}
+    .big-form .sbtn:hover{background:#00ff88;box-shadow:0 0 24px rgba(0,230,118,.3);}
+    .form-note{font-size:11.5px;color:var(--text-3);margin-top:12px;text-align:center;}
+    .sp-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .avatars{display:flex;} .av{width:30px;height:30px;border-radius:50%;background:var(--bg-3);border:2px solid var(--bg);margin-left:-6px;display:flex;align-items:center;justify-content:center;font-size:13px;} .avatars .av:first-child{margin-left:0;}
+    .sp-txt{font-size:13px;color:var(--text-2);} .sp-txt strong{color:var(--text);}
+
+    .inside{background:var(--bg-2);border-top:1px solid var(--border);padding:72px 24px;}
+    .inside-inner{max-width:var(--max-w);margin:0 auto;}
+    .inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;}
+    .ic-icon{font-size:2.2rem;margin-bottom:14px;}
+    .ic h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;margin-bottom:8px;}
+    .ic p{font-size:13.5px;color:var(--text-2);line-height:1.65;}
+
+    .example-sec{padding:72px 24px;border-top:1px solid var(--border);}
+    .example-inner{max-width:640px;margin:0 auto;}
+    .email-mock{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+    .em-head{background:var(--bg-3);padding:22px 28px;border-bottom:1px solid var(--border);}
+    .em-head-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-3);margin-bottom:7px;}
+    .em-head h2{font-family:var(--font-display);font-size:1.3rem;font-weight:800;}
+    .em-body{padding:28px;}
+    .em-sec{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+    .em-sec:last-child{margin-bottom:0;padding-bottom:0;border:none;}
+    .em-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:8px;}
+    .em-sec h4{font-family:var(--font-display);font-size:1rem;font-weight:800;margin-bottom:7px;}
+    .em-sec p{font-size:13px;color:var(--text-2);line-height:1.65;}
+
+    .faq-sec{padding:72px 24px;border-top:1px solid var(--border);}
+    .faq-inner{max-width:640px;margin:0 auto;}
+    details{border-bottom:1px solid var(--border);}
+    summary{padding:18px 0;font-weight:600;font-size:.97rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none;color:var(--text);}
+    summary::after{content:'+';font-size:1.4rem;color:var(--green);font-weight:300;}
+    details[open] summary::after{content:'−';}
+    .faq-a{padding:0 0 18px;font-size:13.5px;color:var(--text-2);line-height:1.7;}
+
+    .bot-cta{background:var(--green);padding:72px 24px;text-align:center;}
+    .bot-cta h2{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:#000;margin-bottom:14px;}
+    .bot-cta p{color:rgba(0,0,0,.65);font-size:1rem;margin-bottom:28px;}
+    .bot-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:0 auto;}
+    .bot-form input{flex:1;min-width:200px;background:rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.2);color:#000;padding:14px 18px;font-size:14px;border-radius:var(--radius);outline:none;font-family:var(--font-body);}
+    .bot-form input::placeholder{color:rgba(0,0,0,.5);}
+    .bot-form button{background:#000;color:var(--green);border:none;padding:14px 24px;font-weight:800;font-size:14px;border-radius:var(--radius);cursor:pointer;white-space:nowrap;font-family:var(--font-body);transition:all .2s;}
+    .bot-form button:hover{background:#111;}
+    @media(max-width:720px){.inside-grid{grid-template-columns:1fr;}.big-form{padding:24px 18px;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="nav-logo">Prompt<span class="dot">.</span>BR<span class="br-tag">🇧🇷</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Início</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="active nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="nl-hero">
+  <div class="nl-hero-bg"></div>
+  <div class="nl-hero-inner">
+    <div class="nl-kick"><span class="nl-kick-dot"></span>Grátis · 1x por semana · Sem spam</div>
+    <h1>IA no seu email toda <span>segunda-feira</span></h1>
+    <p class="sub">Curadoria das melhores ferramentas, prompts e notícias de IA — em 5 minutos, em português, de graça.</p>
+    <div class="big-form">
+      <label for="nl-name">Seu nome</label>
+      <input type="text" id="nl-name" placeholder="Como posso te chamar?">
+      <label for="nl-email">Seu melhor email</label>
+      <input type="email" id="nl-email" placeholder="voce@email.com">
+      <button class="sbtn" type="button" id="nl-sub">Quero receber toda semana →</button>
+      <div class="form-note">🔒 Seus dados estão seguros. Cancele quando quiser, sem drama.</div>
+    </div>
+    <div class="sp-row">
+      <div class="avatars"><div class="av">😊</div><div class="av">🧑</div><div class="av">👩</div><div class="av">👨</div><div class="av">😄</div></div>
+      <div class="sp-txt"><strong>+8.400 pessoas</strong> já recebem toda semana</div>
+    </div>
+  </div>
+</section>
+
+<section class="inside">
+  <div class="inside-inner">
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>O que você vai receber</h2><div class="sec-line"></div></div></div>
+    <div class="inside-grid">
+      <div class="ic reveal"><div class="ic-icon">🔥</div><h3>Destaque da semana</h3><p>A notícia mais importante de IA com contexto e análise do impacto no seu dia a dia.</p></div>
+      <div class="ic reveal"><div class="ic-icon">📰</div><h3>3 notícias essenciais</h3><p>Curadoria sem clickbait — só o que importa, com resumo direto e impacto real.</p></div>
+      <div class="ic reveal"><div class="ic-icon">🛠️</div><h3>Ferramenta da semana</h3><p>Uma ferramenta de IA testada, com mini-tutorial e avaliação honesta de custo-benefício.</p></div>
+      <div class="ic reveal"><div class="ic-icon">⚡</div><h3>Prompt da semana</h3><p>Um prompt prático e testado que você pode usar imediatamente para produzir mais.</p></div>
+      <div class="ic reveal"><div class="ic-icon">📖</div><h3>Leitura do blog</h3><p>O melhor artigo da semana do PromptBR, selecionado pelo time.</p></div>
+      <div class="ic reveal"><div class="ic-icon">🎁</div><h3>Bônus exclusivo</h3><p>Templates, mini-guias e listas que não publicamos no site — só para assinantes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="example-sec">
+  <div class="example-inner">
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Exemplo de edição</h2><div class="sec-line"></div></div></div>
+    <div class="email-mock reveal">
+      <div class="em-head">
+        <div class="em-head-meta">📬 PromptBR · Edição #48 · Segunda-feira, 14 de Abril</div>
+        <h2>GPT-5 chegou — o que muda para você hoje</h2>
+      </div>
+      <div class="em-body">
+        <div class="em-sec"><div class="em-label">🔥 Destaque da Semana</div><h4>GPT-5: mais rápido, mais barato e com raciocínio avançado</h4><p>A OpenAI lançou o GPT-5 com capacidade de raciocínio multi-etapa superior ao o1. Custo menor na API, performance maior em código e análise. Saiba o que testar primeiro →</p></div>
+        <div class="em-sec"><div class="em-label">⚡ Prompt da Semana</div><h4>Para reuniões mais curtas</h4><p><em>"Analise esta pauta e reescreva para resolver em 50% menos tempo. Para cada item, diga se precisa ser discutido em grupo ou resolvido assincronamente. Pauta: [cole aqui]"</em></p></div>
+        <div class="em-sec"><div class="em-label">🛠️ Ferramenta da Semana</div><h4>Wispr Flow — ditado com IA em qualquer app</h4><p>Fala em português, transcreve com perfeição e formata o texto. Funciona em qualquer campo do computador. Economizei 45 minutos ontem ditando emails.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec">
+  <div class="faq-inner">
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Perguntas frequentes</h2><div class="sec-line"></div></div></div>
+    <details class="reveal"><summary>É gratuita mesmo?</summary><div class="faq-a">Sim, 100% gratuita. Nos sustentamos com anúncios e parcerias — você não paga nada.</div></details>
+    <details class="reveal"><summary>Com que frequência chega?</summary><div class="faq-a">Uma vez por semana, toda segunda-feira de manhã. Sem exceções, sem encher a caixa.</div></details>
+    <details class="reveal"><summary>Posso cancelar quando quiser?</summary><div class="faq-a">Sim. Todo email tem link de cancelamento no rodapé. Um clique, sem perguntas.</div></details>
+    <details class="reveal"><summary>Vocês vendem meus dados?</summary><div class="faq-a">Jamais. Seu email é usado apenas para enviar a newsletter. Leia nossa política de privacidade.</div></details>
+    <details class="reveal"><summary>É para quem não é da área de tecnologia?</summary><div class="faq-a">Foi feita especialmente para quem não é técnico — linguagem simples, foco prático.</div></details>
+  </div>
+</section>
+
+<section class="bot-cta">
+  <h2>Comece agora. É grátis.</h2>
+  <p>Junte-se a +8.400 pessoas que já usam IA na rotina.</p>
+  <div class="bot-form nl-form">
+    <input type="email" placeholder="seu@email.com">
+    <button type="button">Assinar →</button>
+  </div>
+</section>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="../index.html" class="nav-logo" style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text);">Prompt<span style="color:var(--green)">.</span>BR</a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="../index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="#">Contato</a></li><li><a href="#">Anuncie aqui</a></li></ul></div>
+  <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">YouTube</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+
+<script src="../js/global.js"></script>
+<script>
+  document.getElementById('nl-sub').addEventListener('click',()=>{
+    const e=document.getElementById('nl-email');
+    const b=document.getElementById('nl-sub');
+    if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim())){
+      b.textContent='✓ Inscrito! Verifique seu email.';
+      b.style.background='#00c060';b.disabled=true;
+    } else { e.style.borderColor='var(--red)';e.focus(); }
+  });
+</script>
+</body></html>
