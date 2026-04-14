@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — PromptBR</title>
+  <meta name="description" content="Artigos práticos sobre IA, produtividade, automação e carreira. Aprenda a usar Inteligência Artificial no seu dia a dia.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .ph{background:var(--bg-2);border-bottom:1px solid var(--border);padding:52px 24px 40px;position:relative;overflow:hidden;}
+    .ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 75% 40%,rgba(77,166,255,.06) 0%,transparent 60%);}
+    .ph-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1;}
+    .ph-kick{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .ph-kick::before{content:'';width:24px;height:2px;background:var(--blue);}
+    .ph h1{margin-bottom:12px;}
+    .ph p{max-width:520px;}
+
+    .blog-wrap{max-width:var(--max-w);margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 290px;gap:48px;align-items:start;}
+    .sidebar{position:sticky;top:calc(var(--nav-h) + 20px);}
+    .sb-block{margin-bottom:28px;}
+
+    /* Featured big post */
+    .post-featured{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:40px;transition:border-color .2s;}
+    .post-featured:hover{border-color:rgba(0,230,118,.28);}
+    .pf-thumb{min-height:280px;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:.4;position:relative;}
+    .pf-body{padding:36px;display:flex;flex-direction:column;justify-content:center;}
+    .pf-cat{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:8px;}
+    .pf-body h2{font-size:1.45rem;font-weight:700;line-height:1.22;margin-bottom:14px;}
+    .pf-body p{font-size:14px;line-height:1.68;margin-bottom:22px;}
+    .pf-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-3);margin-top:auto;border-top:1px solid var(--border);padding-top:14px;}
+
+    /* Post grid */
+    .post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:32px;}
+    .post-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s;}
+    .post-card:hover{border-color:rgba(0,230,118,.28);transform:translateY(-2px);box-shadow:var(--shadow-green);}
+    .pc-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;opacity:.4;}
+    .pc-body{padding:18px;}
+    .pc-cat{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:6px;}
+    .pc-body h3{font-size:1rem;font-weight:700;line-height:1.28;margin-bottom:8px;}
+    .pc-body p{font-size:13px;line-height:1.62;margin-bottom:12px;}
+    .pc-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--text-3);border-top:1px solid var(--border);padding-top:9px;}
+
+    /* Post list */
+    .post-list{margin-bottom:40px;}
+    .pl-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .pl-item:hover .pl-title{color:var(--green);}
+    .pl-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--bg-4);line-height:1;min-width:36px;text-align:right;padding-right:12px;border-right:2px solid var(--bg-4);}
+    .pl-cat{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:4px;}
+    .pl-title{font-family:var(--font-display);font-size:.97rem;font-weight:700;line-height:1.28;transition:color .15s;color:var(--text);}
+    .pl-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-3);margin-top:4px;}
+
+    /* Category tabs */
+    .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+    .cat-tab{padding:7px 16px;background:var(--bg-3);border:1px solid var(--border);border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);}
+    .cat-tab:hover,.cat-tab.active{background:var(--green);color:#000;border-color:var(--green);}
+
+    /* Sidebar */
+    .sb-recent{list-style:none;}
+    .sb-r-item{padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .sb-r-item:hover .sb-r-title{color:var(--green);}
+    .sb-r-cat{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:3px;}
+    .sb-r-title{font-size:13px;font-weight:600;line-height:1.3;transition:color .15s;color:var(--text);}
+    .sb-r-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-3);margin-top:2px;}
+
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:7px;}
+    .tag-cloud a{background:var(--bg-3);border:1px solid var(--border);padding:5px 12px;border-radius:var(--radius);font-size:12px;font-weight:500;color:var(--text-2);transition:all .15s;}
+    .tag-cloud a:hover{background:var(--green);color:#000;border-color:var(--green);}
+
+    .g1{background:linear-gradient(135deg,#031a08,#065c20);} .g2{background:linear-gradient(135deg,#1a0d03,#5c2a06);}
+    .g3{background:linear-gradient(135deg,#030d1a,#063a5c);} .g4{background:linear-gradient(135deg,#1a1703,#5c520a);}
+    .g5{background:linear-gradient(135deg,#170316,#540a50);} .g6{background:linear-gradient(135deg,#031018,#0a3d5c);}
+    .g7{background:linear-gradient(135deg,#0d1a03,#3d5c06);} .g8{background:linear-gradient(135deg,#1a0a03,#7a3a06);}
+
+    @media(max-width:900px){.blog-wrap{grid-template-columns:1fr;}.post-featured{grid-template-columns:1fr;}.pf-thumb{min-height:160px;}.post-grid{grid-template-columns:1fr;}.sidebar{position:static;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.svg" class="nav-logo-svg" alt="PromptBR">
+    <span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="ph">
+  <div class="ph-inner">
+    <div class="ph-kick">Blog · Tutoriais e guias práticos</div>
+    <h1>Aprenda a usar IA de verdade</h1>
+    <p>Tutoriais diretos ao ponto, comparativos honestos e guias práticos para você tirar resultado da Inteligência Artificial hoje.</p>
+  </div>
+</section>
+
+<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:12px 24px;">
+  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;"><div class="ad-box">📢 Espaço publicitário — cole seu código AdSense aqui</div></div>
+</div>
+
+<div class="blog-wrap">
+  <main>
+    <!-- CATEGORY TABS -->
+    <div class="cat-tabs reveal">
+      <button class="cat-tab active">Todos</button>
+      <button class="cat-tab">ChatGPT</button>
+      <button class="cat-tab">Produtividade</button>
+      <button class="cat-tab">Automação</button>
+      <button class="cat-tab">Carreira</button>
+      <button class="cat-tab">Ferramentas</button>
+      <button class="cat-tab">Criatividade</button>
+    </div>
+
+    <!-- POST DESTAQUE -->
+    <a href="artigo-chatgpt.html" style="display:block;">
+      <div class="post-featured reveal">
+        <div class="pf-thumb g1">🤖</div>
+        <div class="pf-body">
+          <div class="pf-cat">Guia Completo · ChatGPT</div>
+          <h2>ChatGPT do zero ao avançado: o guia definitivo em português</h2>
+          <p>Prompt engineering, Custom Instructions, GPTs personalizados e os atalhos que usuários avançados usam — mas ninguém explica. Testamos tudo por 30 dias.</p>
+          <span class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler artigo completo →</span>
+          <div class="pf-meta">Equipe PromptBR · 14 min de leitura · 12 Abr 2026 · 4.2k leituras</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- GRID DE POSTS -->
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Recentes</h2><div class="sec-line"></div></div><a href="#">Ver todos →</a></div>
+    <div class="post-grid">
+      <div class="post-card reveal">
+        <div class="pc-thumb g2">⚡</div>
+        <div class="pc-body">
+          <div class="pc-cat">Automação</div>
+          <h3>Make vs n8n vs Zapier: comparativo definitivo para 2026</h3>
+          <p>Qual plataforma de automação com IA entrega mais por menos esforço e dinheiro?</p>
+          <div class="pc-meta"><span>Comparativo</span><span>10 min · Abr 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g3">🔍</div>
+        <div class="pc-body">
+          <div class="pc-cat">Ferramentas</div>
+          <h3>Perplexity AI: como usar o buscador de IA que está substituindo o Google</h3>
+          <p>Guia completo para tirar o máximo da ferramenta de pesquisa com IA mais precisa do mercado.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>8 min · Abr 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g4">💼</div>
+        <div class="pc-body">
+          <div class="pc-cat">Carreira</div>
+          <h3>Currículo com IA: do rascunho ao aprovado em 15 minutos</h3>
+          <p>Passo a passo usando ChatGPT e Claude para criar um currículo que passa pelo ATS e impressiona recrutadores.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>7 min · Abr 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g5">🎨</div>
+        <div class="pc-body">
+          <div class="pc-cat">Criatividade</div>
+          <h3>Midjourney v7: parâmetros e técnicas para imagens profissionais</h3>
+          <p>Os comandos avançados que separam resultados medianos de imagens cinematográficas.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>6 min · Abr 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD IN-FEED -->
+    <div class="reveal" style="margin-bottom:32px;">
+      <div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio In-Feed — cole AdSense aqui</div></div>
+    </div>
+
+    <!-- LISTA NUMERADA -->
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Lidos de Todos os Tempos</h2><div class="sec-line"></div></div></div>
+    <div class="post-list">
+      <div class="pl-item reveal"><div class="pl-num">01</div><div><div class="pl-cat">Produtividade</div><div class="pl-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="pl-meta">14 min · 8.4k leituras · Mar 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">02</div><div><div class="pl-cat">Automação</div><div class="pl-title">Como automatizar seu email com IA: triagem, resposta e arquivamento automático</div><div class="pl-meta">9 min · 6.2k leituras · Mar 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">03</div><div><div class="pl-cat">ChatGPT</div><div class="pl-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="pl-meta">12 min · 5.8k leituras · Fev 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">04</div><div><div class="pl-cat">Finanças</div><div class="pl-title">Como usar IA para analisar seus gastos e criar um orçamento automático</div><div class="pl-meta">7 min · 4.9k leituras · Fev 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">05</div><div><div class="pl-cat">Carreira</div><div class="pl-title">5 profissões que estão crescendo por causa da IA em 2026</div><div class="pl-meta">5 min · 4.1k leituras · Jan 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">06</div><div><div class="pl-cat">Ferramentas</div><div class="pl-title">Notion AI vs Obsidian + IA: qual organiza melhor sua vida profissional?</div><div class="pl-meta">8 min · 3.7k leituras · Jan 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">07</div><div><div class="pl-cat">Programação</div><div class="pl-title">Cursor IDE vs GitHub Copilot: qual acelera mais o seu código?</div><div class="pl-meta">10 min · 3.2k leituras · Jan 2026</div></div></div>
+      <div class="pl-item reveal"><div class="pl-num">08</div><div><div class="pl-cat">Estudo</div><div class="pl-title">Como usar IA para aprender qualquer coisa em metade do tempo</div><div class="pl-meta">11 min · 2.9k leituras · Dez 2025</div></div></div>
+    </div>
+
+    <!-- MAIS POSTS GRID -->
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Guias por Categoria</h2><div class="sec-line"></div></div></div>
+    <div class="post-grid">
+      <div class="post-card reveal">
+        <div class="pc-thumb g6">📊</div>
+        <div class="pc-body">
+          <div class="pc-cat">Ferramentas</div>
+          <h3>Julius AI: analise planilhas em português natural sem fórmulas</h3>
+          <p>Como fazer perguntas sobre seus dados e obter gráficos e insights automaticamente.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>6 min · Mar 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g7">🗣️</div>
+        <div class="pc-body">
+          <div class="pc-cat">Criatividade</div>
+          <h3>ElevenLabs: clonagem de voz para podcasts e cursos online</h3>
+          <p>Do upload do áudio ao clone pronto em minutos — guia completo em português.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>7 min · Mar 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g8">🧠</div>
+        <div class="pc-body">
+          <div class="pc-cat">ChatGPT</div>
+          <h3>Custom Instructions do ChatGPT: configure uma vez, use para sempre</h3>
+          <p>Como configurar o ChatGPT para te conhecer e responder exatamente do jeito que você precisa.</p>
+          <div class="pc-meta"><span>Tutorial</span><span>5 min · Fev 2026</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal">
+        <div class="pc-thumb g3">🔐</div>
+        <div class="pc-body">
+          <div class="pc-cat">Segurança</div>
+          <h3>O que NÃO compartilhar com IA: guia de privacidade para usuários</h3>
+          <p>Quais dados são seguros de enviar e o que você nunca deve colocar em um prompt.</p>
+          <div class="pc-meta"><span>Guia</span><span>5 min · Fev 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="nl-block reveal" style="margin-top:8px;">
+      <h3>Artigo novo toda <span>semana</span></h3>
+      <p>Assine e receba os melhores tutoriais de IA direto no seu email.</p>
+      <div class="nl-form"><input type="email" placeholder="seu@email.com"><button type="button">Assinar grátis →</button></div>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sb-block">
+      <div class="ad-unit ad-half"><div class="ad-box" style="flex-direction:column;gap:6px;">🎯<span>300×600</span><span style="font-size:10px;opacity:.5">Sidebar Premium</span></div></div>
+    </div>
+    <div class="sb-block">
+      <div class="sec-head"><div class="sec-head-left"><h2>Recentes</h2></div></div>
+      <ul class="sb-recent">
+        <li class="sb-r-item"><div class="sb-r-cat">ChatGPT</div><div class="sb-r-title">GPT-5: o que mudou e como aproveitar agora</div><div class="sb-r-meta">14 Abr · 4.1k leituras</div></li>
+        <li class="sb-r-item"><div class="sb-r-cat">Automação</div><div class="sb-r-title">n8n para iniciantes: seu primeiro fluxo em 15 min</div><div class="sb-r-meta">12 Abr · 2.8k leituras</div></li>
+        <li class="sb-r-item"><div class="sb-r-cat">Carreira</div><div class="sb-r-title">Engenheiro de prompt: o que é e como se tornar um</div><div class="sb-r-meta">10 Abr · 2.3k leituras</div></li>
+        <li class="sb-r-item"><div class="sb-r-cat">Produtividade</div><div class="sb-r-title">IA no WhatsApp: 5 formas de usar o Meta AI</div><div class="sb-r-meta">8 Abr · 1.9k leituras</div></li>
+      </ul>
+    </div>
+    <div class="sb-block">
+      <div class="ad-unit ad-rect"><div class="ad-box" style="flex-direction:column;gap:6px;">📱<span>300×250 Sidebar</span></div></div>
+    </div>
+    <div class="sb-block">
+      <div class="sec-head"><div class="sec-head-left"><h2>Tags</h2></div></div>
+      <div class="tag-cloud">
+        <a href="#">ChatGPT</a><a href="#">Claude</a><a href="#">Gemini</a>
+        <a href="#">Prompts</a><a href="#">n8n</a><a href="#">Make</a>
+        <a href="#">Carreira</a><a href="#">Produtividade</a><a href="#">Código</a>
+        <a href="#">Design IA</a><a href="#">Vídeo</a><a href="#">Finanças</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
+  <div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio Footer — cole AdSense aqui</div></div>
+</div>
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about">
+    <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a>
+    <p>A maior biblioteca de prompts em português. Ferramentas de IA e newsletter semanal.</p>
+  </div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="#">Produtividade</a></li><li><a href="#">Carreira</a></li><li><a href="#">Automação</a></li><li><a href="#">Ferramentas</a></li><li><a href="#">Programação</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="#">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body></html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <!-- Ícone: terminal com cursor piscante -->
+  <rect x="0" y="4" width="36" height="32" rx="5" fill="#111" stroke="#00e676" stroke-width="1.4"/>
+  <!-- barra superior do terminal -->
+  <rect x="0" y="4" width="36" height="9" rx="5" fill="#1a1a1a"/>
+  <rect x="8" y="4" width="36" height="4" fill="#1a1a1a"/>
+  <!-- dots da barra -->
+  <circle cx="6" cy="8.5" r="1.5" fill="#ff5f57"/>
+  <circle cx="11" cy="8.5" r="1.5" fill="#febc2e"/>
+  <circle cx="16" cy="8.5" r="1.5" fill="#28c840"/>
+  <!-- linha de prompt -->
+  <text x="5" y="22" font-family="monospace" font-size="7" fill="#00e676">$</text>
+  <rect x="10" y="17" width="14" height="2" rx="1" fill="#efefef" opacity=".6"/>
+  <!-- cursor piscando representado como bloco -->
+  <rect x="25" y="17" width="4" height="6" rx="1" fill="#00e676" opacity=".9"/>
+  <!-- segunda linha parcial -->
+  <rect x="5" y="26" width="8" height="2" rx="1" fill="#606060" opacity=".5"/>
+  <!-- Texto da marca -->
+  <text x="42" y="26" font-family="Georgia, serif" font-size="16" font-weight="800" fill="#efefef" letter-spacing="-0.3">Prompt</text>
+  <text x="100" y="26" font-family="Georgia, serif" font-size="16" font-weight="800" fill="#00e676" letter-spacing="-0.3">.</text>
+  <text x="106" y="26" font-family="Georgia, serif" font-size="16" font-weight="800" fill="#efefef" letter-spacing="-0.3">BR</text>
+</svg>
