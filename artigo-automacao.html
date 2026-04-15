@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make vs n8n vs Zapier: Comparativo 2026 — PromptBR</title>
+  <meta name="description" content="Comparativo completo entre Make, n8n e Zapier em 2026. Qual plataforma de automação com IA vale mais para você?">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(255,179,0,.05) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--amber);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .comp-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px;}
+    .comp-table th{background:var(--bg-3);padding:12px 16px;text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);}
+    .comp-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;}
+    .comp-table tr:hover td{background:var(--bg-2);}
+    .score{display:inline-flex;gap:3px;}
+    .score span{width:8px;height:8px;border-radius:2px;background:var(--bg-4);}
+    .score span.on{background:var(--green);}
+    .verdict{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;}
+    .verdict-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+    .verdict h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
+    .verdict p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.65;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    @media(max-width:600px){.comp-table{font-size:12px;}.comp-table th,.comp-table td{padding:10px 10px;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Comparativo · Automação</div>
+    <h1>Make vs n8n vs Zapier: comparativo definitivo para 2026</h1>
+    <p class="desc">Qual plataforma de automação com IA entrega mais por menos esforço e dinheiro? Testamos as três por 60 dias com 20 fluxos reais.</p>
+    <div class="art-meta">
+      <span>📅 10 Abr 2026</span><span>⏱️ 10 min</span><span>👁️ 3.1k leituras</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-wrap">
+  <p>Em 2026, automatizar tarefas repetitivas com IA não é mais diferencial — é necessidade. A pergunta certa não é "se usar", mas "qual usar". Testamos Make, n8n e Zapier com 20 fluxos reais ao longo de 60 dias.</p>
+
+  <h2>Resumo rápido (para quem não tem tempo)</h2>
+  <table class="comp-table">
+    <tr><th>Critério</th><th>Zapier</th><th>Make</th><th>n8n</th></tr>
+    <tr><td>Facilidade de uso</td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></td></tr>
+    <tr><td>Poder e flexibilidade</td><td><div class="score"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td></tr>
+    <tr><td>Custo-benefício</td><td><div class="score"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td></tr>
+    <tr><td>Integração com IA</td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td></tr>
+    <tr><td>Suporte em pt-BR</td><td><div class="score"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></td><td><div class="score"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></td></tr>
+  </table>
+
+  <h2>Zapier: o mais simples, o mais caro</h2>
+  <p>O Zapier existe há mais de 10 anos e define o padrão de "no-code" para automação. Se você nunca automatizou nada, é pelo Zapier que você começa.</p>
+  <h3>Pontos fortes</h3>
+  <ul>
+    <li>Interface mais intuitiva — cria o primeiro fluxo em 5 minutos</li>
+    <li>6.000+ integrações nativas (mais que qualquer concorrente)</li>
+    <li>Suporte robusto e documentação excelente</li>
+    <li>Novo recurso de IA: "AI by Zapier" processa texto diretamente nos fluxos</li>
+  </ul>
+  <h3>Pontos fracos</h3>
+  <ul>
+    <li>O mais caro: a partir de US$19,99/mês para uso sério</li>
+    <li>Pouca flexibilidade em fluxos complexos</li>
+    <li>Lógica condicional limitada no plano básico</li>
+  </ul>
+
+  <div class="verdict">
+    <div class="verdict-label">Veredicto</div>
+    <h4>Zapier é para quem quer simplicidade acima de tudo</h4>
+    <p>Se você tem orçamento e precisa de algo funcionando hoje, o Zapier é imbatível em facilidade. Para fluxos simples (Formulário → Email → Planilha), é perfeito.</p>
+  </div>
+
+  <h2>Make (ex-Integromat): poder visual com preço justo</h2>
+  <p>O Make virou favorito de freelancers e agências em 2025. O editor visual baseado em "cenários" permite lógicas complexas que o Zapier não consegue fazer.</p>
+  <h3>Pontos fortes</h3>
+  <ul>
+    <li>Editor visual de arrastar e soltar com suporte a loops, filtros e rotas</li>
+    <li>Preço muito mais acessível que Zapier (US$9/mês para 10k operações)</li>
+    <li>Módulo HTTP para consumir qualquer API sem integração nativa</li>
+    <li>Integração direta com OpenAI, Claude e Gemini</li>
+  </ul>
+  <h3>Pontos fracos</h3>
+  <ul>
+    <li>Curva de aprendizado média (leva 1-2 dias para dominar)</li>
+    <li>Terminologia própria (cenários, módulos) pode confundir no início</li>
+  </ul>
+
+  <div class="verdict">
+    <div class="verdict-label">Veredicto</div>
+    <h4>Make é para quem quer poder sem pagar caro</h4>
+    <p>Melhor equilíbrio entre facilidade e funcionalidade. Ideal para criadores de conteúdo, freelancers e pequenas empresas que querem automações com IA.</p>
+  </div>
+
+  <h2>n8n: o mais poderoso, para quem tem um pouco de técnica</h2>
+  <p>O n8n é open-source e pode ser hospedado no seu próprio servidor — o que significa custo zero de plataforma e privacidade total dos dados.</p>
+  <h3>Pontos fortes</h3>
+  <ul>
+    <li>Open-source: pode hospedar grátis na sua VPS (US$5/mês na Hetzner)</li>
+    <li>Mais de 400 integrações nativas + suporte a qualquer API</li>
+    <li>Nós de IA nativos para LangChain, OpenAI, Claude, Gemini, Ollama</li>
+    <li>Código JavaScript customizável dentro dos fluxos</li>
+    <li>Sem limite de execuções quando auto-hospedado</li>
+  </ul>
+  <h3>Pontos fracos</h3>
+  <ul>
+    <li>Requer configuração técnica para auto-hospedagem</li>
+    <li>Comunidade em inglês (documentação ainda limitada em pt-BR)</li>
+  </ul>
+
+  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Dica:</strong> Para hospedar o n8n, a Hetzner Cloud custa a partir de €3,29/mês e roda perfeitamente com Docker. Em 1 hora você tem o n8n funcionando de graça para sempre.</p></div>
+
+  <div class="verdict">
+    <div class="verdict-label">Veredicto</div>
+    <h4>n8n é para quem quer o máximo sem limite</h4>
+    <p>Se você tem um mínimo de familiaridade com servidor ou quer aprender, o n8n é a escolha certa. Melhor custo-benefício do mercado, especialmente para automações com IA.</p>
+  </div>
+
+  <h2>Qual escolher? Depende do seu perfil</h2>
+  <ul>
+    <li><strong>Iniciante, sem orçamento:</strong> Comece com Make no plano gratuito</li>
+    <li><strong>Precisa de algo funcionando hoje, com orçamento:</strong> Zapier</li>
+    <li><strong>Freelancer ou agência que quer escalar:</strong> Make</li>
+    <li><strong>Desenvolvedor ou startup com dados sensíveis:</strong> n8n auto-hospedado</li>
+    <li><strong>Quer integrar IA de verdade nos fluxos:</strong> n8n</li>
+  </ul>
+
+  <div class="nl-cta-art">
+    <h3>Toda semana um tutorial de automação na sua caixa</h3>
+    <p>Templates prontos de Make e n8n, dicas de IA e as melhores ferramentas — grátis toda segunda.</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-chatgpt.html">
+      <div class="nav-label">← Artigo anterior</div>
+      <div class="nav-title">ChatGPT do zero ao avançado</div>
+    </a>
+    <a href="artigo-midjourney.html">
+      <div class="nav-label">Próximo artigo →</div>
+      <div class="nav-title">Midjourney v7: técnicas profissionais</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body></html>

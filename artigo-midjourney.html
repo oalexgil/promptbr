@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midjourney v7: Técnicas para Imagens Profissionais — PromptBR</title>
+  <meta name="description" content="Parâmetros avançados do Midjourney v7, consistência de personagens e técnicas para imagens cinematográficas.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(77,166,255,.05) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--blue);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .param-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0;}
+    .param-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;}
+    .param-name{font-family:var(--font-mono);font-size:12px;color:var(--blue);margin-bottom:4px;}
+    .param-desc{font-size:12.5px;color:var(--text-2);line-height:1.55;}
+    .tip-box{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    @media(max-width:560px){.param-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Tutorial · Design IA</div>
+    <h1>Midjourney v7: técnicas para imagens profissionais</h1>
+    <p class="desc">Os parâmetros e técnicas avançadas que separam resultados medianos de imagens cinematográficas. Guia prático para designers e criadores.</p>
+    <div class="art-meta">
+      <span>📅 8 Abr 2026</span><span>⏱️ 6 min</span><span>👁️ 2.8k leituras</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-wrap">
+  <p>O Midjourney v7 trouxe um salto qualitativo enorme: consistência de personagens, melhor compreensão de texto e controle cinematográfico. Este guia cobre o que você precisa saber para sair do nível básico.</p>
+
+  <h2>A anatomia de um prompt profissional</h2>
+  <p>Um bom prompt de Midjourney segue esta estrutura:</p>
+  <div class="prompt-box">[Sujeito principal] + [ambiente/cenário] + [iluminação] + [estilo artístico] + [referência técnica] + [parâmetros]</div>
+
+  <h3>Exemplo básico vs. profissional</h3>
+  <div class="prompt-box">❌ Básico:
+mulher sentada em café
+
+✅ Profissional:
+Brazilian woman in her 30s sitting at a minimalist São Paulo café, golden hour window light casting soft shadows, editorial photography style, shot on Leica Q2, shallow depth of field, warm tones --ar 4:5 --style raw --v 7</div>
+
+  <div class="tip-box"><div class="tip-icon">🎨</div><p><strong>Por que usar inglês?</strong> O Midjourney foi treinado predominantemente em inglês. Prompts em inglês geram resultados mais precisos e detalhados, especialmente em poses e iluminação.</p></div>
+
+  <h2>Parâmetros essenciais do v7</h2>
+  <div class="param-grid">
+    <div class="param-card"><div class="param-name">--ar 16:9 / 4:5 / 1:1</div><div class="param-desc">Proporção da imagem. 16:9 para wallpapers, 4:5 para Instagram, 1:1 para posts quadrados.</div></div>
+    <div class="param-card"><div class="param-name">--style raw</div><div class="param-desc">Remove o "processamento" do Midjourney. Resultados mais fotorrealistas, menos "digitais".</div></div>
+    <div class="param-card"><div class="param-name">--cref [URL]</div><div class="param-desc">Character Reference. Cole a URL de uma imagem para manter consistência do personagem.</div></div>
+    <div class="param-card"><div class="param-name">--cw 0-100</div><div class="param-desc">Character Weight. Controla quanto do personagem referenciado aparece. 100 = máximo.</div></div>
+    <div class="param-card"><div class="param-name">--sref [URL]</div><div class="param-desc">Style Reference. Replica o estilo visual de uma imagem de referência.</div></div>
+    <div class="param-card"><div class="param-name">--chaos 0-100</div><div class="param-desc">Variação entre as 4 opções geradas. Alto = mais criativo e diferente. Padrão: 0.</div></div>
+    <div class="param-card"><div class="param-name">--no [elemento]</div><div class="param-desc">Exclui elementos. --no text --no watermark --no blurry para resultados mais limpos.</div></div>
+    <div class="param-card"><div class="param-name">--q 0.5 / 1 / 2</div><div class="param-desc">Qualidade de renderização. q 2 usa mais GPU credits mas gera detalhes superiores.</div></div>
+  </div>
+
+  <h2>Consistência de personagens com --cref</h2>
+  <p>O maior problema do Midjourney sempre foi: como manter o mesmo personagem em cenas diferentes? O v7 resolve isso com o Character Reference.</p>
+  <ol>
+    <li>Gere uma imagem base do personagem que você quer usar</li>
+    <li>Abra a imagem no Discord, copie o link direto (.png ou .jpg)</li>
+    <li>Use o link no parâmetro --cref no próximo prompt</li>
+    <li>Adicione --cw 80-100 para alta fidelidade ao personagem</li>
+  </ol>
+
+  <div class="prompt-box">Exemplo de consistência:
+
+Prompt base:
+young Brazilian man, 25yo, curly black hair, wearing casual white t-shirt, neutral expression, studio white background --ar 1:1 --style raw --v 7
+
+Prompt com consistência:
+young Brazilian man sitting at a coffee shop reading a book, warm natural light --cref [URL da imagem base] --cw 85 --ar 4:5 --style raw --v 7</div>
+
+  <h2>Tipos de iluminação que elevam qualidade</h2>
+  <ul>
+    <li><strong>golden hour light</strong> — luz quente e dourada, sombras suaves</li>
+    <li><strong>cinematic volumetric lighting</strong> — névoa com raios de luz dramáticos</li>
+    <li><strong>studio soft box lighting</strong> — iluminação difusa, ideal para retratos</li>
+    <li><strong>neon rim light</strong> — contorno colorido, estilo cyberpunk</li>
+    <li><strong>overcast natural light</strong> — luz difusa de dia nublado, sem sombras fortes</li>
+  </ul>
+
+  <h2>Templates prontos para usar</h2>
+
+  <h3>Retrato editorial brasileiro</h3>
+  <div class="prompt-box">Brazilian [homem/mulher] in their [idade]s, [característica única], editorial fashion photography, shot in São Paulo streets, overcast natural light, Leica aesthetic, film grain, muted color grading --ar 4:5 --style raw --v 7 --no text</div>
+
+  <h3>Produto para e-commerce</h3>
+  <div class="prompt-box">[produto] on a clean minimal surface, soft studio lighting, white background, commercial photography style, sharp focus, high detail, luxury brand aesthetic --ar 1:1 --style raw --v 7 --no shadows</div>
+
+  <h3>Paisagem cinematográfica</h3>
+  <div class="prompt-box">Aerial view of [local brasileiro], cinematic photography, golden hour, dramatic sky, Fujifilm color profile, ultra wide angle lens, hyperrealistic --ar 16:9 --style raw --v 7</div>
+
+  <div class="nl-cta-art">
+    <h3>Prompts de Midjourney novos toda semana</h3>
+    <p>Na newsletter: 1 prompt visual testado com os parâmetros otimizados + resultado real. Grátis.</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-automacao.html">
+      <div class="nav-label">← Artigo anterior</div>
+      <div class="nav-title">Make vs n8n vs Zapier: comparativo 2026</div>
+    </a>
+    <a href="artigo-curriculo.html">
+      <div class="nav-label">Próximo artigo →</div>
+      <div class="nav-title">Currículo com IA em 15 minutos</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body></html>

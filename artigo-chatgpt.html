@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT do Zero ao Avançado — PromptBR</title>
+  <meta name="description" content="Guia completo do ChatGPT em português: prompt engineering, Custom Instructions, GPTs personalizados e técnicas avançadas.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Guia Completo · ChatGPT</div>
+    <h1>ChatGPT do zero ao avançado: o guia definitivo em português</h1>
+    <p class="desc">Prompt engineering, Custom Instructions, GPTs personalizados e os atalhos que usuários avançados usam — mas ninguém explica. Testamos tudo por 30 dias.</p>
+    <div class="art-meta">
+      <span>📅 12 Abr 2026</span><span>⏱️ 14 min</span><span>👁️ 4.2k leituras</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-wrap">
+  <p>O ChatGPT tem mais de 100 milhões de usuários, mas a grande maioria usa apenas 10% do potencial da ferramenta. Este guia cobre tudo: da estrutura correta de um prompt até técnicas que a maioria nunca viu.</p>
+
+  <h2>1. A estrutura de um prompt eficaz</h2>
+  <p>Todo prompt poderoso tem quatro elementos:</p>
+  <ul>
+    <li><strong>Papel:</strong> "Atue como..." define o contexto de conhecimento.</li>
+    <li><strong>Contexto:</strong> O que a IA precisa saber sobre sua situação.</li>
+    <li><strong>Tarefa:</strong> O que exatamente você quer que ela faça.</li>
+    <li><strong>Formato/Restrições:</strong> Como deve ser a resposta e o que evitar.</li>
+  </ul>
+
+  <div class="prompt-box">Atue como redator especialista em comunicação corporativa.
+
+Contexto: Preciso comunicar ao meu time a mudança do Trello para o Notion. A transição começa em 2 semanas.
+
+Tarefa: Escreva um email interno que explique a mudança positivamente, mencione os benefícios e tranquilize quem tem medo de mudança.
+
+Formato: Email com assunto, saudação, 3 parágrafos curtos e assinatura. Tom amigável. Máx. 200 palavras.</div>
+
+  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Dica pro:</strong> Quanto mais específico o papel, melhor. "Redator com 10 anos em comunicação interna de empresas de tecnologia" supera "redator corporativo".</p></div>
+
+  <h2>2. Custom Instructions: configure uma vez, use sempre</h2>
+  <p>Custom Instructions é o recurso mais subestimado do ChatGPT. Acesse: Menu → Personalizar ChatGPT.</p>
+
+  <h3>Campo "O que você quer que o ChatGPT saiba sobre você?"</h3>
+  <div class="prompt-box">Sou [profissão] brasileiro. Trabalho com [área]. Meu nível técnico é [básico/intermediário/avançado]. Uso o ChatGPT para [tarefas principais]. Contexto: [descreva seu projeto/empresa].</div>
+
+  <h3>Campo "Como você quer que o ChatGPT responda?"</h3>
+  <div class="prompt-box">Sempre responda em português brasileiro. Seja direto — evite enrolação. Use marcadores em listas. Ao sugerir código, use blocos formatados. Quando não souber algo, diga claramente. Sem linguagem corporativa vazia.</div>
+
+  <h2>3. GPTs Personalizados: seu assistente especializado</h2>
+  <p>GPTs são versões personalizadas do ChatGPT criadas para tarefas específicas. Crie um GPT "assistente de email", outro "professor de inglês", outro para revisar contratos.</p>
+  <p>Para criar: ChatGPT → Explorar GPTs → Criar. Leva menos de 10 minutos.</p>
+
+  <div class="tip-box"><div class="tip-icon">🔥</div><p><strong>GPTs mais úteis para brasileiros:</strong> Revisor de Português BR, Assistente de Concursos, Coach de LinkedIn Brasil, Analista Financeiro BR.</p></div>
+
+  <h2>4. Chain of Thought: raciocínio passo a passo</h2>
+  <p>Para problemas complexos, adicione ao final: <strong>"Pense passo a passo antes de responder."</strong> Isso reduz erros em cálculos, análises e decisões.</p>
+
+  <div class="prompt-box">Preciso decidir: contratar CLT ou usar freelancers para um projeto de 6 meses.
+
+Considere: custo total, flexibilidade, qualidade, risco e impacto no fluxo de caixa.
+
+Pense passo a passo antes de dar sua recomendação final.</div>
+
+  <h2>5. Few-Shot Prompting: mostre exemplos</h2>
+  <p>Quando precisa de um estilo específico, mostre exemplos. A IA aprende o padrão e replica.</p>
+
+  <div class="prompt-box">Reescreva os títulos no estilo dos exemplos:
+
+Original: "Como usar IA"
+Reescrito: "7 formas de usar IA que vão te economizar 3h por semana"
+
+Original: "Marketing digital em 2026"
+Reescrito: "Marketing em 2026: o que morreu, sobreviveu e explodiu"
+
+Agora reescreva: "Gestão de tempo para empreendedores"</div>
+
+  <h2>6. Iteração: o segredo dos usuários avançados</h2>
+  <p>Usuários iniciantes aceitam a primeira resposta. Os avançados iteram. Após a primeira resposta, tente:</p>
+  <ul>
+    <li>"Agora refaça em metade do tamanho"</li>
+    <li>"Torne isso mais persuasivo"</li>
+    <li>"E se o público fosse mais técnico?"</li>
+    <li>"Qual a principal fraqueza dessa abordagem?"</li>
+    <li>"Crie 3 versões completamente diferentes"</li>
+  </ul>
+
+  <div class="tip-box"><div class="tip-icon">⚡</div><p><strong>Técnica avançada:</strong> Pergunte ao final: "O que eu deveria ter pedido que não pedi?" — você vai se surpreender.</p></div>
+
+  <h2>7. Análise de documentos com GPT-4o</h2>
+  <p>Faça upload de PDFs, imagens, contratos, planilhas. Exemplos:</p>
+  <ul>
+    <li>Contrato: "Liste todas as cláusulas que me prejudicam"</li>
+    <li>Extrato bancário: "Categorize meus gastos e aponte os maiores"</li>
+    <li>Artigo em inglês: "Resuma em português em 5 pontos"</li>
+    <li>Planilha: "Qual mês teve a maior variação percentual?"</li>
+  </ul>
+
+  <h2>Conclusão</h2>
+  <p>O ChatGPT cresce com o uso. Comece hoje com as Custom Instructions — você vai notar a diferença nas primeiras conversas.</p>
+
+  <div class="nl-cta-art">
+    <h3>Todo prompt que você viu aqui — e muito mais</h3>
+    <p>Toda segunda: 1 prompt testado, 1 ferramenta nova e as notícias de IA que importam. Grátis.</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-automacao.html">
+      <div class="nav-label">← Artigo anterior</div>
+      <div class="nav-title">Make vs n8n vs Zapier: comparativo 2026</div>
+    </a>
+    <a href="artigo-midjourney.html">
+      <div class="nav-label">Próximo artigo →</div>
+      <div class="nav-title">Midjourney v7: técnicas para imagens profissionais</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body></html>
