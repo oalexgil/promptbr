@@ -7,74 +7,28 @@
   <meta name="description" content="A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter semanal para você produzir mais.">
   <link rel="stylesheet" href="global.css">
   <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-
-  <!-- Google AdSense — cole seu script aqui após aprovação -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
-
   <style>
     /* ══ HERO ══ */
-    .hero {
-      min-height: 88vh; display: flex; align-items: center;
-      padding: 80px 24px 60px; position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,230,118,.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,166,255,.04) 0%, transparent 50%);
-    }
-    /* grid decorativo */
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-    .hero-inner {
-      max-width: var(--max-w); margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 440px;
-      gap: 64px; align-items: center;
-      position: relative; z-index: 1;
-    }
-    .hero-kicker {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2);
-      color: var(--green); padding: 6px 14px; border-radius: 20px;
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;
-      margin-bottom: 24px;
-    }
+    .hero { min-height: 88vh; display: flex; align-items: center; padding: 80px 24px 60px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,230,118,.06) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,166,255,.04) 0%, transparent 50%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 48px 48px; }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2); color: var(--green); padding: 6px 14px; border-radius: 20px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; margin-bottom: 24px; }
     .hero-kicker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    h1.hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 5.5vw, 5rem);
-      font-weight: 800; line-height: 1.0;
-      letter-spacing: -.04em; margin-bottom: 24px;
-    }
+    h1.hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 800; line-height: 1.0; letter-spacing: -.04em; margin-bottom: 24px; }
     h1.hero-title .green { color: var(--green); animation: glow-pulse 3s ease-in-out infinite; }
     .hero-desc { color: var(--text-2); font-size: 1.05rem; line-height: 1.75; max-width: 500px; margin-bottom: 36px; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
     .hero-stats { display: flex; gap: 36px; }
     .hero-stat span { display: block; font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--green); line-height: 1; }
     .hero-stat small { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: .05em; }
-
-    /* terminal card */
-    .hero-card {
-      background: var(--bg-2); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .hc-topbar {
-      background: var(--bg-3); padding: 12px 16px;
-      display: flex; align-items: center; gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
+    .hero-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .hc-topbar { background: var(--bg-3); padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
     .hc-dot { width: 10px; height: 10px; border-radius: 50%; }
     .hc-dot:nth-child(1){background:#ff5f57;} .hc-dot:nth-child(2){background:#febc2e;} .hc-dot:nth-child(3){background:#28c840;}
     .hc-title { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); margin-left: 8px; }
     .hc-body { padding: 24px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.85; }
-    .tc-p  { color: var(--green); } .tc-c  { color: var(--text); }
-    .tc-ok { color: #4ade80; }      .tc-d  { color: var(--text-3); }
+    .tc-p{color:var(--green);} .tc-c{color:var(--text);} .tc-ok{color:#4ade80;} .tc-d{color:var(--text-3);}
     .tc-cursor { display: inline-block; width: 8px; height: 13px; background: var(--green); animation: blink 1s step-end infinite; vertical-align: middle; }
 
     /* ══ TICKER ══ */
@@ -83,24 +37,18 @@
     .ticker-item { padding: 0 32px; font-size: 12px; font-weight: 700; letter-spacing: .03em; color: #000; border-right: 1px solid rgba(0,0,0,.15); flex-shrink: 0; }
     @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* ══ AD TOPO ══ */
     .ad-top { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 24px; }
 
     /* ══ MAIN LAYOUT ══ */
-    .main-wrap {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: 56px 24px 80px;
-      display: grid; grid-template-columns: 1fr 290px;
-      gap: 48px; align-items: start;
-    }
+    .main-wrap { max-width: var(--max-w); margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 290px; gap: 48px; align-items: start; }
 
-    /* ══ FEATURED ARTICLES ══ */
+    /* ══ FEATURED ══ */
     .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 56px; }
     .feat-big { grid-column: span 2; display: grid; grid-template-columns: 1.1fr 1fr; }
     .feat-big .card-thumb { aspect-ratio: auto; min-height: 260px; font-size: 4rem; }
     .feat-big .card-body { padding: 36px; display: flex; flex-direction: column; justify-content: center; }
     .feat-big h3 { font-size: 1.55rem; margin-bottom: 14px; }
-    .feat-big p  { font-size: 14.5px; margin-bottom: 22px; }
+    .feat-big p { font-size: 14.5px; margin-bottom: 22px; }
     .grad-1{background:linear-gradient(145deg,#031a08,#065c20);} .grad-2{background:linear-gradient(145deg,#1a0d03,#5c2a06);}
     .grad-3{background:linear-gradient(145deg,#030d1a,#063a5c);} .grad-4{background:linear-gradient(145deg,#1a1703,#5c520a);}
     .grad-5{background:linear-gradient(145deg,#170316,#540a50);}
@@ -108,45 +56,95 @@
 
     /* ══ TOOLS ══ */
     .tools-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 56px; }
-    .tool-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 22px; cursor: pointer; transition: all .2s;
-    }
+    .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; cursor: pointer; transition: all .2s; text-decoration: none; display: block; }
     .tool-card:hover { border-color: rgba(0,230,118,.3); transform: translateY(-2px); }
     .tool-icon { font-size: 1.8rem; margin-bottom: 12px; }
     .tool-card h4 { font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--text); }
-    .tool-card p  { font-size: 12.5px; color: var(--text-2); line-height: 1.55; margin-bottom: 12px; }
+    .tool-card p { font-size: 12.5px; color: var(--text-2); line-height: 1.55; margin-bottom: 12px; }
 
     /* ══ ARTICLE LIST ══ */
     .art-list { margin-bottom: 56px; }
-    .art-row {
-      display: grid; grid-template-columns: 52px 1fr;
-      gap: 14px; align-items: start;
-      padding: 16px 0; border-bottom: 1px solid var(--border);
-      cursor: pointer;
-    }
+    .art-row { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); cursor: pointer; text-decoration: none; }
     .art-row:hover .art-title { color: var(--green); }
     .art-num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; color: var(--bg-4); line-height:1; text-align:right; padding-right: 10px; border-right: 2px solid var(--bg-4); }
     .art-cat { font-family: var(--font-mono); font-size: 9px; letter-spacing: .15em; color: var(--green); text-transform: uppercase; margin-bottom: 4px; }
     .art-title { font-family: var(--font-display); font-size: .97rem; font-weight: 800; line-height: 1.25; transition: color .15s; color: var(--text); }
-    .art-meta  { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); margin-top: 4px; }
+    .art-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); margin-top: 4px; }
 
     /* ══ SIDEBAR ══ */
     .sidebar { position: sticky; top: calc(var(--nav-h) + 20px); }
     .sb-block { margin-bottom: 32px; }
     .trend-list { list-style: none; }
-    .trend-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .trend-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--border); cursor: pointer; text-decoration: none; }
     .trend-item:hover .tr-title { color: var(--green); }
     .tr-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--bg-4); line-height:1; min-width: 28px; }
     .tr-title { font-size: 12.5px; font-weight: 600; line-height: 1.35; transition: color .15s; color: var(--text); }
-    .tr-meta  { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); margin-top: 3px; }
+    .tr-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); margin-top: 3px; }
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag-cloud a {
-      background: var(--bg-3); border: 1px solid var(--border);
-      padding: 5px 12px; border-radius: var(--radius);
-      font-size: 12px; font-weight: 500; color: var(--text-2); transition: all .15s;
-    }
+    .tag-cloud a { background: var(--bg-3); border: 1px solid var(--border); padding: 5px 12px; border-radius: var(--radius); font-size: 12px; font-weight: 500; color: var(--text-2); transition: all .15s; }
     .tag-cloud a:hover { background: var(--green); color: #000; border-color: var(--green); }
+
+    /* ══ NEWSLETTER BANNERS CRIATIVOS ══ */
+    /* Banner 1 — Prompt Bloqueado */
+    .nl-locked {
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px 32px; position: relative; overflow: hidden; margin-bottom: 0;
+    }
+    .nl-locked::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(0,230,118,.015) 8px, rgba(0,230,118,.015) 16px); }
+    .nl-locked-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .nl-locked-icon { width: 36px; height: 36px; background: rgba(0,230,118,.1); border: 1px solid rgba(0,230,118,.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .nl-locked-badge { font-family: var(--font-mono); font-size: 9px; letter-spacing: .15em; color: var(--amber); background: rgba(255,179,0,.1); border: 1px solid rgba(255,179,0,.2); padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+    .nl-locked-prompt { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 16px; position: relative; font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--text-2); }
+    .nl-locked-blur { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to bottom, transparent, var(--bg-3)); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; }
+    .nl-locked-blur span { font-family: var(--font-mono); font-size: 10px; color: var(--green); letter-spacing: .05em; }
+    .nl-locked h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .nl-locked p { font-size: 13px; color: var(--text-2); margin-bottom: 14px; }
+    .nl-mini-form { display: flex; gap: 8px; }
+    .nl-mini-form input { flex: 1; background: var(--bg-3); border: 1px solid var(--border-2); color: var(--text); padding: 10px 14px; font-size: 13px; border-radius: var(--radius); outline: none; font-family: var(--font-body); transition: border-color .2s; }
+    .nl-mini-form input:focus { border-color: var(--green); }
+    .nl-mini-form button { background: var(--green); color: #000; border: none; padding: 10px 18px; font-weight: 700; font-size: 13px; border-radius: var(--radius); cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all .2s; }
+    .nl-mini-form button:hover { background: #00ff88; }
+
+    /* Banner 2 — Contador */
+    .nl-counter {
+      background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px 32px; text-align: center; position: relative; overflow: hidden;
+    }
+    .nl-counter::after { content: ''; position: absolute; top: -60px; right: -60px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(0,230,118,.07) 0%, transparent 70%); pointer-events: none; }
+    .nl-counter-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 4px; }
+    .nl-counter-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; color: var(--text-3); text-transform: uppercase; margin-bottom: 14px; }
+    .nl-counter h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .nl-counter p { font-size: 13px; color: var(--text-2); margin-bottom: 16px; }
+    .nl-counter .progress-bar { height: 4px; background: var(--bg-4); border-radius: 2px; margin-bottom: 16px; overflow: hidden; }
+    .nl-counter .progress-fill { height: 100%; background: var(--green); border-radius: 2px; width: 73%; transition: width 1s ease; }
+    .nl-counter small { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); display: block; margin-bottom: 14px; }
+
+    /* Banner 3 — Pergunta Provocativa (sidebar) */
+    .nl-question {
+      background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--green);
+      border-radius: var(--radius-lg); padding: 20px;
+    }
+    .nl-question .q-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: .15em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+    .nl-question h4 { font-size: 14px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: var(--text); }
+    .nl-question p { font-size: 12px; color: var(--text-2); margin-bottom: 14px; line-height: 1.6; }
+    .nl-question a.btn-nl { display: block; background: var(--green); color: #000; text-align: center; padding: 10px; border-radius: var(--radius); font-weight: 700; font-size: 13px; transition: background .2s; }
+    .nl-question a.btn-nl:hover { background: #00ff88; }
+
+    /* Banner 4 — Desafio da Semana (infeed) */
+    .nl-challenge {
+      background: var(--bg-2); border: 1px solid rgba(0,230,118,.2);
+      border-radius: var(--radius-lg); padding: 28px 32px;
+      display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+    }
+    .nl-challenge-left {}
+    .nl-challenge-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; color: var(--amber); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .nl-challenge-tag::before { content: ''; width: 16px; height: 2px; background: var(--amber); }
+    .nl-challenge h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+    .nl-challenge p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+    .nl-challenge-right { text-align: center; min-width: 140px; }
+    .nl-challenge-days { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .nl-challenge-days-label { font-family: var(--font-mono); font-size: 9px; color: var(--text-3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
 
     @media(max-width:900px){
       .hero-inner{grid-template-columns:1fr;} .hero-card{display:none;}
@@ -155,6 +153,8 @@
       .feat-big .card-thumb{min-height:180px;}
       .tools-grid{grid-template-columns:repeat(2,1fr);}
       .sidebar{position:static;}
+      .nl-challenge{grid-template-columns:1fr;}
+      .nl-challenge-right{display:none;}
     }
     @media(max-width:560px){ .tools-grid{grid-template-columns:1fr;} .hero-stats{gap:20px;} }
   </style>
@@ -162,12 +162,11 @@
 <body>
 <div id="reading-bar"></div>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
     <ul class="nav-links">
-      <li><a href="index.html">Início</a></li>
+      <li><a href="index.html" class="active">Início</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
       <li><a href="noticias.html">Notícias</a></li>
@@ -177,7 +176,6 @@
   </div>
 </nav>
 
-<!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
@@ -193,11 +191,28 @@
   </div>
 </div>
 
-<!-- AD LEADERBOARD TOPO -->
+<!-- BANNER NEWSLETTER — PROMPT BLOQUEADO (substitui leaderboard topo) -->
 <div class="ad-top">
-  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;">
-    <!-- Cole aqui o código do AdSense após aprovação -->
-    <div class="ad-box">📢 Espaço publicitário 728×90 — Leaderboard topo</div>
+  <div style="max-width:var(--max-w);margin:0 auto;">
+    <div class="nl-locked">
+      <div class="nl-locked-header">
+        <div class="nl-locked-icon">🔒</div>
+        <div>
+          <div class="nl-locked-badge">Prompt exclusivo da semana</div>
+        </div>
+      </div>
+      <div class="nl-locked-prompt" style="height:80px;overflow:hidden;">
+        <span>Você é um especialista em produtividade. Analise minha semana e crie um plano de 5 dias com blocos de foco, pausas estratégicas e uma rotina matinal baseada em...</span>
+        <div class="nl-locked-blur"><span>🔒 Desbloqueie na newsletter gratuita →</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div><h4 style="margin:0 0 4px;">Este prompt vai te poupar 2h por semana</h4><p style="margin:0;font-size:13px;color:var(--text-2);">Toda segunda, 1 prompt completo como este — grátis.</p></div>
+        <div class="nl-mini-form" style="flex-shrink:0;">
+          <input type="email" placeholder="seu@email.com" id="nl-top-email">
+          <button onclick="subscribeNewsletter('nl-top-email', this)">Desbloquear →</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -207,7 +222,7 @@
   <div class="hero-inner">
     <div>
       <div class="hero-kicker"><span class="hero-kicker-dot"></span>Biblioteca #1 de prompts em português</div>
-      <h1 class="hero-title">Use IA.<br>Produza <span class="green">mais.</span></h1>
+      <h1 class="hero-title">Usa IA.<br>Produz <span class="green">mais.</span></h1>
       <p class="hero-desc">Prompts prontos, ferramentas testadas e notícias da semana — tudo que você precisa para usar Inteligência Artificial de verdade no dia a dia.</p>
       <div class="hero-btns">
         <a href="prompts.html" class="btn btn-green">Ver todos os prompts →</a>
@@ -251,17 +266,17 @@
     </div>
 
     <div class="feat-grid">
-      <div class="card feat-big reveal">
+      <a href="blog.html#chatgpt-guia" class="card feat-big reveal" style="text-decoration:none;">
         <div class="card-thumb grad-1"><div class="card-emoji">🤖</div></div>
         <div class="card-body">
           <div class="card-cat">Guia Completo</div>
           <h3>ChatGPT do zero ao avançado: o guia definitivo em português</h3>
           <p>Prompts, GPTs personalizados, Custom Instructions — tudo testado e explicado passo a passo.</p>
-          <a href="pages/artigo-chatgpt.html" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler agora →</a>
+          <span class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler agora →</span>
           <div class="card-meta" style="margin-top:auto;padding-top:16px;"><span>Equipe PromptBR</span><span>14 min · Abr 2026</span></div>
         </div>
-      </div>
-      <div class="card reveal">
+      </a>
+      <a href="blog.html#make-n8n-zapier" class="card reveal" style="text-decoration:none;">
         <div class="card-thumb grad-2"><div class="card-emoji">⚡</div></div>
         <div class="card-body">
           <div class="card-cat">Automação</div>
@@ -269,8 +284,8 @@
           <p>Comparativo completo para você escolher sem errar.</p>
           <div class="card-meta"><span>Comparativo</span><span>10 min</span></div>
         </div>
-      </div>
-      <div class="card reveal">
+      </a>
+      <a href="blog.html#midjourney-v7" class="card reveal" style="text-decoration:none;">
         <div class="card-thumb grad-3"><div class="card-emoji">🎨</div></div>
         <div class="card-body">
           <div class="card-cat">Criatividade</div>
@@ -278,16 +293,29 @@
           <p>Técnicas e parâmetros para resultados de outro nível.</p>
           <div class="card-meta"><span>Tutorial</span><span>6 min</span></div>
         </div>
-      </div>
+      </a>
 
-      <!-- AD IN-FEED -->
+      <!-- BANNER NEWSLETTER — DESAFIO DA SEMANA (infeed) -->
       <div style="grid-column:span 2;" class="reveal">
-        <div class="ad-unit ad-leader">
-          <div class="ad-box">📣 Anúncio In-Feed — cole código AdSense aqui</div>
+        <div class="nl-challenge">
+          <div class="nl-challenge-left">
+            <div class="nl-challenge-tag">Desafio desta semana</div>
+            <h4>Você consegue automatizar sua rotina matinal com IA em 1 hora?</h4>
+            <p>A resposta completa — com o prompt testado, o fluxo no n8n e o resultado real — chega toda segunda na newsletter. Grátis, sem enrolação.</p>
+            <div class="nl-mini-form" style="margin-top:14px;max-width:400px;">
+              <input type="email" placeholder="seu@email.com" id="nl-challenge-email">
+              <button onclick="subscribeNewsletter('nl-challenge-email', this)">Quero participar →</button>
+            </div>
+          </div>
+          <div class="nl-challenge-right">
+            <div class="nl-challenge-days" id="countdown-num">48</div>
+            <div class="nl-challenge-days-label">horas para a próxima edição</div>
+            <a href="newsletter.html" class="btn btn-outline" style="font-size:12px;padding:8px 16px;">Ver edições anteriores</a>
+          </div>
         </div>
       </div>
 
-      <div class="card reveal">
+      <a href="blog.html#profissoes-ia" class="card reveal" style="text-decoration:none;">
         <div class="card-thumb grad-4"><div class="card-emoji">💼</div></div>
         <div class="card-body">
           <div class="card-cat">Carreira</div>
@@ -295,8 +323,8 @@
           <p>O mercado mudou. Veja onde estão as oportunidades.</p>
           <div class="card-meta"><span>Análise</span><span>5 min</span></div>
         </div>
-      </div>
-      <div class="card reveal">
+      </a>
+      <a href="blog.html#notion-ai" class="card reveal" style="text-decoration:none;">
         <div class="card-thumb grad-5"><div class="card-emoji">📝</div></div>
         <div class="card-body">
           <div class="card-cat">Produtividade</div>
@@ -304,34 +332,43 @@
           <p>30 dias testando para organizar projetos e notas.</p>
           <div class="card-meta"><span>Review</span><span>8 min</span></div>
         </div>
-      </div>
+      </a>
     </div>
 
-    <!-- FERRAMENTAS -->
+    <!-- FERRAMENTAS DA SEMANA -->
     <div class="sec-head reveal">
       <div class="sec-head-left"><h2>Ferramentas da Semana</h2><div class="sec-line"></div></div>
       <a href="blog.html">Ver todas →</a>
     </div>
     <div class="tools-grid">
-      <div class="tool-card reveal"><div class="tool-icon">🔍</div><h4>Perplexity AI</h4><p>Busca com IA que cita fontes em tempo real. Substitui o Google em 80% das pesquisas.</p><span class="badge badge-green">Grátis</span></div>
-      <div class="tool-card reveal"><div class="tool-icon">✍️</div><h4>Claude 3.5 Sonnet</h4><p>Melhor modelo para escrita longa e análise de documentos.</p><span class="badge badge-dim">Grátis + Pro</span></div>
-      <div class="tool-card reveal"><div class="tool-icon">💻</div><h4>Cursor IDE</h4><p>Editor de código com IA. Desenvolvedores ganham 40% de velocidade.</p><span class="badge badge-amber">Pago</span></div>
-      <div class="tool-card reveal"><div class="tool-icon">🎬</div><h4>Runway Gen-3</h4><p>Geração de vídeo por IA com qualidade cinematográfica.</p><span class="badge badge-amber">Pago</span></div>
-      <div class="tool-card reveal"><div class="tool-icon">🗣️</div><h4>ElevenLabs</h4><p>Síntese de voz hiper-realista. Ideal para podcasts e cursos.</p><span class="badge badge-dim">Grátis + Pro</span></div>
-      <div class="tool-card reveal"><div class="tool-icon">📊</div><h4>Julius AI</h4><p>Análise de dados em linguagem natural — pergunte sobre sua planilha.</p><span class="badge badge-green">Grátis</span></div>
+      <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">🔍</div><h4>Perplexity AI</h4><p>Busca com IA que cita fontes em tempo real. Substitui o Google em 80% das pesquisas.</p><span class="badge badge-green">Grátis</span></a>
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">✍️</div><h4>Claude 3.5 Sonnet</h4><p>Melhor modelo para escrita longa e análise de documentos.</p><span class="badge badge-dim">Grátis + Pro</span></a>
+      <a href="https://www.cursor.com" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">💻</div><h4>Cursor IDE</h4><p>Editor de código com IA. Desenvolvedores ganham 40% de velocidade.</p><span class="badge badge-amber">Pago</span></a>
+      <a href="https://runwayml.com" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">🎬</div><h4>Runway Gen-3</h4><p>Geração de vídeo por IA com qualidade cinematográfica.</p><span class="badge badge-amber">Pago</span></a>
+      <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">🗣️</div><h4>ElevenLabs</h4><p>Síntese de voz hiper-realista. Ideal para podcasts e cursos.</p><span class="badge badge-dim">Grátis + Pro</span></a>
+      <a href="https://julius.ai" target="_blank" rel="noopener" class="tool-card reveal"><div class="tool-icon">📊</div><h4>Julius AI</h4><p>Análise de dados em linguagem natural — pergunte sobre sua planilha.</p><span class="badge badge-green">Grátis</span></a>
     </div>
 
-    <!-- NEWSLETTER -->
+    <!-- NEWSLETTER — BLOCO PRINCIPAL -->
     <div class="nl-block reveal">
       <h3>IA toda semana no seu <span>email</span></h3>
       <p>Curadoria de ferramentas, prompts e notícias — sem spam, em 5 min de leitura.</p>
       <iframe src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:100%;height:200px;margin:0;border-radius:8px;background-color:transparent;"></iframe>
     </div>
 
-    <!-- AD RETÂNGULO -->
-    <div style="margin:48px 0;text-align:center;" class="reveal">
-      <div class="ad-unit ad-rect">
-        <div class="ad-box">💡 Anúncio 336×280 — cole AdSense aqui</div>
+    <!-- BANNER NEWSLETTER — CONTADOR (substitui ad retângulo) -->
+    <div style="margin:48px 0;" class="reveal">
+      <div class="nl-counter">
+        <div class="nl-counter-num" id="subs-counter">2.847</div>
+        <div class="nl-counter-label">pessoas já recebem toda segunda</div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <small>🎯 Meta: 5.000 assinantes até julho — faltam <strong style="color:var(--green);">2.153</strong></small>
+        <h4>Falta só você nessa lista</h4>
+        <p>Toda segunda: os melhores prompts, ferramentas e notícias de IA em 5 minutos.</p>
+        <div class="nl-mini-form" style="max-width:420px;margin:0 auto;">
+          <input type="email" placeholder="seu@email.com" id="nl-counter-email">
+          <button onclick="subscribeNewsletter('nl-counter-email', this)">Entrar na lista →</button>
+        </div>
       </div>
     </div>
 
@@ -341,57 +378,85 @@
       <a href="blog.html">Ver todos →</a>
     </div>
     <div class="art-list">
-      <div class="art-row reveal"><div class="art-num">01</div><div><div class="art-cat">ChatGPT</div><div class="art-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="art-meta">12 min · 4.2k leituras · Abr 2026</div></div></div>
-      <div class="art-row reveal"><div class="art-num">02</div><div><div class="art-cat">Automação</div><div class="art-title">Automatize seu email com IA: triagem, resposta e arquivamento automático</div><div class="art-meta">9 min · 3.8k leituras · Abr 2026</div></div></div>
-      <div class="art-row reveal"><div class="art-num">03</div><div><div class="art-cat">Produtividade</div><div class="art-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="art-meta">14 min · 3.1k leituras · Mar 2026</div></div></div>
-      <div class="art-row reveal"><div class="art-num">04</div><div><div class="art-cat">Carreira</div><div class="art-title">Currículo, carta de apresentação e simulação de entrevista com IA</div><div class="art-meta">8 min · 2.9k leituras · Mar 2026</div></div></div>
-      <div class="art-row reveal"><div class="art-num">05</div><div><div class="art-cat">Finanças</div><div class="art-title">Como usar IA para analisar gastos e criar um orçamento automático</div><div class="art-meta">7 min · 2.5k leituras · Mar 2026</div></div></div>
+      <a href="blog.html#gpt-personalizado" class="art-row reveal"><div class="art-num">01</div><div><div class="art-cat">ChatGPT</div><div class="art-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="art-meta">12 min · 4.2k leituras · Abr 2026</div></div></a>
+      <a href="blog.html#email-automatico" class="art-row reveal"><div class="art-num">02</div><div><div class="art-cat">Automação</div><div class="art-title">Automatize seu email com IA: triagem, resposta e arquivamento automático</div><div class="art-meta">9 min · 3.8k leituras · Abr 2026</div></div></a>
+      <a href="blog.html#segundo-cerebro" class="art-row reveal"><div class="art-num">03</div><div><div class="art-cat">Produtividade</div><div class="art-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="art-meta">14 min · 3.1k leituras · Mar 2026</div></div></a>
+      <a href="blog.html#curriculo-ia" class="art-row reveal"><div class="art-num">04</div><div><div class="art-cat">Carreira</div><div class="art-title">Currículo, carta de apresentação e simulação de entrevista com IA</div><div class="art-meta">8 min · 2.9k leituras · Mar 2026</div></div></a>
+      <a href="blog.html#orcamento-ia" class="art-row reveal"><div class="art-num">05</div><div><div class="art-cat">Finanças</div><div class="art-title">Como usar IA para analisar gastos e criar um orçamento automático</div><div class="art-meta">7 min · 2.5k leituras · Mar 2026</div></div></a>
     </div>
 
   </main>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
+
+    <!-- BANNER SIDEBAR — PERGUNTA PROVOCATIVA -->
     <div class="sb-block">
-      <div class="ad-unit ad-half">
-        <div class="ad-box" style="flex-direction:column;gap:6px;">🎯<span>300×600</span><span style="font-size:10px;opacity:.5">Sidebar Premium</span></div>
+      <div class="nl-question">
+        <div class="q-tag">💡 Você sabia?</div>
+        <h4>Qual IA está substituindo o Canva no Brasil esta semana?</h4>
+        <p>A resposta, mais 4 ferramentas surpreendentes e o prompt da semana chegam toda segunda — de graça.</p>
+        <a href="newsletter.html" class="btn-nl">Descobrir agora →</a>
       </div>
     </div>
+
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Em Alta</h2></div></div>
       <ul class="trend-list">
-        <li class="trend-item"><span class="tr-num">1</span><div><div class="tr-title">Claude 4 x GPT-5: quem vence?</div><div class="tr-meta">1.2k leituras hoje</div></div></li>
-        <li class="trend-item"><span class="tr-num">2</span><div><div class="tr-title">10 prompts para estudar mais rápido</div><div class="tr-meta">980 leituras hoje</div></div></li>
-        <li class="trend-item"><span class="tr-num">3</span><div><div class="tr-title">IA para freelancers: kit essencial</div><div class="tr-meta">754 leituras hoje</div></div></li>
-        <li class="trend-item"><span class="tr-num">4</span><div><div class="tr-title">Como IA está mudando o Excel</div><div class="tr-meta">623 leituras hoje</div></div></li>
-        <li class="trend-item"><span class="tr-num">5</span><div><div class="tr-title">Gemini Deep Research: vale a pena?</div><div class="tr-meta">501 leituras hoje</div></div></li>
+        <a href="noticias.html#claude-gpt5" class="trend-item"><span class="tr-num">1</span><div><div class="tr-title">Claude 4 x GPT-5: quem vence?</div><div class="tr-meta">1.2k leituras hoje</div></div></a>
+        <a href="prompts.html#estudos" class="trend-item"><span class="tr-num">2</span><div><div class="tr-title">10 prompts para estudar mais rápido</div><div class="tr-meta">980 leituras hoje</div></div></a>
+        <a href="blog.html#freelancers-ia" class="trend-item"><span class="tr-num">3</span><div><div class="tr-title">IA para freelancers: kit essencial</div><div class="tr-meta">754 leituras hoje</div></div></a>
+        <a href="blog.html#ia-excel" class="trend-item"><span class="tr-num">4</span><div><div class="tr-title">Como IA está mudando o Excel</div><div class="tr-meta">623 leituras hoje</div></div></a>
+        <a href="noticias.html#gemini-deep" class="trend-item"><span class="tr-num">5</span><div><div class="tr-title">Gemini Deep Research: vale a pena?</div><div class="tr-meta">501 leituras hoje</div></div></a>
       </ul>
     </div>
+
+    <!-- BANNER SIDEBAR — MINI NEWSLETTER -->
     <div class="sb-block">
-      <div class="ad-unit ad-rect">
-        <div class="ad-box" style="flex-direction:column;gap:6px;">📱<span>300×250 Sidebar</span></div>
+      <div class="nl-counter" style="text-align:left;padding:20px;">
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--green);text-transform:uppercase;margin-bottom:10px;">📬 Newsletter semanal</div>
+        <h4 style="font-size:14px;margin-bottom:8px;">Toda segunda, 5 minutos de IA que valem a semana</h4>
+        <div class="nl-mini-form" style="flex-direction:column;">
+          <input type="email" placeholder="seu@email.com" id="nl-sidebar-email" style="margin-bottom:8px;">
+          <button style="width:100%;" onclick="subscribeNewsletter('nl-sidebar-email', this)">Assinar grátis →</button>
+        </div>
       </div>
     </div>
+
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Categorias</h2></div></div>
       <div class="tag-cloud">
-        <a href="#">ChatGPT</a><a href="#">Claude</a><a href="#">Gemini</a>
-        <a href="#">Prompts</a><a href="#">Automação</a><a href="#">Carreira</a>
-        <a href="#">Design IA</a><a href="#">Vídeo IA</a><a href="#">n8n</a>
-        <a href="#">Programação</a><a href="#">Finanças</a><a href="#">Estudo</a>
+        <a href="prompts.html#chatgpt">ChatGPT</a>
+        <a href="prompts.html#claude">Claude</a>
+        <a href="prompts.html#gemini">Gemini</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="blog.html#automacao">Automação</a>
+        <a href="blog.html#carreira">Carreira</a>
+        <a href="blog.html#design">Design IA</a>
+        <a href="blog.html#video">Vídeo IA</a>
+        <a href="blog.html#automacao">n8n</a>
+        <a href="blog.html#programacao">Programação</a>
+        <a href="blog.html#financas">Finanças</a>
+        <a href="blog.html#estudo">Estudo</a>
       </div>
     </div>
   </aside>
 </div>
 
-<!-- AD FOOTER -->
-<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
-  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;">
-    <div class="ad-box">📣 Anúncio Footer Leaderboard 728×90</div>
+<!-- BANNER FOOTER — NEWSLETTER -->
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:20px 24px;">
+  <div style="max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:6px;">📩 Não perca nenhuma novidade</div>
+      <p style="margin:0;font-size:14px;color:var(--text);">Junte-se a <strong style="color:var(--green);">2.847 pessoas</strong> que recebem a newsletter de IA toda segunda-feira.</p>
+    </div>
+    <div class="nl-mini-form" style="flex-shrink:0;">
+      <input type="email" placeholder="seu@email.com" id="nl-footer-email">
+      <button onclick="subscribeNewsletter('nl-footer-email', this)">Assinar grátis →</button>
+    </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-about">
@@ -405,15 +470,17 @@
       <li><a href="newsletter.html">Newsletter</a></li>
     </ul></div>
     <div class="footer-col"><h4>Categorias</h4><ul>
-      <li><a href="#">Produtividade</a></li><li><a href="#">Carreira</a></li>
-      <li><a href="#">Automação</a></li><li><a href="#">Criatividade</a></li>
-      <li><a href="#">Programação</a></li>
+      <li><a href="blog.html#produtividade">Produtividade</a></li>
+      <li><a href="blog.html#carreira">Carreira</a></li>
+      <li><a href="blog.html#automacao">Automação</a></li>
+      <li><a href="blog.html#criatividade">Criatividade</a></li>
+      <li><a href="blog.html#programacao">Programação</a></li>
     </ul></div>
     <div class="footer-col"><h4>Institucional</h4><ul>
       <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="#">Anuncie aqui</a></li>
+      <li><a href="mailto:contato@brprompt.tec.br">Anuncie aqui</a></li>
       <li><a href="privacidade.html">Privacidade</a></li>
-      <li><a href="#">Contato</a></li>
+      <li><a href="mailto:contato@brprompt.tec.br">Contato</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
@@ -423,5 +490,34 @@
 </footer>
 
 <script src="global.js"></script>
+<script>
+  // Countdown para próxima segunda-feira
+  function updateCountdown() {
+    const now = new Date();
+    const next = new Date();
+    const day = now.getDay();
+    const daysUntilMonday = day === 1 ? 7 : (8 - day) % 7;
+    next.setDate(now.getDate() + daysUntilMonday);
+    next.setHours(8, 0, 0, 0);
+    const diff = Math.max(0, next - now);
+    const hours = Math.floor(diff / 3600000);
+    const el = document.getElementById('countdown-num');
+    if (el) el.textContent = hours;
+  }
+  updateCountdown();
+
+  // Subscriber form helper — redireciona para newsletter.html com email preenchido
+  function subscribeNewsletter(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const email = input ? input.value.trim() : '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (input) { input.style.borderColor = '#ff4444'; input.focus(); setTimeout(() => input.style.borderColor = '', 1200); }
+      return;
+    }
+    btn.textContent = '✓ Redirecionando...';
+    btn.style.background = '#00c060';
+    setTimeout(() => { window.location.href = 'newsletter.html?email=' + encodeURIComponent(email); }, 600);
+  }
+</script>
 </body>
 </html>

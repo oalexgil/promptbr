@@ -12,15 +12,13 @@
     .ph-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1;}
     .ph-kick{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
     .ph-kick::before{content:'';width:24px;height:2px;background:var(--blue);}
-    .ph h1{margin-bottom:12px;}
-    .ph p{max-width:520px;}
+    .ph h1{margin-bottom:12px;} .ph p{max-width:520px;}
 
     .blog-wrap{max-width:var(--max-w);margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 290px;gap:48px;align-items:start;}
     .sidebar{position:sticky;top:calc(var(--nav-h) + 20px);}
     .sb-block{margin-bottom:28px;}
 
-    /* Featured big post */
-    .post-featured{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:40px;transition:border-color .2s;}
+    .post-featured{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:40px;transition:border-color .2s;text-decoration:none;}
     .post-featured:hover{border-color:rgba(0,230,118,.28);}
     .pf-thumb{min-height:280px;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:.4;position:relative;}
     .pf-body{padding:36px;display:flex;flex-direction:column;justify-content:center;}
@@ -29,9 +27,8 @@
     .pf-body p{font-size:14px;line-height:1.68;margin-bottom:22px;}
     .pf-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-3);margin-top:auto;border-top:1px solid var(--border);padding-top:14px;}
 
-    /* Post grid */
     .post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:32px;}
-    .post-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s;}
+    .post-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s;text-decoration:none;display:block;}
     .post-card:hover{border-color:rgba(0,230,118,.28);transform:translateY(-2px);box-shadow:var(--shadow-green);}
     .pc-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;opacity:.4;}
     .pc-body{padding:18px;}
@@ -40,23 +37,20 @@
     .pc-body p{font-size:13px;line-height:1.62;margin-bottom:12px;}
     .pc-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--text-3);border-top:1px solid var(--border);padding-top:9px;}
 
-    /* Post list */
     .post-list{margin-bottom:40px;}
-    .pl-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .pl-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none;}
     .pl-item:hover .pl-title{color:var(--green);}
     .pl-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--bg-4);line-height:1;min-width:36px;text-align:right;padding-right:12px;border-right:2px solid var(--bg-4);}
     .pl-cat{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:4px;}
     .pl-title{font-family:var(--font-display);font-size:.97rem;font-weight:700;line-height:1.28;transition:color .15s;color:var(--text);}
     .pl-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-3);margin-top:4px;}
 
-    /* Category tabs */
     .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
     .cat-tab{padding:7px 16px;background:var(--bg-3);border:1px solid var(--border);border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);}
     .cat-tab:hover,.cat-tab.active{background:var(--green);color:#000;border-color:var(--green);}
 
-    /* Sidebar */
     .sb-recent{list-style:none;}
-    .sb-r-item{padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .sb-r-item{padding:13px 0;border-bottom:1px solid var(--border);text-decoration:none;display:block;}
     .sb-r-item:hover .sb-r-title{color:var(--green);}
     .sb-r-cat{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:3px;}
     .sb-r-title{font-size:13px;font-weight:600;line-height:1.3;transition:color .15s;color:var(--text);}
@@ -70,6 +64,28 @@
     .g3{background:linear-gradient(135deg,#030d1a,#063a5c);} .g4{background:linear-gradient(135deg,#1a1703,#5c520a);}
     .g5{background:linear-gradient(135deg,#170316,#540a50);} .g6{background:linear-gradient(135deg,#031018,#0a3d5c);}
     .g7{background:linear-gradient(135deg,#0d1a03,#3d5c06);} .g8{background:linear-gradient(135deg,#1a0a03,#7a3a06);}
+
+    /* Banners newsletter criativos */
+    .nl-mini-form{display:flex;gap:8px;}
+    .nl-mini-form input{flex:1;background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);padding:10px 14px;font-size:13px;border-radius:var(--radius);outline:none;font-family:var(--font-body);transition:border-color .2s;}
+    .nl-mini-form input:focus{border-color:var(--green);}
+    .nl-mini-form button{background:var(--green);color:#000;border:none;padding:10px 18px;font-weight:700;font-size:13px;border-radius:var(--radius);cursor:pointer;white-space:nowrap;font-family:var(--font-body);transition:all .2s;}
+    .nl-mini-form button:hover{background:#00ff88;}
+
+    /* Banner tipo "spoiler" */
+    .nl-spoiler{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;position:relative;overflow:hidden;}
+    .nl-spoiler::before{content:'PRÓXIMA EDIÇÃO';position:absolute;top:14px;right:14px;font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--amber);background:rgba(255,179,0,.1);border:1px solid rgba(255,179,0,.2);padding:3px 8px;border-radius:4px;}
+    .nl-spoiler-items{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+    .nl-spoiler-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-2);}
+    .nl-spoiler-item span{width:18px;height:18px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+
+    /* Banner sidebar tipo pergunta */
+    .nl-question{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px;}
+    .nl-question .q-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--green);text-transform:uppercase;margin-bottom:8px;}
+    .nl-question h4{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:10px;color:var(--text);}
+    .nl-question p{font-size:12px;color:var(--text-2);margin-bottom:14px;line-height:1.6;}
+    .nl-question a.btn-nl{display:block;background:var(--green);color:#000;text-align:center;padding:10px;border-radius:var(--radius);font-weight:700;font-size:13px;transition:background .2s;}
+    .nl-question a.btn-nl:hover{background:#00ff88;}
 
     @media(max-width:900px){.blog-wrap{grid-template-columns:1fr;}.post-featured{grid-template-columns:1fr;}.pf-thumb{min-height:160px;}.post-grid{grid-template-columns:1fr;}.sidebar{position:static;}}
   </style>
@@ -99,13 +115,32 @@
   </div>
 </section>
 
-<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:12px 24px;">
-  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;"><div class="ad-box">📢 Espaço publicitário — cole seu código AdSense aqui</div></div>
+<!-- BANNER TOPO — SPOILER DA PRÓXIMA NEWSLETTER -->
+<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:16px 24px;">
+  <div style="max-width:var(--max-w);margin:0 auto;">
+    <div class="nl-spoiler">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:10px;">O que vem na newsletter de segunda →</div>
+          <div class="nl-spoiler-items">
+            <div class="nl-spoiler-item"><span>🔒</span> O prompt que triplicou a produtividade de um dev em 1 semana</div>
+            <div class="nl-spoiler-item"><span>🔒</span> 3 ferramentas de IA grátis que substituem o Canva, Loom e Notion</div>
+            <div class="nl-spoiler-item"><span>🔒</span> Notícia da semana: o que o lançamento do GPT-5 muda para você</div>
+          </div>
+        </div>
+        <div>
+          <div class="nl-mini-form" style="flex-direction:column;min-width:220px;">
+            <input type="email" placeholder="seu@email.com" id="nl-blog-top" style="margin-bottom:8px;">
+            <button onclick="subscribeNewsletter('nl-blog-top', this)">Receber na segunda →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="blog-wrap">
   <main>
-    <!-- CATEGORY TABS -->
     <div class="cat-tabs reveal">
       <button class="cat-tab active">Todos</button>
       <button class="cat-tab">ChatGPT</button>
@@ -117,7 +152,7 @@
     </div>
 
     <!-- POST DESTAQUE -->
-    <a href="artigo-chatgpt.html" style="display:block;">
+    <a id="chatgpt-guia" href="https://chat.openai.com" target="_blank" rel="noopener" style="display:block;">
       <div class="post-featured reveal">
         <div class="pf-thumb g1">🤖</div>
         <div class="pf-body">
@@ -130,10 +165,9 @@
       </div>
     </a>
 
-    <!-- GRID DE POSTS -->
-    <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Recentes</h2><div class="sec-line"></div></div><a href="#">Ver todos →</a></div>
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Recentes</h2><div class="sec-line"></div></div></div>
     <div class="post-grid">
-      <div class="post-card reveal">
+      <a id="make-n8n-zapier" href="https://n8n.io" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g2">⚡</div>
         <div class="pc-body">
           <div class="pc-cat">Automação</div>
@@ -141,8 +175,8 @@
           <p>Qual plataforma de automação com IA entrega mais por menos esforço e dinheiro?</p>
           <div class="pc-meta"><span>Comparativo</span><span>10 min · Abr 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g3">🔍</div>
         <div class="pc-body">
           <div class="pc-cat">Ferramentas</div>
@@ -150,8 +184,8 @@
           <p>Guia completo para tirar o máximo da ferramenta de pesquisa com IA mais precisa do mercado.</p>
           <div class="pc-meta"><span>Tutorial</span><span>8 min · Abr 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a id="curriculo-ia" href="https://chat.openai.com" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g4">💼</div>
         <div class="pc-body">
           <div class="pc-cat">Carreira</div>
@@ -159,8 +193,8 @@
           <p>Passo a passo usando ChatGPT e Claude para criar um currículo que passa pelo ATS e impressiona recrutadores.</p>
           <div class="pc-meta"><span>Tutorial</span><span>7 min · Abr 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a id="midjourney-v7" href="https://www.midjourney.com" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g5">🎨</div>
         <div class="pc-body">
           <div class="pc-cat">Criatividade</div>
@@ -168,31 +202,42 @@
           <p>Os comandos avançados que separam resultados medianos de imagens cinematográficas.</p>
           <div class="pc-meta"><span>Tutorial</span><span>6 min · Abr 2026</span></div>
         </div>
-      </div>
+      </a>
     </div>
 
-    <!-- AD IN-FEED -->
+    <!-- BANNER IN-FEED — newsletter com social proof -->
     <div class="reveal" style="margin-bottom:32px;">
-      <div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio In-Feed — cole AdSense aqui</div></div>
+      <div style="background:var(--bg-2);border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:28px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+        <div style="font-size:2.5rem;flex-shrink:0;">📬</div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:6px;">Você está lendo o PromptBR</div>
+          <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">Quer receber artigos assim toda semana?</h4>
+          <p style="font-size:13px;color:var(--text-2);margin:0;">Sem algoritmo, sem ads — só conteúdo de IA direto no seu email.</p>
+        </div>
+        <div class="nl-mini-form" style="flex-shrink:0;">
+          <input type="email" placeholder="seu@email.com" id="nl-infeed">
+          <button onclick="subscribeNewsletter('nl-infeed', this)">Assinar grátis →</button>
+        </div>
+      </div>
     </div>
 
     <!-- LISTA NUMERADA -->
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Lidos de Todos os Tempos</h2><div class="sec-line"></div></div></div>
     <div class="post-list">
-      <div class="pl-item reveal"><div class="pl-num">01</div><div><div class="pl-cat">Produtividade</div><div class="pl-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="pl-meta">14 min · 8.4k leituras · Mar 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">02</div><div><div class="pl-cat">Automação</div><div class="pl-title">Como automatizar seu email com IA: triagem, resposta e arquivamento automático</div><div class="pl-meta">9 min · 6.2k leituras · Mar 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">03</div><div><div class="pl-cat">ChatGPT</div><div class="pl-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="pl-meta">12 min · 5.8k leituras · Fev 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">04</div><div><div class="pl-cat">Finanças</div><div class="pl-title">Como usar IA para analisar seus gastos e criar um orçamento automático</div><div class="pl-meta">7 min · 4.9k leituras · Fev 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">05</div><div><div class="pl-cat">Carreira</div><div class="pl-title">5 profissões que estão crescendo por causa da IA em 2026</div><div class="pl-meta">5 min · 4.1k leituras · Jan 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">06</div><div><div class="pl-cat">Ferramentas</div><div class="pl-title">Notion AI vs Obsidian + IA: qual organiza melhor sua vida profissional?</div><div class="pl-meta">8 min · 3.7k leituras · Jan 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">07</div><div><div class="pl-cat">Programação</div><div class="pl-title">Cursor IDE vs GitHub Copilot: qual acelera mais o seu código?</div><div class="pl-meta">10 min · 3.2k leituras · Jan 2026</div></div></div>
-      <div class="pl-item reveal"><div class="pl-num">08</div><div><div class="pl-cat">Estudo</div><div class="pl-title">Como usar IA para aprender qualquer coisa em metade do tempo</div><div class="pl-meta">11 min · 2.9k leituras · Dez 2025</div></div></div>
+      <a id="segundo-cerebro" href="https://www.notion.so" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">01</div><div><div class="pl-cat">Produtividade</div><div class="pl-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="pl-meta">14 min · 8.4k leituras · Mar 2026</div></div></a>
+      <a id="email-automatico" href="https://zapier.com" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">02</div><div><div class="pl-cat">Automação</div><div class="pl-title">Como automatizar seu email com IA: triagem, resposta e arquivamento automático</div><div class="pl-meta">9 min · 6.2k leituras · Mar 2026</div></div></a>
+      <a id="gpt-personalizado" href="https://chat.openai.com/gpts" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">03</div><div><div class="pl-cat">ChatGPT</div><div class="pl-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="pl-meta">12 min · 5.8k leituras · Fev 2026</div></div></a>
+      <a id="orcamento-ia" href="https://julius.ai" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">04</div><div><div class="pl-cat">Finanças</div><div class="pl-title">Como usar IA para analisar seus gastos e criar um orçamento automático</div><div class="pl-meta">7 min · 4.9k leituras · Fev 2026</div></div></a>
+      <a id="profissoes-ia" href="https://www.linkedin.com/jobs" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">05</div><div><div class="pl-cat">Carreira</div><div class="pl-title">5 profissões que estão crescendo por causa da IA em 2026</div><div class="pl-meta">5 min · 4.1k leituras · Jan 2026</div></div></a>
+      <a id="notion-ai" href="https://www.notion.so/product/ai" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">06</div><div><div class="pl-cat">Ferramentas</div><div class="pl-title">Notion AI vs Obsidian + IA: qual organiza melhor sua vida profissional?</div><div class="pl-meta">8 min · 3.7k leituras · Jan 2026</div></div></a>
+      <a id="cursor-copilot" href="https://www.cursor.com" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">07</div><div><div class="pl-cat">Programação</div><div class="pl-title">Cursor IDE vs GitHub Copilot: qual acelera mais o seu código?</div><div class="pl-meta">10 min · 3.2k leituras · Jan 2026</div></div></a>
+      <a id="estudo-ia" href="https://claude.ai" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">08</div><div><div class="pl-cat">Estudo</div><div class="pl-title">Como usar IA para aprender qualquer coisa em metade do tempo</div><div class="pl-meta">11 min · 2.9k leituras · Dez 2025</div></div></a>
     </div>
 
     <!-- MAIS POSTS GRID -->
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Guias por Categoria</h2><div class="sec-line"></div></div></div>
     <div class="post-grid">
-      <div class="post-card reveal">
+      <a href="https://julius.ai" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g6">📊</div>
         <div class="pc-body">
           <div class="pc-cat">Ferramentas</div>
@@ -200,8 +245,8 @@
           <p>Como fazer perguntas sobre seus dados e obter gráficos e insights automaticamente.</p>
           <div class="pc-meta"><span>Tutorial</span><span>6 min · Mar 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g7">🗣️</div>
         <div class="pc-body">
           <div class="pc-cat">Criatividade</div>
@@ -209,8 +254,8 @@
           <p>Do upload do áudio ao clone pronto em minutos — guia completo em português.</p>
           <div class="pc-meta"><span>Tutorial</span><span>7 min · Mar 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a href="https://chat.openai.com" target="_blank" rel="noopener" class="post-card reveal">
         <div class="pc-thumb g8">🧠</div>
         <div class="pc-body">
           <div class="pc-cat">ChatGPT</div>
@@ -218,8 +263,8 @@
           <p>Como configurar o ChatGPT para te conhecer e responder exatamente do jeito que você precisa.</p>
           <div class="pc-meta"><span>Tutorial</span><span>5 min · Fev 2026</span></div>
         </div>
-      </div>
-      <div class="post-card reveal">
+      </a>
+      <a href="blog.html#privacidade-ia" class="post-card reveal">
         <div class="pc-thumb g3">🔐</div>
         <div class="pc-body">
           <div class="pc-cat">Segurança</div>
@@ -227,10 +272,10 @@
           <p>Quais dados são seguros de enviar e o que você nunca deve colocar em um prompt.</p>
           <div class="pc-meta"><span>Guia</span><span>5 min · Fev 2026</span></div>
         </div>
-      </div>
+      </a>
     </div>
 
-    <!-- NEWSLETTER -->
+    <!-- NEWSLETTER PRINCIPAL -->
     <div class="nl-block reveal" style="margin-top:8px;">
       <h3>Artigo novo toda <span>semana</span></h3>
       <p>Assine e receba os melhores tutoriais de IA direto no seu email.</p>
@@ -239,44 +284,95 @@
   </main>
 
   <aside class="sidebar">
+    <!-- BANNER SIDEBAR — PERGUNTA PROVOCATIVA -->
     <div class="sb-block">
-      <div class="ad-unit ad-half"><div class="ad-box" style="flex-direction:column;gap:6px;">🎯<span>300×600</span><span style="font-size:10px;opacity:.5">Sidebar Premium</span></div></div>
+      <div class="nl-question">
+        <div class="q-tag">🔥 Na próxima edição</div>
+        <h4>O prompt que faz o ChatGPT revisar seu texto como um editor profissional</h4>
+        <p>Toda segunda, um prompt completo como este, testado e explicado — de graça.</p>
+        <a href="newsletter.html" class="btn-nl">Quero receber →</a>
+      </div>
     </div>
+
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Recentes</h2></div></div>
       <ul class="sb-recent">
-        <li class="sb-r-item"><div class="sb-r-cat">ChatGPT</div><div class="sb-r-title">GPT-5: o que mudou e como aproveitar agora</div><div class="sb-r-meta">14 Abr · 4.1k leituras</div></li>
-        <li class="sb-r-item"><div class="sb-r-cat">Automação</div><div class="sb-r-title">n8n para iniciantes: seu primeiro fluxo em 15 min</div><div class="sb-r-meta">12 Abr · 2.8k leituras</div></li>
-        <li class="sb-r-item"><div class="sb-r-cat">Carreira</div><div class="sb-r-title">Engenheiro de prompt: o que é e como se tornar um</div><div class="sb-r-meta">10 Abr · 2.3k leituras</div></li>
-        <li class="sb-r-item"><div class="sb-r-cat">Produtividade</div><div class="sb-r-title">IA no WhatsApp: 5 formas de usar o Meta AI</div><div class="sb-r-meta">8 Abr · 1.9k leituras</div></li>
+        <a href="noticias.html#gpt5" class="sb-r-item"><div class="sb-r-cat">ChatGPT</div><div class="sb-r-title">GPT-5: o que mudou e como aproveitar agora</div><div class="sb-r-meta">14 Abr · 4.1k leituras</div></a>
+        <a href="https://n8n.io" target="_blank" rel="noopener" class="sb-r-item"><div class="sb-r-cat">Automação</div><div class="sb-r-title">n8n para iniciantes: seu primeiro fluxo em 15 min</div><div class="sb-r-meta">12 Abr · 2.8k leituras</div></a>
+        <a href="https://www.linkedin.com/jobs/search/?keywords=prompt+engineer" target="_blank" rel="noopener" class="sb-r-item"><div class="sb-r-cat">Carreira</div><div class="sb-r-title">Engenheiro de prompt: o que é e como se tornar um</div><div class="sb-r-meta">10 Abr · 2.3k leituras</div></a>
+        <a href="noticias.html#meta-ai-whatsapp" class="sb-r-item"><div class="sb-r-cat">Produtividade</div><div class="sb-r-title">IA no WhatsApp: 5 formas de usar o Meta AI</div><div class="sb-r-meta">8 Abr · 1.9k leituras</div></a>
       </ul>
     </div>
+
+    <!-- BANNER SIDEBAR — MINI FORM -->
     <div class="sb-block">
-      <div class="ad-unit ad-rect"><div class="ad-box" style="flex-direction:column;gap:6px;">📱<span>300×250 Sidebar</span></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;">
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:10px;">📬 Newsletter semanal</div>
+        <h4 style="font-size:14px;margin-bottom:4px;font-weight:700;">Toda segunda, 5 minutos de IA</h4>
+        <p style="font-size:12px;color:var(--text-2);margin-bottom:14px;line-height:1.55;">Prompts, ferramentas e notícias que valem a semana.</p>
+        <div class="nl-mini-form" style="flex-direction:column;">
+          <input type="email" placeholder="seu@email.com" id="nl-blog-sidebar" style="margin-bottom:8px;">
+          <button style="width:100%;" onclick="subscribeNewsletter('nl-blog-sidebar', this)">Assinar grátis →</button>
+        </div>
+      </div>
     </div>
+
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Tags</h2></div></div>
       <div class="tag-cloud">
-        <a href="#">ChatGPT</a><a href="#">Claude</a><a href="#">Gemini</a>
-        <a href="#">Prompts</a><a href="#">n8n</a><a href="#">Make</a>
-        <a href="#">Carreira</a><a href="#">Produtividade</a><a href="#">Código</a>
-        <a href="#">Design IA</a><a href="#">Vídeo</a><a href="#">Finanças</a>
+        <a href="prompts.html#chatgpt">ChatGPT</a>
+        <a href="prompts.html#claude">Claude</a>
+        <a href="prompts.html#gemini">Gemini</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://n8n.io" target="_blank">n8n</a>
+        <a href="https://www.make.com" target="_blank">Make</a>
+        <a href="blog.html#carreira">Carreira</a>
+        <a href="blog.html#produtividade">Produtividade</a>
+        <a href="blog.html#programacao">Código</a>
+        <a href="blog.html#design">Design IA</a>
+        <a href="blog.html#video">Vídeo</a>
+        <a href="blog.html#financas">Finanças</a>
       </div>
     </div>
   </aside>
 </div>
 
-<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
-  <div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio Footer — cole AdSense aqui</div></div>
+<!-- BANNER FOOTER NEWSLETTER -->
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:20px 24px;">
+  <div style="max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:6px;">📩 Gostou do conteúdo?</div>
+      <p style="margin:0;font-size:14px;color:var(--text);">Receba artigos como este toda semana — <strong style="color:var(--green);">grátis, sem spam.</strong></p>
+    </div>
+    <div class="nl-mini-form" style="flex-shrink:0;">
+      <input type="email" placeholder="seu@email.com" id="nl-blog-footer">
+      <button onclick="subscribeNewsletter('nl-blog-footer', this)">Assinar →</button>
+    </div>
+  </div>
 </div>
+
 <footer class="footer"><div class="footer-grid">
   <div class="footer-about">
     <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a>
     <p>A maior biblioteca de prompts em português. Ferramentas de IA e newsletter semanal.</p>
   </div>
   <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
-  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="#">Produtividade</a></li><li><a href="#">Carreira</a></li><li><a href="#">Automação</a></li><li><a href="#">Ferramentas</a></li><li><a href="#">Programação</a></li></ul></div>
-  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="#">Contato</a></li></ul></div>
+  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="blog.html#produtividade">Produtividade</a></li><li><a href="blog.html#carreira">Carreira</a></li><li><a href="blog.html#automacao">Automação</a></li><li><a href="blog.html#ferramentas">Ferramentas</a></li><li><a href="blog.html#programacao">Programação</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
 </div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
 <script src="global.js"></script>
-</body></html>
+<script>
+  function subscribeNewsletter(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const email = input ? input.value.trim() : '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (input) { input.style.borderColor = '#ff4444'; input.focus(); setTimeout(() => input.style.borderColor = '', 1200); }
+      return;
+    }
+    btn.textContent = '✓ Redirecionando...';
+    btn.style.background = '#00c060';
+    setTimeout(() => { window.location.href = 'newsletter.html?email=' + encodeURIComponent(email); }, 600);
+  }
+</script>
+</body>
+</html>

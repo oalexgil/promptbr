@@ -17,7 +17,8 @@
     .ph p{color:var(--text-2);font-size:.95rem;margin-top:10px;}
     .nl{max-width:var(--max-w);margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 285px;gap:48px;align-items:start;}
     .sidebar{position:sticky;top:calc(var(--nav-h) + 20px);}
-    .news-hero{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:32px;}
+    .news-hero{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:32px;text-decoration:none;transition:border-color .2s;}
+    .news-hero:hover{border-color:rgba(0,230,118,.28);}
     .nh-thumb{min-height:260px;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:.4;}
     .nh-body{padding:34px;display:flex;flex-direction:column;justify-content:center;}
     .nsrc{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:6px;}
@@ -25,7 +26,7 @@
     .nh-body p{font-size:14px;color:var(--text-2);line-height:1.65;margin-bottom:20px;}
     .ndate{font-family:var(--font-mono);font-size:10px;color:var(--text-3);margin-top:12px;}
     .ng{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:32px;}
-    .nc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s;}
+    .nc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s;text-decoration:none;display:block;}
     .nc:hover{border-color:rgba(0,230,118,.3);transform:translateY(-2px);}
     .nc-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;opacity:.4;}
     .nc-body{padding:16px;}
@@ -33,7 +34,7 @@
     .nc-body p{font-size:12.5px;color:var(--text-2);line-height:1.6;margin-bottom:10px;}
     .nc-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--text-3);border-top:1px solid var(--border);padding-top:8px;}
     .nlist{margin-bottom:48px;}
-    .nr{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .nr{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none;}
     .nr:hover .nr-title{color:var(--green);}
     .nr-thumb{width:76px;height:60px;border-radius:var(--radius);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.7rem;opacity:.5;}
     .nr-src{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:3px;}
@@ -41,7 +42,7 @@
     .nr-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-3);margin-top:4px;}
     .sb-block{margin-bottom:28px;}
     .sb-list{list-style:none;}
-    .sb-item{padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+    .sb-item{padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none;display:block;}
     .sb-item:hover .sb-t{color:var(--green);}
     .sb-c{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:3px;}
     .sb-t{font-size:12.5px;font-weight:600;line-height:1.3;transition:color .15s;color:var(--text);}
@@ -49,6 +50,29 @@
     .g1{background:linear-gradient(135deg,#031a08,#065c20);} .g2{background:linear-gradient(135deg,#1a0d03,#5c2a06);}
     .g3{background:linear-gradient(135deg,#030d1a,#063a5c);} .g4{background:linear-gradient(135deg,#1a1703,#5c520a);}
     .g5{background:linear-gradient(135deg,#170316,#540a50);} .g6{background:linear-gradient(135deg,#031018,#063a5c);}
+
+    /* Banners newsletter */
+    .nl-mini-form{display:flex;gap:8px;}
+    .nl-mini-form input{flex:1;background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);padding:10px 14px;font-size:13px;border-radius:var(--radius);outline:none;font-family:var(--font-body);transition:border-color .2s;}
+    .nl-mini-form input:focus{border-color:var(--green);}
+    .nl-mini-form button{background:var(--green);color:#000;border:none;padding:10px 18px;font-weight:700;font-size:13px;border-radius:var(--radius);cursor:pointer;white-space:nowrap;font-family:var(--font-body);transition:all .2s;}
+    .nl-mini-form button:hover{background:#00ff88;}
+
+    /* Banner "Resumo da semana" */
+    .nl-resumo{background:var(--bg-2);border:1px solid rgba(255,179,0,.2);border-radius:var(--radius-lg);padding:24px 28px;}
+    .nl-resumo-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .nl-resumo-tag::before{content:'';width:16px;height:2px;background:var(--amber);}
+    .nl-resumo h4{font-size:15px;font-weight:700;margin-bottom:6px;}
+    .nl-resumo p{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.6;}
+
+    /* Banner sidebar */
+    .nl-question{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius-lg);padding:20px;}
+    .nl-question .q-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+    .nl-question h4{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:10px;color:var(--text);}
+    .nl-question p{font-size:12px;color:var(--text-2);margin-bottom:14px;line-height:1.6;}
+    .nl-question a.btn-nl{display:block;background:var(--green);color:#000;text-align:center;padding:10px;border-radius:var(--radius);font-weight:700;font-size:13px;transition:background .2s;}
+    .nl-question a.btn-nl:hover{background:#00ff88;}
+
     @media(max-width:900px){.nl{grid-template-columns:1fr;}.news-hero{grid-template-columns:1fr;}.nh-thumb{min-height:160px;}.ng{grid-template-columns:1fr;}.sidebar{position:static;}}
   </style>
 </head>
@@ -67,51 +91,135 @@
 
 <section class="ph">
   <div class="ph-inner">
-    <div class="ph-kick"><span class="ph-kick-dot"></span> Atualizado hoje · 14 de Abril de 2026</div>
+    <div class="ph-kick"><span class="ph-kick-dot"></span> Atualizado hoje · 15 de Abril de 2026</div>
     <h1>Notícias sobre IA</h1>
     <p>As novidades do mundo da Inteligência Artificial que mudam o seu dia a dia.</p>
   </div>
 </section>
 
-<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:12px 24px;">
-  <div class="ad-unit ad-leader" style="max-width:var(--max-w);margin:0 auto;"><div class="ad-box">📢 Anúncio — cole AdSense aqui</div></div>
+<!-- BANNER TOPO — RESUMO SEMANAL -->
+<div style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:16px 24px;">
+  <div style="max-width:var(--max-w);margin:0 auto;">
+    <div class="nl-resumo">
+      <div class="nl-resumo-tag">📰 Não tem tempo de acompanhar tudo?</div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;flex-wrap:wrap;">
+        <div>
+          <h4>Receba o resumo de IA da semana toda segunda-feira</h4>
+          <p style="margin:0;">As 5 notícias mais importantes, 1 prompt testado e 2 ferramentas novas — em 5 minutos de leitura.</p>
+        </div>
+        <div class="nl-mini-form" style="flex-shrink:0;">
+          <input type="email" placeholder="seu@email.com" id="nl-news-top">
+          <button onclick="subscribeNewsletter('nl-news-top', this)">Receber resumo →</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="nl">
   <main>
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Destaque do Dia</h2><div class="sec-line"></div></div></div>
-    <div class="news-hero reveal">
+
+    <a id="gpt5" href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="news-hero reveal">
       <div class="nh-thumb g4">🤖</div>
       <div class="nh-body">
-        <div class="nsrc">OpenAI · Abr 14, 2026</div>
+        <div class="nsrc">OpenAI · Abr 15, 2026</div>
         <h2>GPT-5 lançado com raciocínio avançado e custo 60% menor</h2>
         <p>A OpenAI lançou oficialmente o GPT-5, combinando velocidade do GPT-4o com raciocínio profundo do o3. Desenvolvedores já relatam ganhos expressivos em análise complexa e geração de código.</p>
-        <a href="#" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler completo →</a>
-        <div class="ndate">📅 14 de Abril de 2026 · 3 min de leitura</div>
+        <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;">Ler no OpenAI →</a>
+        <div class="ndate">📅 15 de Abril de 2026 · 3 min de leitura</div>
       </div>
-    </div>
+    </a>
 
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Hoje</h2><div class="sec-line"></div></div></div>
     <div class="ng">
-      <div class="nc reveal"><div class="nc-thumb g1">🧠</div><div class="nc-body"><div class="nsrc">Anthropic · Claude</div><h3>Claude 4 opera computadores de forma autônoma por horas</h3><p>Nova capacidade de agente executa tarefas complexas em interfaces gráficas sem supervisão.</p><div class="nc-meta"><span>Abr 14</span><span>4 min</span></div></div></div>
-      <div class="nc reveal"><div class="nc-thumb g3">🔍</div><div class="nc-body"><div class="nsrc">Google · Gemini</div><h3>Gemini Deep Research agora disponível em português brasileiro</h3><p>O recurso de pesquisa profunda chegou com suporte nativo ao pt-BR, com relatórios detalhados automáticos.</p><div class="nc-meta"><span>Abr 14</span><span>3 min</span></div></div></div>
-      <div class="nc reveal"><div class="nc-thumb g2">💼</div><div class="nc-body"><div class="nsrc">Mercado · Carreira</div><h3>Vagas de "engenheiro de prompt" crescem 340% no Brasil</h3><p>Levantamento mostra explosão de vagas especializadas em IA com salários iniciais acima de R$8.000.</p><div class="nc-meta"><span>Abr 14</span><span>5 min</span></div></div></div>
-      <div class="nc reveal"><div class="nc-thumb g5">🎨</div><div class="nc-body"><div class="nsrc">Midjourney · Design</div><h3>Midjourney v7 traz consistência de personagens e modo vídeo</h3><p>Nova versão resolve o maior problema: manter o mesmo personagem em cenas diferentes.</p><div class="nc-meta"><span>Abr 13</span><span>4 min</span></div></div></div>
+      <a id="claude-autonomo" href="https://www.anthropic.com/news" target="_blank" rel="noopener" class="nc reveal">
+        <div class="nc-thumb g1">🧠</div>
+        <div class="nc-body">
+          <div class="nsrc">Anthropic · Claude</div>
+          <h3>Claude 4 opera computadores de forma autônoma por horas</h3>
+          <p>Nova capacidade de agente executa tarefas complexas em interfaces gráficas sem supervisão.</p>
+          <div class="nc-meta"><span>Abr 15</span><span>4 min</span></div>
+        </div>
+      </a>
+      <a id="gemini-ptbr" href="https://blog.google/products/gemini/" target="_blank" rel="noopener" class="nc reveal">
+        <div class="nc-thumb g3">🔍</div>
+        <div class="nc-body">
+          <div class="nsrc">Google · Gemini</div>
+          <h3>Gemini Deep Research agora disponível em português brasileiro</h3>
+          <p>O recurso de pesquisa profunda chegou com suporte nativo ao pt-BR, com relatórios detalhados automáticos.</p>
+          <div class="nc-meta"><span>Abr 15</span><span>3 min</span></div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/jobs/search/?keywords=prompt+engineer&location=Brasil" target="_blank" rel="noopener" class="nc reveal">
+        <div class="nc-thumb g2">💼</div>
+        <div class="nc-body">
+          <div class="nsrc">Mercado · Carreira</div>
+          <h3>Vagas de "engenheiro de prompt" crescem 340% no Brasil</h3>
+          <p>Levantamento mostra explosão de vagas especializadas em IA com salários iniciais acima de R$8.000.</p>
+          <div class="nc-meta"><span>Abr 15</span><span>5 min</span></div>
+        </div>
+      </a>
+      <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="nc reveal">
+        <div class="nc-thumb g5">🎨</div>
+        <div class="nc-body">
+          <div class="nsrc">Midjourney · Design</div>
+          <h3>Midjourney v7 traz consistência de personagens e modo vídeo</h3>
+          <p>Nova versão resolve o maior problema: manter o mesmo personagem em cenas diferentes.</p>
+          <div class="nc-meta"><span>Abr 14</span><span>4 min</span></div>
+        </div>
+      </a>
     </div>
 
-    <div style="margin-bottom:32px;" class="reveal"><div class="ad-unit ad-leader"><div class="ad-box">📣 Anúncio In-Feed — cole AdSense aqui</div></div></div>
+    <!-- BANNER NEWSLETTER IN-FEED -->
+    <div style="margin-bottom:32px;" class="reveal">
+      <div style="background:var(--bg-2);border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="font-size:2rem;flex-shrink:0;">⚡</div>
+        <div style="flex:1;min-width:180px;">
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--green);text-transform:uppercase;margin-bottom:5px;">Acompanhe sem esforço</div>
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:4px;">Essas notícias chegam mastigadas toda segunda</h4>
+          <p style="font-size:12.5px;color:var(--text-2);margin:0;">O que importa, sem o ruído — na sua caixa de entrada.</p>
+        </div>
+        <div class="nl-mini-form" style="flex-shrink:0;">
+          <input type="email" placeholder="seu@email.com" id="nl-news-infeed">
+          <button onclick="subscribeNewsletter('nl-news-infeed', this)">Receber grátis →</button>
+        </div>
+      </div>
+    </div>
 
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Notícias</h2><div class="sec-line"></div></div></div>
     <div class="nlist">
-      <div class="nr reveal"><div class="nr-thumb g6">⚡</div><div><div class="nr-src">Automação · n8n</div><div class="nr-title">n8n lança 50 novos nós de IA para automação sem código em português</div><div class="nr-meta">14 Abr 2026 · 3 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g1">📱</div><div><div class="nr-src">Meta · WhatsApp</div><div class="nr-title">Meta AI no WhatsApp ganha memória entre conversas no Brasil</div><div class="nr-meta">14 Abr 2026 · 2 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g4">🎬</div><div><div class="nr-src">Vídeo IA · Runway</div><div class="nr-title">Runway Gen-4 gera vídeos 4K de até 2 minutos a partir de texto</div><div class="nr-meta">13 Abr 2026 · 4 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g2">🏥</div><div><div class="nr-src">Saúde · IA</div><div class="nr-title">IA diagnostica câncer de pele com precisão superior a dermatologistas em estudo brasileiro</div><div class="nr-meta">13 Abr 2026 · 5 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g3">🎓</div><div><div class="nr-src">Educação</div><div class="nr-title">MEC anuncia programa nacional para integrar IA em escolas públicas até 2027</div><div class="nr-meta">12 Abr 2026 · 3 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g5">💰</div><div><div class="nr-src">Investimento</div><div class="nr-title">Startups de IA brasileiras captam R$2,8 bilhões no primeiro trimestre de 2026</div><div class="nr-meta">12 Abr 2026 · 4 min</div></div></div>
-      <div class="nr reveal"><div class="nr-thumb g6">🔐</div><div><div class="nr-src">Regulação · Brasil</div><div class="nr-title">Brasil avança no marco legal da IA: Câmara aprova regulamentação com foco em transparência</div><div class="nr-meta">11 Abr 2026 · 6 min</div></div></div>
+      <a href="https://n8n.io/blog/" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g6">⚡</div>
+        <div><div class="nr-src">Automação · n8n</div><div class="nr-title">n8n lança 50 novos nós de IA para automação sem código em português</div><div class="nr-meta">15 Abr 2026 · 3 min</div></div>
+      </a>
+      <a id="meta-ai-whatsapp" href="https://about.fb.com/news/2024/04/meta-ai-assistant-built-with-llama-3/" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g1">📱</div>
+        <div><div class="nr-src">Meta · WhatsApp</div><div class="nr-title">Meta AI no WhatsApp ganha memória entre conversas no Brasil</div><div class="nr-meta">15 Abr 2026 · 2 min</div></div>
+      </a>
+      <a href="https://runwayml.com/blog" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g4">🎬</div>
+        <div><div class="nr-src">Vídeo IA · Runway</div><div class="nr-title">Runway Gen-4 gera vídeos 4K de até 2 minutos a partir de texto</div><div class="nr-meta">14 Abr 2026 · 4 min</div></div>
+      </a>
+      <a href="https://www.nature.com/subjects/artificial-intelligence" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g2">🏥</div>
+        <div><div class="nr-src">Saúde · IA</div><div class="nr-title">IA diagnostica câncer de pele com precisão superior a dermatologistas em estudo brasileiro</div><div class="nr-meta">14 Abr 2026 · 5 min</div></div>
+      </a>
+      <a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g3">🎓</div>
+        <div><div class="nr-src">Educação</div><div class="nr-title">MEC anuncia programa nacional para integrar IA em escolas públicas até 2027</div><div class="nr-meta">13 Abr 2026 · 3 min</div></div>
+      </a>
+      <a href="https://abstartups.com.br" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g5">💰</div>
+        <div><div class="nr-src">Investimento</div><div class="nr-title">Startups de IA brasileiras captam R$2,8 bilhões no primeiro trimestre de 2026</div><div class="nr-meta">13 Abr 2026 · 4 min</div></div>
+      </a>
+      <a href="https://www.camara.leg.br" target="_blank" rel="noopener" class="nr reveal">
+        <div class="nr-thumb g6">🔐</div>
+        <div><div class="nr-src">Regulação · Brasil</div><div class="nr-title">Brasil avança no marco legal da IA: Câmara aprova regulamentação com foco em transparência</div><div class="nr-meta">12 Abr 2026 · 6 min</div></div>
+      </a>
     </div>
 
+    <!-- NEWSLETTER PRINCIPAL BEEHIIV -->
     <div class="nl-block reveal">
       <h3>Não perca nenhuma <span>novidade</span></h3>
       <p>Toda segunda: as notícias de IA da semana resumidas em 5 minutos.</p>
@@ -120,28 +228,76 @@
   </main>
 
   <aside class="sidebar">
-    <div class="sb-block"><div class="ad-unit ad-half"><div class="ad-box" style="flex-direction:column;gap:6px;">🎯<span>300×600</span></div></div></div>
+
+    <!-- BANNER SIDEBAR — PERGUNTA -->
+    <div class="sb-block">
+      <div class="nl-question">
+        <div class="q-tag">📩 Toda segunda-feira</div>
+        <h4>Essas notícias, resumidas e com o que importa pra você</h4>
+        <p>Sem clickbait, sem enrolação. 5 minutos. Grátis.</p>
+        <a href="newsletter.html" class="btn-nl">Assinar agora →</a>
+      </div>
+    </div>
+
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Mais Lidas</h2></div></div>
       <ul class="sb-list">
-        <li class="sb-item"><div class="sb-c">ChatGPT</div><div class="sb-t">GPT-5: o que mudou e como usar agora</div><div class="sb-d">4.1k leituras hoje</div></li>
-        <li class="sb-item"><div class="sb-c">Carreira</div><div class="sb-t">10 profissões mais afetadas pela IA em 2026</div><div class="sb-d">3.5k leituras hoje</div></li>
-        <li class="sb-item"><div class="sb-c">Ferramentas</div><div class="sb-t">5 ferramentas de IA grátis que você não conhece</div><div class="sb-d">2.9k leituras hoje</div></li>
-        <li class="sb-item"><div class="sb-c">Automação</div><div class="sb-t">n8n vs Make: qual é melhor em 2026?</div><div class="sb-d">2.1k leituras hoje</div></li>
+        <a id="claude-gpt5" href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">ChatGPT</div><div class="sb-t">GPT-5: o que mudou e como usar agora</div><div class="sb-d">4.1k leituras hoje</div></a>
+        <a href="https://www.linkedin.com/jobs/search/?keywords=intelig%C3%AAncia+artificial&location=Brasil" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">Carreira</div><div class="sb-t">10 profissões mais afetadas pela IA em 2026</div><div class="sb-d">3.5k leituras hoje</div></a>
+        <a href="blog.html#ferramentas-gratuitas" class="sb-item"><div class="sb-c">Ferramentas</div><div class="sb-t">5 ferramentas de IA grátis que você não conhece</div><div class="sb-d">2.9k leituras hoje</div></a>
+        <a id="gemini-deep" href="https://blog.google/products/gemini/" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">Automação</div><div class="sb-t">n8n vs Make: qual é melhor em 2026?</div><div class="sb-d">2.1k leituras hoje</div></a>
       </ul>
     </div>
-    <div class="sb-block"><div class="ad-unit ad-rect"><div class="ad-box" style="flex-direction:column;gap:6px;">📱<span>300×250</span></div></div></div>
+
+    <!-- BANNER SIDEBAR — MINI FORM -->
+    <div class="sb-block">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;">
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:10px;">📰 Resumo semanal</div>
+        <h4 style="font-size:14px;margin-bottom:4px;font-weight:700;">Notícias de IA toda segunda</h4>
+        <p style="font-size:12px;color:var(--text-2);margin-bottom:14px;line-height:1.55;">Acompanhe sem precisar abrir 10 sites por dia.</p>
+        <div class="nl-mini-form" style="flex-direction:column;">
+          <input type="email" placeholder="seu@email.com" id="nl-news-sidebar" style="margin-bottom:8px;">
+          <button style="width:100%;" onclick="subscribeNewsletter('nl-news-sidebar', this)">Assinar grátis →</button>
+        </div>
+      </div>
+    </div>
+
   </aside>
 </div>
 
-<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:14px 24px;">
-  <div class="ad-unit ad-leader"><div class="ad-box">📣 Footer Ad — cole AdSense aqui</div></div>
+<!-- BANNER FOOTER -->
+<div style="background:var(--bg-2);border-top:1px solid var(--border);padding:20px 24px;">
+  <div style="max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--amber);text-transform:uppercase;margin-bottom:6px;">📩 Acompanhe sem esforço</div>
+      <p style="margin:0;font-size:14px;color:var(--text);">Receba o <strong style="color:var(--green);">resumo das notícias de IA</strong> toda segunda — de graça.</p>
+    </div>
+    <div class="nl-mini-form" style="flex-shrink:0;">
+      <input type="email" placeholder="seu@email.com" id="nl-news-footer">
+      <button onclick="subscribeNewsletter('nl-news-footer', this)">Assinar →</button>
+    </div>
+  </div>
 </div>
+
 <footer class="footer"><div class="footer-grid">
-  <div class="footer-about"><a href="index.html" class="nav-logo" style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text);">Prompt<span style="color:var(--green)">.</span>BR</a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
   <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
-  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="#">ChatGPT</a></li><li><a href="#">Claude</a></li><li><a href="#">Gemini</a></li><li><a href="#">Automação</a></li><li><a href="#">Carreira</a></li></ul></div>
-  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="#">Contato</a></li></ul></div>
+  <div class="footer-col"><h4>Categorias</h4><ul><li><a href="noticias.html#gpt5">ChatGPT</a></li><li><a href="noticias.html#claude-autonomo">Claude</a></li><li><a href="noticias.html#gemini-ptbr">Gemini</a></li><li><a href="noticias.html">Automação</a></li><li><a href="noticias.html">Carreira</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
 </div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
 <script src="global.js"></script>
-</body></html>
+<script>
+  function subscribeNewsletter(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const email = input ? input.value.trim() : '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (input) { input.style.borderColor = '#ff4444'; input.focus(); setTimeout(() => input.style.borderColor = '', 1200); }
+      return;
+    }
+    btn.textContent = '✓ Redirecionando...';
+    btn.style.background = '#00c060';
+    setTimeout(() => { window.location.href = 'newsletter.html?email=' + encodeURIComponent(email); }, 600);
+  }
+</script>
+</body>
+</html>
