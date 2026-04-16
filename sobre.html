@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre o PromptBR — A maior biblioteca de prompts em português</title>
+  <meta name="description" content="Conheça o PromptBR: quem somos, nossa missão e por que criamos a maior biblioteca de prompts em português do Brasil.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .about-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:72px 24px 56px;position:relative;overflow:hidden;text-align:center;}
+    .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .about-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+    .about-kick{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:16px;}
+    .about-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
+    .about-hero p{font-size:1.05rem;color:var(--text-2);line-height:1.75;max-width:560px;margin:0 auto;}
+    .about-wrap{max-width:760px;margin:0 auto;padding:56px 24px 80px;}
+    .about-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:44px 0 14px;letter-spacing:-.02em;}
+    .about-wrap p{font-size:15px;line-height:1.82;color:var(--text-2);margin-bottom:18px;}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0;}
+    .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center;}
+    .stat-num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--green);line-height:1;}
+    .stat-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-top:8px;}
+    .value-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+    .value-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;}
+    .value-card .vc-icon{font-size:1.6rem;margin-bottom:10px;}
+    .value-card h4{font-size:.95rem;font-weight:700;margin-bottom:6px;}
+    .value-card p{font-size:13px;margin:0;line-height:1.6;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    @media(max-width:640px){.stats-row{grid-template-columns:1fr;}.value-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="about-hero">
+  <div class="about-inner">
+    <div class="about-kick">Sobre o PromptBR</div>
+    <h1>IA acessível para todos os brasileiros</h1>
+    <p>Nascemos para preencher uma lacuna: conteúdo de qualidade sobre Inteligência Artificial em português, sem jargão, sem paywalls.</p>
+  </div>
+</div>
+
+<div class="about-wrap">
+  <div class="stats-row">
+    <div class="stat-box reveal"><div class="stat-num">145+</div><div class="stat-lbl">Prompts prontos</div></div>
+    <div class="stat-box reveal"><div class="stat-num">48k</div><div class="stat-lbl">Leitores por mês</div></div>
+    <div class="stat-box reveal"><div class="stat-num">2.8k</div><div class="stat-lbl">Assinantes da newsletter</div></div>
+  </div>
+
+  <h2>Nossa história</h2>
+  <p>O PromptBR nasceu da frustração de ver conteúdo excelente sobre IA existir quase exclusivamente em inglês. Enquanto o mundo falava sobre ChatGPT, Claude e Gemini, os brasileiros precisavam de um lugar para aprender na sua língua, com exemplos do seu contexto.</p>
+  <p>Lançamos a primeira versão em 2025 com 20 prompts. Em poucos meses, crescemos para mais de 145 prompts, dezenas de artigos e uma newsletter com milhares de assinantes — tudo de graça, feito para o Brasil.</p>
+
+  <h2>O que nos move</h2>
+  <div class="value-grid">
+    <div class="value-card reveal"><div class="vc-icon">🇧🇷</div><h4>Português primeiro</h4><p>Todo conteúdo criado pensando no contexto brasileiro: empresas, mercado, legislação e cultura local.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">🆓</div><h4>Gratuito de verdade</h4><p>Nenhum prompt, artigo ou edição da newsletter fica atrás de paywall. Sempre foi assim, sempre será.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">✅</div><h4>Testado na prática</h4><p>Nenhum prompt entra na biblioteca sem ser testado em situações reais. Se não funciona, não publica.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">📖</div><h4>Didático sem ser básico</h4><p>Explicamos conceitos complexos de forma simples, mas sem infantilizar quem já tem experiência.</p></div>
+  </div>
+
+  <h2>O que oferecemos</h2>
+  <p><strong style="color:var(--text);">Biblioteca de Prompts:</strong> mais de 145 prompts prontos, organizados por categoria (trabalho, escrita, estudo, programação, marketing, finanças, criatividade), testados com ChatGPT, Claude e Gemini.</p>
+  <p><strong style="color:var(--text);">Blog:</strong> tutoriais práticos, comparativos honestos e guias passo a passo sobre as melhores ferramentas de IA disponíveis hoje.</p>
+  <p><strong style="color:var(--text);">Notícias:</strong> as novidades que realmente importam do mundo da IA, curadas e contextualizadas para o mercado brasileiro.</p>
+  <p><strong style="color:var(--text);">Newsletter semanal:</strong> toda segunda-feira, 5 minutos de leitura com 1 prompt, 1 ferramenta, 3 notícias e um bônus exclusivo para assinantes.</p>
+
+  <h2>Como nos sustentamos</h2>
+  <p>O PromptBR é financiado por publicidade contextual (Google AdSense) e parcerias com ferramentas que recomendamos. Nunca recebemos para recomendar algo que não testamos — nossa reputação vale mais que qualquer cachê.</p>
+
+  <h2>Fale conosco</h2>
+  <p>Quer sugerir um prompt, reportar um erro ou propor uma parceria? Mande um email para <a href="mailto:contato@brprompt.tec.br" style="color:var(--green);">contato@brprompt.tec.br</a>. Respondemos todos.</p>
+
+  <div class="nl-cta-art">
+    <h3>Faça parte da comunidade</h3>
+    <p>Toda segunda: o melhor de IA em 5 minutos. Grátis, sem spam.</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html" class="active">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body></html>
