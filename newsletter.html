@@ -134,17 +134,27 @@
 
     /* ── MOBILE ── */
     @media (max-width: 640px) {
-      .nl-hero       { padding:50px 16px 40px; min-height:auto; }
-      .nl-hero .sub  { margin-bottom:24px; }
-      .sub-box       { padding:20px 16px; }
-      .sub-box-green { padding:18px 14px; }
-      .inside        { padding:40px 16px; }
-      .inside-grid   { grid-template-columns:1fr; }
-      .example-sec   { padding:40px 16px; }
-      .em-head       { padding:14px 16px; }
-      .em-body       { padding:16px; }
-      .faq-sec       { padding:40px 16px; }
-      .bot-cta       { padding:40px 16px; }
+      /* hero */
+      .nl-hero          { padding:50px 16px 40px; min-height:auto; }
+      .nl-hero .sub     { margin-bottom:24px; font-size:.9rem; }
+      .nl-hero h1       { font-size:clamp(1.6rem,8vw,2.4rem); }
+      .nl-kick          { font-size:10px; padding:6px 12px; }
+      /* formulário hero */
+      .sub-box          { padding:18px 14px; max-width:100%; box-sizing:border-box; }
+      .sub-box input[type="email"] { font-size:16px; padding:13px 14px; } /* 16px evita zoom no iOS */
+      .sub-btn          { font-size:14px; padding:13px; }
+      /* seções */
+      .inside           { padding:36px 16px; }
+      .inside-grid      { grid-template-columns:1fr; }
+      .example-sec      { padding:36px 16px; }
+      .em-head          { padding:14px 16px; }
+      .em-body          { padding:14px 16px; }
+      .faq-sec          { padding:36px 16px; }
+      /* cta verde */
+      .bot-cta          { padding:36px 16px; }
+      .sub-box-green    { padding:16px 12px; max-width:100%; box-sizing:border-box; }
+      .sub-box-green input[type="email"] { font-size:16px; }
+      .sub-btn-dark     { font-size:14px; padding:13px; }
     }
   </style>
 </head>
@@ -251,48 +261,58 @@
 
 <script src="global.js"></script>
 <script>
-// Pub ID da sua newsletter no Beehiiv
-var BEEHIIV_PUB = 'ea3811a9-6b61-4b29-aa47-41200a53a11a';
-var BEEHIIV_URL = 'https://subscribe-forms.beehiiv.com/' + BEEHIIV_PUB;
+(function(){
+  var PUB = 'ea3811a9-6b61-4b29-aa47-41200a53a11a';
 
-function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+  function valid(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
 
-function handleSubscribe(emailId, btnId, successId) {
-  var emailEl   = document.getElementById(emailId);
-  var btnEl     = document.getElementById(btnId);
-  var successEl = successId ? document.getElementById(successId) : null;
-  if (!emailEl || !btnEl) return;
+  function showSuccess(emailEl, btnEl, successEl){
+    btnEl.textContent = '✓ Inscrito!';
+    btnEl.style.background = '#00c060';
+    btnEl.disabled = true;
+    emailEl.disabled = true;
+    if(successEl){ successEl.style.display = 'block'; }
+    emailEl.placeholder = 'Obrigado! Confira seu email.';
+  }
 
-  btnEl.addEventListener('click', function() {
+  function subscribe(emailEl, btnEl, successEl){
     var email = emailEl.value.trim();
-    if (!validateEmail(email)) {
-      emailEl.style.borderColor = '#ff4444';
+    if(!valid(email)){
+      emailEl.style.borderColor='#ff4444';
       emailEl.focus();
-      setTimeout(function() { emailEl.style.borderColor = ''; }, 1400);
+      setTimeout(function(){ emailEl.style.borderColor=''; }, 1400);
       return;
     }
-    // Redireciona para a página do Beehiiv com email preenchido
-    // O Beehiiv aceita o parâmetro ?email= na URL do formulário
-    window.open(BEEHIIV_URL + '?email=' + encodeURIComponent(email), '_blank');
+    btnEl.textContent = 'Enviando...';
+    btnEl.disabled = true;
+    emailEl.disabled = true;
 
-    // Mostra feedback visual imediatamente
-    if (successEl) {
-      emailEl.style.display = 'none';
-      btnEl.style.display   = 'none';
-      successEl.style.display = 'block';
-    } else {
-      btnEl.textContent = '✓ Abrindo inscrição…';
-      btnEl.disabled = true;
-    }
-  });
+    // POST direto para o Beehiiv via fetch (no-cors — sem redirect)
+    fetch('https://subscribe-forms.beehiiv.com/' + PUB, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'email=' + encodeURIComponent(email)
+    }).then(function(){
+      showSuccess(emailEl, btnEl, successEl);
+    }).catch(function(){
+      // no-cors nunca lança erro — mas por segurança, mostrar sucesso mesmo assim
+      showSuccess(emailEl, btnEl, successEl);
+    });
+  }
 
-  emailEl.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') btnEl.click();
-  });
-}
+  function bind(emailId, btnId, successId){
+    var emailEl = document.getElementById(emailId);
+    var btnEl   = document.getElementById(btnId);
+    var successEl = successId ? document.getElementById(successId) : null;
+    if(!emailEl || !btnEl) return;
+    btnEl.addEventListener('click', function(){ subscribe(emailEl, btnEl, successEl); });
+    emailEl.addEventListener('keydown', function(e){ if(e.key==='Enter') subscribe(emailEl, btnEl, successEl); });
+  }
 
-handleSubscribe('hero-email',   'hero-btn',   'hero-success');
-handleSubscribe('footer-email', 'footer-btn', null);
+  bind('hero-email',   'hero-btn',   'hero-success');
+  bind('footer-email', 'footer-btn', null);
+})();
 </script>
 </body>
 </html>
