@@ -11,150 +11,118 @@
     html, body { overflow-x: hidden; max-width: 100vw; }
 
     /* ── HERO ── */
-    .nl-hero {
-      min-height: 90vh; display: flex; align-items: center;
-      padding: 80px 20px 60px; position: relative; overflow: hidden;
-    }
-    .nl-hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 70% at 60% 40%, rgba(0,230,118,.07) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(77,166,255,.04) 0%, transparent 50%);
-    }
-    .nl-hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
-      background-size: 52px 52px;
-    }
-    .nl-hero-inner { max-width: 560px; width: 100%; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-
-    .nl-kick {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2);
-      color: var(--green); padding: 7px 16px; border-radius: 20px;
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; margin-bottom: 24px;
-    }
-    .nl-kick-dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; flex-shrink:0; }
-
+    .nl-hero { min-height: 90vh; display: flex; align-items: center; padding: 80px 20px 60px; position: relative; overflow: hidden; }
+    .nl-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 60% 40%, rgba(0,230,118,.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(77,166,255,.04) 0%, transparent 50%); }
+    .nl-hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size: 52px 52px; }
+    .nl-hero-inner { max-width: 600px; width: 100%; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .nl-kick { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2); color: var(--green); padding: 7px 16px; border-radius: 20px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; margin-bottom: 24px; }
+    .nl-kick-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; flex-shrink: 0; }
     .nl-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,6vw,3.8rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.05; margin-bottom: 18px; }
     .nl-hero h1 span { color: var(--green); }
-    .nl-hero .sub { color: var(--text-2); font-size: clamp(.88rem,2.5vw,1rem); line-height: 1.75; max-width: 460px; margin: 0 auto 36px; }
+    .nl-hero .sub { color: var(--text-2); font-size: clamp(.88rem,2.5vw,1rem); line-height: 1.75; max-width: 480px; margin: 0 auto 32px; }
 
-    /* ═══════════════════════════════════════════════
-       FORMULÁRIO NATIVO — sem iframe, 100% responsivo
-       Ao submeter, abre a página do Beehiiv com o
-       email já preenchido no parâmetro de URL
-    ═══════════════════════════════════════════════ */
-    .sub-box {
-      width: 100%; max-width: 460px; margin: 0 auto 28px;
-      background: var(--bg-2); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 28px 24px;
+    /*
+     * ══════════════════════════════════════════════════════
+     *  WRAPPER BEEHIIV — RESPONSIVIDADE MOBILE
+     *
+     *  O embed.js do Beehiiv injeta width:770px fixo no iframe.
+     *  A técnica abaixo usa overflow:hidden no pai para
+     *  cortar o excedente, e transform:scale para reduzir
+     *  proporcionalmente em telas menores que 770px.
+     * ══════════════════════════════════════════════════════
+     */
+    .beehiiv-outer {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 28px;
+      /* overflow:hidden aprisiona o iframe largo */
+      overflow: hidden;
+      border-radius: 10px;
     }
-    .sub-box label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--text-3); text-transform: uppercase; margin-bottom: 8px; }
-    .sub-box input[type="email"] {
-      width: 100%; background: var(--bg-3); border: 1px solid var(--border);
-      color: var(--text); padding: 13px 16px; font-size: 14px; border-radius: var(--radius);
-      outline: none; transition: border-color .2s; font-family: var(--font-body); margin-bottom: 10px;
-    }
-    .sub-box input[type="email"]::placeholder { color: var(--text-3); }
-    .sub-box input[type="email"]:focus { border-color: var(--green); }
-    .sub-btn {
-      width: 100%; background: var(--green); color: #000; border: none;
-      padding: 14px; font-size: 15px; font-weight: 800; border-radius: var(--radius);
-      cursor: pointer; font-family: var(--font-body); transition: background .2s; display: flex;
-      align-items: center; justify-content: center; gap: 8px;
-    }
-    .sub-btn:hover { background: #00ff88; }
-    .sub-note { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 10px; }
-    .sub-success { display: none; text-align: center; padding: 16px 0; }
-    .sub-success .check { font-size: 2.5rem; display: block; margin-bottom: 8px; }
-    .sub-success p { font-size: 14px; color: var(--green); font-weight: 700; }
 
-    /* formulário verde (rodapé) */
-    .sub-box-green {
-      width: 100%; max-width: 460px; margin: 0 auto;
-      background: rgba(0,0,0,.15); border: 1px solid rgba(0,0,0,.15);
-      border-radius: var(--radius-lg); padding: 24px 20px;
+    /* Container de escala — ocupa a largura real do iframe (770px)
+       mas é transformado para caber na tela via JS abaixo */
+    .beehiiv-scaler {
+      width: 770px;       /* largura real do iframe Beehiiv */
+      transform-origin: top left;
+      /* transform é aplicado pelo JS baseado na largura real da tela */
     }
-    .sub-box-green input[type="email"] {
-      width: 100%; background: rgba(255,255,255,.95); border: none;
-      color: #000; padding: 13px 16px; font-size: 14px; border-radius: var(--radius);
-      outline: none; font-family: var(--font-body); margin-bottom: 10px;
-    }
-    .sub-box-green input[type="email"]::placeholder { color: #666; }
-    .sub-btn-dark {
-      width: 100%; background: #000; color: var(--green); border: none;
-      padding: 14px; font-size: 15px; font-weight: 800; border-radius: var(--radius);
-      cursor: pointer; font-family: var(--font-body); transition: background .2s;
-    }
-    .sub-btn-dark:hover { background: #111; }
 
-    .sp-row { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
-    .avatars { display:flex; }
-    .av { width:28px; height:28px; border-radius:50%; background:var(--bg-3); border:2px solid var(--bg); margin-left:-5px; display:flex; align-items:center; justify-content:center; font-size:12px; }
-    .avatars .av:first-child { margin-left:0; }
-    .sp-txt { font-size:13px; color:var(--text-2); }
-    .sp-txt strong { color:var(--text); }
+    .beehiiv-scaler iframe.beehiiv-embed {
+      display: block !important;
+      width: 770px !important;
+      height: 405px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent;
+    }
+
+    /* Versão rodapé (fundo verde) */
+    .beehiiv-outer-dark {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(0,0,0,.15);
+    }
+
+    .sp-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .avatars { display: flex; }
+    .av { width: 28px; height: 28px; border-radius: 50%; background: var(--bg-3); border: 2px solid var(--bg); margin-left: -5px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .avatars .av:first-child { margin-left: 0; }
+    .sp-txt { font-size: 13px; color: var(--text-2); }
+    .sp-txt strong { color: var(--text); }
 
     /* ── SEÇÕES ── */
-    .inside { background:var(--bg-2); border-top:1px solid var(--border); padding:64px 20px; }
-    .inside-inner { max-width:var(--max-w); margin:0 auto; }
-    .inside-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .ic { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px 20px; }
-    .ic-icon { font-size:2rem; margin-bottom:12px; }
-    .ic h3 { font-family:var(--font-display); font-size:1rem; font-weight:800; margin-bottom:7px; }
-    .ic p { font-size:13px; color:var(--text-2); line-height:1.65; }
+    .inside { background: var(--bg-2); border-top: 1px solid var(--border); padding: 64px 20px; }
+    .inside-inner { max-width: var(--max-w); margin: 0 auto; }
+    .inside-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .ic { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 20px; }
+    .ic-icon { font-size: 2rem; margin-bottom: 12px; }
+    .ic h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 800; margin-bottom: 7px; }
+    .ic p { font-size: 13px; color: var(--text-2); line-height: 1.65; }
 
-    .example-sec { padding:64px 20px; border-top:1px solid var(--border); }
-    .example-inner { max-width:620px; margin:0 auto; }
-    .email-mock { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.4); }
-    .em-head { background:var(--bg-3); padding:20px 24px; border-bottom:1px solid var(--border); }
-    .em-head-meta { font-family:var(--font-mono); font-size:10px; color:var(--text-3); margin-bottom:7px; }
-    .em-head h2 { font-family:var(--font-display); font-size:1.15rem; font-weight:800; }
-    .em-body { padding:24px; }
-    .em-sec { margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--border); }
-    .em-sec:last-child { margin-bottom:0; padding-bottom:0; border:none; }
-    .em-label { font-family:var(--font-mono); font-size:9.5px; letter-spacing:.18em; color:var(--green); text-transform:uppercase; margin-bottom:8px; }
-    .em-sec h4 { font-family:var(--font-display); font-size:.97rem; font-weight:800; margin-bottom:7px; }
-    .em-sec p { font-size:13px; color:var(--text-2); line-height:1.65; }
+    .example-sec { padding: 64px 20px; border-top: 1px solid var(--border); }
+    .example-inner { max-width: 620px; margin: 0 auto; }
+    .email-mock { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.4); }
+    .em-head { background: var(--bg-3); padding: 20px 24px; border-bottom: 1px solid var(--border); }
+    .em-head-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); margin-bottom: 7px; }
+    .em-head h2 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; }
+    .em-body { padding: 24px; }
+    .em-sec { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+    .em-sec:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
+    .em-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .18em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+    .em-sec h4 { font-family: var(--font-display); font-size: .97rem; font-weight: 800; margin-bottom: 7px; }
+    .em-sec p { font-size: 13px; color: var(--text-2); line-height: 1.65; }
 
-    .faq-sec { padding:64px 20px; border-top:1px solid var(--border); }
-    .faq-inner { max-width:620px; margin:0 auto; }
-    details { border-bottom:1px solid var(--border); }
-    summary { padding:18px 0; font-weight:600; font-size:.95rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; list-style:none; color:var(--text); }
-    summary::-webkit-details-marker { display:none; }
-    summary::after { content:'+'; font-size:1.4rem; color:var(--green); font-weight:300; flex-shrink:0; margin-left:12px; }
-    details[open] summary::after { content:'−'; }
-    .faq-a { padding:0 0 18px; font-size:13.5px; color:var(--text-2); line-height:1.7; }
-    .faq-a a { color:var(--green); }
+    .faq-sec { padding: 64px 20px; border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 620px; margin: 0 auto; }
+    details { border-bottom: 1px solid var(--border); }
+    summary { padding: 18px 0; font-weight: 600; font-size: .95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; color: var(--text); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.4rem; color: var(--green); font-weight: 300; flex-shrink: 0; margin-left: 12px; }
+    details[open] summary::after { content: '−'; }
+    .faq-a { padding: 0 0 18px; font-size: 13.5px; color: var(--text-2); line-height: 1.7; }
+    .faq-a a { color: var(--green); }
 
-    .bot-cta { background:var(--green); padding:64px 20px; text-align:center; }
-    .bot-cta h2 { font-family:var(--font-display); font-size:clamp(1.6rem,5vw,2.4rem); font-weight:800; color:#000; margin-bottom:12px; }
-    .bot-cta > p { color:rgba(0,0,0,.65); font-size:.95rem; margin-bottom:28px; }
+    .bot-cta { background: var(--green); padding: 64px 20px; text-align: center; overflow: hidden; }
+    .bot-cta h2 { font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.4rem); font-weight: 800; color: #000; margin-bottom: 12px; }
+    .bot-cta > p { color: rgba(0,0,0,.65); font-size: .95rem; margin-bottom: 28px; }
 
     /* ── MOBILE ── */
     @media (max-width: 640px) {
-      /* hero */
-      .nl-hero          { padding:50px 16px 40px; min-height:auto; }
-      .nl-hero .sub     { margin-bottom:24px; font-size:.9rem; }
-      .nl-hero h1       { font-size:clamp(1.6rem,8vw,2.4rem); }
-      .nl-kick          { font-size:10px; padding:6px 12px; }
-      /* formulário hero */
-      .sub-box          { padding:18px 14px; max-width:100%; box-sizing:border-box; }
-      .sub-box input[type="email"] { font-size:16px; padding:13px 14px; } /* 16px evita zoom no iOS */
-      .sub-btn          { font-size:14px; padding:13px; }
-      /* seções */
-      .inside           { padding:36px 16px; }
-      .inside-grid      { grid-template-columns:1fr; }
-      .example-sec      { padding:36px 16px; }
-      .em-head          { padding:14px 16px; }
-      .em-body          { padding:14px 16px; }
-      .faq-sec          { padding:36px 16px; }
-      /* cta verde */
-      .bot-cta          { padding:36px 16px; }
-      .sub-box-green    { padding:16px 12px; max-width:100%; box-sizing:border-box; }
-      .sub-box-green input[type="email"] { font-size:16px; }
-      .sub-btn-dark     { font-size:14px; padding:13px; }
+      .nl-hero    { padding: 50px 16px 40px; min-height: auto; }
+      .nl-hero h1 { font-size: clamp(1.6rem,8vw,2.4rem); }
+      .nl-hero .sub { margin-bottom: 24px; }
+      .nl-kick    { font-size: 10px; padding: 6px 12px; }
+      .inside     { padding: 40px 16px; }
+      .inside-grid { grid-template-columns: 1fr; }
+      .example-sec { padding: 40px 16px; }
+      .em-head    { padding: 14px 16px; }
+      .em-body    { padding: 14px 16px; }
+      .faq-sec    { padding: 40px 16px; }
+      .bot-cta    { padding: 40px 16px; }
     }
   </style>
 </head>
@@ -175,6 +143,9 @@
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
 
+<!-- Script oficial Beehiiv — necessário para o iframe funcionar -->
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+
 <section class="nl-hero">
   <div class="nl-hero-bg"></div>
   <div class="nl-hero-inner">
@@ -182,15 +153,17 @@
     <h1>IA no seu email toda <span>segunda-feira</span></h1>
     <p class="sub">Curadoria das melhores ferramentas, prompts e notícias de IA — em 5 minutos, em português, de graça.</p>
 
-    <!-- FORMULÁRIO NATIVO — sem iframe, responsivo em qualquer tela -->
-    <div class="sub-box">
-      <label for="hero-email">Seu melhor e-mail</label>
-      <input type="email" id="hero-email" placeholder="voce@email.com" autocomplete="email">
-      <button class="sub-btn" id="hero-btn">Quero receber toda segunda →</button>
-      <p class="sub-note">🔒 Sem spam. Cancelamento com 1 clique.</p>
-      <div class="sub-success" id="hero-success">
-        <span class="check">✅</span>
-        <p>Quase lá! Confira seu email para confirmar a inscrição.</p>
+    <!-- EMBED BEEHIIV OFICIAL — wrapper responsivo -->
+    <div class="beehiiv-outer" id="bh-outer-hero">
+      <div class="beehiiv-scaler" id="bh-scaler-hero">
+        <iframe
+          src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a"
+          class="beehiiv-embed"
+          data-test-id="beehiiv-embed"
+          frameborder="0"
+          scrolling="no"
+          style="width:770px;height:405px;margin:0;border-radius:0px;background-color:transparent;box-shadow:0 0 #0000;max-width:100%;"
+        ></iframe>
       </div>
     </div>
 
@@ -220,7 +193,7 @@
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Exemplo de edição</h2><div class="sec-line"></div></div></div>
     <div class="email-mock reveal">
       <div class="em-head">
-        <div class="em-head-meta">📬 PromptBR · Edição #48 · Segunda-feira, 14 de Abril</div>
+        <div class="em-head-meta">📬 PromptBR · Edição #1 · Segunda-feira, 21 de Abril</div>
         <h2>GPT-5 chegou — o que muda para você hoje</h2>
       </div>
       <div class="em-body">
@@ -246,9 +219,18 @@
 <section class="bot-cta">
   <h2>Comece agora. É grátis.</h2>
   <p>Junte-se a +2.847 pessoas que já usam IA na rotina.</p>
-  <div class="sub-box-green">
-    <input type="email" id="footer-email" placeholder="voce@email.com" autocomplete="email">
-    <button class="sub-btn-dark" id="footer-btn">Quero receber →</button>
+  <!-- EMBED BEEHIIV RODAPÉ -->
+  <div class="beehiiv-outer-dark" id="bh-outer-footer">
+    <div class="beehiiv-scaler" id="bh-scaler-footer">
+      <iframe
+        src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a"
+        class="beehiiv-embed"
+        data-test-id="beehiiv-embed"
+        frameborder="0"
+        scrolling="no"
+        style="width:770px;height:405px;margin:0;border-radius:0px;background-color:transparent;box-shadow:0 0 #0000;max-width:100%;"
+      ></iframe>
+    </div>
   </div>
 </section>
 
@@ -261,57 +243,57 @@
 
 <script src="global.js"></script>
 <script>
-(function(){
-  var PUB = 'ea3811a9-6b61-4b29-aa47-41200a53a11a';
+/*
+ * RESPONSIVIDADE DO EMBED BEEHIIV
+ * O iframe tem 770px fixo. Calculamos a escala necessária
+ * para caber no container e ajustamos também a altura do outer.
+ */
+(function() {
+  function scaleBeehiiv(outerId, scalerId) {
+    var outer  = document.getElementById(outerId);
+    var scaler = document.getElementById(scalerId);
+    if (!outer || !scaler) return;
 
-  function valid(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    var IFRAME_W = 770;  // largura real do iframe Beehiiv
+    var IFRAME_H = 405;  // altura real do iframe Beehiiv
+    var available = outer.offsetWidth;
 
-  function showSuccess(emailEl, btnEl, successEl){
-    btnEl.textContent = '✓ Inscrito!';
-    btnEl.style.background = '#00c060';
-    btnEl.disabled = true;
-    emailEl.disabled = true;
-    if(successEl){ successEl.style.display = 'block'; }
-    emailEl.placeholder = 'Obrigado! Confira seu email.';
-  }
-
-  function subscribe(emailEl, btnEl, successEl){
-    var email = emailEl.value.trim();
-    if(!valid(email)){
-      emailEl.style.borderColor='#ff4444';
-      emailEl.focus();
-      setTimeout(function(){ emailEl.style.borderColor=''; }, 1400);
-      return;
+    if (available >= IFRAME_W) {
+      // Tela grande: sem escala, centraliza
+      scaler.style.transform = 'none';
+      scaler.style.width     = IFRAME_W + 'px';
+      outer.style.height     = IFRAME_H + 'px';
+    } else {
+      // Tela pequena: escala proporcional
+      var scale = available / IFRAME_W;
+      scaler.style.transform       = 'scale(' + scale + ')';
+      scaler.style.transformOrigin = 'top left';
+      scaler.style.width           = IFRAME_W + 'px';
+      // Ajusta altura do outer para o iframe escalado não deixar espaço vazio
+      outer.style.height = Math.ceil(IFRAME_H * scale) + 'px';
     }
-    btnEl.textContent = 'Enviando...';
-    btnEl.disabled = true;
-    emailEl.disabled = true;
-
-    // POST direto para o Beehiiv via fetch (no-cors — sem redirect)
-    fetch('https://subscribe-forms.beehiiv.com/' + PUB, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'email=' + encodeURIComponent(email)
-    }).then(function(){
-      showSuccess(emailEl, btnEl, successEl);
-    }).catch(function(){
-      // no-cors nunca lança erro — mas por segurança, mostrar sucesso mesmo assim
-      showSuccess(emailEl, btnEl, successEl);
-    });
   }
 
-  function bind(emailId, btnId, successId){
-    var emailEl = document.getElementById(emailId);
-    var btnEl   = document.getElementById(btnId);
-    var successEl = successId ? document.getElementById(successId) : null;
-    if(!emailEl || !btnEl) return;
-    btnEl.addEventListener('click', function(){ subscribe(emailEl, btnEl, successEl); });
-    emailEl.addEventListener('keydown', function(e){ if(e.key==='Enter') subscribe(emailEl, btnEl, successEl); });
+  function scaleAll() {
+    scaleBeehiiv('bh-outer-hero',   'bh-scaler-hero');
+    scaleBeehiiv('bh-outer-footer', 'bh-scaler-footer');
   }
 
-  bind('hero-email',   'hero-btn',   'hero-success');
-  bind('footer-email', 'footer-btn', null);
+  // Executar no load e no resize
+  window.addEventListener('load',   scaleAll);
+  window.addEventListener('resize', scaleAll);
+  // Executar também após o embed.js do Beehiiv carregar (pode redimensionar)
+  window.addEventListener('message', function(e) {
+    if (e.data && typeof e.data === 'string' && e.data.indexOf('beehiiv') > -1) {
+      setTimeout(scaleAll, 50);
+    }
+    if (e.data && e.data.type && e.data.type.indexOf('beehiiv') > -1) {
+      setTimeout(scaleAll, 50);
+    }
+  });
+  // Fallback imediato
+  setTimeout(scaleAll, 300);
+  setTimeout(scaleAll, 1000);
 })();
 </script>
 </body>
