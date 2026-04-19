@@ -43,6 +43,11 @@
     .cat-div-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);white-space:nowrap;}
     .cat-div-line{flex:1;height:1px;background:var(--border);}
     @media(max-width:600px){.pg{grid-template-columns:1fr;}}
+
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
 </head>
 <body>
@@ -60,6 +65,21 @@
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
 <section class="ph"><div class="ph-inner">
   <div class="ph-kick">Biblioteca de prompts</div>
   <h1>Prompts prontos para usar <span>agora</span></h1>
@@ -2254,6 +2274,7 @@ Situação que mais me estresa: [descreva]</pre>
   <div class="nl-block reveal">
     <h3>Prompt novo toda <span>semana</span></h3>
     <p>Assine e receba os melhores prompts direto no seu email, de graça.</p>
+    <p style="font-size:12px;color:var(--green);font-weight:600;margin:-8px 0 12px;">🎁 Bônus: e-book <em>8 Formas de Monetizar com Claude AI</em> para novos assinantes</p>
     <div class="nl-form">
       <input type="email" placeholder="seu@email.com" class="beehiiv-email">
       <button type="button" class="beehiiv-btn">Assinar grátis</button>

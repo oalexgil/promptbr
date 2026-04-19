@@ -63,6 +63,11 @@
     .nl-sidebar-box a.btn-nl{display:block;background:var(--green);color:#000;text-align:center;padding:10px;border-radius:var(--radius);font-weight:700;font-size:13px;transition:background .2s;}
     .nl-sidebar-box a.btn-nl:hover{background:#00ff88;}
     @media(max-width:900px){.nl{grid-template-columns:1fr;}.news-hero{grid-template-columns:1fr;}.nh-thumb{min-height:160px;}.ng{grid-template-columns:1fr;}.sidebar{position:static;}.nl-banner{flex-direction:column;align-items:flex-start;}}
+
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
 </head>
 <body>
@@ -77,6 +82,21 @@
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
 
 <section class="ph">
   <div class="ph-inner">
@@ -94,6 +114,7 @@
       <div class="nl-banner-text">
         <h4>Receba o resumo das notícias de IA toda segunda-feira</h4>
         <p>5 notícias essenciais, 1 prompt e 2 ferramentas — em 5 minutos. Grátis.</p>
+          <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
       </div>
       <a href="newsletter.html" class="btn-nl">Receber resumo →</a>
     </div>
@@ -105,7 +126,7 @@
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Destaque do Dia</h2><div class="sec-line"></div></div></div>
 
     <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="news-hero reveal">
-      <div class="nh-thumb g4">🤖</div>
+      <div class="nh-thumb g4" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1024px-OpenAI_Logo.svg.png" alt="OpenAI GPT-5" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
       <div class="nh-body">
         <div class="nsrc">OpenAI · Abr 15, 2026</div>
         <h2>GPT-5 lançado com raciocínio avançado e custo 60% menor</h2>
@@ -118,7 +139,7 @@
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Hoje</h2><div class="sec-line"></div></div></div>
     <div class="ng">
       <a href="https://www.anthropic.com/news" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g1">🧠</div>
+        <div class="nc-thumb g1" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Anthropic_logo.svg/1024px-Anthropic_logo.svg.png" alt="Anthropic Claude" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div class="nc-body">
           <div class="nsrc">Anthropic · Claude</div>
           <h3>Claude 4 opera computadores de forma autônoma por horas</h3>
@@ -127,7 +148,7 @@
         </div>
       </a>
       <a href="https://blog.google/products/gemini/" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g3">🔍</div>
+        <div class="nc-thumb g3" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/1024px-Google_Gemini_logo.svg.png" alt="Google Gemini" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div class="nc-body">
           <div class="nsrc">Google · Gemini</div>
           <h3>Gemini Deep Research disponível em português brasileiro</h3>
@@ -136,7 +157,7 @@
         </div>
       </a>
       <a href="https://www.linkedin.com/jobs/search/?keywords=prompt+engineer&location=Brasil" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g2">💼</div>
+        <div class="nc-thumb g2" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png" alt="LinkedIn Vagas IA" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div class="nc-body">
           <div class="nsrc">Mercado · Carreira</div>
           <h3>Vagas de "engenheiro de prompt" crescem 340% no Brasil</h3>
@@ -145,7 +166,7 @@
         </div>
       </a>
       <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g5">🎨</div>
+        <div class="nc-thumb g5" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Midjourney_Emblem.png/240px-Midjourney_Emblem.png" alt="Midjourney v7" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div class="nc-body">
           <div class="nsrc">Midjourney · Design</div>
           <h3>Midjourney v7 traz consistência de personagens e modo vídeo</h3>
@@ -162,6 +183,7 @@
         <div class="nl-banner-text">
           <h4>Acompanhe essas notícias sem esforço</h4>
           <p>O que importa, resumido toda segunda — na sua caixa de entrada, de graça.</p>
+          <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
         </div>
         <a href="newsletter.html" class="btn-nl">Receber grátis →</a>
       </div>
@@ -170,31 +192,31 @@
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Notícias</h2><div class="sec-line"></div></div></div>
     <div class="nlist">
       <a href="https://n8n.io/blog/" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g6">⚡</div>
+        <div class="nr-thumb g6" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/N8n-logo.svg/512px-N8n-logo.svg.png" alt="n8n automação" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Automação · n8n</div><div class="nr-title">n8n lança 50 novos nós de IA para automação sem código</div><div class="nr-meta">15 Abr 2026 · 3 min</div></div>
       </a>
       <a href="https://about.fb.com/news/" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g1">📱</div>
+        <div class="nr-thumb g1" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png" alt="Meta WhatsApp" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Meta · WhatsApp</div><div class="nr-title">Meta AI no WhatsApp ganha memória entre conversas no Brasil</div><div class="nr-meta">15 Abr 2026 · 2 min</div></div>
       </a>
       <a href="https://runwayml.com/blog" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g4">🎬</div>
+        <div class="nr-thumb g4" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" alt="Runway ML" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Vídeo IA · Runway</div><div class="nr-title">Runway Gen-4 gera vídeos 4K de até 2 minutos a partir de texto</div><div class="nr-meta">14 Abr 2026 · 4 min</div></div>
       </a>
       <a href="https://www.nature.com/subjects/artificial-intelligence" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g2">🏥</div>
+        <div class="nr-thumb g2" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Caduceus.svg/512px-Caduceus.svg.png" alt="IA Saúde" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Saúde · IA</div><div class="nr-title">IA diagnostica câncer de pele com precisão superior a dermatologistas</div><div class="nr-meta">14 Abr 2026 · 5 min</div></div>
       </a>
       <a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g3">🎓</div>
+        <div class="nr-thumb g3" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/512px-Scikit_learn_logo_small.svg.png" alt="MEC Educação" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Educação</div><div class="nr-title">MEC anuncia programa nacional para integrar IA em escolas públicas até 2027</div><div class="nr-meta">13 Abr 2026 · 3 min</div></div>
       </a>
       <a href="https://abstartups.com.br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g5">💰</div>
+        <div class="nr-thumb g5" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/512px-Bitcoin.svg.png" alt="Investimento IA" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Investimento</div><div class="nr-title">Startups de IA brasileiras captam R$2,8 bilhões no primeiro trimestre de 2026</div><div class="nr-meta">13 Abr 2026 · 4 min</div></div>
       </a>
       <a href="https://www.camara.leg.br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g6">🔐</div>
+        <div class="nr-thumb g6" style="padding:0;overflow:hidden;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/N8n-logo.svg/512px-N8n-logo.svg.png" alt="n8n automação" style="width:100%;height:100%;object-fit:contain;padding:12px;filter:brightness(0.85);opacity:.9;"></div>
         <div><div class="nr-src">Regulação · Brasil</div><div class="nr-title">Brasil avança no marco legal da IA: Câmara aprova regulamentação com foco em transparência</div><div class="nr-meta">12 Abr 2026 · 6 min</div></div>
       </a>
     </div>
@@ -202,6 +224,7 @@
     <div class="nl-block reveal">
     <h3>Não perca nenhuma <span>novidade</span></h3>
     <p>Toda segunda: as notícias de IA da semana resumidas em 5 minutos.</p>
+    <p style="font-size:12px;color:var(--green);font-weight:600;margin:-8px 0 12px;">🎁 Bônus: e-book <em>8 Formas de Monetizar com Claude AI</em> para novos assinantes</p>
     <div class="nl-form">
       <input type="email" placeholder="seu@email.com" class="beehiiv-email">
       <button type="button" class="beehiiv-btn">Assinar grátis</button>
@@ -234,6 +257,7 @@
       <div class="nl-banner-text">
         <h4>Acompanhe sem esforço</h4>
         <p>Receba o <strong style="color:var(--green);">resumo das notícias de IA</strong> toda segunda — de graça.</p>
+          <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
       </div>
       <a href="newsletter.html" class="btn-nl">Assinar →</a>
     </div>

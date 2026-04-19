@@ -124,6 +124,11 @@
       .faq-sec    { padding: 40px 16px; }
       .bot-cta    { padding: 40px 16px; }
     }
+
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
 </head>
 <body>
@@ -142,6 +147,21 @@
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
 
 <!-- Script oficial Beehiiv — necessário para o iframe funcionar -->
 <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>

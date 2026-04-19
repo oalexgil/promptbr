@@ -13,6 +13,11 @@
     .article-content p { font-size: 1.1rem; color: var(--text-2); margin-bottom: 20px; }
     .prompt-box { background: var(--bg-3); border-left: 4px solid var(--green); padding: 20px; border-radius: 4px; font-family: var(--font-mono); margin: 30px 0; color: #fff; position: relative; }
     .prompt-label { position: absolute; top: -10px; left: 10px; background: var(--green); color: #000; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 2px; }
+
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
 </head>
 <body>
@@ -32,6 +37,21 @@
     <div class="nav-hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
 
 <main class="article-container reveal">
   <header class="article-header">
