@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude vs ChatGPT: qual usar no trabalho em 2026? — PromptBR</title>
+  <meta name="description" content="Comparativo prático e honesto entre Claude e ChatGPT para o dia a dia profissional. Qual é melhor para escrita, código, análise e produtividade?">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .info-box{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .info-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .info-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
+    gtag('config','G-XXXXXXXXXX');
+  </script>
+  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Comparativo · Ferramentas de IA</div>
+    <h1>Claude vs ChatGPT: qual usar no trabalho em 2026?</h1>
+    <p class="desc">Comparativo prático e honesto entre Claude e ChatGPT para o dia a dia profissional. Qual é melhor para escrita, código, análise e produtividade?</p>
+    <div class="art-meta"><span>📅 21 Abr 2026</span><span>⏱️ 9 min</span></div>
+  </div>
+</div>
+<div class="art-wrap">
+
+  <p>Em 2026, a dúvida não é mais "devo usar IA?" — é "qual IA usar para cada coisa?" Claude e ChatGPT dominam o mercado, mas têm forças completamente diferentes. Este guia resolve essa decisão de vez.</p>
+
+  <h2>As diferenças reais que importam no dia a dia</h2>
+  <p>Esqueça os benchmarks técnicos. No uso cotidiano, Claude e ChatGPT se diferenciam em 5 pontos práticos:</p>
+
+  <h3>1. Qualidade de escrita em português</h3>
+  <p>Claude produz textos com maior naturalidade no português brasileiro. Frases menos robotizadas, uso correto de expressões idiomáticas e tom mais próximo de como brasileiros realmente escrevem. Para redação, copywriting, emails e documentos, Claude leva vantagem clara.</p>
+  <div class="prompt-box">Teste rápido: peça ao Claude e ao ChatGPT:
+"Reescreva este parágrafo com tom mais informal para o mercado brasileiro"
+
+Você vai notar: Claude entende nuances culturais melhor.</div>
+
+  <h3>2. Análise de documentos longos</h3>
+  <p>Claude aceita documentos de até 200 mil tokens — o equivalente a um livro inteiro. Você pode colar um contrato de 80 páginas e pedir uma análise completa. ChatGPT (GPT-4o) aceita até 128 mil tokens. Na prática, para documentos longos, Claude é mais confiável.</p>
+
+  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Quando usar:</strong> Análise de contratos, revisão de relatórios extensos, resumo de pesquisas acadêmicas → Claude. Geração de código, análise de imagens, plugins externos → ChatGPT.</p></div>
+
+  <h3>3. Raciocínio e honestidade</h3>
+  <p>Claude é treinado para ser mais honesto quando não sabe algo. Ele diz "não tenho certeza sobre isso" com mais frequência que o ChatGPT, que às vezes inventa respostas confiantes (alucinações). Para tarefas críticas onde a precisão importa, isso faz diferença.</p>
+
+  <h3>4. Código e programação</h3>
+  <p>GPT-5.5 lidera em geração de código, arquitetura de sistemas e debug. Claude ainda é excelente, mas para desenvolvimento puro, o ecossistema do ChatGPT (com Cursor IDE, Copilot, etc.) tem mais integração.</p>
+
+  <h3>5. Custo</h3>
+  <p>Claude Sonnet 4.6 oferece performance de nível premium com preço de modelo intermediário na API. ChatGPT GPT-4o tem preço similar. Para uso via interface web, ambos têm planos gratuitos e pagos (US$20/mês) com recursos equivalentes.</p>
+
+  <h2>Quando usar cada um: guia rápido</h2>
+
+  <table style="width:100%;border-collapse:collapse;font-size:14px;margin:20px 0;">
+    <tr style="background:var(--bg-3);">
+      <th style="padding:12px;text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--text-3);border-bottom:2px solid var(--border);">Tarefa</th>
+      <th style="padding:12px;text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--text-3);border-bottom:2px solid var(--border);">Melhor escolha</th>
+    </tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Redação e copywriting em português</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">Claude</td></tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Análise de documentos longos</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">Claude</td></tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Geração de código e debug</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:#ffb300;font-weight:700;">ChatGPT</td></tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Pesquisa com acesso à web</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:#ffb300;font-weight:700;">ChatGPT</td></tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Análise de planilhas e imagens</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:#ffb300;font-weight:700;">ChatGPT (GPT-4o)</td></tr>
+    <tr><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text-2);">Resumo e análise de PDFs</td><td style="padding:11px 12px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">Claude</td></tr>
+    <tr><td style="padding:11px 12px;color:var(--text-2);">Automação com agentes de IA</td><td style="padding:11px 12px;color:#ffb300;font-weight:700;">ChatGPT (GPT-5.5)</td></tr>
+  </table>
+
+  <h2>A estratégia dos usuários avançados</h2>
+  <p>Não escolha um. Use os dois. A estratégia mais eficiente em 2026 é ter Claude como seu "redator e analista" e ChatGPT como seu "programador e pesquisador". O custo combinado é o mesmo que uma assinatura paga de um único serviço premium.</p>
+
+  <div class="prompt-box">Fluxo de trabalho recomendado:
+
+1. Use Claude para: rascunhar emails, analisar documentos, 
+   escrever relatórios e criar conteúdo em português
+   
+2. Use ChatGPT para: gerar código, fazer pesquisa com web 
+   ao vivo e analisar planilhas com dados
+
+3. Para decisões importantes: valide com os dois e 
+   compare as respostas</div>
+
+  <h2>Conclusão</h2>
+  <p>Claude e ChatGPT não são concorrentes — são ferramentas complementares. Quem entende os pontos fortes de cada um produz mais, gasta menos e comete menos erros. Em 2026, dominar os dois é o que separa quem usa IA de quem realmente aproveita IA.</p>
+
+  <div class="nl-cta-art">
+    <h3>Conteúdo novo toda semana na newsletter</h3>
+    <p>Toda segunda: análise de ferramentas, prompts testados e notícias de IA em 5 minutos.</p>
+    <p class="ebook-line">🎁 Bônus ao assinar: e-book <em>8 Formas de Monetizar com Claude AI</em> — grátis</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+  <div class="art-nav">
+    <a href="artigo-gpt55-vs-claude.html"><div class="nav-label">← Artigo anterior</div><div class="nav-title">GPT-5.5 vs Claude Sonnet 4.6</div></a>
+    <a href="artigo-chatgpt.html"><div class="nav-label">Próximo artigo →</div><div class="nav-title">ChatGPT do zero ao avançado</div></a>
+  </div>
+</div>
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter para você produzir mais.</p></div>
+  <div class="footer-col"><h4>Conteúdo</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR — Todos os direitos reservados</span><span>Feito com IA no Brasil 🇧🇷</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+</body>
+</html>

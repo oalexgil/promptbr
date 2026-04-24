@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whisper e ElevenLabs: como criar conteúdo de voz profissional com IA — PromptBR</title>
+  <meta name="description" content="Guia completo de ferramentas de voz com IA: transcrição com Whisper, síntese com ElevenLabs, criar podcasts e clonar voz. Passo a passo para criadores de conteúdo.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .info-box{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .info-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .info-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
+    gtag('config','G-XXXXXXXXXX');
+  </script>
+  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Tutorial · Ferramentas · Criatividade</div>
+    <h1>Whisper e ElevenLabs: como criar conteúdo de voz profissional com IA</h1>
+    <p class="desc">Guia completo de ferramentas de voz com IA: transcrição com Whisper, síntese com ElevenLabs, criar podcasts e clonar voz. Passo a passo para criadores de conteúdo.</p>
+    <div class="art-meta"><span>📅 27 Mar 2026</span><span>⏱️ 10 min</span></div>
+  </div>
+</div>
+<div class="art-wrap">
+
+  <p>Enquanto todo mundo fala de IA de texto e imagem, as ferramentas de voz com IA ficaram discretamente incríveis. Em 2026, transcrever, clonar e sintetizar voz é acessível, rápido e barato. Este guia mostra como usar Whisper e ElevenLabs para criar conteúdo de áudio profissional.</p>
+
+  <h2>Whisper: transcrição de voz com precisão cirúrgica</h2>
+  <p>O Whisper é o modelo de transcrição de áudio da OpenAI. Disponível gratuitamente via API e em aplicativos como o MacWhisper, ele transcreve com uma precisão que nenhum serviço anterior atingia — inclusive em português brasileiro com gírias e termos técnicos.</p>
+
+  <h3>Casos de uso práticos</h3>
+  <ul>
+    <li><strong>Transcrever reuniões:</strong> Grave a reunião, jogue no Whisper, cole no Claude para extrair decisões e ações</li>
+    <li><strong>Transcrever podcasts concorrentes:</strong> Analise o conteúdo dos competidores rapidamente</li>
+    <li><strong>Criar conteúdo falando:</strong> Fale suas ideias, transcreva, polishe com IA — mais rápido que digitar</li>
+    <li><strong>Legendar vídeos:</strong> Transcrição automática para criar legendas em português</li>
+  </ul>
+
+  <div class="prompt-box">Fluxo de trabalho com Whisper:
+
+1. Grave qualquer áudio (reunião, aula, brainstorming)
+2. Use o app MacWhisper (Mac) ou Whisper Desktop (Windows)
+   — ou o site whisper.ai — para transcrever
+3. Cole a transcrição no Claude com este prompt:
+
+"Esta é a transcrição de [reunião/aula/entrevista]. 
+Extraia: pontos principais, decisões, ações com responsáveis,
+insights relevantes e citações importantes. 
+Ignore os vícios de linguagem e erros de transcrição."</div>
+
+  <h2>ElevenLabs: síntese de voz que parece humana</h2>
+  <p>O ElevenLabs transformou a criação de áudio. Em 2026, ele gera voz que é praticamente indistinguível de um locutor humano profissional — em português, com entonação natural e pausas corretas.</p>
+
+  <h3>Para que usar</h3>
+  <ul>
+    <li><strong>Podcasts e audiogramas:</strong> Crie o script com IA, gere o áudio com ElevenLabs</li>
+    <li><strong>Cursos online:</strong> Grave locução profissional sem estúdio</li>
+    <li><strong>Vídeos corporativos:</strong> Substituir locutores caros para vídeos internos</li>
+    <li><strong>Conteúdo acessível:</strong> Versões em áudio de artigos para quem prefere ouvir</li>
+  </ul>
+
+  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Plano gratuito:</strong> ElevenLabs oferece 10.000 caracteres/mês grátis — suficiente para testar. O plano Starter (US$5/mês) dá 30.000 caracteres com vozes premium em português.</p></div>
+
+  <h2>Criar um podcast com IA: passo a passo</h2>
+  <div class="prompt-box">PASSO 1 — Script com Claude:
+"Crie um roteiro de podcast de 10 minutos sobre [tema].
+Formato: apresentador solo.
+Tom: descontraído mas informativo.
+Estrutura: intro com gancho, 3 blocos de conteúdo, conclusão com CTA.
+Inclua marcações de pausa [PAUSA] e ênfase [ÊNFASE] para guiar a locução."
+
+PASSO 2 — Locução com ElevenLabs:
+- Cole o script em elevenlabs.io
+- Escolha a voz "Mateus" ou "Sofia" (português BR)
+- Ajuste o estilo: conversacional, emotivo ou neutro
+- Gere e baixe o MP3
+
+PASSO 3 — Edição:
+- Use Descript (tem transcrição editável) ou Audacity
+- Adicione música de fundo (gratuita no Pixabay)
+- Exporte e publique no Spotify, Apple Podcasts ou YouTube</div>
+
+  <h2>Clonar sua própria voz</h2>
+  <p>O ElevenLabs permite criar um clone da sua voz com apenas 1 minuto de áudio. Use para: gravar conteúdo mais rápido, criar versões em outros idiomas da sua voz ou delegar a leitura de scripts para a IA enquanto você foca na estratégia.</p>
+
+  <div class="info-box"><div class="tip-icon">⚠️</div><p><strong>Ética e responsabilidade:</strong> Clone apenas sua própria voz ou com autorização expressa. Usar a voz de outra pessoa sem consentimento é ilegal no Brasil (Marco Civil da Internet e LGPD) e nos termos de uso do ElevenLabs.</p></div>
+
+  <h2>Outras ferramentas de voz que valem conhecer</h2>
+  <ul>
+    <li><strong>Descript:</strong> Edite áudio editando o texto da transcrição</li>
+    <li><strong>Adobe Podcast Enhance:</strong> Remove ruído de fundo de qualquer gravação</li>
+    <li><strong>Krisp:</strong> Cancela ruído em tempo real durante calls</li>
+  </ul>
+
+  <h2>Conclusão</h2>
+  <p>Voz com IA abriu um novo canal de conteúdo que a maioria ainda subutiliza. Podcasts, cursos em áudio e vídeos com locução profissional estavam fora do alcance de quem não tinha equipe ou orçamento. Em 2026, estão ao alcance de qualquer pessoa com um computador e 30 minutos.</p>
+
+  <div class="nl-cta-art">
+    <h3>Conteúdo novo toda semana na newsletter</h3>
+    <p>Toda segunda: análise de ferramentas, prompts testados e notícias de IA em 5 minutos.</p>
+    <p class="ebook-line">🎁 Bônus ao assinar: e-book <em>8 Formas de Monetizar com Claude AI</em> — grátis</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+  <div class="art-nav">
+    <a href="artigo-midjourney.html"><div class="nav-label">← Artigo anterior</div><div class="nav-title">Midjourney v7: técnicas profissionais</div></a>
+    <a href="artigo-produtividade-com-ia.html"><div class="nav-label">Próximo artigo →</div><div class="nav-title">Produtividade com IA</div></a>
+  </div>
+</div>
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter para você produzir mais.</p></div>
+  <div class="footer-col"><h4>Conteúdo</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR — Todos os direitos reservados</span><span>Feito com IA no Brasil 🇧🇷</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+</body>
+</html>
