@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies — PromptBR</title>
+  <meta name="description" content="Como o PromptBR usa cookies e como você pode gerenciar suas preferências.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .ph{background:var(--bg-2);border-bottom:1px solid var(--border);padding:52px 24px 40px;position:relative;overflow:hidden;}
+    .ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 80% 40%,rgba(255,179,0,.06) 0%,transparent 60%);}
+    .ph-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
+    .ph-kick{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .ph-kick::before{content:'';width:22px;height:2px;background:var(--amber);}
+    .ph p{color:var(--text-2);font-size:.9rem;margin-top:10px;max-width:560px;}
+    .doc-wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+    .doc-wrap h2{font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin:40px 0 12px;letter-spacing:-.02em;color:var(--text);display:flex;align-items:center;gap:10px;}
+    .doc-wrap h2 .sec-n{font-family:var(--font-mono);font-size:11px;color:var(--text-3);font-weight:400;letter-spacing:.1em;min-width:28px;}
+    .doc-wrap p{font-size:14.5px;line-height:1.8;color:var(--text-2);margin-bottom:14px;}
+    .doc-wrap ul{padding-left:20px;margin-bottom:14px;}
+    .doc-wrap li{font-size:14.5px;line-height:1.8;color:var(--text-2);margin-bottom:5px;}
+    .doc-wrap strong{color:var(--text);}
+    .doc-wrap a{color:var(--green);}
+    .info-box{background:var(--bg-2);border:1px solid rgba(255,179,0,.18);border-left:3px solid var(--amber);border-radius:var(--radius-lg);padding:18px 22px;margin:24px 0;}
+    .info-box p{margin:0;font-size:13.5px;}
+    .cookie-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;}
+    .cookie-table th{background:var(--bg-3);padding:11px 14px;text-align:left;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);}
+    .cookie-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.55;}
+    .cookie-table tr:last-child td{border-bottom:none;}
+    .badge-ess{background:rgba(0,230,118,.12);color:var(--green);font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+    .badge-ana{background:rgba(77,166,255,.12);color:var(--blue);font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+    .badge-pub{background:rgba(255,179,0,.12);color:var(--amber);font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+    .pref-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin:24px 0;}
+    .pref-box h4{font-size:.97rem;font-weight:700;margin-bottom:16px;}
+    .pref-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+    .pref-row:last-child{border-bottom:none;padding-bottom:0;}
+    .pref-info h5{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px;}
+    .pref-info p{font-size:12px;color:var(--text-3);margin:0;line-height:1.5;}
+    .toggle{position:relative;width:44px;height:24px;flex-shrink:0;margin-left:16px;}
+    .toggle input{opacity:0;width:0;height:0;}
+    .slider{position:absolute;cursor:pointer;inset:0;background:var(--bg-4);border-radius:24px;transition:.3s;}
+    .slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s;}
+    .toggle input:checked + .slider{background:var(--green);}
+    .toggle input:checked + .slider::before{transform:translateX(20px);}
+    .toggle input:disabled + .slider{opacity:.5;cursor:not-allowed;}
+    .pref-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;}
+    .btn-save-pref{background:var(--green);color:#000;border:none;padding:11px 24px;border-radius:var(--radius);font-weight:700;font-size:13px;cursor:pointer;transition:background .2s;}
+    .btn-save-pref:hover{background:#00ff88;}
+    .btn-reset-pref{background:transparent;color:var(--text-3);border:1px solid var(--border);padding:11px 24px;border-radius:var(--radius);font-size:13px;cursor:pointer;transition:all .2s;}
+    .btn-reset-pref:hover{border-color:var(--green);color:var(--text);}
+    .save-msg{display:none;font-size:12px;color:var(--green);margin-top:10px;font-weight:600;}
+    .doc-divider{height:1px;background:var(--border);margin:32px 0;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:600px){.pref-actions{flex-direction:column;}.cookie-table{font-size:12px;}.cookie-table th,.cookie-table td{padding:9px 10px;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+  <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+  <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+  <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+  <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+  <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+  <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
+  <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+  <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+</div></div>
+
+<section class="ph">
+  <div class="ph-inner">
+    <div class="ph-kick">Documento legal</div>
+    <h1>Política de Cookies</h1>
+    <p>Última atualização: 24 de abril de 2026 · Versão 1.0</p>
+  </div>
+</section>
+
+<div class="doc-wrap">
+
+  <div class="info-box">
+    <p><strong>Resumo simples:</strong> usamos cookies para o site funcionar, para entender como você navega (Analytics) e para exibir anúncios relevantes (AdSense). Os essenciais não podem ser desativados. Os demais, você controla abaixo.</p>
+  </div>
+
+  <h2><span class="sec-n">01</span> O que são Cookies</h2>
+  <p>Cookies são pequenos arquivos de texto que os sites armazenam no seu navegador quando você os visita. Eles permitem que o site lembre suas preferências e melhore sua experiência de navegação.</p>
+  <p>Além de cookies, também podemos usar tecnologias similares como <em>web beacons</em>, pixels de rastreamento e armazenamento local do navegador. Neste documento, referimo-nos a todas essas tecnologias coletivamente como "cookies".</p>
+
+  <h2><span class="sec-n">02</span> Como usamos Cookies</h2>
+  <p>Utilizamos cookies para três finalidades principais:</p>
+  <ul>
+    <li><strong>Essenciais:</strong> necessários para o funcionamento básico do site. Não podem ser desativados.</li>
+    <li><strong>Analíticos:</strong> para entender como os visitantes usam o site e melhorar o conteúdo (Google Analytics 4).</li>
+    <li><strong>Publicitários:</strong> para exibir anúncios relevantes por meio do Google AdSense.</li>
+  </ul>
+
+  <h2><span class="sec-n">03</span> Tabela de Cookies</h2>
+  <p>Os principais cookies usados no PromptBR são:</p>
+
+  <table class="cookie-table">
+    <thead>
+      <tr>
+        <th>Cookie</th>
+        <th>Tipo</th>
+        <th>Duração</th>
+        <th>Finalidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>promptbr_consent</code></td>
+        <td><span class="badge-ess">Essencial</span></td>
+        <td>12 meses</td>
+        <td>Armazena sua preferência de consentimento de cookies (aceitar / só essenciais)</td>
+      </tr>
+      <tr>
+        <td><code>_ga</code></td>
+        <td><span class="badge-ana">Analítico</span></td>
+        <td>2 anos</td>
+        <td>Google Analytics — distingue visitantes únicos</td>
+      </tr>
+      <tr>
+        <td><code>_ga_*</code></td>
+        <td><span class="badge-ana">Analítico</span></td>
+        <td>2 anos</td>
+        <td>Google Analytics 4 — persiste estado de sessão</td>
+      </tr>
+      <tr>
+        <td><code>_gid</code></td>
+        <td><span class="badge-ana">Analítico</span></td>
+        <td>24 horas</td>
+        <td>Google Analytics — distingue usuários durante 24h</td>
+      </tr>
+      <tr>
+        <td><code>_gat</code></td>
+        <td><span class="badge-ana">Analítico</span></td>
+        <td>1 minuto</td>
+        <td>Google Analytics — limita a taxa de solicitações</td>
+      </tr>
+      <tr>
+        <td><code>IDE</code></td>
+        <td><span class="badge-pub">Publicitário</span></td>
+        <td>13 meses</td>
+        <td>Google AdSense/DoubleClick — rastreia conversões e exibe anúncios personalizados</td>
+      </tr>
+      <tr>
+        <td><code>test_cookie</code></td>
+        <td><span class="badge-pub">Publicitário</span></td>
+        <td>Sessão</td>
+        <td>Google — verifica se o navegador aceita cookies</td>
+      </tr>
+      <tr>
+        <td><code>ANID</code></td>
+        <td><span class="badge-pub">Publicitário</span></td>
+        <td>13 meses</td>
+        <td>Google — publicidade personalizada na Rede de Display</td>
+      </tr>
+      <tr>
+        <td><code>NID</code></td>
+        <td><span class="badge-pub">Publicitário</span></td>
+        <td>6 meses</td>
+        <td>Google — armazena preferências e personalização</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span class="sec-n">04</span> Gerenciar suas Preferências</h2>
+  <p>Você pode gerenciar suas preferências de cookies abaixo. Os cookies essenciais não podem ser desativados pois são necessários para o funcionamento do site.</p>
+
+  <div class="pref-box">
+    <h4>Minhas preferências de cookies</h4>
+
+    <div class="pref-row">
+      <div class="pref-info">
+        <h5>🔒 Cookies essenciais</h5>
+        <p>Necessários para o funcionamento básico. Não podem ser desativados.</p>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" checked disabled>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="pref-row">
+      <div class="pref-info">
+        <h5>📊 Cookies analíticos (Google Analytics)</h5>
+        <p>Nos ajudam a entender como você usa o site para melhorar o conteúdo.</p>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-analytics" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="pref-row">
+      <div class="pref-info">
+        <h5>📢 Cookies publicitários (Google AdSense)</h5>
+        <p>Usados para exibir anúncios relevantes com base nos seus interesses.</p>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-ads" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="pref-actions">
+      <button class="btn-save-pref" id="save-prefs">Salvar preferências</button>
+      <button class="btn-reset-pref" id="reset-prefs">Redefinir para padrão</button>
+    </div>
+    <p class="save-msg" id="save-msg">✓ Preferências salvas! As alterações entram em vigor na próxima visita.</p>
+  </div>
+
+  <h2><span class="sec-n">05</span> Cookies de Terceiros</h2>
+  <p>O PromptBR usa serviços de terceiros que podem definir seus próprios cookies:</p>
+  <ul>
+    <li><strong>Google Analytics:</strong> coleta dados de navegação anonimizados. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política do Google</a></li>
+    <li><strong>Google AdSense:</strong> exibe anúncios personalizados. Você pode gerenciar preferências em <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a></li>
+    <li><strong>Beehiiv:</strong> plataforma de newsletter — cookies de sessão para o formulário de inscrição. <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener">Política do Beehiiv</a></li>
+  </ul>
+
+  <h2><span class="sec-n">06</span> Como desativar Cookies no Navegador</h2>
+  <p>Você também pode controlar os cookies diretamente no seu navegador:</p>
+  <ul>
+    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+    <li><a href="https://support.mozilla.org/pt-BR/kb/cookies-informacoes-que-websites-armazenam-no-seu-computador" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+    <li><a href="https://support.apple.com/pt-br/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+    <li><a href="https://support.microsoft.com/pt-br/windows/excluir-e-gerenciar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
+  </ul>
+  <p><strong>Atenção:</strong> desativar certos cookies pode afetar o funcionamento de algumas partes do site.</p>
+
+  <div class="doc-divider"></div>
+
+  <h2><span class="sec-n">07</span> Contato</h2>
+  <p>Dúvidas sobre esta Política de Cookies ou sobre o uso dos seus dados? Entre em contato:</p>
+  <p>
+    <strong>Email:</strong> <a href="mailto:privacidade@promptbr.com.br">privacidade@promptbr.com.br</a><br>
+    <strong>Prazo de resposta:</strong> até 15 dias úteis
+  </p>
+  <p>Consulte também nossa <a href="privacidade.html">Política de Privacidade</a> e nossos <a href="termos.html">Termos de Uso</a>.</p>
+
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter para você produzir mais.</p></div>
+  <div class="footer-col"><h4>Conteúdo</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Biblioteca de Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html" class="active">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR — Todos os direitos reservados</span><span>Feito com IA no Brasil 🇧🇷</span></div></footer>
+
+<script src="global.js"></script>
+<script>
+(function(){
+  var saved = localStorage.getItem('promptbr_prefs');
+  if(saved){
+    try{
+      var p = JSON.parse(saved);
+      document.getElementById('toggle-analytics').checked = p.analytics !== false;
+      document.getElementById('toggle-ads').checked = p.ads !== false;
+    }catch(e){}
+  }
+  document.getElementById('save-prefs').addEventListener('click', function(){
+    var prefs = {
+      analytics: document.getElementById('toggle-analytics').checked,
+      ads: document.getElementById('toggle-ads').checked,
+      saved: Date.now()
+    };
+    localStorage.setItem('promptbr_prefs', JSON.stringify(prefs));
+    localStorage.setItem('promptbr_consent', JSON.stringify({
+      essential: true,
+      analytics: prefs.analytics,
+      ads: prefs.ads,
+      ts: Date.now()
+    }));
+    var msg = document.getElementById('save-msg');
+    msg.style.display = 'block';
+    setTimeout(function(){ msg.style.display = 'none'; }, 4000);
+  });
+  document.getElementById('reset-prefs').addEventListener('click', function(){
+    document.getElementById('toggle-analytics').checked = true;
+    document.getElementById('toggle-ads').checked = true;
+    localStorage.removeItem('promptbr_prefs');
+    localStorage.removeItem('promptbr_consent');
+    var msg = document.getElementById('save-msg');
+    msg.textContent = '✓ Preferências redefinidas para o padrão.';
+    msg.style.display = 'block';
+    setTimeout(function(){ msg.style.display = 'none'; msg.textContent = '✓ Preferências salvas! As alterações entram em vigor na próxima visita.'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>

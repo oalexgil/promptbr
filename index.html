@@ -85,6 +85,19 @@
     @media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-card{display:none;}.main-wrap{grid-template-columns:1fr;}.feat-grid{grid-template-columns:1fr;}.feat-big{grid-column:span 1;grid-template-columns:1fr;}.feat-big .card-thumb{min-height:160px;aspect-ratio:16/7;}.feat-big .card-body{padding:20px;}.tools-grid{grid-template-columns:repeat(2,1fr);}.sidebar{position:static;}.nl-banner{flex-direction:column;align-items:flex-start;}}
     @media(max-width:560px){.tools-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}}
   </style>
+  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID real -->
+  <!-- Crie em: analytics.google.com → Criar propriedade → copie o ID G-XXXXXXX -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
+    gtag('config','G-XXXXXXXXXX');
+  </script>
+  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
+  <!-- Crie em: adsense.google.com → Começar → copie o código ca-pub-XXXX -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="reading-bar"></div>
@@ -104,14 +117,14 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
     <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
-    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
-    <span class="ticker-item">📚 100+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
   </div>
@@ -158,7 +171,7 @@
         <div><span class="tc-p">$</span> <span class="tc-c">promptbr --status</span></div>
         <div class="tc-ok">▶ Carregando sistema...</div>
         <div class="tc-d">─────────────────────</div>
-        <div class="tc-ok">✓ 245+ prompts ativos</div>
+        <div class="tc-ok">✓ 100+ prompts ativos</div>
         <div class="tc-ok">✓ ChatGPT / Claude / Gemini</div>
         <div class="tc-ok">✓ Newsletter #48 enviada</div>
         <div class="tc-ok">✓ 6 notícias hoje</div>
@@ -355,7 +368,9 @@
     <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter para você produzir mais.</p></div>
     <div class="footer-col"><h4>Conteúdo</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Biblioteca de Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
     <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
-    <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="mailto:contato@brprompt.tec.br">Anuncie aqui</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+    <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="mailto:contato@brprompt.tec.br">Anuncie aqui</a></li><li><a href="termos.html">Termos de Uso</a></li>
+<li><a href="privacidade.html">Privacidade</a></li>
+<li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 PromptBR — Todos os direitos reservados</span><span>Feito com IA no Brasil 🇧🇷</span></div>
 </footer>
@@ -392,5 +407,43 @@
   });
 })();
 </script>
+<!-- ═══ BANNER DE CONSENTIMENTO ═══════════════════════════════════════════
+     Google Consent Mode v2 · LGPD · IAB Compatible
+     Documentação: https://support.google.com/adsense/answer/10218585
+════════════════════════════════════════════════════════════════════════ -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;">
+      <p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">
+        🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios relevantes.
+        <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Política de Cookies</a> ·
+        <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a>
+      </p>
+      <p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap;">
+      <button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">Aceitar todos</button>
+      <button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;white-space:nowrap;">Só essenciais</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var K='promptbr_consent';
+  var b=document.getElementById('cookie-banner');
+  function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}
+  try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}
+  b.style.display='block';
+  document.getElementById('cb-accept').onclick=function(){
+    var c={essential:true,analytics:true,ads:true,ts:Date.now()};
+    localStorage.setItem(K,JSON.stringify(c));apply(true,true);b.style.display='none';
+  };
+  document.getElementById('cb-essential').onclick=function(){
+    var c={essential:true,analytics:false,ads:false,ts:Date.now()};
+    localStorage.setItem(K,JSON.stringify(c));apply(false,false);b.style.display='none';
+  };
+})();
+</script>
+<!-- ═══ FIM DO BANNER ════════════════════════════════════════════════════ -->
 </body>
 </html>
