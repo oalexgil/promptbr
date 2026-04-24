@@ -5,6 +5,17 @@
   <title>Termos de Uso — PromptBR</title>
   <meta name="description" content="Termos de Uso do PromptBR — biblioteca de prompts, blog e newsletter sobre IA em português.">
   <link rel="stylesheet" href="global.css">
+  <!-- Google Analytics 4 — substitua G-ZK59708GWD pelo seu ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
+    gtag('config','G-ZK59708GWD');
+  </script>
+  <!-- Google AdSense — substitua ca-pub-3823120055728050 pelo seu Publisher ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
   <style>
     .ph{background:var(--bg-2);border-bottom:1px solid var(--border);padding:52px 24px 40px;position:relative;overflow:hidden;}
     .ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 80% 40%,rgba(77,166,255,.06) 0%,transparent 60%);}
@@ -218,5 +229,42 @@
 })();
 </script>
 <!-- ── FIM BOTÃO VOLTAR AO TOPO ──────────────────────────────────── -->
+<!-- ═══ BANNER DE CONSENTIMENTO ═══════════════════════════════════════════
+     Google Consent Mode v2 · LGPD · IAB Compatible
+════════════════════════════════════════════════════════════════════════ -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;">
+      <p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">
+        🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios relevantes.
+        <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Política de Cookies</a> ·
+        <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a>
+      </p>
+      <p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap;">
+      <button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">Aceitar todos</button>
+      <button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;white-space:nowrap;">Só essenciais</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var K='promptbr_consent';
+  var b=document.getElementById('cookie-banner');
+  function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}
+  try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}
+  b.style.display='block';
+  document.getElementById('cb-accept').onclick=function(){
+    var c={essential:true,analytics:true,ads:true,ts:Date.now()};
+    localStorage.setItem(K,JSON.stringify(c));apply(true,true);b.style.display='none';
+  };
+  document.getElementById('cb-essential').onclick=function(){
+    var c={essential:true,analytics:false,ads:false,ts:Date.now()};
+    localStorage.setItem(K,JSON.stringify(c));apply(false,false);b.style.display='none';
+  };
+})();
+</script>
+<!-- ═══ FIM DO BANNER ════════════════════════════════════════════════════ -->
 </body>
 </html>

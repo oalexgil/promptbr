@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA para Criadores de Conteúdo: Guia Completo 2026 — PromptBR</title>
+  <meta name="description" content="Como usar inteligência artificial para criar conteúdo para YouTube, Instagram, TikTok, blog e podcast. Ferramentas, prompts prontos e estratégias para criadores.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(255,180,0,.05) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--amber);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+    .tool-item{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;}
+    .tool-name{font-weight:700;font-size:14px;margin-bottom:4px;color:var(--text);}
+    .tool-desc{font-size:13px;color:var(--text-2);line-height:1.55;}
+    .tool-tag{display:inline-block;background:rgba(0,230,118,.1);color:var(--green);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px;font-family:var(--font-mono);}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:600px){.tools-grid{grid-template-columns:1fr;}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-ZK59708GWD');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🎬 IA de vídeo Sora agora disponível no Brasil</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🎬 IA de vídeo Sora agora disponível no Brasil</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<section class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Criação de Conteúdo · IA Prática</div>
+    <h1>IA para Criadores de Conteúdo: Guia Completo 2026</h1>
+    <p class="desc">YouTube, Instagram, TikTok, blog, podcast — a IA já está transformando como os melhores criadores trabalham. Veja quais ferramentas usar, quais prompts funcionam e como escalar seu conteúdo sem perder autenticidade.</p>
+    <div class="art-meta">
+      <span>📅 Abril 2026</span>
+      <span>⏱ 14 min de leitura</span>
+      <span>🏷 Criação de Conteúdo · IA</span>
+    </div>
+  </div>
+</section>
+
+<div class="art-wrap">
+
+  <ins class="adsbygoogle" style="display:block;margin-bottom:32px;" data-ad-client="ca-pub-3823120055728050" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>Por que criadores de conteúdo precisam de IA em 2026</h2>
+  <p>A criação de conteúdo profissional nunca foi tão competitiva. O volume de vídeos publicados no YouTube por hora, de posts no Instagram por minuto e de artigos em blogs por dia chegou a um nível que seria impensável há cinco anos. Os criadores que estão crescendo consistentemente têm algo em comum: eles usam IA não para substituir sua voz ou criatividade, mas para eliminar o trabalho repetitivo e de baixo valor que consome horas do seu dia.</p>
+  <p>Pesquisar pautas, escrever roteiros, criar títulos, gerar legendas, adaptar o mesmo conteúdo para múltiplas plataformas, responder comentários, planejar o calendário editorial — tudo isso pode ser acelerado de 3x a 10x com as ferramentas certas. Este guia mostra exatamente como fazer isso, plataforma por plataforma.</p>
+
+  <h2>Fase 1: Pesquisa e planejamento de pautas</h2>
+  <p>A maior parte dos criadores perde horas toda semana tentando decidir sobre o que vai criar a seguir. A IA resolve esse gargalo de forma prática e baseada em dados.</p>
+  <h3>Encontrando ideias com ChatGPT ou Claude</h3>
+  <p>Em vez de esperar a inspiração aparecer, use um prompt estruturado para gerar batches de ideias. A chave é dar contexto suficiente: quem é seu público, qual é o seu nicho e qual formato você prefere.</p>
+
+  <div class="prompt-box">Você é um estrategista de conteúdo especializado em [seu nicho].
+
+Meu canal/perfil é voltado para [descreva seu público: ex: profissionais de marketing 25-40 anos].
+
+Gere 20 ideias de conteúdo para o próximo mês. Para cada ideia, forneça:
+1. Título chamativo
+2. Ângulo único (por que esse conteúdo é diferente do que já existe)
+3. Formato ideal (vídeo tutorial, lista, comparativo, história pessoal, etc.)
+4. Call to action sugerido
+
+Foque em temas que combinam alta busca com baixa concorrência no Brasil.</div>
+
+  <h3>Validando ideias com o Perplexity</h3>
+  <p>Antes de investir tempo produzindo, use o Perplexity AI para checar rapidamente se o tema tem volume de busca, o que já existe sobre ele e quais ângulos ainda não foram explorados. O Perplexity busca na web em tempo real e cita as fontes, então você consegue um panorama do que o público já consome antes de criar.</p>
+
+  <h2>Fase 2: Roteiros e scripts</h2>
+  <p>Escrever um roteiro de vídeo do zero é um dos trabalhos mais demorados para criadores de YouTube. Com IA, você consegue um rascunho estruturado em minutos — o que resta é a sua revisão, sua voz e os exemplos da sua vida real.</p>
+
+  <div class="prompt-box">Crie um roteiro para um vídeo do YouTube de 10 minutos sobre [tema].
+
+Meu estilo é: direto, sem enrolação, com exemplos práticos. Sem vinhetas longas.
+
+Estrutura necessária:
+- Hook: 30 segundos que prendam a atenção sem spoiler do conteúdo
+- Desenvolvimento: 4 blocos de conteúdo com transições naturais
+- Calls to action: 2 ao longo do vídeo (não só no final)
+- Encerramento: 45 segundos com resumo e próximo passo claro
+
+Tom: como se eu estivesse explicando para um amigo inteligente, não para uma audiência corporativa.</div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <p><strong>Dica de ouro:</strong> nunca publique o roteiro gerado pela IA sem revisar. Adicione pelo menos 2 exemplos da sua experiência pessoal e ajuste para o seu ritmo de fala. O público percebe quando o conteúdo é genérico — a IA dá a estrutura, você dá a alma.</p>
+  </div>
+
+  <h2>Fase 3: Títulos, thumbnails e descrições</h2>
+  <p>No YouTube, o título e a thumbnail respondem por 70% do sucesso de um vídeo. São esses dois elementos que determinam se alguém clica ou passa direto. A IA é excepcional para gerar variações de títulos que seguem fórmulas de alta performance — e você escolhe o melhor.</p>
+
+  <div class="prompt-box">Tenho um vídeo sobre [tema]. Me dê 15 opções de título para YouTube seguindo estas fórmulas:
+- 5 títulos com número (ex: "7 erros que...")
+- 5 títulos com promessa de resultado (ex: "Como eu fiz X em Y dias")
+- 5 títulos com curiosidade/tensão (ex: "Por que ninguém fala sobre...")
+
+Para cada título, pontue de 0 a 10 o potencial de CTR e explique por quê.</div>
+
+  <h3>Descrições otimizadas para SEO</h3>
+  <p>A descrição do YouTube é um campo de SEO ignorado pela maioria dos criadores. Com IA, você pode gerar descrições de 300-500 palavras com as palavras-chave certas, timestamps automáticos e links relevantes — em menos de 2 minutos.</p>
+
+  <h2>Fase 4: Conteúdo para Instagram e TikTok</h2>
+  <p>O grande desafio do criador moderno é manter presença em múltiplas plataformas sem triplicar o esforço. A estratégia que funciona é criar um conteúdo central (geralmente um vídeo mais longo) e usar IA para adaptá-lo para cada formato.</p>
+
+  <div class="prompt-box">Tenho um vídeo de 12 minutos sobre [tema]. A transcrição é: [cole aqui].
+
+Com base nesse conteúdo, crie:
+1. 3 roteiros de Reels/TikTok de 60 segundos, cada um com um ângulo diferente
+2. 5 opções de legenda para Instagram (com emojis, hashtags e CTA)
+3. Um fio de Twitter/X com 8 tweets extraindo os melhores insights
+4. Um resumo de 150 palavras para o LinkedIn, tom mais profissional</div>
+
+  <h3>Calendário editorial automatizado</h3>
+  <p>Com um único prompt, você consegue um calendário editorial completo para o mês: quais formatos publicar em quais dias, qual conteúdo reaproveitar e quando fazer conteúdos sazonais ou baseados em tendências.</p>
+
+  <div class="prompt-box">Crie um calendário editorial para [mês/ano] para um criador de conteúdo focado em [nicho].
+
+Plataformas: YouTube (2x/semana), Instagram (5x/semana entre feed e stories), TikTok (3x/semana).
+
+Considere:
+- Datas comemorativas relevantes para o nicho no Brasil
+- Equilíbrio entre conteúdo perene e conteúdo trending
+- Reaproveitamento inteligente: o mesmo tema em formatos diferentes
+- Uma campanha temática para a semana central do mês</div>
+
+  <h2>Fase 5: Ferramentas de IA específicas para criadores</h2>
+  <p>Além dos assistentes de texto, existe um ecossistema de ferramentas de IA construídas especificamente para criadores. As mais relevantes em 2026:</p>
+
+  <div class="tools-grid">
+    <div class="tool-item">
+      <div class="tool-name">Descript</div>
+      <div class="tool-desc">Edição de vídeo e podcast por texto. Você edita a transcrição e o vídeo é cortado automaticamente. Remove "ums", "éhs" e pausas longas com um clique.</div>
+      <div class="tool-tag">VÍDEO · PODCAST</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">ElevenLabs</div>
+      <div class="tool-desc">Geração de voz com IA. Crie narrações profissionais, clone sua própria voz para dublar conteúdo ou gere áudio em outros idiomas.</div>
+      <div class="tool-tag">VOZ · ÁUDIO</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Midjourney / DALL-E</div>
+      <div class="tool-desc">Geração de imagens para thumbnails, arte de capa, ilustrações para posts e fundos customizados sem precisar de designer.</div>
+      <div class="tool-tag">IMAGEM · DESIGN</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Opus Clip</div>
+      <div class="tool-desc">Transforma vídeos longos em clipes curtos automaticamente. Identifica os momentos mais virais e adiciona legendas animadas.</div>
+      <div class="tool-tag">VÍDEO · CLIPES</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Castmagic</div>
+      <div class="tool-desc">Transcreve podcasts e vídeos e gera automaticamente: resumo, artigo de blog, posts para redes sociais e clips em texto.</div>
+      <div class="tool-tag">PODCAST · REPURPOSING</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Canva Magic Studio</div>
+      <div class="tool-desc">A IA do Canva gera designs, redimensiona para diferentes formatos, remove fundos e sugere layouts baseados no seu conteúdo.</div>
+      <div class="tool-tag">DESIGN · SOCIAL</div>
+    </div>
+  </div>
+
+  <h2>Fase 6: Engajamento e comunidade</h2>
+  <p>Responder comentários é uma das tarefas mais importantes para o algoritmo — e também uma das mais demoradas. A IA pode ajudar a criar templates de resposta que pareçam genuínos e personalizados, ou até sugerir respostas para os comentários mais frequentes do seu nicho.</p>
+
+  <div class="prompt-box">Aqui estão 20 comentários do meu canal: [cole os comentários].
+
+Para cada tipo de comentário, crie uma resposta que:
+- Seja autêntica e com personalidade (não robótica)
+- Agradeça de forma variada (não repetir "obrigado" toda vez)
+- Quando relevante, faça uma pergunta de volta para gerar mais engajamento
+- Para perguntas técnicas, responda de forma completa mas concisa
+
+Tom geral do canal: [descreva seu estilo]</div>
+
+  <h2>O limite da IA: o que ela não substitui</h2>
+  <p>Com tudo isso, é importante ser honesto sobre onde a IA tem limites claros na criação de conteúdo. Ela não substitui sua perspectiva única, suas histórias pessoais, seu humor, sua capacidade de criar conexão emocional e a autenticidade que faz seu público voltar semana após semana.</p>
+  <p>Os criadores mais bem-sucedidos tratam a IA como um assistente de produção inteligente — não como um ghostwriter completo. Eles usam IA para pesquisa, estrutura, variações e adaptações, mas garantem que a voz e os valores que aparecem no conteúdo final são genuinamente seus. O público, cada vez mais, sente a diferença.</p>
+  <p>A pergunta não é "a IA vai substituir criadores de conteúdo?". A resposta já é não. A pergunta real é: criadores que usam IA estrategicamente vão substituir criadores que não usam? Essa resposta, infelizmente, é sim.</p>
+
+  <h2>Por onde começar hoje</h2>
+  <p>Se você está começando agora, não tente adotar todas as ferramentas de uma vez. Escolha um ponto de dor — o que consome mais tempo no seu processo criativo — e resolva com IA primeiro. Para a maioria dos criadores, isso é ou a pesquisa de pautas, ou os roteiros, ou a adaptação do conteúdo para múltiplas plataformas.</p>
+  <p>Comece com o ChatGPT ou Claude (ambos têm versão gratuita), use os prompts deste artigo como base e adapte para o seu nicho. Em duas semanas de experimentação consistente, você vai ter um workflow que economiza pelo menos 5 horas por semana.</p>
+
+  <div class="nl-cta-art">
+    <h3>📬 Prompts novos toda semana para criadores</h3>
+    <p>A newsletter do PromptBR chega toda segunda com os melhores prompts para criadores de conteúdo.</p>
+    <p class="ebook-line">🎁 Bônus: e-book "8 Formas de Ganhar Dinheiro com Claude AI"</p>
+    <a href="newsletter.html">Assinar grátis →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-ia-marketing-digital.html">
+      <div class="nav-label">← Anterior</div>
+      <div class="nav-title">IA no marketing digital: guia completo</div>
+    </a>
+    <a href="artigo-midjourney.html">
+      <div class="nav-label">Próximo →</div>
+      <div class="nav-title">Midjourney v7: guia completo de imagens com IA</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-ia-marketing-digital.html">IA no Marketing</a></li><li><a href="artigo-produtividade-com-ia.html">Produtividade com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var b=document.getElementById('back-to-top');if(!b)return;window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.visibility='visible';b.style.transform='translateY(0)';}else{b.style.opacity='0';b.style.visibility='hidden';b.style.transform='translateY(12px)';}},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});b.addEventListener('mouseenter',function(){b.style.background='#00ff88';});b.addEventListener('mouseleave',function(){b.style.background='var(--green)';});})();</script>
+</body></html>

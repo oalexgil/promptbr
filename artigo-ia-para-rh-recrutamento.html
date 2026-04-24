@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA para RH e Recrutamento: Guia Prático para 2026 — PromptBR</title>
+  <meta name="description" content="Como usar inteligência artificial no RH: triagem de currículos, descrições de vagas, entrevistas, onboarding e análise de clima organizacional. Prompts prontos para profissionais de RH.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(77,166,255,.05) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--blue);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .warn-box{background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.2);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .warn-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .warn-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-ZK59708GWD');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">👥 65% das empresas brasileiras adotam IA no RH até 2027</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">👥 65% das empresas brasileiras adotam IA no RH até 2027</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<section class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">RH · Recrutamento · IA Aplicada</div>
+    <h1>IA para RH e Recrutamento: Guia Prático para 2026</h1>
+    <p class="desc">Da triagem de currículos ao onboarding, a IA está transformando cada etapa do ciclo de vida do colaborador. Veja como profissionais de RH estão usando IA para contratar melhor, mais rápido e com menos viés — com prompts prontos para aplicar hoje.</p>
+    <div class="art-meta">
+      <span>📅 Abril 2026</span>
+      <span>⏱ 13 min de leitura</span>
+      <span>🏷 RH · Recrutamento · IA</span>
+    </div>
+  </div>
+</section>
+
+<div class="art-wrap">
+
+  <ins class="adsbygoogle" style="display:block;margin-bottom:32px;" data-ad-client="ca-pub-3823120055728050" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>Por que o RH está adotando IA tão rapidamente</h2>
+  <p>O departamento de RH convive há décadas com um paradoxo: é responsável pela decisão mais crítica de qualquer empresa (quem entra e quem fica), mas historicamente dispõe de pouco tempo, dados concretos e ferramentas de análise para tomar essas decisões bem. Uma vaga popular no LinkedIn pode gerar 300 currículos em 48 horas. Um profissional de RH levaria dias para analisar todos com atenção. A IA resolve exatamente esse gargalo.</p>
+  <p>Mas o impacto vai além do volume. A IA está ajudando equipes de RH a serem mais consistentes (menos viés inconsciente nas triagens), mais rápidas (reduzindo o time-to-hire), mais criativas (com descrições de vaga mais atraentes) e mais estratégicas (com análise de dados de clima e retenção). Este guia percorre cada uma dessas aplicações com prompts prontos.</p>
+
+  <h2>1. Descrições de vagas que atraem os candidatos certos</h2>
+  <p>A descrição de vaga é o primeiro filtro — e o primeiro ponto de contato com o candidato. Uma boa descrição atrai perfis qualificados e desencoraja quem não se enquadra, economizando tempo de ambos os lados. Com IA, você pode criar descrições mais precisas, inclusivas e convincentes em minutos.</p>
+
+  <div class="prompt-box">Crie uma descrição de vaga para [cargo] na empresa [nome da empresa].
+
+Contexto da empresa: [segmento, tamanho, cultura]
+Localização: [cidade ou remoto/híbrido]
+Faixa salarial: [se puder divulgar]
+
+A descrição deve:
+- Usar linguagem inclusiva e neutra de gênero
+- Destacar claramente o impacto do cargo (o que a pessoa vai mudar/construir)
+- Separar requisitos obrigatórios de desejáveis (não misture os dois)
+- Incluir informações sobre cultura e benefícios reais, não genéricos
+- Ter tom [formal/casual/direto] compatível com a cultura da empresa
+- Ter entre 400 e 600 palavras
+
+Evite jargões corporativos como "proativo", "sinergia" e "dinamismo".</div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <p><strong>Dica:</strong> Peça ao modelo para criar duas versões — uma mais formal para LinkedIn e uma mais descontraída para redes sociais. O mesmo cargo pode ter apelos diferentes dependendo do canal de divulgação.</p>
+  </div>
+
+  <h2>2. Triagem de currículos com critérios claros</h2>
+  <p>A triagem é onde a IA tem o maior impacto em volume — mas também onde os riscos de viés são maiores. A chave é usar a IA para aplicar critérios objetivos que você definiu previamente, não para "avaliar" subjetivamente o candidato.</p>
+
+  <div class="prompt-box">Vou fornecer currículos de candidatos para a vaga de [cargo]. Avalie cada um com base APENAS nestes critérios objetivos:
+
+OBRIGATÓRIOS:
+- [requisito 1]
+- [requisito 2]
+- [requisito 3]
+
+DESEJÁVEIS (peso menor):
+- [diferencial 1]
+- [diferencial 2]
+
+Para cada currículo, retorne:
+1. Atende obrigatórios: Sim / Parcialmente / Não
+2. Diferenciais presentes: [lista]
+3. Recomendação: Avançar / Avaliar com cautela / Descartar
+4. Justificativa em 2 linhas
+
+Não faça suposições sobre o candidato além do que está escrito. Não considere nome, escola ou outros fatores não listados acima.
+
+Currículo 1: [cole o texto do currículo]</div>
+
+  <div class="warn-box">
+    <span class="tip-icon">⚠️</span>
+    <p><strong>Atenção legal:</strong> No Brasil, a LGPD e as normas trabalhistas impõem obrigações sobre como dados de candidatos são tratados. Não cole currículos com dados pessoais sensíveis (saúde, religião, origem étnica) em ferramentas de IA sem verificar a política de privacidade do serviço e se há base legal para esse tratamento. Considere anonimizar os currículos antes de usar IA para triagem.</p>
+  </div>
+
+  <h2>3. Perguntas de entrevista por competência</h2>
+  <p>Entrevistas por competência (behavioral interviews) são mais preditivas de sucesso do que entrevistas genéricas — mas exigem preparação para cada cargo e perfil. Com IA, você cria roteiros de entrevista customizados para cada vaga em minutos.</p>
+
+  <div class="prompt-box">Crie um roteiro de entrevista por competências para o cargo de [cargo].
+
+Competências prioritárias para esse cargo:
+1. [competência 1 — ex: liderança sob pressão]
+2. [competência 2 — ex: orientação a dados]
+3. [competência 3 — ex: comunicação com stakeholders]
+4. [competência 4 — ex: adaptabilidade]
+
+Para cada competência:
+- 2 perguntas comportamentais no formato STAR (Situação, Tarefa, Ação, Resultado)
+- 1 pergunta de aprofundamento (follow-up)
+- Indicadores de resposta forte vs resposta fraca
+
+Também sugira 3 perguntas para avaliar alinhamento com os valores da empresa: [liste os valores].</div>
+
+  <h2>4. Análise de fit cultural sem viés</h2>
+  <p>Fit cultural é um dos critérios mais mal aplicados no RH — frequentemente usado de forma inconsciente para favorecer quem "parece familiar" ao entrevistador, o que reforça falta de diversidade. A IA pode ajudar a tornar esse critério mais objetivo, traduzindo valores abstratos em comportamentos observáveis.</p>
+
+  <div class="prompt-box">Nossa empresa tem os seguintes valores declarados: [liste os valores].
+
+Ajude-me a criar:
+1. Uma definição comportamental para cada valor (como esse valor se manifesta em ações concretas no dia a dia)
+2. 2 perguntas de entrevista para avaliar cada valor de forma objetiva
+3. Uma escala de avaliação (1-4) com descrição do comportamento esperado em cada nível
+
+Objetivo: tornar a avaliação de fit cultural mensurável e consistente entre entrevistadores diferentes.</div>
+
+  <h2>5. Comunicação com candidatos: respostas rápidas e humanizadas</h2>
+  <p>Um dos maiores pontos de atrito no processo seletivo é a comunicação com candidatos — especialmente os feedbacks de reprovação, que muitas vezes são genéricos ou simplesmente não chegam. Com IA, você pode criar comunicações mais humanas mesmo em processos de alto volume.</p>
+
+  <div class="prompt-box">Crie 4 modelos de e-mail para comunicação com candidatos:
+
+1. Confirmação de recebimento de candidatura (tom: acolhedor, 3-4 linhas)
+2. Convite para entrevista (tom: profissional e animado, com instruções claras)
+3. Feedback de reprovação após entrevista (tom: respeitoso e construtivo — mencione 1 ponto positivo e 1 sugestão de desenvolvimento, sem revelar detalhes que possam gerar questionamentos jurídicos)
+4. Proposta de emprego (tom: entusiasta, com próximos passos claros)
+
+Todos os e-mails devem ter campos variáveis entre colchetes para personalização: [Nome], [Cargo], [Data], etc.</div>
+
+  <h2>6. Onboarding estruturado com IA</h2>
+  <p>Os primeiros 90 dias de um novo colaborador são determinantes para retenção — estudos mostram que colaboradores com onboarding estruturado têm 82% mais chance de ficar na empresa além de um ano. A IA pode ajudar a criar programas de onboarding completos e personalizados para cada cargo.</p>
+
+  <div class="prompt-box">Crie um plano de onboarding de 90 dias para um novo [cargo] que vai trabalhar em [equipe/área].
+
+Divida em três fases:
+- Dias 1-30: Absorção (cultura, ferramentas, processos, relações)
+- Dias 31-60: Contribuição (primeiras entregas supervisionadas)
+- Dias 61-90: Autonomia (entregas independentes com metas definidas)
+
+Para cada fase, defina:
+- Objetivos de aprendizagem
+- Atividades e encontros essenciais
+- Recursos necessários (documentos, treinamentos, pessoas-chave)
+- Marco de avaliação ao final da fase
+- Perguntas de check-in para o gestor fazer nas 1:1s
+
+Tom do documento: prático, como um guia de uso para o gestor direto.</div>
+
+  <h2>7. Pesquisa de clima e análise de dados de RH</h2>
+  <p>A IA também é poderosa para analisar dados que o RH já coleta — respostas de pesquisa de clima, avaliações de desempenho, dados de turnover — e transformar esses dados em insights acionáveis.</p>
+
+  <div class="prompt-box">Tenho os resultados de uma pesquisa de clima com [X] respondentes. Aqui estão as respostas abertas da pergunta "O que você melhoraria na empresa?" [cole as respostas].
+
+Por favor:
+1. Agrupe os temas recorrentes em categorias
+2. Calcule a frequência relativa de cada categoria
+3. Identifique os 3 temas mais críticos (alta frequência + alto impacto potencial)
+4. Para cada tema crítico, sugira 2 iniciativas concretas que a empresa poderia adotar
+5. Sinalize se há algum comentário que indica situação de urgência (assédio, saúde mental, segurança)</div>
+
+  <h2>Limites éticos e legais que o RH precisa respeitar</h2>
+  <p>Com tanto potencial, é importante marcar os limites. Decisões finais de contratação, promoção ou demissão não devem ser delegadas inteiramente à IA — a responsabilidade é e precisa ser humana. A IA deve informar e agilizar, não decidir.</p>
+  <p>No Brasil, a CLT e a LGPD impõem obrigações claras sobre tratamento de dados de candidatos e colaboradores. Antes de implementar qualquer solução de IA no RH, envolva o jurídico da empresa para garantir conformidade, especialmente se você está usando ferramentas externas que vão receber dados pessoais de candidatos.</p>
+  <p>Outro ponto importante: monitore os outputs da IA. Se você perceber que os critérios de triagem estão consistentemente desfavorecendo um grupo específico (por gênero, idade, origem), isso é um sinal de viés que precisa ser corrigido nos prompts ou nos critérios de avaliação — não ignorado.</p>
+
+  <h2>Por onde começar na sua empresa</h2>
+  <p>Se você é um profissional de RH que ainda não usa IA no dia a dia, comece por onde a dor é maior. Para a maioria das equipes, isso é a criação de descrições de vaga ou a comunicação com candidatos — tarefas de alto volume e baixa variabilidade que a IA resolve muito bem. Use o ChatGPT ou Claude gratuitamente com os prompts deste artigo e veja como eles se encaixam no seu processo.</p>
+  <p>Em seguida, avance para triagem e entrevistas — mas com os devidos cuidados legais e éticos. O objetivo não é remover o julgamento humano do RH, mas liberar o profissional de tarefas operacionais para que ele possa se dedicar ao que a IA não faz: construir relações, liderança empática e estratégia de pessoas.</p>
+
+  <div class="nl-cta-art">
+    <h3>📬 Prompts práticos para RH toda semana</h3>
+    <p>A newsletter do PromptBR traz todo tipo de prompt — inclusive para quem trabalha com pessoas e gestão.</p>
+    <p class="ebook-line">🎁 Bônus: e-book gratuito "8 Formas de Ganhar Dinheiro com Claude AI"</p>
+    <a href="newsletter.html">Assinar grátis →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-ia-para-pequenas-empresas.html">
+      <div class="nav-label">← Anterior</div>
+      <div class="nav-title">IA para pequenas empresas: por onde começar</div>
+    </a>
+    <a href="artigo-curriculo.html">
+      <div class="nav-label">Próximo →</div>
+      <div class="nav-title">Currículo com IA em 15 minutos</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-curriculo.html">Currículo com IA</a></li><li><a href="artigo-ia-para-pequenas-empresas.html">IA p/ Pequenas Empresas</a></li><li><a href="artigo-ia-marketing-digital.html">IA no Marketing</a></li><li><a href="artigo-produtividade-com-ia.html">Produtividade com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var b=document.getElementById('back-to-top');if(!b)return;window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.visibility='visible';b.style.transform='translateY(0)';}else{b.style.opacity='0';b.style.visibility='hidden';b.style.transform='translateY(12px)';}},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});b.addEventListener('mouseenter',function(){b.style.background='#00ff88';});b.addEventListener('mouseleave',function(){b.style.background='var(--green)';});})();</script>
+</body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor AI: O Editor de Código com IA que está Substituindo o VS Code — PromptBR</title>
+  <meta name="description" content="Guia completo do Cursor AI: como instalar, configurar e usar o editor de código com inteligência artificial para programar mais rápido. Dicas, atalhos e comparativo com GitHub Copilot.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .code-box{background:#0d1117;border:1px solid #30363d;border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:#c9d1d9;white-space:pre-wrap;overflow-x:auto;}
+    .code-box .kw{color:#ff7b72;}.code-box .str{color:#a5d6ff;}.code-box .cm{color:#8b949e;font-style:italic;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;}
+    .shortcut-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0;}
+    .shortcut-item{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .shortcut-action{font-size:13px;color:var(--text-2);}
+    .shortcut-key{font-family:var(--font-mono);font-size:11px;background:var(--bg-3);border:1px solid var(--border);padding:3px 8px;border-radius:4px;color:var(--text-3);white-space:nowrap;}
+    .table-wrap{overflow-x:auto;margin:20px 0;}
+    .comp-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+    .comp-table th{background:var(--bg-3);padding:11px 14px;text-align:left;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+    .comp-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;}
+    .badge-ok{background:rgba(0,230,118,.12);color:#00e676;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;}
+    .badge-med{background:rgba(255,180,0,.12);color:#ffb300;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:600px){.shortcut-grid{grid-template-columns:1fr;}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-ZK59708GWD');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">💻 Cursor AI ultrapassa 1 milhão de devs ativos</span>
+    <span class="ticker-item">⚡ GitHub Copilot lança modo agente</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">💻 Cursor AI ultrapassa 1 milhão de devs ativos</span>
+    <span class="ticker-item">⚡ GitHub Copilot lança modo agente</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<section class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Programação · IA para Devs</div>
+    <h1>Cursor AI: o Editor de Código com IA que está Substituindo o VS Code</h1>
+    <p class="desc">O Cursor é o editor de código que coloca um modelo de linguagem avançado diretamente no seu fluxo de trabalho. Mais do que autocompletar, é um parceiro de programação que lê seu codebase inteiro e escreve, refatora e debugga ao seu lado.</p>
+    <div class="art-meta">
+      <span>📅 Abril 2026</span>
+      <span>⏱ 13 min de leitura</span>
+      <span>🏷 Programação · Ferramentas</span>
+    </div>
+  </div>
+</section>
+
+<div class="art-wrap">
+
+  <ins class="adsbygoogle" style="display:block;margin-bottom:32px;" data-ad-client="ca-pub-3823120055728050" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>O que é o Cursor e por que os desenvolvedores estão migrando</h2>
+  <p>O Cursor é um editor de código construído sobre o VS Code — o que significa que ele tem a mesma interface, suporta as mesmas extensões e tem a mesma sensibilidade de uso que você já conhece. A diferença fundamental é que o Cursor foi redesenhado do zero para integrar IA de forma profunda, não como um plugin adicional, mas como uma camada nativa do editor.</p>
+  <p>Enquanto o GitHub Copilot é essencialmente um autocomplete muito inteligente, o Cursor vai além: ele tem contexto de todo o seu projeto. Você pode abrir um arquivo de 2000 linhas, selecionar uma função específica e pedir ao Cursor para refatorá-la seguindo os padrões do restante do codebase — e ele vai entender o estilo de código do projeto inteiro, não apenas o trecho selecionado.</p>
+  <p>Desde o seu lançamento, o Cursor cresceu de forma explosiva. A razão é simples: desenvolvedores que o testaram relatam ganhos de produtividade reais — não os exagerados de marketing, mas o tipo de melhoria que você sente no trabalho do dia a dia.</p>
+
+  <h2>Instalação e primeiros passos</h2>
+  <p>O Cursor está disponível para Windows, macOS e Linux. Acesse <strong>cursor.com</strong>, baixe e instale normalmente. Na primeira vez que você abrir, o editor vai oferecer importar suas configurações do VS Code — extensões, tema, atalhos, tudo. Em 30 segundos você está no ambiente que já conhece, mas com IA nativa.</p>
+  <p>O plano gratuito oferece 2000 autocompleções por mês e 50 conversas com o modelo avançado — suficiente para avaliar se vale a pena. O plano Pro (US$ 20/mês) remove esses limites e dá acesso aos modelos mais recentes, incluindo Claude 3.5 Sonnet, GPT-4o e outros.</p>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <p><strong>Dica:</strong> Na primeira semana, não tente usar todas as funcionalidades. Foque nos três comandos mais impactantes: <strong>Tab</strong> (autocomplete), <strong>Ctrl+K</strong> (edição inline) e <strong>Ctrl+L</strong> (chat com contexto do arquivo). Com esses três você já vai sentir a diferença.</p>
+  </div>
+
+  <h2>Os 4 modos de uso do Cursor</h2>
+  <h3>1. Autocomplete inteligente (Tab)</h3>
+  <p>O autocomplete do Cursor vai muito além de completar a linha atual. Ele analisa o que você está escrevendo, entende o padrão do arquivo e sugere blocos inteiros de código contextual. Você começa a digitar uma função e ele sugere a implementação completa baseada em como funções similares estão escritas no seu projeto.</p>
+  <p>O diferencial aqui é o que o Cursor chama de "ghost text" — o código sugerido aparece em cinza, você vê exatamente o que será inserido antes de aceitar, e pode aceitar com Tab ou ignorar continuando a digitar.</p>
+
+  <h3>2. Edição inline com Ctrl+K</h3>
+  <p>Selecione qualquer trecho de código, pressione Ctrl+K e descreva o que você quer fazer. O Cursor edita o código selecionado diretamente, mostrando um diff antes de aplicar. É como ter um par de programação que implementa exatamente o que você descreve, sem você precisar digitar.</p>
+
+  <div class="prompt-box">Exemplos de prompts para Ctrl+K:
+
+"Adicione tratamento de erro com try/catch nessa função"
+"Converta este código para async/await"
+"Adicione validação de tipos TypeScript em todos os parâmetros"
+"Simplifique essa lógica, está complexa demais"
+"Adicione comentários JSDoc para todos os métodos"
+"Renomeie todas as variáveis para seguir o padrão camelCase"</div>
+
+  <h3>3. Chat com contexto do projeto (Ctrl+L)</h3>
+  <p>O chat do Cursor (acessado com Ctrl+L) é onde a mágica acontece para projetos maiores. Diferente de um chat genérico de IA, o Cursor pode indexar todos os arquivos do seu projeto e responder perguntas sobre o codebase inteiro.</p>
+
+  <div class="prompt-box">Exemplos de perguntas no chat do Cursor:
+
+"Onde nesse projeto a autenticação do usuário é validada?"
+"Qual é o fluxo de dados entre o componente UserProfile e a API?"
+"Tenho um bug: ao criar um novo pedido, o estoque não é atualizado. Qual parte do código provavelmente é responsável?"
+"Como eu deveria implementar cache para as chamadas à API /products?"
+"Explique o que essa função faz e por que foi implementada assim"</div>
+
+  <h3>4. Modo Composer (Ctrl+Shift+I): múltiplos arquivos de uma vez</h3>
+  <p>O Composer é o recurso mais avançado do Cursor. Ele permite criar ou editar múltiplos arquivos em uma única instrução. Você descreve uma feature completa e o Cursor cria todos os arquivos necessários — componente, estilos, testes, tipos TypeScript — de uma vez.</p>
+
+  <div class="prompt-box">Crie uma feature completa de autenticação com:
+- Componente React de formulário de login (LoginForm.tsx)
+- Hook customizado para gerenciar o estado de auth (useAuth.ts)
+- Serviço de API para comunicação com o backend (authService.ts)
+- Tipos TypeScript (auth.types.ts)
+
+Use o padrão já existente no projeto para estrutura de pastas e nomenclatura.</div>
+
+  <h2>Atalhos essenciais do Cursor</h2>
+  <div class="shortcut-grid">
+    <div class="shortcut-item"><span class="shortcut-action">Aceitar autocomplete</span><kbd class="shortcut-key">Tab</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Rejeitar autocomplete</span><kbd class="shortcut-key">Esc</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Editar seleção com IA</span><kbd class="shortcut-key">Ctrl + K</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Abrir chat</span><kbd class="shortcut-key">Ctrl + L</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Abrir Composer</span><kbd class="shortcut-key">Ctrl + I</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Aplicar sugestão do chat</span><kbd class="shortcut-key">Ctrl + Enter</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Indexar projeto inteiro</span><kbd class="shortcut-key">Ctrl + Shift + P → Cursor: Index</kbd></div>
+    <div class="shortcut-item"><span class="shortcut-action">Adicionar arquivo ao contexto</span><kbd class="shortcut-key">@ no chat</kbd></div>
+  </div>
+
+  <h2>Cursor vs GitHub Copilot: comparativo honesto</h2>
+  <div class="table-wrap">
+    <table class="comp-table">
+      <thead><tr><th>Critério</th><th>Cursor</th><th>GitHub Copilot</th></tr></thead>
+      <tbody>
+        <tr><td>Contexto do projeto</td><td><span class="badge-ok">Indexa o projeto inteiro</span></td><td><span class="badge-med">Arquivo atual + abertos</span></td></tr>
+        <tr><td>Edição de múltiplos arquivos</td><td><span class="badge-ok">Sim (Composer)</span></td><td><span class="badge-med">Limitado</span></td></tr>
+        <tr><td>Modelos disponíveis</td><td><span class="badge-ok">GPT-4o, Claude, Gemini</span></td><td><span class="badge-med">GPT-4o principal</span></td></tr>
+        <tr><td>Chat com codebase</td><td><span class="badge-ok">Nativo e profundo</span></td><td><span class="badge-med">Disponível, menos preciso</span></td></tr>
+        <tr><td>Integração com IDE</td><td><span class="badge-ok">Editor nativo</span></td><td><span class="badge-ok">Plugin VS Code / JetBrains</span></td></tr>
+        <tr><td>Preço (Pro)</td><td>US$ 20/mês</td><td>US$ 10-19/mês</td></tr>
+        <tr><td>Versão gratuita</td><td><span class="badge-ok">Sim (limitada)</span></td><td><span class="badge-ok">Sim (limitada)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A conclusão prática: para projetos pequenos e uso individual, o GitHub Copilot é mais barato e suficiente. Para projetos maiores, trabalho em equipe ou quando você precisa que a IA entenda a arquitetura completa do sistema, o Cursor tem vantagem clara.</p>
+
+  <h2>Como usar o Cursor para debugar código</h2>
+  <p>O debugging com Cursor é uma das funcionalidades que mais economiza tempo. Quando você tem um erro, em vez de pesquisar no Stack Overflow ou copiar o stack trace para o ChatGPT, você simplesmente cola o erro no chat do Cursor com Ctrl+L — e ele já tem o contexto do arquivo onde aconteceu.</p>
+
+  <div class="prompt-box">Estou recebendo esse erro ao executar o servidor:
+
+TypeError: Cannot read properties of undefined (reading 'user')
+  at authMiddleware (src/middleware/auth.js:23:18)
+  at Layer.handle [as handle_request]
+
+O que está causando e como corrigir? Mostre a correção no código.</div>
+
+  <p>O Cursor vai analisar o arquivo mencionado no stack trace, entender o contexto e sugerir a correção diretamente no código, com um diff mostrando exatamente o que vai mudar. Você aceita ou rejeita com um clique.</p>
+
+  <h2>Boas práticas para maximizar o Cursor</h2>
+  <ul>
+    <li><strong>Use o arquivo .cursorrules:</strong> crie um arquivo chamado `.cursorrules` na raiz do projeto com instruções permanentes para o Cursor — por exemplo, "sempre use TypeScript strict, siga os padrões do Airbnb Style Guide, use React functional components". Essas regras se aplicam a todas as interações.</li>
+    <li><strong>Seja específico nos prompts:</strong> "melhore essa função" gera resultados mediocres. "Refatore essa função para reduzir complexidade ciclomática, extraindo a validação para uma função separada" gera resultados excelentes.</li>
+    <li><strong>Use @ para referenciar arquivos:</strong> no chat, você pode mencionar arquivos específicos com @NomeDoArquivo para dar contexto preciso ao Cursor sem precisar abrir os arquivos manualmente.</li>
+    <li><strong>Revise os diffs antes de aceitar:</strong> o Cursor mostra sempre o que vai mudar. Nunca aceite cegamente — leia o diff e entenda o que está sendo alterado.</li>
+    <li><strong>Indexe o projeto no começo:</strong> use Cursor: Index Codebase no primeiro uso em um projeto novo. Isso melhora drasticamente a qualidade das respostas relacionadas à arquitetura.</li>
+  </ul>
+
+  <h2>Vale a pena para quem está aprendendo a programar?</h2>
+  <p>Essa é uma questão legítima e importante. O Cursor é extraordinariamente útil para quem está aprendendo, mas com uma ressalva: use-o para entender código, não apenas para gerá-lo. Quando o Cursor escreve uma função para você, abra o chat e pergunte "explique linha por linha o que esse código faz e por quê". Isso transforma o Cursor em um tutor interativo, não em um gerador de código que você cola sem entender.</p>
+  <p>Iniciantes que usam Cursor dessa forma — gerando, entendendo e experimentando — aprendem mais rápido do que lendo tutoriais passivamente. O perigo está em usar o Cursor como um "gerador de cola": você até entrega o trabalho, mas não aprende nada.</p>
+
+  <div class="nl-cta-art">
+    <h3>📬 Prompts para programadores toda semana</h3>
+    <p>A newsletter do PromptBR traz prompts práticos para devs, novidades de IA e dicas de ferramentas.</p>
+    <p class="ebook-line">🎁 Bônus gratuito: e-book "8 Formas de Ganhar Dinheiro com Claude AI"</p>
+    <a href="newsletter.html">Assinar grátis →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-automacao.html">
+      <div class="nav-label">← Anterior</div>
+      <div class="nav-title">Make vs n8n vs Zapier: qual usar?</div>
+    </a>
+    <a href="artigo-produtividade-com-ia.html">
+      <div class="nav-label">Próximo →</div>
+      <div class="nav-title">Produtividade com IA: 20 técnicas que funcionam</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-produtividade-com-ia.html">Produtividade</a></li><li><a href="artigo-claude-vs-chatgpt.html">Claude vs ChatGPT</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var b=document.getElementById('back-to-top');if(!b)return;window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.visibility='visible';b.style.transform='translateY(0)';}else{b.style.opacity='0';b.style.visibility='hidden';b.style.transform='translateY(12px)';}},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});b.addEventListener('mouseenter',function(){b.style.background='#00ff88';});b.addEventListener('mouseleave',function(){b.style.background='var(--green)';});})();</script>
+</body></html>
