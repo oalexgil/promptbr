@@ -48,7 +48,6 @@
     .g1{background:linear-gradient(135deg,#031a08,#065c20);}.g2{background:linear-gradient(135deg,#1a0d03,#5c2a06);}
     .g3{background:linear-gradient(135deg,#030d1a,#063a5c);}.g4{background:linear-gradient(135deg,#1a1703,#5c520a);}
     .g5{background:linear-gradient(135deg,#170316,#540a50);}.g6{background:linear-gradient(135deg,#031018,#063a5c);}
-    /* Banners simples */
     .nl-banner{background:var(--bg-2);border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
     .nl-banner-icon{font-size:2rem;flex-shrink:0;}
     .nl-banner-text{flex:1;min-width:160px;}
@@ -63,7 +62,6 @@
     .nl-sidebar-box a.btn-nl{display:block;background:var(--green);color:#000;text-align:center;padding:10px;border-radius:var(--radius);font-weight:700;font-size:13px;transition:background .2s;}
     .nl-sidebar-box a.btn-nl:hover{background:#00ff88;}
     @media(max-width:900px){.nl{grid-template-columns:1fr;}.news-hero{grid-template-columns:1fr;}.nh-thumb{min-height:160px;}.ng{grid-template-columns:1fr;}.sidebar{position:static;}.nl-banner{flex-direction:column;align-items:flex-start;}}
-
     .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
     .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
     .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
@@ -85,14 +83,14 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
     <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
-    <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
     <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
+    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
   </div>
@@ -100,7 +98,7 @@
 
 <section class="ph">
   <div class="ph-inner">
-    <div class="ph-kick"><span class="ph-kick-dot"></span> Atualizado hoje · 15 de Abril de 2026</div>
+    <div class="ph-kick"><span class="ph-kick-dot"></span> Atualizado hoje · 24 de Abril de 2026</div>
     <h1>Notícias sobre IA</h1>
     <p>As novidades do mundo da Inteligência Artificial que mudam o seu dia a dia.</p>
   </div>
@@ -114,7 +112,7 @@
       <div class="nl-banner-text">
         <h4>Receba o resumo das notícias de IA toda segunda-feira</h4>
         <p>5 notícias essenciais, 1 prompt e 2 ferramentas — em 5 minutos. Grátis.</p>
-          <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
+        <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
       </div>
       <a href="newsletter.html" class="btn-nl">Receber resumo →</a>
     </div>
@@ -125,27 +123,49 @@
   <main>
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Destaque do Dia</h2><div class="sec-line"></div></div></div>
 
-    <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="news-hero reveal">
-      <div class="nh-thumb g4" style="display:flex;align-items:center;justify-content:center;padding:20px;"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M18.5 8.5C11.6 8.5 6 14.1 6 21s5.6 12.5 12.5 12.5S31 27.9 31 21 25.4 8.5 18.5 8.5zm0 22C13.3 30.5 9 26.2 9 21s4.3-9.5 9.5-9.5 9.5 4.3 9.5 9.5-4.3 9.5-9.5 9.5z" fill="#fff"/>
-    <text x="35" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">OpenAI</text>
-  </svg></div>
+    <!-- NOTÍCIA DESTAQUE — GPT-5.5 (nova, 23 Abr 2026) -->
+    <a href="https://pt.dataconomy.com/2026/04/23/o-gpt-5-5-da-openai-ja-esta-ativo/" target="_blank" rel="noopener" class="news-hero reveal">
+      <div class="nh-thumb g4" style="display:flex;align-items:center;justify-content:center;padding:20px;">
+        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.5 8.5C11.6 8.5 6 14.1 6 21s5.6 12.5 12.5 12.5S31 27.9 31 21 25.4 8.5 18.5 8.5zm0 22C13.3 30.5 9 26.2 9 21s4.3-9.5 9.5-9.5 9.5 4.3 9.5 9.5-4.3 9.5-9.5 9.5z" fill="#fff"/>
+          <text x="35" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">OpenAI</text>
+        </svg>
+      </div>
       <div class="nh-body">
-        <div class="nsrc">OpenAI · Abr 15, 2026</div>
-        <h2>GPT-5 lançado com raciocínio avançado e custo 60% menor</h2>
-        <p>A OpenAI lançou o GPT-5 combinando velocidade do GPT-4o com raciocínio profundo. Desenvolvedores relatam ganhos expressivos em análise complexa e código.</p>
-        <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;" onclick="event.stopPropagation()">Ler no OpenAI →</a>
-        <div class="ndate">📅 15 de Abril de 2026 · 3 min</div>
+        <div class="nsrc">OpenAI · Abr 23, 2026</div>
+        <h2>GPT-5.5 é lançado: mais autônomo e ideal para fluxos de trabalho complexos</h2>
+        <p>A OpenAI lançou o GPT-5.5, descrito como o modelo mais avançado e fácil de usar até agora. Foco em tarefas autônomas de múltiplas etapas, com melhorias em codificação e pesquisa integrada.</p>
+        <a href="https://pt.dataconomy.com/2026/04/23/o-gpt-5-5-da-openai-ja-esta-ativo/" target="_blank" rel="noopener" class="btn btn-green" style="align-self:flex-start;font-size:13px;padding:10px 20px;" onclick="event.stopPropagation()">Ler mais →</a>
+        <div class="ndate">📅 23 de Abril de 2026 · 4 min</div>
       </div>
     </a>
 
-    <div class="sec-head reveal"><div class="sec-head-left"><h2>Hoje</h2><div class="sec-line"></div></div></div>
+    <div class="sec-head reveal"><div class="sec-head-left"><h2>Esta Semana</h2><div class="sec-line"></div></div></div>
     <div class="ng">
+      <!-- NOTÍCIA NOVA — Meta Muse Spark -->
+      <a href="https://oseringal.com.br/2026/04/meta-finalmente-apresenta-plano-para-futuro-da-ia-na-empresa/" target="_blank" rel="noopener" class="nc reveal">
+        <div class="nc-thumb g5" style="display:flex;align-items:center;justify-content:center;padding:16px;">
+          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="30" height="30" rx="6" fill="#0082FB"/>
+            <text x="9" y="27" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#fff">M</text>
+            <text x="40" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Meta AI</text>
+          </svg>
+        </div>
+        <div class="nc-body">
+          <div class="nsrc">Meta · Abr 2026</div>
+          <h3>Meta lança Muse Spark e desafia OpenAI e Google na corrida da IA</h3>
+          <p>Primeiro grande modelo do Meta Superintelligence Labs foca em raciocínio científico e matemático.</p>
+          <div class="nc-meta"><span>Abr 2026</span><span>5 min</span></div>
+        </div>
+      </a>
+
       <a href="https://www.anthropic.com/news" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g1" style="display:flex;align-items:center;justify-content:center;padding:16px;"><svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
-    <text x="8" y="27" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#d4a373">Anthropic</text>
-    <rect x="8" y="31" width="90" height="1.5" fill="#d4a37366"/>
-  </svg></div>
+        <div class="nc-thumb g1" style="display:flex;align-items:center;justify-content:center;padding:16px;">
+          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="8" y="27" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#d4a373">Anthropic</text>
+            <rect x="8" y="31" width="90" height="1.5" fill="#d4a37366"/>
+          </svg>
+        </div>
         <div class="nc-body">
           <div class="nsrc">Anthropic · Claude</div>
           <h3>Claude 4 opera computadores de forma autônoma por horas</h3>
@@ -154,11 +174,13 @@
         </div>
       </a>
       <a href="https://blog.google/products/gemini/" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g3" style="display:flex;align-items:center;justify-content:center;padding:16px;"><svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="20" cy="20" r="12" fill="none" stroke="#4285F4" stroke-width="3"/>
-    <path d="M20 8 L20 20 L30 20" stroke="#EA4335" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="38" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#fff">Gemini</text>
-  </svg></div>
+        <div class="nc-thumb g3" style="display:flex;align-items:center;justify-content:center;padding:16px;">
+          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="12" fill="none" stroke="#4285F4" stroke-width="3"/>
+            <path d="M20 8 L20 20 L30 20" stroke="#EA4335" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <text x="38" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#fff">Gemini</text>
+          </svg>
+        </div>
         <div class="nc-body">
           <div class="nsrc">Google · Gemini</div>
           <h3>Gemini Deep Research disponível em português brasileiro</h3>
@@ -167,11 +189,13 @@
         </div>
       </a>
       <a href="https://www.linkedin.com/jobs/search/?keywords=prompt+engineer&location=Brasil" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g2" style="display:flex;align-items:center;justify-content:center;padding:16px;"><svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
-    <rect x="5" y="5" width="30" height="30" rx="5" fill="#0A66C2"/>
-    <text x="12" y="26" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#fff">in</text>
-    <text x="42" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">LinkedIn</text>
-  </svg></div>
+        <div class="nc-thumb g2" style="display:flex;align-items:center;justify-content:center;padding:16px;">
+          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="30" height="30" rx="5" fill="#0A66C2"/>
+            <text x="12" y="26" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#fff">in</text>
+            <text x="42" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">LinkedIn</text>
+          </svg>
+        </div>
         <div class="nc-body">
           <div class="nsrc">Mercado · Carreira</div>
           <h3>Vagas de "engenheiro de prompt" crescem 340% no Brasil</h3>
@@ -179,22 +203,9 @@
           <div class="nc-meta"><span>Abr 15</span><span>5 min</span></div>
         </div>
       </a>
-      <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="nc reveal">
-        <div class="nc-thumb g5" style="display:flex;align-items:center;justify-content:center;padding:16px;"><svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 32 L20 8 L32 32 Z" fill="none" stroke="#fff" stroke-width="2"/>
-    <path d="M22 32 L34 8 L46 32 Z" fill="none" stroke="#fff" stroke-width="2"/>
-    <text x="52" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">Midjourney</text>
-  </svg></div>
-        <div class="nc-body">
-          <div class="nsrc">Midjourney · Design</div>
-          <h3>Midjourney v7 traz consistência de personagens e modo vídeo</h3>
-          <p>Nova versão resolve o maior problema: manter o mesmo personagem em cenas diferentes.</p>
-          <div class="nc-meta"><span>Abr 14</span><span>4 min</span></div>
-        </div>
-      </a>
     </div>
 
-    <!-- BANNER NEWSLETTER IN-FEED SIMPLES -->
+    <!-- BANNER NEWSLETTER IN-FEED -->
     <div style="margin-bottom:32px;" class="reveal">
       <div class="nl-banner">
         <div class="nl-banner-icon">⚡</div>
@@ -210,86 +221,104 @@
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Notícias</h2><div class="sec-line"></div></div></div>
     <div class="nlist">
       <a href="https://n8n.io/blog/" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g6" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 6 L36 14 L36 16 L4 16 L4 14 Z" fill="#4da6ff"/>
-    <rect x="7"  y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="13" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="19" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="25" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="31" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="4"  y="30" width="32" height="3"  fill="#4da6ff"/>
-    <text x="42" y="25" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#4da6ff">Regulação</text>
-  </svg></div>
+        <div class="nr-thumb g6" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6 L36 14 L36 16 L4 16 L4 14 Z" fill="#4da6ff"/>
+            <rect x="7" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="13" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="19" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="25" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="31" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="4" y="30" width="32" height="3" fill="#4da6ff"/>
+            <text x="42" y="25" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#4da6ff">Regulação</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Automação · n8n</div><div class="nr-title">n8n lança 50 novos nós de IA para automação sem código</div><div class="nr-meta">15 Abr 2026 · 3 min</div></div>
       </a>
       <a href="https://about.fb.com/news/" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g1" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 20 C8 13 13 8 20 8 C27 8 32 13 32 20 C32 27 27 32 20 32 L8 34 Z" fill="#25D366"/>
-    <path d="M15 23 L17 18 C17 18 19 21 21 21 C23 21 25 19 25 17 C25 15 23 14 21 14 C17 14 14 17 14 20 C14 21 15 22 15 23Z" fill="#fff"/>
-    <text x="38" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">WhatsApp</text>
-  </svg></div>
+        <div class="nr-thumb g1" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20 C8 13 13 8 20 8 C27 8 32 13 32 20 C32 27 27 32 20 32 L8 34 Z" fill="#25D366"/>
+            <path d="M15 23 L17 18 C17 18 19 21 21 21 C23 21 25 19 25 17 C25 15 23 14 21 14 C17 14 14 17 14 20 C14 21 15 22 15 23Z" fill="#fff"/>
+            <text x="38" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">WhatsApp</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Meta · WhatsApp</div><div class="nr-title">Meta AI no WhatsApp ganha memória entre conversas no Brasil</div><div class="nr-meta">15 Abr 2026 · 2 min</div></div>
       </a>
       <a href="https://runwayml.com/blog" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g4" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <rect x="5" y="12" width="26" height="16" rx="3" fill="#fff" opacity="0.15"/>
-    <path d="M12 18 L12 22 M16 16 L16 24 M20 14 L20 26 M24 17 L24 23" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-    <text x="36" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">Runway</text>
-  </svg></div>
+        <div class="nr-thumb g4" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="12" width="26" height="16" rx="3" fill="#fff" opacity="0.15"/>
+            <path d="M12 18 L12 22 M16 16 L16 24 M20 14 L20 26 M24 17 L24 23" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="36" y="25" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">Runway</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Vídeo IA · Runway</div><div class="nr-title">Runway Gen-4 gera vídeos 4K de até 2 minutos a partir de texto</div><div class="nr-meta">14 Abr 2026 · 4 min</div></div>
       </a>
       <a href="https://www.nature.com/subjects/artificial-intelligence" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g2" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 110 40" xmlns="http://www.w3.org/2000/svg">
-    <rect x="5" y="5" width="30" height="30" rx="5" fill="#e63946" opacity="0.8"/>
-    <path d="M20 11 L20 29 M12 20 L28 20" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-    <text x="40" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#e63946">Saúde IA</text>
-  </svg></div>
+        <div class="nr-thumb g2" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 110 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="30" height="30" rx="5" fill="#e63946" opacity="0.8"/>
+            <path d="M20 11 L20 29 M12 20 L28 20" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <text x="40" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#e63946">Saúde IA</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Saúde · IA</div><div class="nr-title">IA diagnostica câncer de pele com precisão superior a dermatologistas</div><div class="nr-meta">14 Abr 2026 · 5 min</div></div>
       </a>
       <a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g3" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 110 40" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="20,6 34,14 34,28 20,36 6,28 6,14" fill="#009c3b" opacity="0.9"/>
-    <text x="16" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#fff">MEC</text>
-    <text x="40" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#009c3b">Educação</text>
-  </svg></div>
+        <div class="nr-thumb g3" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 110 40" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,6 34,14 34,28 20,36 6,28 6,14" fill="#009c3b" opacity="0.9"/>
+            <text x="16" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#fff">MEC</text>
+            <text x="40" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#009c3b">Educação</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Educação</div><div class="nr-title">MEC anuncia programa nacional para integrar IA em escolas públicas até 2027</div><div class="nr-meta">13 Abr 2026 · 3 min</div></div>
       </a>
       <a href="https://abstartups.com.br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g5" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
-    <polyline points="6,30 20,18 30,24 46,10" stroke="#00e676" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="46" cy="10" r="3" fill="#00e676"/>
-    <text x="52" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#00e676">Startups BR</text>
-  </svg></div>
+        <div class="nr-thumb g5" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="6,30 20,18 30,24 46,10" stroke="#00e676" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="46" cy="10" r="3" fill="#00e676"/>
+            <text x="52" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#00e676">Startups BR</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Investimento</div><div class="nr-title">Startups de IA brasileiras captam R$2,8 bilhões no primeiro trimestre de 2026</div><div class="nr-meta">13 Abr 2026 · 4 min</div></div>
       </a>
       <a href="https://www.camara.leg.br" target="_blank" rel="noopener" class="nr reveal">
-        <div class="nr-thumb g6" style="display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 6 L36 14 L36 16 L4 16 L4 14 Z" fill="#4da6ff"/>
-    <rect x="7"  y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="13" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="19" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="25" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="31" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
-    <rect x="4"  y="30" width="32" height="3"  fill="#4da6ff"/>
-    <text x="42" y="25" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#4da6ff">Regulação</text>
-  </svg></div>
+        <div class="nr-thumb g6" style="display:flex;align-items:center;justify-content:center;padding:8px;">
+          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6 L36 14 L36 16 L4 16 L4 14 Z" fill="#4da6ff"/>
+            <rect x="7" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="13" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="19" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="25" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="31" y="16" width="4" height="14" fill="#4da6ff" opacity="0.8"/>
+            <rect x="4" y="30" width="32" height="3" fill="#4da6ff"/>
+            <text x="42" y="25" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#4da6ff">Regulação</text>
+          </svg>
+        </div>
         <div><div class="nr-src">Regulação · Brasil</div><div class="nr-title">Brasil avança no marco legal da IA: Câmara aprova regulamentação com foco em transparência</div><div class="nr-meta">12 Abr 2026 · 6 min</div></div>
       </a>
     </div>
 
     <div class="nl-block reveal">
-    <h3>Não perca nenhuma <span>novidade</span></h3>
-    <p>Toda segunda: as notícias de IA da semana resumidas em 5 minutos.</p>
-    <p style="font-size:12px;color:var(--green);font-weight:600;margin:-8px 0 12px;">🎁 Bônus: e-book <em>8 Formas de Monetizar com Claude AI</em> para novos assinantes</p>
-    <div class="nl-form">
-      <input type="email" placeholder="seu@email.com" class="beehiiv-email">
-      <button type="button" class="beehiiv-btn">Assinar grátis</button>
+      <h3>Não perca nenhuma <span>novidade</span></h3>
+      <p>Toda segunda: as notícias de IA da semana resumidas em 5 minutos.</p>
+      <p style="font-size:12px;color:var(--green);font-weight:600;margin:-8px 0 12px;">🎁 Bônus: e-book <em>8 Formas de Monetizar com Claude AI</em> para novos assinantes</p>
+      <div class="nl-form">
+        <input type="email" placeholder="seu@email.com" class="beehiiv-email">
+        <button type="button" class="beehiiv-btn">Assinar grátis</button>
+      </div>
     </div>
-  </div>
+  </main>
+
+  <aside class="sidebar">
     <div class="sb-block">
       <div class="sec-head"><div class="sec-head-left"><h2>Mais Lidas</h2></div></div>
       <ul class="sb-list">
-        <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">ChatGPT</div><div class="sb-t">GPT-5: o que mudou e como usar agora</div><div class="sb-d">4.1k leituras hoje</div></a>
+        <a href="https://pt.dataconomy.com/2026/04/23/o-gpt-5-5-da-openai-ja-esta-ativo/" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">OpenAI</div><div class="sb-t">GPT-5.5: o que mudou e como usar agora</div><div class="sb-d">Novo · Abr 23</div></a>
+        <a href="https://openai.com/index/gpt-4-5-system-card/" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">ChatGPT</div><div class="sb-t">GPT-5: raciocínio avançado e 60% mais barato</div><div class="sb-d">4.1k leituras hoje</div></a>
         <a href="https://www.linkedin.com/jobs/search/?keywords=intelig%C3%AAncia+artificial" target="_blank" rel="noopener" class="sb-item"><div class="sb-c">Carreira</div><div class="sb-t">10 profissões mais afetadas pela IA</div><div class="sb-d">3.5k leituras hoje</div></a>
         <a href="artigo-automacao.html" class="sb-item"><div class="sb-c">Automação</div><div class="sb-t">n8n vs Make: qual é melhor em 2026?</div><div class="sb-d">2.9k leituras hoje</div></a>
         <a href="blog.html" class="sb-item"><div class="sb-c">Ferramentas</div><div class="sb-t">5 ferramentas de IA grátis incríveis</div><div class="sb-d">2.1k leituras hoje</div></a>
@@ -313,7 +342,7 @@
       <div class="nl-banner-text">
         <h4>Acompanhe sem esforço</h4>
         <p>Receba o <strong style="color:var(--green);">resumo das notícias de IA</strong> toda segunda — de graça.</p>
-          <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
+        <p style="font-size:11px;color:var(--green);margin:4px 0 0;font-weight:600;">🎁 Bônus: ganhe o e-book <em>8 Formas de Monetizar com Claude AI</em> ao assinar</p>
       </div>
       <a href="newsletter.html" class="btn-nl">Assinar →</a>
     </div>
@@ -327,7 +356,6 @@
   <div class="footer-col"><h4>Institucional</h4><ul><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
 </div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
 <script src="global.js"></script>
-
 <script>
 (function(){
   var PUB = 'ea3811a9-6b61-4b29-aa47-41200a53a11a';
