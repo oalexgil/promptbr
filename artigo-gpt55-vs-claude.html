@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT-5.5 vs Claude Sonnet 4.6: qual usar em 2026? — PromptBR</title>
+  <meta name="description" content="Comparativo prático entre GPT-5.5 e Claude Sonnet 4.6: desempenho em código, escrita, análise e custo. Qual vale mais para o seu uso?">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .comp-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px;}
+    .comp-table th{background:var(--bg-3);padding:12px 16px;text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);}
+    .comp-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;}
+    .comp-table tr:hover td{background:var(--bg-2);}
+    .winner{color:var(--green);font-weight:700;}
+    .verdict{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;}
+    .verdict-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+    .verdict h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
+    .verdict p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.65;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    @media(max-width:600px){.comp-table{font-size:12px;}.comp-table th,.comp-table td{padding:10px;}}
+  </style>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Comparativo · Modelos de IA</div>
+    <h1>GPT-5.5 vs Claude Sonnet 4.6: qual usar em 2026?</h1>
+    <p class="desc">A OpenAI acaba de lançar o GPT-5.5 enquanto a Anthropic consolidou o Sonnet 4.6 como seu modelo custo-benefício. Testamos os dois nas tarefas que mais importam para quem usa IA no trabalho.</p>
+    <div class="art-meta">
+      <span>📅 24 Abr 2026</span><span>⏱️ 8 min</span><span>👁️ Novo</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-wrap">
+
+  <p>Toda vez que um modelo novo sai, a pergunta é a mesma: <em>vale trocar o que já funciona?</em> O GPT-5.5, lançado em 23 de abril de 2026, promete ser o modelo mais autônomo da OpenAI até agora. O Claude Sonnet 4.6, lançado em fevereiro, entrega performance de nível Opus com preço de Sonnet. Qual é o melhor para o seu uso?</p>
+
+  <h2>O que mudou no GPT-5.5</h2>
+  <p>O GPT-5.5 foi posicionado pela OpenAI como evolução direta do GPT-5.4, com foco em <strong style="color:var(--text);">autonomia em tarefas de múltiplas etapas</strong>. Os principais avanços segundo a empresa:</p>
+  <ul>
+    <li><strong style="color:var(--text);">Fluxos de trabalho autônomos:</strong> o modelo consegue planejar, executar e revisar tarefas longas sem precisar de intervenção humana em cada etapa</li>
+    <li><strong style="color:var(--text);">Melhor desempenho em codificação:</strong> ganhos significativos nos benchmarks OSWorld e WebArena frente ao 5.4</li>
+    <li><strong style="color:var(--text);">Pesquisa integrada:</strong> acessa a web em tempo real dentro dos fluxos agênticos</li>
+    <li><strong style="color:var(--text);">Velocidade:</strong> responde mais rápido que o GPT-5, com qualidade equivalente em tarefas do dia a dia</li>
+  </ul>
+
+  <div class="tip-box"><div class="tip-icon">⚡</div><p>O contexto competitivo: com o GPT-5.5, a OpenAI ultrapassa US$25 bilhões em receita anualizada e acelera a corrida contra a Anthropic, que aproxima-se dos US$19 bilhões.</p></div>
+
+  <h2>O que o Claude Sonnet 4.6 já entrega</h2>
+  <p>Lançado em fevereiro de 2026, o Sonnet 4.6 surpreendeu ao liderar o benchmark GDPval-AA Elo com 1.633 pontos — superando modelos mais caros da concorrência. Seus pontos fortes:</p>
+  <ul>
+    <li><strong style="color:var(--text);">Escrita de alta qualidade:</strong> ainda o melhor para textos longos, redação técnica e copywriting</li>
+    <li><strong style="color:var(--text);">Raciocínio analítico:</strong> análise de documentos, contratos e relatórios complexos</li>
+    <li><strong style="color:var(--text);">Preço competitivo:</strong> performance de nível Opus com custo de Sonnet na API</li>
+    <li><strong style="color:var(--text);">Janela de contexto:</strong> 200k tokens — superior ao GPT-5.5 para documentos extensos</li>
+  </ul>
+
+  <h2>Comparativo prático por tarefa</h2>
+
+  <table class="comp-table">
+    <tr>
+      <th>Tarefa</th>
+      <th>GPT-5.5</th>
+      <th>Claude Sonnet 4.6</th>
+      <th>Vencedor</th>
+    </tr>
+    <tr>
+      <td>Geração de código</td>
+      <td>Excelente — melhor em arquitetura de sistemas</td>
+      <td>Muito bom — superior em explicações</td>
+      <td class="winner">GPT-5.5</td>
+    </tr>
+    <tr>
+      <td>Escrita e redação</td>
+      <td>Bom — tende a ser mais direto e técnico</td>
+      <td>Excelente — tom mais natural e fluido</td>
+      <td class="winner">Claude 4.6</td>
+    </tr>
+    <tr>
+      <td>Análise de documentos</td>
+      <td>Bom — limitado a 128k tokens</td>
+      <td>Excelente — 200k tokens, mais preciso</td>
+      <td class="winner">Claude 4.6</td>
+    </tr>
+    <tr>
+      <td>Tarefas autônomas (agentes)</td>
+      <td>Excelente — multipassos sem supervisão</td>
+      <td>Bom — Claude 4 (versão maior) é superior nesse quesito</td>
+      <td class="winner">GPT-5.5</td>
+    </tr>
+    <tr>
+      <td>Pesquisa com acesso à web</td>
+      <td>Nativo no modelo</td>
+      <td>Disponível via ferramenta externa</td>
+      <td class="winner">GPT-5.5</td>
+    </tr>
+    <tr>
+      <td>Custo na API</td>
+      <td>Médio-alto</td>
+      <td>Melhor custo-benefício</td>
+      <td class="winner">Claude 4.6</td>
+    </tr>
+    <tr>
+      <td>Idioma português</td>
+      <td>Muito bom</td>
+      <td>Excelente — melhor naturalidade</td>
+      <td class="winner">Claude 4.6</td>
+    </tr>
+  </table>
+
+  <h2>Para quem é cada um?</h2>
+
+  <div class="verdict">
+    <div class="verdict-label">Use o GPT-5.5 se você...</div>
+    <h4>Precisa de automação e agentes de IA</h4>
+    <p>Se o seu uso envolve fluxos automatizados, execução de tarefas em múltiplas etapas sem supervisão, integração com ferramentas externas ou desenvolvimento de software, o GPT-5.5 tem vantagem clara. É o modelo mais "agêntico" disponível no momento.</p>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Use o Claude Sonnet 4.6 se você...</div>
+    <h4>Trabalha com escrita, análise e documentos longos</h4>
+    <p>Para redação profissional, análise de contratos, relatórios, pesquisa acadêmica e qualquer tarefa em português que exija qualidade textual e precisão analítica, o Sonnet 4.6 ainda leva vantagem — especialmente pelo custo menor na API e pela janela de contexto superior.</p>
+  </div>
+
+  <h2>A pergunta certa não é "qual é melhor"</h2>
+  <p>É: <em>qual é melhor para o que você faz?</em> Profissionais que usam IA de forma estratégica costumam ter pelo menos dois modelos na rotina — um para escrever e analisar, outro para automatizar e codar. Em 2026, usar só um modelo é como ter só um aplicativo no celular.</p>
+
+  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Estratégia prática:</strong> use Claude Sonnet 4.6 como seu modelo padrão de escrita e análise. Acesse o GPT-5.5 quando precisar de automação agêntica ou pesquisa em tempo real. Assim você paga menos e entrega mais.</p></div>
+
+  <h2>E o Meta Muse Spark?</h2>
+  <p>A Meta entrou na corrida em abril com o Muse Spark — seu primeiro modelo de grande porte desde o investimento de US$14,3 bilhões na Scale AI. Focado em raciocínio científico e matemático, ainda não tem desempenho comparável ao GPT-5.5 ou Claude em tarefas gerais, mas é open-source e promete evoluir rápido. Vale acompanhar.</p>
+
+  <div class="nl-cta-art">
+    <h3>Comparativos novos toda semana na newsletter</h3>
+    <p>Toda segunda: análise dos modelos, ferramentas testadas e prompts prontos — em 5 minutos.</p>
+    <p class="ebook-line">🎁 Bônus ao assinar: e-book <em>8 Formas de Monetizar com Claude AI</em> — grátis</p>
+    <a href="newsletter.html">Assinar a newsletter →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-automacao.html">
+      <div class="nav-label">← Artigo anterior</div>
+      <div class="nav-title">Make vs n8n vs Zapier: comparativo 2026</div>
+    </a>
+    <a href="artigo-chatgpt.html">
+      <div class="nav-label">Próximo artigo →</div>
+      <div class="nav-title">ChatGPT do zero ao avançado</div>
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+</body>
+</html>
