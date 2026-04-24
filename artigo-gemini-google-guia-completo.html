@@ -174,5 +174,59 @@ Empreendedores: sobe pesquisas de mercado, analisa tendências e oportunidades</
   </div>
 </div>
 <script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+
+<!-- ── BOTÃO VOLTAR AO TOPO ─────────────────────────────────────── -->
+<button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo"
+  style="
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    width:44px;
+    height:44px;
+    background:var(--green);
+    color:#000;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s;
+    box-shadow:0 4px 16px rgba(0,230,118,.35);
+    z-index:800;
+    font-size:18px;
+    line-height:1;
+  ">
+  ↑
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  // Mostrar após rolar 300px
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      btn.style.opacity = '1';
+      btn.style.visibility = 'visible';
+      btn.style.transform = 'translateY(0)';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.visibility = 'hidden';
+      btn.style.transform = 'translateY(12px)';
+    }
+  }, {passive:true});
+  // Scroll suave ao clicar
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  // Hover: verde mais claro
+  btn.addEventListener('mouseenter', function(){ btn.style.background='#00ff88'; });
+  btn.addEventListener('mouseleave', function(){ btn.style.background='var(--green)'; });
+})();
+</script>
+<!-- ── FIM BOTÃO VOLTAR AO TOPO ──────────────────────────────────── -->
 </body>
 </html>

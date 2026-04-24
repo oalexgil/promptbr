@@ -92,12 +92,12 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
-    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
     <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
     <span class="ticker-item">🔥 GPT-5 lançado — mais rápido e 60% mais barato</span>
-    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">📚 145+ prompts em português disponíveis</span>
     <span class="ticker-item">🤖 Claude 4 opera computadores de forma autônoma</span>
     <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
     <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
@@ -130,16 +130,20 @@
 <div class="blog-wrap">
   <main>
     <div class="cat-tabs reveal">
-      <button class="cat-tab active">Todos</button>
-      <button class="cat-tab">ChatGPT</button>
-      <button class="cat-tab">Produtividade</button>
-      <button class="cat-tab">Automação</button>
-      <button class="cat-tab">Carreira</button>
-      <button class="cat-tab">Ferramentas</button>
-      <button class="cat-tab">Criatividade</button>
+      <button class="cat-tab active" data-filter="todos">Todos</button>
+      <button class="cat-tab" data-filter="chatgpt">ChatGPT</button>
+      <button class="cat-tab" data-filter="produtividade">Produtividade</button>
+      <button class="cat-tab" data-filter="automacao">Automação</button>
+      <button class="cat-tab" data-filter="carreira">Carreira</button>
+      <button class="cat-tab" data-filter="ferramentas">Ferramentas</button>
+      <button class="cat-tab" data-filter="criatividade">Criatividade</button>
+      <button class="cat-tab" data-filter="marketing">Marketing</button>
+      <button class="cat-tab" data-filter="financas">Finanças</button>
+      <button class="cat-tab" data-filter="estudo">Estudo</button>
+      <button class="cat-tab" data-filter="negocios">Negócios</button>
     </div>
 
-    <a href="artigo-chatgpt.html" class="post-featured reveal">
+    <a href="artigo-chatgpt.html" class="post-featured reveal" data-category="chatgpt">
       <div class="pf-thumb g1">🤖</div>
       <div class="pf-body">
         <div class="pf-cat">Guia Completo · ChatGPT</div>
@@ -152,7 +156,7 @@
 
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Recentes</h2><div class="sec-line"></div></div></div>
     <div class="post-grid">
-      <a href="artigo-claude-vs-chatgpt.html" class="post-card reveal">
+      <a href="artigo-claude-vs-chatgpt.html" class="post-card reveal" data-category="chatgpt">
         <div class="pc-thumb g1">🤖</div>
         <div class="pc-body">
           <div class="pc-cat">Comparativo · Ferramentas</div>
@@ -161,7 +165,7 @@
           <div class="pc-meta"><span>Comparativo</span><span>9 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-ia-financas-pessoais.html" class="post-card reveal">
+      <a href="artigo-ia-financas-pessoais.html" class="post-card reveal" data-category="financas">
         <div class="pc-thumb g2">💰</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Finanças</div>
@@ -170,7 +174,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>10 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-ia-para-estudar.html" class="post-card reveal">
+      <a href="artigo-ia-para-estudar.html" class="post-card reveal" data-category="estudo">
         <div class="pc-thumb g3">📚</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Estudo</div>
@@ -179,7 +183,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>11 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-gemini-google-guia-completo.html" class="post-card reveal">
+      <a href="artigo-gemini-google-guia-completo.html" class="post-card reveal" data-category="ferramentas">
         <div class="pc-thumb g4">🔍</div>
         <div class="pc-body">
           <div class="pc-cat">Guia Completo · Gemini</div>
@@ -188,7 +192,7 @@
           <div class="pc-meta"><span>Guia</span><span>10 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-ia-para-pequenas-empresas.html" class="post-card reveal">
+      <a href="artigo-ia-para-pequenas-empresas.html" class="post-card reveal" data-category="negocios">
         <div class="pc-thumb g5">🏢</div>
         <div class="pc-body">
           <div class="pc-cat">Guia Prático · Negócios</div>
@@ -197,7 +201,7 @@
           <div class="pc-meta"><span>Guia</span><span>12 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-perplexity-ai-guia.html" class="post-card reveal">
+      <a href="artigo-perplexity-ai-guia.html" class="post-card reveal" data-category="ferramentas">
         <div class="pc-thumb g6">🔎</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Ferramentas</div>
@@ -206,7 +210,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>8 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-produtividade-com-ia.html" class="post-card reveal">
+      <a href="artigo-produtividade-com-ia.html" class="post-card reveal" data-category="produtividade">
         <div class="pc-thumb g7">⚡</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Produtividade</div>
@@ -215,7 +219,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>11 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-notion-ai-guia.html" class="post-card reveal">
+      <a href="artigo-notion-ai-guia.html" class="post-card reveal" data-category="produtividade">
         <div class="pc-thumb g8">🗂️</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Produtividade</div>
@@ -224,7 +228,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>9 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-ia-marketing-digital.html" class="post-card reveal">
+      <a href="artigo-ia-marketing-digital.html" class="post-card reveal" data-category="marketing">
         <div class="pc-thumb g1">📣</div>
         <div class="pc-body">
           <div class="pc-cat">Guia Prático · Marketing</div>
@@ -233,7 +237,7 @@
           <div class="pc-meta"><span>Guia</span><span>12 min · Mar 2026</span></div>
         </div>
       </a>
-      <a href="artigo-voz-ia-whisper-elevenlabs.html" class="post-card reveal">
+      <a href="artigo-voz-ia-whisper-elevenlabs.html" class="post-card reveal" data-category="criatividade">
         <div class="pc-thumb g3">🎙️</div>
         <div class="pc-body">
           <div class="pc-cat">Tutorial · Criatividade</div>
@@ -242,7 +246,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>10 min · Mar 2026</span></div>
         </div>
       </a>
-      <a href="artigo-automacao.html" class="post-card reveal">
+      <a href="artigo-automacao.html" class="post-card reveal" data-category="automacao">
         <div class="pc-thumb g2">⚡</div>
         <div class="pc-body">
           <div class="pc-cat">Automação</div>
@@ -251,7 +255,7 @@
           <div class="pc-meta"><span>Comparativo</span><span>10 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-curriculo.html" class="post-card reveal">
+      <a href="artigo-curriculo.html" class="post-card reveal" data-category="carreira">
         <div class="pc-thumb g4">💼</div>
         <div class="pc-body">
           <div class="pc-cat">Carreira</div>
@@ -260,7 +264,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>7 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="artigo-midjourney.html" class="post-card reveal">
+      <a href="artigo-midjourney.html" class="post-card reveal" data-category="criatividade">
         <div class="pc-thumb g5">🎨</div>
         <div class="pc-body">
           <div class="pc-cat">Criatividade</div>
@@ -269,7 +273,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>6 min · Abr 2026</span></div>
         </div>
       </a>
-      <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="post-card reveal">
+      <a href="artigo-perplexity-ai-guia.html" class="post-card reveal" data-category="ferramentas">
         <div class="pc-thumb g3">🔍</div>
         <div class="pc-body">
           <div class="pc-cat">Ferramentas</div>
@@ -295,14 +299,14 @@
 
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Mais Lidos de Todos os Tempos</h2><div class="sec-line"></div></div></div>
     <div class="post-list">
-      <a href="artigo-chatgpt.html" class="pl-item reveal"><div class="pl-num">01</div><div><div class="pl-cat">Produtividade</div><div class="pl-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="pl-meta">14 min · 8.4k leituras · Mar 2026</div></div></a>
-      <a href="artigo-automacao.html" class="pl-item reveal"><div class="pl-num">02</div><div><div class="pl-cat">Automação</div><div class="pl-title">Como automatizar seu email com IA: triagem, resposta e arquivamento automático</div><div class="pl-meta">9 min · 6.2k leituras · Mar 2026</div></div></a>
-      <a href="artigo-chatgpt.html" class="pl-item reveal"><div class="pl-num">03</div><div><div class="pl-cat">ChatGPT</div><div class="pl-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="pl-meta">12 min · 5.8k leituras · Fev 2026</div></div></a>
-      <a href="artigo-curriculo.html" class="pl-item reveal"><div class="pl-num">04</div><div><div class="pl-cat">Carreira</div><div class="pl-title">5 profissões que estão crescendo por causa da IA em 2026</div><div class="pl-meta">5 min · 4.1k leituras · Jan 2026</div></div></a>
+      <a href="artigo-chatgpt.html" class="pl-item reveal" data-category="chatgpt"><div class="pl-num">01</div><div><div class="pl-cat">Produtividade</div><div class="pl-title">O método de segundo cérebro com IA para gerenciar 3 projetos ao mesmo tempo</div><div class="pl-meta">14 min · 8.4k leituras · Mar 2026</div></div></a>
+      <a href="artigo-automacao.html" class="pl-item reveal" data-category="automacao"><div class="pl-num">02</div><div><div class="pl-cat">Automação</div><div class="pl-title">Como automatizar seu email com IA: triagem, resposta e arquivamento automático</div><div class="pl-meta">9 min · 6.2k leituras · Mar 2026</div></div></a>
+      <a href="artigo-chatgpt.html" class="pl-item reveal" data-category="chatgpt"><div class="pl-num">03</div><div><div class="pl-cat">ChatGPT</div><div class="pl-title">Como criar um GPT personalizado para o seu negócio em 20 minutos</div><div class="pl-meta">12 min · 5.8k leituras · Fev 2026</div></div></a>
+      <a href="artigo-curriculo.html" class="pl-item reveal" data-category="carreira"><div class="pl-num">04</div><div><div class="pl-cat">Carreira</div><div class="pl-title">5 profissões que estão crescendo por causa da IA em 2026</div><div class="pl-meta">5 min · 4.1k leituras · Jan 2026</div></div></a>
       <a href="https://julius.ai" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">05</div><div><div class="pl-cat">Ferramentas</div><div class="pl-title">Notion AI vs Obsidian + IA: qual organiza melhor sua vida profissional?</div><div class="pl-meta">8 min · 3.7k leituras · Jan 2026</div></div></a>
       <a href="https://www.cursor.com" target="_blank" rel="noopener" class="pl-item reveal"><div class="pl-num">06</div><div><div class="pl-cat">Programação</div><div class="pl-title">Cursor IDE vs GitHub Copilot: qual acelera mais o seu código?</div><div class="pl-meta">10 min · 3.2k leituras · Jan 2026</div></div></a>
-      <a href="artigo-chatgpt.html" class="pl-item reveal"><div class="pl-num">07</div><div><div class="pl-cat">Estudo</div><div class="pl-title">Como usar IA para aprender qualquer coisa em metade do tempo</div><div class="pl-meta">11 min · 2.9k leituras · Dez 2025</div></div></a>
-      <a href="artigo-midjourney.html" class="pl-item reveal"><div class="pl-num">08</div><div><div class="pl-cat">Criatividade</div><div class="pl-title">ElevenLabs: clonagem de voz para podcasts e cursos online</div><div class="pl-meta">7 min · 2.5k leituras · Dez 2025</div></div></a>
+      <a href="artigo-chatgpt.html" class="pl-item reveal" data-category="chatgpt"><div class="pl-num">07</div><div><div class="pl-cat">Estudo</div><div class="pl-title">Como usar IA para aprender qualquer coisa em metade do tempo</div><div class="pl-meta">11 min · 2.9k leituras · Dez 2025</div></div></a>
+      <a href="artigo-midjourney.html" class="pl-item reveal" data-category="criatividade"><div class="pl-num">08</div><div><div class="pl-cat">Criatividade</div><div class="pl-title">ElevenLabs: clonagem de voz para podcasts e cursos online</div><div class="pl-meta">7 min · 2.5k leituras · Dez 2025</div></div></a>
     </div>
 
     <div class="sec-head reveal"><div class="sec-head-left"><h2>Guias por Categoria</h2><div class="sec-line"></div></div></div>
@@ -316,7 +320,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>6 min · Mar 2026</span></div>
         </div>
       </a>
-      <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="post-card reveal">
+      <a href="artigo-voz-ia-whisper-elevenlabs.html" class="post-card reveal" data-category="criatividade">
         <div class="pc-thumb g7">🗣️</div>
         <div class="pc-body">
           <div class="pc-cat">Criatividade</div>
@@ -325,7 +329,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>7 min · Mar 2026</span></div>
         </div>
       </a>
-      <a href="artigo-chatgpt.html" class="post-card reveal">
+      <a href="artigo-chatgpt.html" class="post-card reveal" data-category="chatgpt">
         <div class="pc-thumb g8">🧠</div>
         <div class="pc-body">
           <div class="pc-cat">ChatGPT</div>
@@ -334,7 +338,7 @@
           <div class="pc-meta"><span>Tutorial</span><span>5 min · Fev 2026</span></div>
         </div>
       </a>
-      <a href="artigo-chatgpt.html" class="post-card reveal">
+      <a href="artigo-chatgpt.html" class="post-card reveal" data-category="chatgpt">
         <div class="pc-thumb g3">🔐</div>
         <div class="pc-body">
           <div class="pc-cat">Segurança</div>
@@ -439,4 +443,58 @@
   });
 })();
 </script>
+
+<!-- ── BOTÃO VOLTAR AO TOPO ─────────────────────────────────────── -->
+<button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo"
+  style="
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    width:44px;
+    height:44px;
+    background:var(--green);
+    color:#000;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s;
+    box-shadow:0 4px 16px rgba(0,230,118,.35);
+    z-index:800;
+    font-size:18px;
+    line-height:1;
+  ">
+  ↑
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  // Mostrar após rolar 300px
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      btn.style.opacity = '1';
+      btn.style.visibility = 'visible';
+      btn.style.transform = 'translateY(0)';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.visibility = 'hidden';
+      btn.style.transform = 'translateY(12px)';
+    }
+  }, {passive:true});
+  // Scroll suave ao clicar
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  // Hover: verde mais claro
+  btn.addEventListener('mouseenter', function(){ btn.style.background='#00ff88'; });
+  btn.addEventListener('mouseleave', function(){ btn.style.background='var(--green)'; });
+})();
+</script>
+<!-- ── FIM BOTÃO VOLTAR AO TOPO ──────────────────────────────────── -->
 </body></html>
