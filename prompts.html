@@ -44,24 +44,62 @@
     .cat-div-line{flex:1;height:1px;background:var(--border);}
     @media(max-width:600px){.pg{grid-template-columns:1fr;}}
 
+    /* ── FAVORITOS ──────────────────────────────────────── */
+    .fav-btn{background:transparent;border:none;cursor:pointer;font-size:15px;padding:4px 6px;border-radius:6px;transition:transform .2s,color .2s;color:var(--text-3);line-height:1;flex-shrink:0;}
+    .fav-btn:hover{transform:scale(1.25);color:#facc15;}
+    .fav-btn.faved{color:#facc15;animation:fav-pop .25s ease;}
+    @keyframes fav-pop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+    .pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .pc-foot-left{display:flex;align-items:center;gap:6px;}
+
+    /* aba meus favoritos */
+    .fav-tab-bar{max-width:var(--max-w);margin:0 auto;padding:20px 24px 0;display:flex;gap:10px;align-items:center;}
+    .fav-tab{padding:8px 18px;border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg-3);color:var(--text-2);transition:all .15s;}
+    .fav-tab.active{background:var(--green);color:#000;border-color:var(--green);}
+    .fav-count-badge{background:var(--green);color:#000;font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;min-width:18px;text-align:center;display:inline-block;}
+    .fav-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-3);}
+    .fav-empty .fav-empty-icon{font-size:3rem;margin-bottom:12px;}
+    .fav-empty p{font-size:14px;line-height:1.7;}
+
+    /* ── BUSCA MELHORADA ─────────────────────────────────── */
+    .search-box{position:relative;flex:1;min-width:220px;}
+    .search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-3);font-size:16px;display:none;padding:2px 4px;border-radius:4px;}
+    .search-clear:hover{color:var(--text);}
+    mark.hl{background:rgba(0,230,118,.25);color:var(--green);border-radius:3px;padding:0 2px;}
+    .no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-3);}
+    .no-results strong{color:var(--text);display:block;margin-bottom:8px;font-size:1.1rem;}
+
+    /* ── MOBILE FIX prompt-box ───────────────────────────── */
+    @media(max-width:768px){
+      .prompt-txt{max-height:140px;font-size:11px;overflow-x:auto;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+      .copy-btn{padding:9px 14px;font-size:13px;min-height:40px;}
+      .fav-btn{font-size:17px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;}
+      .filter-bar{padding:10px 16px;}
+      .fp{padding:8px 13px;font-size:12px;min-height:36px;}
+    }
+
+    /* ── CONTADOR ANIMADO ────────────────────────────────── */
+    @keyframes count-up{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+    .pc-count strong{animation:count-up .4s ease;}
+
     .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
     .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
     .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
-  <!-- Google Analytics 4 — substitua G-ZK59708GWD pelo seu ID real -->
+  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID real -->
   <!-- Crie em: analytics.google.com → Criar propriedade → copie o ID G-XXXXXXX -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
-    gtag('config','G-ZK59708GWD');
+    gtag('config','G-XXXXXXXXXX');
   </script>
-  <!-- Google AdSense — substitua ca-pub-3823120055728050 pelo seu Publisher ID -->
+  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
   <!-- Crie em: adsense.google.com → Começar → copie o código ca-pub-XXXX -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="reading-bar"></div>
@@ -72,8 +110,9 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Inicio</a></li><li><a href="blog.html">Blog</a></li>
-    <li><a href="prompts.html" class="active hot">Prompts</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="prompts.html" class="active hot">⚡ Prompts</a></li>
+    <li><a href="packs.html">📦 Packs</a></li><li><a href="testar-prompt.html">🤖 Testar IA</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -106,7 +145,11 @@
 </div></section>
 
 <div class="filter-bar"><div class="filter-inner">
-  <div class="search-box"><input type="text" id="prompt-search" placeholder="Buscar prompts..."></div>
+  <div class="search-box">
+    <input type="text" id="prompt-search" placeholder="Buscar por título, categoria ou palavra-chave...">
+    <button class="search-clear" id="search-clear" title="Limpar busca">✕</button>
+  </div>
+  </div>
   <div class="filter-pills">
     <button class="fp active" data-filter="todos">Todos</button>
     <button class="fp" data-filter="trabalho">Trabalho</button>
@@ -121,6 +164,10 @@
     <button class="fp" data-filter="programacao">IA & Tech</button>
   </div>
 </div></div>
+<div class="fav-tab-bar">
+  <button class="fav-tab active" id="tab-todos">Todos os prompts</button>
+  <button class="fav-tab" id="tab-favs">⭐ Meus Favoritos <span class="fav-count-badge" id="fav-badge">0</span></button>
+</div>
 <div class="prompts-page">
   <div class="pc-count">Exibindo <strong id="prompt-count">245</strong> prompts</div>
   <div class="pg">
@@ -3680,6 +3727,251 @@ Processo atual de revisão: [descreva ou nenhum]</pre>
 <li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
 </div><div class="footer-bottom"><span>2026 PromptBR</span><span>Feito com IA no Brasil</span></div></footer>
 <script src="global.js"></script>
+
+<!-- ═══ SISTEMA DE FAVORITOS + BUSCA MELHORADA + CONTADOR ═══════════════ -->
+<script>
+(function(){
+  /* ── FAVORITOS ──────────────────────────────────────────────────── */
+  var FAV_KEY = 'promptbr_favorites';
+  function getFavs(){ try{ return JSON.parse(localStorage.getItem(FAV_KEY)||'[]'); }catch(e){return[];} }
+  function saveFavs(arr){ try{ localStorage.setItem(FAV_KEY, JSON.stringify(arr)); }catch(e){} }
+  function toggleFav(id){
+    var favs = getFavs();
+    var idx = favs.indexOf(id);
+    if(idx > -1){ favs.splice(idx,1); } else { favs.push(id); }
+    saveFavs(favs);
+    return idx === -1; // retorna true se foi adicionado
+  }
+  function isFaved(id){ return getFavs().indexOf(id) > -1; }
+
+  /* ── ADICIONAR BOTÃO ⭐ EM CADA CARD ──────────────────────────── */
+  document.querySelectorAll('.pcard').forEach(function(card){
+    var foot = card.querySelector('.pc-foot');
+    if(!foot) return;
+    // pegar id do prompt pelo data-target do copy-btn
+    var copyBtn = foot.querySelector('.copy-btn');
+    var promptId = copyBtn ? copyBtn.getAttribute('data-target') : null;
+    if(!promptId) return;
+    // reestruturar footer
+    var toolChips = foot.querySelector('.tool-chips');
+    foot.innerHTML = '';
+    var left = document.createElement('div');
+    left.className = 'pc-foot-left';
+    if(toolChips) left.appendChild(toolChips);
+    foot.appendChild(left);
+    // botão favorito
+    var favBtn = document.createElement('button');
+    favBtn.className = 'fav-btn' + (isFaved(promptId) ? ' faved' : '');
+    favBtn.setAttribute('aria-label','Favoritar prompt');
+    favBtn.setAttribute('title', isFaved(promptId) ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
+    favBtn.innerHTML = isFaved(promptId) ? '★' : '☆';
+    favBtn.setAttribute('data-pid', promptId);
+    // botão copiar
+    var newCopy = document.createElement('button');
+    newCopy.className = 'copy-btn';
+    newCopy.setAttribute('data-target', promptId);
+    newCopy.textContent = 'Copiar';
+    left.appendChild(favBtn);
+    foot.appendChild(newCopy);
+  });
+
+  /* ── EVENTO DOS BOTÕES ⭐ ────────────────────────────────────── */
+  document.addEventListener('click', function(e){
+    if(!e.target.classList.contains('fav-btn')) return;
+    var pid = e.target.getAttribute('data-pid');
+    var added = toggleFav(pid);
+    e.target.classList.toggle('faved', added);
+    e.target.innerHTML = added ? '★' : '☆';
+    e.target.title = added ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+    updateFavBadge();
+    // se estiver na aba favoritos, re-renderizar
+    if(currentTab === 'favs') applyFilters();
+  });
+
+  /* ── COPIAR ─────────────────────────────────────────────────── */
+  document.addEventListener('click', function(e){
+    if(!e.target.classList.contains('copy-btn')) return;
+    var id = e.target.getAttribute('data-target');
+    var pre = document.getElementById(id);
+    if(!pre) return;
+    navigator.clipboard.writeText(pre.textContent).then(function(){
+      e.target.textContent = '✓ Copiado!';
+      e.target.style.background = 'var(--green)';
+      e.target.style.color = '#000';
+      setTimeout(function(){ e.target.textContent = 'Copiar'; e.target.style.background=''; e.target.style.color=''; }, 1800);
+    });
+    if(typeof gtag === 'function') gtag('event','copy_prompt',{prompt_id:id});
+  });
+
+  /* ── CONTADOR BADGE ─────────────────────────────────────────── */
+  function updateFavBadge(){
+    var n = getFavs().length;
+    var badge = document.getElementById('fav-badge');
+    if(badge) badge.textContent = n;
+  }
+  updateFavBadge();
+
+  /* ── ABAS: TODOS / FAVORITOS ─────────────────────────────────── */
+  var currentTab = 'todos';
+  document.getElementById('tab-todos').addEventListener('click', function(){
+    currentTab = 'todos';
+    document.getElementById('tab-todos').classList.add('active');
+    document.getElementById('tab-favs').classList.remove('active');
+    applyFilters();
+  });
+  document.getElementById('tab-favs').addEventListener('click', function(){
+    currentTab = 'favs';
+    document.getElementById('tab-favs').classList.add('active');
+    document.getElementById('tab-todos').classList.remove('active');
+    applyFilters();
+  });
+
+  /* ── BUSCA + FILTRO ─────────────────────────────────────────── */
+  var searchInput = document.getElementById('prompt-search');
+  var searchClear = document.getElementById('search-clear');
+  var activeFilter = 'todos';
+  var cards = Array.from(document.querySelectorAll('.pcard'));
+  var catDivs = Array.from(document.querySelectorAll('.cat-div'));
+  var countEl = document.getElementById('prompt-count');
+
+  // Filtros de categoria
+  document.querySelectorAll('.fp').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.fp').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.getAttribute('data-filter');
+      applyFilters();
+    });
+  });
+
+  // Busca com debounce
+  var debounceTimer;
+  searchInput.addEventListener('input', function(){
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(applyFilters, 120);
+    searchClear.style.display = searchInput.value ? 'block' : 'none';
+  });
+  searchClear.addEventListener('click', function(){
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    applyFilters();
+  });
+
+  function stripHL(el){
+    el.querySelectorAll('mark.hl').forEach(function(m){
+      var parent = m.parentNode;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+  }
+
+  function highlightText(el, term){
+    if(!term) return;
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    var node;
+    while(node = walker.nextNode()){ nodes.push(node); }
+    nodes.forEach(function(n){
+      if(!n.textContent.toLowerCase().includes(term)) return;
+      var frag = document.createDocumentFragment();
+      var text = n.textContent;
+      var lower = text.toLowerCase();
+      var idx = 0, pos;
+      while((pos = lower.indexOf(term, idx)) > -1){
+        if(pos > idx) frag.appendChild(document.createTextNode(text.slice(idx, pos)));
+        var mark = document.createElement('mark');
+        mark.className = 'hl';
+        mark.textContent = text.slice(pos, pos + term.length);
+        frag.appendChild(mark);
+        idx = pos + term.length;
+      }
+      if(idx < text.length) frag.appendChild(document.createTextNode(text.slice(idx)));
+      n.parentNode.replaceChild(frag, n);
+    });
+  }
+
+  function applyFilters(){
+    var term = searchInput.value.toLowerCase().trim();
+    var favs = getFavs();
+    var visible = 0;
+
+    // remover mensagem de sem resultados anteriores
+    var old = document.getElementById('no-results-msg');
+    if(old) old.remove();
+    var oldFavEmpty = document.getElementById('fav-empty-msg');
+    if(oldFavEmpty) oldFavEmpty.remove();
+
+    cards.forEach(function(card){
+      var cat = card.getAttribute('data-category') || '';
+      var pid = (card.querySelector('.copy-btn')||card.querySelector('[data-target]'));
+      var promptId = pid ? pid.getAttribute('data-target') : '';
+      var titleEl = card.querySelector('.pc-title');
+      var bodyEl = card.querySelector('.prompt-txt');
+      var tagsEl = card.querySelector('.pc-tags');
+
+      // Limpar highlight anterior
+      if(titleEl) stripHL(titleEl);
+      if(bodyEl) stripHL(bodyEl);
+
+      var titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+      var bodyText = bodyEl ? bodyEl.textContent.toLowerCase() : '';
+      var tagsText = tagsEl ? tagsEl.textContent.toLowerCase() : '';
+
+      var matchSearch = !term || titleText.includes(term) || bodyText.includes(term) || tagsText.includes(term);
+      var matchFilter = activeFilter === 'todos' || cat === activeFilter;
+      var matchFav = currentTab !== 'favs' || favs.indexOf(promptId) > -1;
+
+      var show = matchSearch && matchFilter && matchFav;
+      card.style.display = show ? '' : 'none';
+      if(show){
+        visible++;
+        if(term){
+          if(titleEl) highlightText(titleEl, term);
+        }
+      }
+    });
+
+    // Atualizar contador com animação
+    if(countEl){
+      countEl.style.animation = 'none';
+      countEl.offsetHeight; // reflow
+      countEl.style.animation = 'count-up .3s ease';
+      countEl.textContent = visible;
+    }
+
+    // Esconder divisores de categoria se todos os cards da categoria estão ocultos
+    catDivs.forEach(function(div){
+      var next = div.nextElementSibling;
+      var hasVisible = false;
+      while(next && !next.classList.contains('cat-div') && !next.classList.contains('nl-block')){
+        if(next.classList.contains('pcard') && next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      div.style.display = hasVisible ? '' : 'none';
+    });
+
+    // Mensagens de estado vazio
+    var pg = document.querySelector('.pg');
+    if(pg){
+      if(visible === 0 && currentTab === 'favs'){
+        var el = document.createElement('div');
+        el.id = 'fav-empty-msg';
+        el.className = 'fav-empty';
+        el.innerHTML = '<div class="fav-empty-icon">⭐</div><p><strong>Nenhum favorito ainda</strong><br>Clique na estrela ☆ em qualquer prompt para salvar aqui.</p>';
+        pg.appendChild(el);
+      } else if(visible === 0 && term){
+        var el2 = document.createElement('div');
+        el2.id = 'no-results-msg';
+        el2.className = 'no-results';
+        el2.innerHTML = '<strong>Nenhum prompt encontrado para "' + searchInput.value + '"</strong>Tente outros termos ou use os filtros de categoria.';
+        pg.appendChild(el2);
+      }
+    }
+  }
+
+})();
+</script>
+<!-- ═══ FIM: FAVORITOS + BUSCA + CONTADOR ═══════════════════════════════ -->
 
 <script>
 (function(){

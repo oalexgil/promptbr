@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptBR Premium — Testes ilimitados + prompts exclusivos</title>
+  <meta name="description" content="Assine o PromptBR Premium e tenha testes de IA ilimitados, prompts exclusivos por nicho, packs para download e muito mais.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    /* ── HERO ─────────────────────────────────────────────── */
+    .pm-hero{padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden;}
+    .pm-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(0,230,118,.07) 0%,transparent 60%);}
+    .pm-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
+    .pm-kick{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.2);color:var(--green);padding:6px 16px;border-radius:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;margin-bottom:24px;}
+    .pm-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.05;letter-spacing:-.04em;margin-bottom:18px;}
+    .pm-hero h1 .green{color:var(--green);}
+    .pm-hero p{color:var(--text-2);font-size:1.05rem;line-height:1.75;max-width:520px;margin:0 auto 32px;}
+    .pm-social-proof{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .pm-avatars{display:flex;}
+    .pm-av{width:32px;height:32px;border-radius:50%;background:var(--bg-3);border:2px solid var(--bg-1);display:flex;align-items:center;justify-content:center;font-size:14px;margin-left:-8px;}
+    .pm-av:first-child{margin-left:0;}
+    .pm-proof-text{font-size:13px;color:var(--text-2);}<br>
+    .pm-proof-text strong{color:var(--text);}
+    .pm-stars{color:#facc15;font-size:14px;}
+
+    /* ── PLANOS ───────────────────────────────────────────── */
+    .pm-page{max-width:1020px;margin:0 auto;padding:0 24px 80px;}
+    .pm-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px;}
+    .pm-toggle-label{font-size:13.5px;color:var(--text-2);font-weight:600;}
+    .pm-toggle-label.active{color:var(--text);}
+    .pm-toggle-switch{width:48px;height:26px;background:var(--green);border-radius:13px;position:relative;cursor:pointer;border:none;flex-shrink:0;}
+    .pm-toggle-switch::after{content:'';width:20px;height:20px;background:#000;border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .2s;}
+    .pm-toggle-switch.annual::after{transform:translateX(22px);}
+    .pm-toggle-badge{background:var(--green);color:#000;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;letter-spacing:.04em;}
+
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px;}
+    @media(max-width:780px){.plans-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
+
+    .plan-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;position:relative;transition:border-color .2s,transform .2s;}
+    .plan-card:hover{border-color:rgba(0,230,118,.25);transform:translateY(-3px);}
+    .plan-card.featured{border-color:var(--green);border-width:2px;background:linear-gradient(160deg,rgba(0,230,118,.04),var(--surface));}
+    .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;font-size:11px;font-weight:800;padding:4px 14px;border-radius:12px;white-space:nowrap;letter-spacing:.04em;}
+    .plan-icon{font-size:2rem;margin-bottom:14px;}
+    .plan-name{font-family:var(--font-display);font-size:1.2rem;font-weight:800;margin-bottom:6px;}
+    .plan-desc{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;}
+    .plan-price{margin-bottom:20px;}
+    .plan-price .price{font-family:var(--font-display);font-size:2.5rem;font-weight:800;line-height:1;color:var(--green);}
+    .plan-price .price.free{color:var(--text);}
+    .plan-price .period{font-size:13px;color:var(--text-3);margin-left:4px;}
+    .plan-price .annual-note{font-size:11px;color:var(--text-3);margin-top:4px;font-family:var(--font-mono);}
+    .plan-price .annual-note.saving{color:var(--green);}
+
+    .plan-features{list-style:none;margin-bottom:28px;}
+    .plan-features li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.45;}
+    .plan-features li:last-child{border-bottom:none;}
+    .feat-icon{flex-shrink:0;font-size:14px;margin-top:1px;}
+    .feat-icon.check{color:var(--green);}
+    .feat-icon.cross{color:var(--text-3);}
+
+    .btn-plan{width:100%;padding:14px;border-radius:var(--radius);font-weight:800;font-size:15px;cursor:pointer;transition:all .2s;border:none;font-family:var(--font-body);}
+    .btn-plan.primary{background:var(--green);color:#000;}
+    .btn-plan.primary:hover{background:#00ff88;transform:translateY(-1px);}
+    .btn-plan.secondary{background:transparent;border:1px solid var(--border);color:var(--text);}
+    .btn-plan.secondary:hover{border-color:rgba(0,230,118,.3);color:var(--green);}
+
+    /* ── COMPARATIVO DE RECURSOS ──────────────────────────── */
+    .pm-section-title{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px;}
+    .pm-section-sub{color:var(--text-2);font-size:14px;text-align:center;margin-bottom:36px;}
+    .compare-table{width:100%;border-collapse:collapse;margin-bottom:64px;font-size:13.5px;}
+    .compare-table th{padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);}
+    .compare-table th.plan-col{text-align:center;color:var(--text-2);}
+    .compare-table th.featured-col{color:var(--green);}
+    .compare-table td{padding:13px 16px;border-bottom:1px solid var(--border);color:var(--text-2);}
+    .compare-table td.plan-col{text-align:center;}
+    .compare-table tr:hover td{background:var(--bg-2);}
+    .compare-table .section-row td{background:var(--bg-2);font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--green);text-transform:uppercase;padding:10px 16px;}
+    @media(max-width:640px){.compare-table{display:none;}}
+
+    /* ── BENEFÍCIOS VISUAIS ───────────────────────────────── */
+    .benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:64px;}
+    .benefit-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:border-color .2s;}
+    .benefit-card:hover{border-color:rgba(0,230,118,.25);}
+    .benefit-icon{font-size:1.8rem;margin-bottom:12px;}
+    .benefit-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:6px;}
+    .benefit-desc{font-size:13px;color:var(--text-2);line-height:1.6;}
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    .faq-list{max-width:680px;margin:0 auto 64px;}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 0;font-size:15px;font-weight:600;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-body);}
+    .faq-q:hover{color:var(--green);}
+    .faq-arrow{color:var(--green);font-size:18px;transition:transform .2s;flex-shrink:0;}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+    .faq-a.open{max-height:200px;}
+    .faq-a p{padding:0 0 18px;font-size:14px;color:var(--text-2);line-height:1.75;}
+
+    /* ── CTA FINAL ────────────────────────────────────────── */
+    .pm-cta{background:linear-gradient(135deg,rgba(0,230,118,.07),var(--bg-2));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:56px 32px;text-align:center;margin-bottom:64px;}
+    .pm-cta h2{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;}
+    .pm-cta p{color:var(--text-2);margin-bottom:28px;font-size:1rem;line-height:1.7;}
+    .pm-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+    /* ── TICKER ───────────────────────────────────────────── */
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
+    <li><a href="testar-prompt.html">🤖 Testar IA</a></li>
+    <li><a href="premium.html" class="active nav-cta">⭐ Premium</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">⭐ Premium: testes ilimitados + 500+ prompts exclusivos</span>
+    <span class="ticker-item">🚀 Packs por nicho: marketing, jurídico, saúde e mais</span>
+    <span class="ticker-item">💰 R$29/mês · cancele quando quiser</span>
+    <span class="ticker-item">🎁 7 dias de teste grátis — sem cobrança</span>
+    <span class="ticker-item">⭐ Premium: testes ilimitados + 500+ prompts exclusivos</span>
+    <span class="ticker-item">🚀 Packs por nicho: marketing, jurídico, saúde e mais</span>
+    <span class="ticker-item">💰 R$29/mês · cancele quando quiser</span>
+    <span class="ticker-item">🎁 7 dias de teste grátis — sem cobrança</span>
+  </div>
+</div>
+
+<section class="pm-hero">
+  <div class="pm-hero-inner">
+    <div class="pm-kick">🚀 PromptBR Premium</div>
+    <h1>IA sem limites.<br>Prompts que <span class="green">realmente funcionam.</span></h1>
+    <p>Testes ilimitados com Claude, 500+ prompts exclusivos por nicho, packs para download e acesso antecipado a novidades. Tudo em português.</p>
+    <div class="pm-social-proof">
+      <div class="pm-avatars">
+        <div class="pm-av">👩</div><div class="pm-av">👨</div><div class="pm-av">🧑</div><div class="pm-av">👩‍💼</div><div class="pm-av">+</div>
+      </div>
+      <div>
+        <div class="pm-stars">★★★★★</div>
+        <div class="pm-proof-text"><strong>+2.400 profissionais</strong> já usam o PromptBR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pm-page">
+
+  <!-- Toggle mensal/anual -->
+  <div class="pm-toggle">
+    <span class="pm-toggle-label active" id="toggle-monthly">Mensal</span>
+    <button class="pm-toggle-switch" id="billing-toggle" aria-label="Alternar cobrança"></button>
+    <span class="pm-toggle-label" id="toggle-annual">Anual <span class="pm-toggle-badge">-30%</span></span>
+  </div>
+
+  <!-- Planos -->
+  <div class="plans-grid">
+
+    <!-- Gratuito -->
+    <div class="plan-card">
+      <div class="plan-icon">🌱</div>
+      <div class="plan-name">Gratuito</div>
+      <div class="plan-desc">Para quem está começando e quer experimentar o poder dos prompts.</div>
+      <div class="plan-price">
+        <span class="price free">R$0</span>
+        <span class="period">/ sempre</span>
+      </div>
+      <ul class="plan-features">
+        <li><span class="feat-icon check">✓</span>245 prompts públicos</li>
+        <li><span class="feat-icon check">✓</span>5 testes de IA por dia</li>
+        <li><span class="feat-icon check">✓</span>Newsletter semanal</li>
+        <li><span class="feat-icon check">✓</span>Favoritos no navegador</li>
+        <li><span class="feat-icon cross">—</span><span style="color:var(--text-3)">Prompts exclusivos</span></li>
+        <li><span class="feat-icon cross">—</span><span style="color:var(--text-3)">Packs para download</span></li>
+        <li><span class="feat-icon cross">—</span><span style="color:var(--text-3)">Suporte prioritário</span></li>
+      </ul>
+      <button class="btn-plan secondary" onclick="window.location.href='prompts.html'">Continuar grátis</button>
+    </div>
+
+    <!-- Pro — destaque -->
+    <div class="plan-card featured">
+      <div class="plan-badge">⭐ Mais popular</div>
+      <div class="plan-icon">🚀</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-desc">Para profissionais que usam IA no dia a dia e querem resultados reais.</div>
+      <div class="plan-price">
+        <span class="price" id="price-pro">R$29</span>
+        <span class="period">/mês</span>
+        <div class="annual-note saving" id="annual-note-pro" style="display:none;">Equivale a R$20,30/mês — você economiza R$104/ano</div>
+      </div>
+      <ul class="plan-features">
+        <li><span class="feat-icon check">✓</span>Tudo do Gratuito</li>
+        <li><span class="feat-icon check">✓</span><strong>Testes de IA ilimitados</strong></li>
+        <li><span class="feat-icon check">✓</span><strong>500+ prompts exclusivos</strong></li>
+        <li><span class="feat-icon check">✓</span>Todos os Packs por nicho</li>
+        <li><span class="feat-icon check">✓</span>Novos prompts toda semana</li>
+        <li><span class="feat-icon check">✓</span>Suporte por email (48h)</li>
+        <li><span class="feat-icon check">✓</span>7 dias de teste grátis</li>
+      </ul>
+      <button class="btn-plan primary" id="btn-pro" onclick="handleCheckout('pro')">Começar 7 dias grátis →</button>
+    </div>
+
+    <!-- Equipes -->
+    <div class="plan-card">
+      <div class="plan-icon">🏢</div>
+      <div class="plan-name">Equipes</div>
+      <div class="plan-desc">Para times e empresas que querem IA em escala com controle centralizado.</div>
+      <div class="plan-price">
+        <span class="price" id="price-team">R$97</span>
+        <span class="period">/mês · até 5 usuários</span>
+        <div class="annual-note saving" id="annual-note-team" style="display:none;">Equivale a R$67,90/mês — você economiza R$349/ano</div>
+      </div>
+      <ul class="plan-features">
+        <li><span class="feat-icon check">✓</span>Tudo do Pro</li>
+        <li><span class="feat-icon check">✓</span>Até 5 usuários</li>
+        <li><span class="feat-icon check">✓</span>Dashboard de uso da equipe</li>
+        <li><span class="feat-icon check">✓</span>Prompts privados da empresa</li>
+        <li><span class="feat-icon check">✓</span>Onboarding personalizado</li>
+        <li><span class="feat-icon check">✓</span>Suporte prioritário (12h)</li>
+        <li><span class="feat-icon check">✓</span>NF-e disponível</li>
+      </ul>
+      <button class="btn-plan secondary" onclick="handleCheckout('team')">Falar com vendas →</button>
+    </div>
+
+  </div>
+
+  <!-- Benefícios visuais -->
+  <h2 class="pm-section-title">O que você ganha com o Premium</h2>
+  <p class="pm-section-sub">Tudo pensado para quem usa IA profissionalmente no Brasil</p>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">🤖</div>
+      <div class="benefit-title">Testes ilimitados de IA</div>
+      <div class="benefit-desc">Teste quantos prompts quiser com Claude Sonnet. Sem limite diário, sem interrupções.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🗂️</div>
+      <div class="benefit-title">500+ prompts exclusivos</div>
+      <div class="benefit-desc">Biblioteca exclusiva com prompts avançados por nicho: médicos, advogados, devs, e-commerce e mais.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📦</div>
+      <div class="benefit-title">Packs para download</div>
+      <div class="benefit-desc">Kits em PDF prontos para usar: "50 prompts para Instagram", "Kit Jurídico", "Pack E-commerce".</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">⚡</div>
+      <div class="benefit-title">Acesso antecipado</div>
+      <div class="benefit-desc">Seja o primeiro a usar novas ferramentas, prompts e funcionalidades antes do lançamento público.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📬</div>
+      <div class="benefit-title">Newsletter Premium</div>
+      <div class="benefit-desc">Versão aprofundada com análises, bastidores e prompts que não publicamos no site.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💬</div>
+      <div class="benefit-title">Suporte dedicado</div>
+      <div class="benefit-desc">Resposta em até 48h por email. Para equipes, suporte prioritário em 12h.</div>
+    </div>
+  </div>
+
+  <!-- Tabela comparativa -->
+  <h2 class="pm-section-title">Comparativo completo</h2>
+  <p class="pm-section-sub">Todos os recursos, sem letra miúda</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:40%">Recurso</th>
+        <th class="plan-col">Gratuito</th>
+        <th class="plan-col featured-col">⭐ Pro</th>
+        <th class="plan-col">Equipes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section-row"><td colspan="4">Biblioteca de Prompts</td></tr>
+      <tr><td>Prompts públicos</td><td class="plan-col">245</td><td class="plan-col" style="color:var(--green)">245+</td><td class="plan-col">245+</td></tr>
+      <tr><td>Prompts exclusivos Pro</td><td class="plan-col">—</td><td class="plan-col" style="color:var(--green)">500+</td><td class="plan-col">500+</td></tr>
+      <tr><td>Packs por nicho (PDF)</td><td class="plan-col">—</td><td class="plan-col" style="color:var(--green)">✓ Todos</td><td class="plan-col">✓ Todos</td></tr>
+      <tr><td>Novos prompts semanais</td><td class="plan-col">—</td><td class="plan-col" style="color:var(--green)">✓</td><td class="plan-col">✓</td></tr>
+      <tr class="section-row"><td colspan="4">Teste de IA</td></tr>
+      <tr><td>Testes gratuitos/dia</td><td class="plan-col">5</td><td class="plan-col" style="color:var(--green)">Ilimitados</td><td class="plan-col">Ilimitados</td></tr>
+      <tr><td>Modelos disponíveis</td><td class="plan-col">Claude Sonnet</td><td class="plan-col" style="color:var(--green)">Sonnet + variações</td><td class="plan-col">Sonnet + variações</td></tr>
+      <tr><td>Histórico de testes</td><td class="plan-col">Sessão atual</td><td class="plan-col" style="color:var(--green)">30 dias</td><td class="plan-col">90 dias</td></tr>
+      <tr class="section-row"><td colspan="4">Conta e Suporte</td></tr>
+      <tr><td>Favoritos salvos</td><td class="plan-col">No navegador</td><td class="plan-col" style="color:var(--green)">Na conta (sync)</td><td class="plan-col">Na conta (sync)</td></tr>
+      <tr><td>Suporte</td><td class="plan-col">—</td><td class="plan-col" style="color:var(--green)">Email (48h)</td><td class="plan-col">Prioritário (12h)</td></tr>
+      <tr><td>NF-e / recibo</td><td class="plan-col">—</td><td class="plan-col" style="color:var(--green)">Recibo digital</td><td class="plan-col">NF-e completa</td></tr>
+      <tr><td>Usuários por conta</td><td class="plan-col">1</td><td class="plan-col" style="color:var(--green)">1</td><td class="plan-col">Até 5</td></tr>
+      <tr><td>Prompts privados da empresa</td><td class="plan-col">—</td><td class="plan-col">—</td><td class="plan-col">✓</td></tr>
+    </tbody>
+  </table>
+
+  <!-- FAQ -->
+  <h2 class="pm-section-title">Dúvidas frequentes</h2>
+  <p class="pm-section-sub" style="margin-bottom:32px;">Transparência total antes de assinar</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">É necessário cartão de crédito para o teste grátis? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Sim, mas <strong>você não é cobrado nos primeiros 7 dias</strong>. Se cancelar antes do fim do período de teste, não há nenhuma cobrança. Você pode cancelar com um clique, sem precisar ligar para ninguém.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Posso cancelar quando quiser? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Sim, sem multa, sem burocracia. Cancele em qualquer momento pelo painel da sua conta. O acesso continua até o fim do período já pago.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Os prompts exclusivos são realmente diferentes? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>São prompts avançados desenvolvidos com especialistas de cada nicho: advogados, médicos, designers, desenvolvedores, gestores de marketing. Mais longos, mais específicos e com estruturas que a biblioteca pública não tem.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">O que são os Packs para download? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>São coleções temáticas em PDF que você baixa e usa offline ou compartilha com sua equipe. Exemplos: "50 Prompts para E-commerce", "Kit Jurídico com 30 prompts", "Pack Criadores de Conteúdo". Novos packs toda semana.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Como funciona o plano Equipes? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Um único pagamento libera acesso Pro para até 5 usuários com emails diferentes. O administrador pode gerenciar acessos, ver uso de cada membro e criar prompts privados visíveis apenas para a equipe.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Emitem NF-e para pessoa jurídica? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Sim, no plano Equipes emitimos NF-e completa. No plano Pro, enviamos recibo digital completo com todos os dados para reembolso ou controle financeiro.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA final -->
+  <div class="pm-cta">
+    <h2>Comece hoje. Cancele se não gostar.</h2>
+    <p>7 dias grátis, sem compromisso. Junte-se a mais de 2.400 profissionais que já usam IA de forma mais inteligente com o PromptBR.</p>
+    <div class="pm-cta-btns">
+      <button class="btn-plan primary" style="width:auto;padding:14px 36px;font-size:16px;" onclick="handleCheckout('pro')">🚀 Começar 7 dias grátis</button>
+      <a href="testar-prompt.html" style="background:transparent;border:1px solid var(--border);color:var(--text);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s;display:inline-block;">Testar grátis primeiro →</a>
+    </div>
+    <p style="font-size:12px;color:var(--text-3);margin-top:14px;">✓ Sem cobrança nos primeiros 7 dias &nbsp;·&nbsp; ✓ Cancele quando quiser &nbsp;·&nbsp; ✓ Suporte em português</p>
+  </div>
+
+</div><!-- fim pm-page -->
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Premium</h4><ul><li><a href="premium.html">Ver planos</a></li><li><a href="packs.html">Packs de Prompts</a></li><li><a href="testar-prompt.html">Testar IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>Feito com IA no Brasil 🇧🇷</span></div></footer>
+
+<script src="global.js"></script>
+<script>
+/* ── TOGGLE MENSAL/ANUAL ────────────────────────────────── */
+var isAnnual = false;
+var toggle = document.getElementById('billing-toggle');
+if(toggle) toggle.addEventListener('click', function(){
+  isAnnual = !isAnnual;
+  toggle.classList.toggle('annual', isAnnual);
+  var ml = document.getElementById('toggle-monthly');
+  var al = document.getElementById('toggle-annual');
+  if(ml) ml.classList.toggle('active', !isAnnual);
+  if(al) al.classList.toggle('active', isAnnual);
+
+  var pp = document.getElementById('price-pro');
+  var pt = document.getElementById('price-team');
+  var np = document.getElementById('annual-note-pro');
+  var nt = document.getElementById('annual-note-team');
+  var btnPro = document.getElementById('btn-pro');
+
+  if(isAnnual){
+    if(pp) pp.textContent = 'R$243';
+    if(pt) pt.textContent = 'R$816';
+    if(np){ np.style.display='block'; }
+    if(nt){ nt.style.display='block'; }
+    if(btnPro) btnPro.textContent = 'Assinar anual — economize R$104 →';
+  } else {
+    if(pp) pp.textContent = 'R$29';
+    if(pt) pt.textContent = 'R$97';
+    if(np){ np.style.display='none'; }
+    if(nt){ nt.style.display='none'; }
+    if(btnPro) btnPro.textContent = 'Começar 7 dias grátis →';
+  }
+  // Atualizar period text
+  document.querySelectorAll('.plan-price .period').forEach(function(el, i){
+    if(i===1) el.textContent = isAnnual ? '/ano' : '/mês';
+    if(i===2) el.textContent = isAnnual ? '/ano · até 5 usuários' : '/mês · até 5 usuários';
+  });
+});
+
+/* ── FAQ ACCORDION ──────────────────────────────────────── */
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var answer = btn.nextElementSibling;
+    var arrow = btn.querySelector('.faq-arrow');
+    var isOpen = answer.classList.contains('open');
+    // Fechar todos
+    document.querySelectorAll('.faq-a').forEach(function(a){ a.classList.remove('open'); });
+    document.querySelectorAll('.faq-arrow').forEach(function(a){ a.textContent='+'; });
+    // Abrir clicado (se estava fechado)
+    if(!isOpen){
+      answer.classList.add('open');
+      if(arrow) arrow.textContent = '−';
+    }
+  });
+});
+
+/* ── CHECKOUT (placeholder para integração Stripe/Hotmart) ─ */
+function handleCheckout(plan){
+  if(plan === 'team'){
+    window.location.href = 'mailto:contato@brprompt.tec.br?subject=Interesse%20em%20Plano%20Equipes';
+    return;
+  }
+  // Aqui você integra Stripe, Hotmart, Kiwify etc.
+  // Exemplo: window.location.href = 'https://pay.hotmart.com/SEU_PRODUTO';
+  alert('🚀 Integração de pagamento em breve!\n\nPara participar do beta Premium com desconto especial, envie email para: contato@brprompt.tec.br');
+  if(typeof gtag === 'function') gtag('event','checkout_click', {plan:plan, billing:isAnnual?'annual':'monthly'});
+}
+</script>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;">🍪 <strong style="color:#fff;">Usamos cookies</strong>. <a href="cookies.html" style="color:#00e676;">Saiba mais</a></p></div>
+    <div style="display:flex;gap:10px;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.opacity=window.scrollY>300?'1':'0';btn.style.visibility=window.scrollY>300?'visible':'hidden';btn.style.transform=window.scrollY>300?'translateY(0)':'translateY(12px)';},{passive:true});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
+</body></html>

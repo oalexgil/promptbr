@@ -49,20 +49,46 @@
     .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
     .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  
+    /* ── LEIA TAMBÉM ─────────────────────────────────────── */
+    .rel-block{margin:40px 0 0;padding:28px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);}
+    .rel-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;}
+    .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+    .rel-card{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;transition:border-color .2s,transform .15s;}
+    .rel-card:hover{border-color:rgba(0,230,118,.35);transform:translateX(3px);}
+    .rel-arrow{color:var(--green);font-size:14px;flex-shrink:0;}
+    .rel-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.35;}
+    @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+    /* ── FIM LEIA TAMBÉM ──────────────────────────────────── */
+  
+    /* ── MOBILE FIX: prompt-box e interação ──────────────── */
+    @media(max-width:768px){
+      .prompt-box{overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:12px;padding:14px 16px;white-space:pre;word-break:normal;}
+      .art-wrap h2{font-size:1.25rem;margin:30px 0 12px;}
+      .art-wrap p,.art-wrap li{font-size:14.5px;}
+      .art-hero h1{font-size:clamp(1.6rem,7vw,2.4rem);}
+      .art-wrap{padding:32px 16px 60px;}
+      .art-nav{flex-direction:column;}
+      .art-nav a{min-width:unset;}
+      .tip-box{padding:14px 16px;gap:10px;}
+      .nl-cta-art{padding:24px 20px;}
+      .rel-grid{grid-template-columns:1fr;}
+    }
+    /* ── FIM MOBILE FIX ──────────────────────────────────── */
   </style>
-  <!-- Google Analytics 4 — substitua G-ZK59708GWD pelo seu ID real -->
+  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID real -->
   <!-- Crie em: analytics.google.com → Criar propriedade → copie o ID G-XXXXXXX -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
-    gtag('config','G-ZK59708GWD');
+    gtag('config','G-XXXXXXXXXX');
   </script>
-  <!-- Google AdSense — substitua ca-pub-3823120055728050 pelo seu Publisher ID -->
+  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
   <!-- Crie em: adsense.google.com → Começar → copie o código ca-pub-XXXX -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="reading-bar"></div>
@@ -70,7 +96,7 @@
   <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
-    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="packs.html">📦 Packs</a></li><li><a href="testar-prompt.html">🤖 Testar IA</a></li><li><a href="noticias.html">Notícias</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -97,7 +123,7 @@
     <h1>GPT-5.5 vs Claude Sonnet 4.6: qual usar em 2026?</h1>
     <p class="desc">A OpenAI acaba de lançar o GPT-5.5 enquanto a Anthropic consolidou o Sonnet 4.6 como seu modelo custo-benefício. Testamos os dois nas tarefas que mais importam para quem usa IA no trabalho.</p>
     <div class="art-meta">
-      <span>📅 24 Abr 2026</span><span>⏱️ 8 min</span><span>👁️ Novo</span>
+      <span>📅 24 Abr 2026</span><span>⏱️ 11 min</span><span>👁️ Novo</span>
     </div>
   </div>
 </div>
@@ -219,6 +245,26 @@
     </a>
   </div>
 
+
+  <!-- ── LEIA TAMBÉM ─────────────────────────────────────────────── -->
+  <div class="rel-block">
+    <div class="rel-label">📖 Leia também</div>
+    <div class="rel-grid">
+      <a href="artigo-claude-vs-chatgpt.html" class="rel-card">
+        <span class="rel-arrow">→</span>
+        <span class="rel-title">Claude vs ChatGPT: qual usar em 2026?</span>
+      </a>
+      <a href="artigo-chatgpt.html" class="rel-card">
+        <span class="rel-arrow">→</span>
+        <span class="rel-title">ChatGPT do zero ao avançado</span>
+      </a>
+      <a href="artigo-gemini-google-guia-completo.html" class="rel-card">
+        <span class="rel-arrow">→</span>
+        <span class="rel-title">Gemini: guia completo do Google</span>
+      </a>
+    </div>
+  </div>
+  <!-- ── FIM LEIA TAMBÉM ──────────────────────────────────────────── -->
 </div>
 
 <footer class="footer"><div class="footer-grid">
@@ -322,5 +368,6 @@
 })();
 </script>
 <!-- ── FIM BOTÃO VOLTAR AO TOPO ──────────────────────────────────── -->
+
 </body>
 </html>

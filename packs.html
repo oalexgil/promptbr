@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packs de Prompts por Nicho — PromptBR</title>
+  <meta name="description" content="Kits de prompts prontos por nicho: marketing, jurídico, e-commerce, saúde, RH, finanças e mais. Baixe e use agora.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    /* ── HERO ─────────────────────────────────────────────── */
+    .pk-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:56px 24px 44px;position:relative;overflow:hidden;}
+    .pk-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .pk-hero-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1;}
+    .pk-kick{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .pk-kick::before{content:'';width:24px;height:2px;background:var(--green);}
+    .pk-hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;}
+    .pk-hero h1 span{color:var(--green);}
+    .pk-hero p{color:var(--text-2);font-size:1rem;line-height:1.7;max-width:560px;margin-bottom:24px;}
+    .pk-hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+    .pk-stat{text-align:left;}
+    .pk-stat .n{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green);line-height:1;}
+    .pk-stat .l{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text-3);text-transform:uppercase;}
+
+    /* ── FILTRO ───────────────────────────────────────────── */
+    .pk-filters{background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:var(--nav-h);z-index:100;padding:12px 24px;}
+    .pk-filters-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+    .pk-fp{padding:7px 15px;background:var(--bg-3);border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);white-space:nowrap;font-family:var(--font-body);}
+    .pk-fp:hover{border-color:var(--green);color:var(--green);}
+    .pk-fp.active{background:var(--green);color:#000;border-color:var(--green);}
+
+    /* ── PÁGINA ───────────────────────────────────────────── */
+    .pk-page{max-width:var(--max-w);margin:0 auto;padding:36px 24px 80px;}
+
+    /* ── DESTAQUE: PACK FREE ──────────────────────────────── */
+    .pk-featured{background:linear-gradient(135deg,rgba(0,230,118,.06),var(--bg-2));border:2px solid rgba(0,230,118,.25);border-radius:var(--radius-lg);padding:32px;margin-bottom:36px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+    @media(max-width:600px){.pk-featured{grid-template-columns:1fr;}}
+    .pk-feat-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,230,118,.12);border:1px solid rgba(0,230,118,.25);color:var(--green);padding:4px 12px;border-radius:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;margin-bottom:10px;}
+    .pk-featured h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:8px;letter-spacing:-.02em;}
+    .pk-featured h2 span{color:var(--green);}
+    .pk-featured p{color:var(--text-2);font-size:14px;line-height:1.65;margin-bottom:16px;}
+    .pk-feat-tags{display:flex;gap:6px;flex-wrap:wrap;}
+    .pk-feat-tag{background:var(--bg-3);border:1px solid var(--border);padding:4px 10px;border-radius:10px;font-size:11.5px;color:var(--text-2);}
+    .pk-feat-cta{text-align:center;flex-shrink:0;}
+    .pk-feat-cta .pk-price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--green);line-height:1;}
+    .pk-feat-cta .pk-old-price{font-size:13px;color:var(--text-3);text-decoration:line-through;margin-bottom:4px;}
+    .pk-feat-cta .pk-label{font-size:11px;color:var(--text-3);margin-bottom:14px;font-family:var(--font-mono);}
+
+    /* ── GRID DE PACKS ────────────────────────────────────── */
+    .pk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+    .pk-section-title{grid-column:1/-1;font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin:20px 0 4px;}
+    .pk-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+    /* ── CARD DO PACK ─────────────────────────────────────── */
+    .pk-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;}
+    .pk-card:hover{border-color:rgba(0,230,118,.3);transform:translateY(-2px);}
+    .pk-card.free{border-color:rgba(0,230,118,.2);}
+    .pk-card.premium{border-color:rgba(250,204,21,.15);}
+
+    .pk-card-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
+    .pk-card-badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;letter-spacing:.04em;}
+    .pk-card-badge.free{background:rgba(0,230,118,.15);color:var(--green);border:1px solid rgba(0,230,118,.25);}
+    .pk-card-badge.premium{background:rgba(250,204,21,.12);color:#facc15;border:1px solid rgba(250,204,21,.2);}
+    .pk-card-badge.pro{background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.2);}
+
+    .pk-card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
+    .pk-card-niche{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.15em;color:var(--green);text-transform:uppercase;margin-bottom:6px;}
+    .pk-card-title{font-family:var(--font-display);font-size:1.05rem;font-weight:800;line-height:1.25;margin-bottom:8px;color:var(--text);}
+    .pk-card-desc{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:12px;flex:1;}
+    .pk-card-items{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+    .pk-item-tag{background:var(--bg-3);border:1px solid var(--border);padding:3px 9px;border-radius:8px;font-size:11px;color:var(--text-3);}
+    .pk-card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid var(--border);margin-top:auto;}
+    .pk-price-block .pk-card-price{font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--green);}
+    .pk-price-block .pk-card-old{font-size:11px;color:var(--text-3);text-decoration:line-through;}
+    .pk-price-block .pk-card-free-label{font-size:12px;font-weight:700;color:var(--green);}
+    .btn-pk{padding:9px 18px;border-radius:var(--radius);font-weight:700;font-size:12.5px;cursor:pointer;transition:all .2s;border:none;font-family:var(--font-body);white-space:nowrap;}
+    .btn-pk.primary{background:var(--green);color:#000;}
+    .btn-pk.primary:hover{background:#00ff88;}
+    .btn-pk.locked{background:var(--bg-3);color:var(--text-3);border:1px solid var(--border);}
+    .btn-pk.locked:hover{border-color:rgba(250,204,21,.3);color:#facc15;}
+
+    /* ── BANNER CTA ───────────────────────────────────────── */
+    .pk-cta-banner{background:linear-gradient(135deg,rgba(0,230,118,.06),var(--bg-2));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:40px 32px;text-align:center;margin-top:48px;}
+    .pk-cta-banner h3{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin-bottom:10px;}
+    .pk-cta-banner p{color:var(--text-2);margin-bottom:22px;font-size:14px;line-height:1.7;}
+
+    /* ── TICKER ───────────────────────────────────────────── */
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    @media(max-width:600px){
+      .pk-grid{grid-template-columns:1fr;}
+      .pk-page{padding:24px 14px 60px;}
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
+    <li><a href="packs.html" class="active">📦 Packs</a></li>
+    <li><a href="testar-prompt.html">🤖 Testar IA</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">📦 Novos packs toda semana</span>
+    <span class="ticker-item">🎁 Pack de Marketing grátis — sem cadastro</span>
+    <span class="ticker-item">⭐ Premium: acesso a todos os packs incluído</span>
+    <span class="ticker-item">🇧🇷 100% em português, focado no mercado BR</span>
+    <span class="ticker-item">📦 Novos packs toda semana</span>
+    <span class="ticker-item">🎁 Pack de Marketing grátis — sem cadastro</span>
+    <span class="ticker-item">⭐ Premium: acesso a todos os packs incluído</span>
+    <span class="ticker-item">🇧🇷 100% em português, focado no mercado BR</span>
+  </div>
+</div>
+
+<section class="pk-hero">
+  <div class="pk-hero-inner">
+    <div class="pk-kick">Packs de prompts</div>
+    <h1>Kits prontos para <span>cada nicho</span></h1>
+    <p>Coleções de prompts organizadas por área profissional. Baixe, imprima ou compartilhe com sua equipe. Tudo em português, testado na prática.</p>
+    <div class="pk-hero-stats">
+      <div class="pk-stat"><div class="n">18</div><div class="l">Packs disponíveis</div></div>
+      <div class="pk-stat"><div class="n">800+</div><div class="l">Prompts no total</div></div>
+      <div class="pk-stat"><div class="n">3</div><div class="l">Gratuitos</div></div>
+      <div class="pk-stat"><div class="n">Semanal</div><div class="l">Atualização</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Filtros -->
+<div class="pk-filters"><div class="pk-filters-inner">
+  <button class="pk-fp active" data-filter="todos">Todos</button>
+  <button class="pk-fp" data-filter="free">🎁 Gratuitos</button>
+  <button class="pk-fp" data-filter="marketing">Marketing</button>
+  <button class="pk-fp" data-filter="negocios">Negócios</button>
+  <button class="pk-fp" data-filter="tech">Tech</button>
+  <button class="pk-fp" data-filter="criativo">Criativo</button>
+  <button class="pk-fp" data-filter="juridico">Jurídico</button>
+  <button class="pk-fp" data-filter="saude">Saúde</button>
+</div></div>
+
+<div class="pk-page">
+
+  <!-- Pack em destaque (gratuito) -->
+  <div class="pk-featured" data-niche="marketing free">
+    <div>
+      <div class="pk-feat-badge">🎁 Gratuito · Mais baixado</div>
+      <h2>Pack Starter de <span>Marketing Digital</span></h2>
+      <p>50 prompts essenciais para quem trabalha com marketing: posts para redes sociais, email marketing, anúncios, SEO e análise de métricas. Testado por mais de 1.200 profissionais.</p>
+      <div class="pk-feat-tags">
+        <span class="pk-feat-tag">📱 Redes Sociais</span>
+        <span class="pk-feat-tag">📧 Email Marketing</span>
+        <span class="pk-feat-tag">🔍 SEO</span>
+        <span class="pk-feat-tag">💰 Anúncios</span>
+        <span class="pk-feat-tag">📊 Métricas</span>
+      </div>
+    </div>
+    <div class="pk-feat-cta">
+      <div class="pk-old-price">R$47</div>
+      <div class="pk-price">GRÁTIS</div>
+      <div class="pk-label">PDF · 50 prompts · 28 páginas</div>
+      <button class="btn-pk primary" style="width:100%;padding:13px 24px;font-size:14px;" onclick="downloadPack('marketing-starter')">⬇ Baixar grátis</button>
+    </div>
+  </div>
+
+  <!-- Grid de todos os packs -->
+  <div class="pk-grid" id="pack-grid">
+
+    <!-- Gratuitos -->
+    <div class="pk-section-title" data-section>Gratuitos</div>
+
+    <div class="pk-card free" data-niche="marketing free">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#031a08,#065c20);">📱<div class="pk-card-badge free">GRÁTIS</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Marketing</div>
+        <div class="pk-card-title">Pack Starter Marketing Digital</div>
+        <div class="pk-card-desc">50 prompts para redes sociais, email, SEO e anúncios. O kit mais completo para quem está começando com IA no marketing.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">50 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">28 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-free-label">🎁 Gratuito</div></div>
+          <button class="btn-pk primary" onclick="downloadPack('marketing-starter')">⬇ Baixar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card free" data-niche="negocios free">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#03101a,#063a5c);">💼<div class="pk-card-badge free">GRÁTIS</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Negócios</div>
+        <div class="pk-card-title">Kit Produtividade Profissional</div>
+        <div class="pk-card-desc">30 prompts para emails difíceis, reuniões, feedbacks, negociações e apresentações. Ideal para gestores e analistas.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">30 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">18 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-free-label">🎁 Gratuito</div></div>
+          <button class="btn-pk primary" onclick="downloadPack('produtividade-starter')">⬇ Baixar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card free" data-niche="criativo free">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#170316,#540a50);">✍️<div class="pk-card-badge free">GRÁTIS</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Criativo</div>
+        <div class="pk-card-title">Pack Escrita e Conteúdo</div>
+        <div class="pk-card-desc">25 prompts para artigos, posts, roteiros, stories e copy. Do briefing à publicação, tudo coberto.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">25 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">16 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-free-label">🎁 Gratuito</div></div>
+          <button class="btn-pk primary" onclick="downloadPack('escrita-starter')">⬇ Baixar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium -->
+    <div class="pk-section-title" data-section>Premium · Incluídos no plano Pro</div>
+
+    <div class="pk-card premium" data-niche="marketing">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#1a0d03,#5c2a06);">🛍️<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">E-commerce</div>
+        <div class="pk-card-title">Kit E-commerce Completo</div>
+        <div class="pk-card-desc">60 prompts para lojas virtuais: descrições de produto, atendimento, recuperação de carrinho, campanhas sazonais e análise de reviews.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">60 prompts</span><span class="pk-item-tag">PDF + Notion</span><span class="pk-item-tag">34 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('ecommerce')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="juridico">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#0a1a03,#1a4003);">⚖️<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Jurídico</div>
+        <div class="pk-card-title">Pack Jurídico — Advogados</div>
+        <div class="pk-card-desc">40 prompts para advogados: petições, contratos, pareceres, pesquisa jurídica, minutas e comunicação com clientes.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">40 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">24 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$97</div><div class="pk-card-price">R$67</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('juridico')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="saude">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#001a14,#004033);">🩺<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Saúde</div>
+        <div class="pk-card-title">Kit para Profissionais de Saúde</div>
+        <div class="pk-card-desc">35 prompts para médicos, psicólogos e nutricionistas: laudos, anamnese, comunicação com pacientes e pesquisa clínica.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">35 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">22 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$97</div><div class="pk-card-price">R$67</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('saude')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="tech">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#030d1a,#062a5c);">💻<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Tecnologia</div>
+        <div class="pk-card-title">Pack Dev & Tech</div>
+        <div class="pk-card-desc">55 prompts para desenvolvedores: code review, debugging, documentação, arquitetura de sistemas e entrevistas técnicas.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">55 prompts</span><span class="pk-item-tag">PDF + MD</span><span class="pk-item-tag">32 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('dev')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="negocios">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#1a1703,#5c4a0a);">📊<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">RH & Gestão</div>
+        <div class="pk-card-title">Kit RH e Gestão de Pessoas</div>
+        <div class="pk-card-desc">45 prompts para RH: job descriptions, entrevistas, onboarding, PDI, avaliação de desempenho e comunicação interna.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">45 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">26 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('rh')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="negocios">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#031a0d,#064024);">💰<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Finanças</div>
+        <div class="pk-card-title">Pack Finanças e Contabilidade</div>
+        <div class="pk-card-desc">38 prompts para contadores e analistas financeiros: relatórios, análise de balanço, projeções, planejamento tributário.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">38 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">22 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('financas')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="criativo">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#1a0317,#540340);">🎬<div class="pk-card-badge premium">PRO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Criativo</div>
+        <div class="pk-card-title">Pack Criadores de Conteúdo</div>
+        <div class="pk-card-desc">70 prompts para YouTubers, podcasters e influenciadores: roteiros, títulos, thumbnails, descrições e estratégia de conteúdo.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">70 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">38 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('creators')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="negocios">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#1a0a03,#5c2a06);">🏪<div class="pk-card-badge pro">NOVO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Pequenas Empresas</div>
+        <div class="pk-card-title">Kit PME — Pequenas Empresas</div>
+        <div class="pk-card-desc">50 prompts pensados para MEIs e pequenas empresas: atendimento, proposta comercial, precificação, marketing local.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">50 prompts</span><span class="pk-item-tag">PDF + Notion</span><span class="pk-item-tag">30 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$47</div><div class="pk-card-price">R$37</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('pme')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pk-card premium" data-niche="marketing">
+      <div class="pk-card-thumb" style="background:linear-gradient(135deg,#031218,#063654);">📈<div class="pk-card-badge pro">NOVO</div></div>
+      <div class="pk-card-body">
+        <div class="pk-card-niche">Marketing</div>
+        <div class="pk-card-title">Pack Google Ads & Meta Ads</div>
+        <div class="pk-card-desc">45 prompts especializados em mídia paga: criação de anúncios, segmentação, copy para remarketing e análise de campanhas.</div>
+        <div class="pk-card-items"><span class="pk-item-tag">45 prompts</span><span class="pk-item-tag">PDF</span><span class="pk-item-tag">26 págs</span></div>
+        <div class="pk-card-foot">
+          <div class="pk-price-block"><div class="pk-card-old">R$67</div><div class="pk-card-price">R$47</div></div>
+          <button class="btn-pk locked" onclick="unlockPack('ads')">🔒 Desbloquear</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- fim pk-grid -->
+
+  <!-- Banner Premium -->
+  <div class="pk-cta-banner">
+    <h3>Acesse <span style="color:var(--green)">todos os packs</span> com o Premium</h3>
+    <p>No plano Pro por R$29/mês, todos os packs estão incluídos — sem pagar separado.<br>Acesso imediato, novos packs toda semana, 7 dias grátis para testar.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="premium.html" style="background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;text-decoration:none;transition:background .2s;display:inline-block;">🚀 Ver Premium →</a>
+      <a href="prompts.html" style="background:transparent;border:1px solid var(--border);color:var(--text);padding:13px 24px;border-radius:var(--radius);font-weight:600;font-size:14px;text-decoration:none;display:inline-block;transition:all .2s;">Ver biblioteca grátis</a>
+    </div>
+  </div>
+
+</div><!-- fim pk-page -->
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="packs.html">Packs</a></li></ul></div>
+  <div class="footer-col"><h4>Packs</h4><ul><li><a href="packs.html">Todos os Packs</a></li><li><a href="premium.html">Premium</a></li><li><a href="testar-prompt.html">Testar IA</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="termos.html">Termos</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>Feito com IA no Brasil 🇧🇷</span></div></footer>
+
+<script src="global.js"></script>
+<script>
+/* ── FILTROS DE NICHO ────────────────────────────────────── */
+document.querySelectorAll('.pk-fp').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.pk-fp').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var filter = btn.getAttribute('data-filter');
+    document.querySelectorAll('.pk-card').forEach(function(card){
+      var niche = card.getAttribute('data-niche') || '';
+      if(filter === 'todos'){
+        card.style.display = '';
+      } else if(filter === 'free'){
+        card.style.display = niche.includes('free') ? '' : 'none';
+      } else {
+        card.style.display = niche.includes(filter) ? '' : 'none';
+      }
+    });
+    // Mostrar/ocultar section dividers
+    document.querySelectorAll('[data-section]').forEach(function(div){
+      var next = div.nextElementSibling;
+      var hasVisible = false;
+      while(next && !next.hasAttribute('data-section') && !next.classList.contains('pk-cta-banner')){
+        if(next.classList.contains('pk-card') && next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      div.style.display = hasVisible ? '' : 'none';
+    });
+  });
+});
+
+/* ── DOWNLOAD / DESBLOQUEIO ──────────────────────────────── */
+function downloadPack(id){
+  // Aqui você integra com o sistema real de download (Gumroad, próprio, etc.)
+  // Por ora, simula o download mostrando modal
+  showDownloadModal(id);
+  if(typeof gtag==='function') gtag('event','download_pack',{pack:id});
+}
+
+function unlockPack(id){
+  // Redirecionar para premium ou checkout individual
+  var go = confirm('🔒 Este pack faz parte do plano Premium.\n\nDeseja ver os planos? (R$29/mês · 7 dias grátis)');
+  if(go) window.location.href = 'premium.html';
+  if(typeof gtag==='function') gtag('event','unlock_pack_click',{pack:id});
+}
+
+function showDownloadModal(id){
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:20px;';
+  var modal = document.createElement('div');
+  modal.style.cssText = 'background:var(--bg-2);border:1px solid rgba(0,230,118,.25);border-radius:16px;padding:36px;max-width:400px;width:100%;text-align:center;';
+  modal.innerHTML = `
+    <div style="font-size:2.5rem;margin-bottom:14px;">📦</div>
+    <h3 style="font-family:var(--font-display);font-weight:800;margin-bottom:8px;">Pack pronto para baixar!</h3>
+    <p style="color:var(--text-2);font-size:14px;line-height:1.65;margin-bottom:20px;">Deixe seu email para receber o PDF e ser notificado de novos packs gratuitos toda semana.</p>
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <input type="email" id="dl-email" placeholder="seu@email.com" style="flex:1;padding:10px 14px;background:var(--bg-3);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:13px;outline:none;">
+      <button id="dl-btn" style="background:var(--green);color:#000;border:none;padding:10px 18px;border-radius:8px;font-weight:800;cursor:pointer;font-size:13px;" onclick="confirmDownload('${id}')">Baixar</button>
+    </div>
+    <button onclick="this.closest('[style]').remove()" style="background:none;border:none;color:var(--text-3);cursor:pointer;font-size:12px;font-family:var(--font-body);">Fechar</button>
+  `;
+  overlay.appendChild(modal);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+  setTimeout(function(){ var inp=document.getElementById('dl-email'); if(inp) inp.focus(); }, 100);
+}
+
+function confirmDownload(id){
+  var emailEl = document.getElementById('dl-email');
+  var email = emailEl ? emailEl.value.trim() : '';
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    if(emailEl){ emailEl.style.borderColor='#ef4444'; setTimeout(function(){ emailEl.style.borderColor=''; },1400); }
+    return;
+  }
+  // Aqui: integrar com Beehiiv / Mailchimp para captura do lead
+  // e servir o PDF real via link de download
+  var overlay = document.querySelector('[style*="position:fixed"]');
+  if(overlay) overlay.remove();
+  
+  // Simular download (em produção, substituir por URL real do PDF)
+  var link = document.createElement('a');
+  link.href = 'downloads/' + id + '.pdf';
+  link.download = 'PromptBR-Pack-' + id + '.pdf';
+  link.click();
+  
+  // Toast de confirmação
+  var toast = document.createElement('div');
+  toast.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13px;z-index:9999;animation:fadeIn .3s;';
+  toast.textContent = '✓ Download iniciado! Verifique sua pasta de downloads.';
+  document.body.appendChild(toast);
+  setTimeout(function(){ toast.remove(); }, 3500);
+}
+</script>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;">🍪 <strong style="color:#fff;">Usamos cookies</strong>. <a href="cookies.html" style="color:#00e676;">Saiba mais</a></p></div>
+    <div style="display:flex;gap:10px;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.opacity=window.scrollY>300?'1':'0';btn.style.visibility=window.scrollY>300?'visible':'hidden';btn.style.transform=window.scrollY>300?'translateY(0)':'translateY(12px)';},{passive:true});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
+</body></html>
