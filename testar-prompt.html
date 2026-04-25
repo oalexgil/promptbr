@@ -132,8 +132,9 @@
     <li><a href="index.html">Início</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="packs.html">📦 Packs</a></li>
     <li><a href="testar-prompt.html" class="active">🤖 Testar IA</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -427,13 +428,16 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
 
     var persona = personas[currentPersona];
 
+    // ── URL do proxy (Cloudflare Worker) ──────────────────
+    // Após criar o Worker, substitua pela sua URL real.
+    // Ex: 'https://promptbr-proxy.SEU-USER.workers.dev'
+    var PROXY_URL = 'https://promptbr-proxy.SEU-USUARIO.workers.dev';
+
     try{
-      var response = await fetch('https://api.anthropic.com/v1/messages', {
+      var response = await fetch(PROXY_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
           system: persona.system,
           messages: [{ role: 'user', content: text }],
           stream: true
@@ -516,7 +520,15 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
       if(typeof gtag === 'function') gtag('event','test_prompt',{persona:currentPersona, chars:text.length});
 
     }catch(err){
-      out.innerHTML = '<div class="tp-error">⚠️ ' + (err.message || 'Erro desconhecido. Tente novamente.') + '</div>';
+      var msg = err.message || 'Erro desconhecido.';
+      var isProxyError = msg.includes('fetch') || msg.includes('Failed') || msg.includes('NetworkError');
+      var isNotConfigured = PROXY_URL.includes('SEU-USUARIO');
+      var displayMsg = isNotConfigured
+        ? '⚙️ <strong>Proxy não configurado.</strong> Siga as instruções no arquivo <code>cloudflare-worker.js</code> para ativar o Testar IA.'
+        : isProxyError
+          ? '🌐 <strong>Erro de conexão.</strong> Verifique se o Worker está ativo em: <code>' + PROXY_URL + '</code>'
+          : '⚠️ ' + msg;
+      out.innerHTML = '<div class="tp-error">' + displayMsg + '</div>';
     }finally{
       isRunning = false;
       setRunningState(false);
