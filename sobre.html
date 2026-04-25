@@ -3,51 +3,69 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre o PromptBR — A maior biblioteca de prompts em português</title>
-  <meta name="description" content="Conheça o PromptBR: quem somos, nossa missão e por que criamos a maior biblioteca de prompts em português do Brasil.">
+  <meta name="description" content="Conheça o PromptBR e seu criador: Álex Herllain, servidor da UERJ e especialista em IA e prompting.">
   <link rel="stylesheet" href="global.css">
   <style>
-    .about-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:72px 24px 56px;position:relative;overflow:hidden;text-align:center;}
-    .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
-    .about-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
-    .about-kick{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:16px;}
-    .about-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
-    .about-hero p{font-size:1.05rem;color:var(--text-2);line-height:1.75;max-width:560px;margin:0 auto;}
-    .about-wrap{max-width:760px;margin:0 auto;padding:56px 24px 80px;}
-    .about-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:44px 0 14px;letter-spacing:-.02em;}
-    .about-wrap p{font-size:15px;line-height:1.82;color:var(--text-2);margin-bottom:18px;}
-    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0;}
-    .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center;}
-    .stat-num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--green);line-height:1;}
-    .stat-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-top:8px;}
-    .value-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
-    .value-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;}
-    .value-card .vc-icon{font-size:1.6rem;margin-bottom:10px;}
-    .value-card h4{font-size:.95rem;font-weight:700;margin-bottom:6px;}
-    .value-card p{font-size:13px;margin:0;line-height:1.6;}
+    .about-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:64px 24px 56px;position:relative;overflow:hidden;}
+    .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 65% 50%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .about-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;}
+    @media(max-width:700px){.about-inner{grid-template-columns:1fr;gap:32px;}.about-photo-wrap{order:-1;display:flex;justify-content:center;}}
+    .about-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid rgba(0,230,118,.3);box-shadow:0 0 0 6px rgba(0,230,118,.06),0 20px 60px rgba(0,0,0,.4);display:block;}
+    @media(max-width:700px){.about-photo{width:150px;height:150px;}}
+    .about-kick{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+    .about-kick::before{content:'';width:20px;height:2px;background:var(--green);}
+    .about-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;}
+    .about-hero h1 span{color:var(--green);}
+    .about-subtitle{font-size:1rem;color:var(--text-2);line-height:1.75;margin-bottom:20px;max-width:520px;}
+    .about-role{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,.07);border:1px solid rgba(0,230,118,.18);padding:7px 16px;border-radius:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--green);margin-bottom:20px;}
+    .about-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .about-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:600;color:var(--text-2);text-decoration:none;transition:all .15s;}
+    .about-link:hover{border-color:rgba(0,230,118,.35);color:var(--green);}
+    .about-wrap{max-width:900px;margin:0 auto;padding:56px 24px 80px;}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 0 56px;}
+    @media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr;}}
+    .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;}
+    .stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--green);line-height:1;}
+    .stat-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-top:7px;}
+    .founder-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0 0 56px;align-items:start;}
+    @media(max-width:680px){.founder-section{grid-template-columns:1fr;}}
+    .founder-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;}
+    .founder-card h3{font-family:var(--font-display);font-size:1rem;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+    .fc-icon{width:30px;height:30px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+    .timeline{list-style:none;position:relative;padding-left:22px;}
+    .timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border);}
+    .timeline li{position:relative;padding-bottom:20px;font-size:13px;color:var(--text-2);line-height:1.6;}
+    .timeline li:last-child{padding-bottom:0;}
+    .timeline li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);border:2px solid var(--bg-1);position:absolute;left:-19px;top:5px;}
+    .tl-date{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:.08em;display:block;margin-bottom:2px;}
+    .tl-title{font-weight:700;color:var(--text);display:block;margin-bottom:3px;}
+    .skill-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+    .skill-tag{background:var(--bg-3);border:1px solid var(--border);padding:4px 11px;border-radius:20px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-2);}
+    .skill-tag.green{background:rgba(0,230,118,.08);border-color:rgba(0,230,118,.2);color:var(--green);}
+    .skill-group-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase;margin:14px 0 6px;}
+    .section-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    .about-wrap h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin:4px 0 14px;letter-spacing:-.02em;}
+    .about-wrap p{font-size:15px;line-height:1.82;color:var(--text-2);margin-bottom:16px;}
+    .value-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 48px;}
+    @media(max-width:540px){.value-grid{grid-template-columns:1fr;}}
+    .value-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:border-color .2s;}
+    .value-card:hover{border-color:rgba(0,230,118,.25);}
+    .value-card .vc-icon{font-size:1.4rem;margin-bottom:9px;}
+    .value-card h4{font-size:.9rem;font-weight:700;margin-bottom:5px;}
+    .value-card p{font-size:13px;margin:0;line-height:1.6;color:var(--text-2);}
     .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
     .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
     .nl-cta-art p{color:var(--text-2);margin-bottom:20px;}
-    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;text-decoration:none;}
     .nl-cta-art a:hover{background:#00ff88;}
-    @media(max-width:640px){.stats-row{grid-template-columns:1fr;}.value-grid{grid-template-columns:1fr;}}
-
     .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
     .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
     .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
-  <!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo seu ID real -->
-  <!-- Crie em: analytics.google.com → Criar propriedade → copie o ID G-XXXXXXX -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});
-    gtag('config','G-XXXXXXXXXX');
-  </script>
-  <!-- Google AdSense — substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID -->
-  <!-- Crie em: adsense.google.com → Começar → copie o código ca-pub-XXXX -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-XXXXXXXXXX');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -55,8 +73,11 @@
 <nav class="nav"><div class="nav-inner">
   <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li>
-    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="packs.html">📦 Packs</a></li><li><a href="testar-prompt.html">🤖 Testar IA</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li>
+    <li><a href="packs.html">📦 Packs</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -77,151 +98,151 @@
   </div>
 </div>
 
-<div class="about-hero">
+<section class="about-hero">
   <div class="about-inner">
-    <div class="about-kick">Sobre o PromptBR</div>
-    <h1>IA acessível para todos os brasileiros</h1>
-    <p>Nascemos para preencher uma lacuna: conteúdo de qualidade sobre Inteligência Artificial em português, sem jargão, sem paywalls.</p>
+    <div>
+      <div class="about-kick">Sobre o PromptBR</div>
+      <h1>IA acessível para todos os <span>brasileiros</span></h1>
+      <div class="about-role">🧑‍💻 Criado por Álex Herllain · Servidor UERJ · Rio de Janeiro 🇧🇷</div>
+      <p class="about-subtitle">Nascemos para preencher uma lacuna real: conteúdo de qualidade sobre Inteligência Artificial em português, sem jargão, sem paywalls. De um servidor público apaixonado por tecnologia para quem quer usar IA de verdade no dia a dia.</p>
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/álex-gilherllain-4639a7173" target="_blank" rel="noopener" class="about-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:contato@brprompt.tec.br" class="about-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contato
+        </a>
+        <a href="newsletter.html" class="about-link">📬 Newsletter</a>
+      </div>
+    </div>
+    <div class="about-photo-wrap">
+      <img src="foto-alex.jpg" alt="Álex Herllain — criador do PromptBR" class="about-photo">
+    </div>
   </div>
-</div>
+</section>
 
 <div class="about-wrap">
+
   <div class="stats-row">
-    <div class="stat-box reveal"><div class="stat-num">145+</div><div class="stat-lbl">Prompts prontos</div></div>
-    <div class="stat-box reveal"><div class="stat-num">48k</div><div class="stat-lbl">Leitores por mês</div></div>
-    <div class="stat-box reveal"><div class="stat-num">2.8k</div><div class="stat-lbl">Assinantes da newsletter</div></div>
+    <div class="stat-box reveal"><div class="stat-num">245+</div><div class="stat-lbl">Prompts prontos</div></div>
+    <div class="stat-box reveal"><div class="stat-num">48k</div><div class="stat-lbl">Leitores / mês</div></div>
+    <div class="stat-box reveal"><div class="stat-num">2.8k</div><div class="stat-lbl">Assinantes</div></div>
+    <div class="stat-box reveal"><div class="stat-num">2025</div><div class="stat-lbl">Fundação</div></div>
   </div>
 
-  <h2>Nossa história</h2>
-  <p>O PromptBR nasceu da frustração de ver conteúdo excelente sobre IA existir quase exclusivamente em inglês. Enquanto o mundo falava sobre ChatGPT, Claude e Gemini, os brasileiros precisavam de um lugar para aprender na sua língua, com exemplos do seu contexto.</p>
-  <p>Lançamos a primeira versão em 2025 com 20 prompts. Em poucos meses, crescemos para mais de 145 prompts, dezenas de artigos e uma newsletter com milhares de assinantes — tudo de graça, feito para o Brasil.</p>
+  <div class="section-label">O criador</div>
 
+  <div class="founder-section">
+    <div class="founder-card">
+      <h3><span class="fc-icon">👤</span>Trajetória</h3>
+      <ul class="timeline">
+        <li>
+          <span class="tl-date">Out 2023 – presente</span>
+          <span class="tl-title">Técnico Universitário I · UERJ</span>
+          Gestão administrativa, automação de processos com GPTs personalizados, desenvolvimento de sistemas inteligentes em planilhas e interface com múltiplos setores institucionais.
+        </li>
+        <li>
+          <span class="tl-date">2026 – 2028</span>
+          <span class="tl-title">Graduação em Inteligência Artificial · Gran Faculdade</span>
+          Curso superior com foco em aplicações práticas de IA.
+        </li>
+        <li>
+          <span class="tl-date">2026</span>
+          <span class="tl-title">Técnico em IA Industrial · SENAI</span>
+          Automação e IA aplicada à indústria.
+        </li>
+        <li>
+          <span class="tl-date">2025</span>
+          <span class="tl-title">Fundação do PromptBR</span>
+          Criação da maior biblioteca de prompts em português do Brasil.
+        </li>
+      </ul>
+    </div>
+
+    <div class="founder-card">
+      <h3><span class="fc-icon">⚡</span>Competências</h3>
+      <div class="skill-group-label">Especialidades em IA</div>
+      <div class="skill-list">
+        <span class="skill-tag green">IA Prompting</span>
+        <span class="skill-tag green">Engenharia de Prompt</span>
+        <span class="skill-tag green">GPTs Personalizados</span>
+        <span class="skill-tag green">Automação com IA</span>
+      </div>
+      <div class="skill-group-label">Tecnologia</div>
+      <div class="skill-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Lógica de Programação</span>
+        <span class="skill-tag">Google Sheets Avançado</span>
+      </div>
+      <div class="skill-group-label">Certificações</div>
+      <div class="skill-list">
+        <span class="skill-tag">Engenharia de Prompt</span>
+        <span class="skill-tag">IA e Cultura Digital</span>
+        <span class="skill-tag">LGPD</span>
+      </div>
+      <div class="skill-group-label">Idiomas</div>
+      <div class="skill-list">
+        <span class="skill-tag">🇧🇷 Português nativo</span>
+        <span class="skill-tag">🇺🇸 Inglês profissional</span>
+        <span class="skill-tag">🇪🇸 Espanhol profissional</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Nossa história</div>
+  <h2>Por que o PromptBR existe</h2>
+  <p>O PromptBR nasceu de uma frustração concreta: trabalhando na UERJ, percebi que a IA poderia transformar processos administrativos inteiros — mas o conteúdo de qualidade estava quase todo em inglês, cheio de exemplos que não faziam sentido para o contexto brasileiro.</p>
+  <p>Enquanto o mundo discutia ChatGPT, Claude e Gemini em inglês, os brasileiros precisavam de um lugar para aprender na própria língua, com exemplos do seu cotidiano. Lançamos em 2025 com 20 prompts e crescemos para 245+, dezenas de artigos e uma newsletter com milhares de assinantes — tudo gratuito.</p>
+
+  <div class="section-label" style="margin-top:48px;">Valores</div>
   <h2>O que nos move</h2>
   <div class="value-grid">
-    <div class="value-card reveal"><div class="vc-icon">🇧🇷</div><h4>Português primeiro</h4><p>Todo conteúdo criado pensando no contexto brasileiro: empresas, mercado, legislação e cultura local.</p></div>
-    <div class="value-card reveal"><div class="vc-icon">🆓</div><h4>Gratuito de verdade</h4><p>Nenhum prompt, artigo ou edição da newsletter fica atrás de paywall. Sempre foi assim, sempre será.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">🇧🇷</div><h4>Português primeiro</h4><p>Todo conteúdo pensado no contexto brasileiro: empresas, mercado, legislação e cultura local.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">🆓</div><h4>Gratuito de verdade</h4><p>Nenhum prompt, artigo ou newsletter fica atrás de paywall. Sempre foi assim, sempre será.</p></div>
     <div class="value-card reveal"><div class="vc-icon">✅</div><h4>Testado na prática</h4><p>Nenhum prompt entra na biblioteca sem ser testado em situações reais. Se não funciona, não publica.</p></div>
-    <div class="value-card reveal"><div class="vc-icon">📖</div><h4>Didático sem ser básico</h4><p>Explicamos conceitos complexos de forma simples, mas sem infantilizar quem já tem experiência.</p></div>
+    <div class="value-card reveal"><div class="vc-icon">📖</div><h4>Didático sem ser básico</h4><p>Explicamos conceitos complexos de forma simples, sem infantilizar quem já tem experiência.</p></div>
   </div>
 
+  <div class="section-label">Plataforma</div>
   <h2>O que oferecemos</h2>
-  <p><strong style="color:var(--text);">Biblioteca de Prompts:</strong> mais de 145 prompts prontos, organizados por categoria (trabalho, escrita, estudo, programação, marketing, finanças, criatividade), testados com ChatGPT, Claude e Gemini.</p>
-  <p><strong style="color:var(--text);">Blog:</strong> tutoriais práticos, comparativos honestos e guias passo a passo sobre as melhores ferramentas de IA disponíveis hoje.</p>
-  <p><strong style="color:var(--text);">Notícias:</strong> as novidades que realmente importam do mundo da IA, curadas e contextualizadas para o mercado brasileiro.</p>
-  <p><strong style="color:var(--text);">Newsletter semanal:</strong> toda segunda-feira, 5 minutos de leitura com 1 prompt, 1 ferramenta, 3 notícias e um bônus exclusivo para assinantes.</p>
+  <p><strong style="color:var(--text);">Biblioteca de Prompts:</strong> 245+ prompts prontos organizados por categoria, testados com ChatGPT, Claude e Gemini — cada um com botão direto para abrir na IA de sua preferência.</p>
+  <p><strong style="color:var(--text);">Packs por nicho:</strong> coleções temáticas em PDF prontas para baixar — marketing, produtividade, escrita, jurídico, saúde e mais.</p>
+  <p><strong style="color:var(--text);">Blog:</strong> tutoriais práticos, comparativos honestos e guias passo a passo sobre as melhores ferramentas de IA.</p>
+  <p><strong style="color:var(--text);">Newsletter semanal:</strong> toda segunda-feira, 5 minutos com 1 prompt, 1 ferramenta, 3 notícias e um bônus exclusivo.</p>
 
+  <div class="section-label">Transparência</div>
   <h2>Como nos sustentamos</h2>
   <p>O PromptBR é financiado por publicidade contextual (Google AdSense) e parcerias com ferramentas que recomendamos. Nunca recebemos para recomendar algo que não testamos — nossa reputação vale mais que qualquer cachê.</p>
 
-  <h2>Fale conosco</h2>
-  <p>Quer sugerir um prompt, reportar um erro ou propor uma parceria? Mande um email para <a href="mailto:contato@brprompt.tec.br" style="color:var(--green);">contato@brprompt.tec.br</a>. Respondemos todos.</p>
+  <div class="section-label">Contato</div>
+  <h2>Fale com a gente</h2>
+  <p>Quer sugerir um prompt, reportar um erro, propor parceria ou conversar sobre IA? Manda um email para <a href="mailto:contato@brprompt.tec.br" style="color:var(--green);">contato@brprompt.tec.br</a> — respondemos todos.</p>
 
   <div class="nl-cta-art">
     <h3>Faça parte da comunidade</h3>
     <p>Toda segunda: o melhor de IA em 5 minutos. Grátis, sem spam.</p>
     <a href="newsletter.html">Assinar a newsletter →</a>
   </div>
+
 </div>
 
 <footer class="footer"><div class="footer-grid">
   <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
-  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="packs.html">Packs</a></li><li><a href="noticias.html">Notícias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
   <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
-  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html" class="active">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li>
-<li><a href="privacidade.html">Privacidade</a></li>
-<li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="sobre.html" class="active">Sobre</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
 </div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+
 <script src="global.js"></script>
-<!-- ═══ BANNER DE CONSENTIMENTO ═══════════════════════════════════════════
-     Google Consent Mode v2 · LGPD · IAB Compatible
-     Documentação: https://support.google.com/adsense/answer/10218585
-════════════════════════════════════════════════════════════════════════ -->
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
   <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-    <div style="flex:1;min-width:220px;">
-      <p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">
-        🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios relevantes.
-        <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Política de Cookies</a> ·
-        <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a>
-      </p>
-      <p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p>
-    </div>
-    <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap;">
-      <button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">Aceitar todos</button>
-      <button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;white-space:nowrap;">Só essenciais</button>
-    </div>
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;">Política</a></p><p style="font-size:11px;color:#555;margin:0;">LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
   </div>
 </div>
-<script>
-(function(){
-  var K='promptbr_consent';
-  var b=document.getElementById('cookie-banner');
-  function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}
-  try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}
-  b.style.display='block';
-  document.getElementById('cb-accept').onclick=function(){
-    var c={essential:true,analytics:true,ads:true,ts:Date.now()};
-    localStorage.setItem(K,JSON.stringify(c));apply(true,true);b.style.display='none';
-  };
-  document.getElementById('cb-essential').onclick=function(){
-    var c={essential:true,analytics:false,ads:false,ts:Date.now()};
-    localStorage.setItem(K,JSON.stringify(c));apply(false,false);b.style.display='none';
-  };
-})();
-</script>
-<!-- ═══ FIM DO BANNER ════════════════════════════════════════════════════ -->
-
-<!-- ── BOTÃO VOLTAR AO TOPO ─────────────────────────────────────── -->
-<button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo"
-  style="
-    position:fixed;
-    bottom:24px;
-    right:24px;
-    width:44px;
-    height:44px;
-    background:var(--green);
-    color:#000;
-    border:none;
-    border-radius:50%;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(12px);
-    transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s;
-    box-shadow:0 4px 16px rgba(0,230,118,.35);
-    z-index:800;
-    font-size:18px;
-    line-height:1;
-  ">
-  ↑
-</button>
-<script>
-(function(){
-  var btn = document.getElementById('back-to-top');
-  if(!btn) return;
-  // Mostrar após rolar 300px
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 300){
-      btn.style.opacity = '1';
-      btn.style.visibility = 'visible';
-      btn.style.transform = 'translateY(0)';
-    } else {
-      btn.style.opacity = '0';
-      btn.style.visibility = 'hidden';
-      btn.style.transform = 'translateY(12px)';
-    }
-  }, {passive:true});
-  // Scroll suave ao clicar
-  btn.addEventListener('click', function(){
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-  // Hover: verde mais claro
-  btn.addEventListener('mouseenter', function(){ btn.style.background='#00ff88'; });
-  btn.addEventListener('mouseleave', function(){ btn.style.background='var(--green)'; });
-})();
-</script>
-<!-- ── FIM BOTÃO VOLTAR AO TOPO ──────────────────────────────────── -->
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.opacity=window.scrollY>300?'1':'0';btn.style.visibility=window.scrollY>300?'visible':'hidden';btn.style.transform=window.scrollY>300?'translateY(0)':'translateY(12px)';},{passive:true});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
 </body></html>
