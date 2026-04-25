@@ -143,11 +143,11 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">🤖 Teste seus prompts com IA diretamente aqui</span>
-    <span class="ticker-item">⚡ 5 testes gratuitos por dia — sem cadastro</span>
+    <span class="ticker-item">⚡ Testes gratuitos ilimitados — sem cadastro</span>
     <span class="ticker-item">📚 245+ prompts prontos para usar na biblioteca</span>
     <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
     <span class="ticker-item">🤖 Teste seus prompts com IA diretamente aqui</span>
-    <span class="ticker-item">⚡ 5 testes gratuitos por dia — sem cadastro</span>
+    <span class="ticker-item">⚡ Testes gratuitos ilimitados — sem cadastro</span>
     <span class="ticker-item">📚 245+ prompts prontos para usar na biblioteca</span>
     <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
   </div>
@@ -161,7 +161,7 @@
     <div class="tp-badges">
       <span class="tp-badge"><span class="tp-badge-dot"></span>Claude Sonnet</span>
       <span class="tp-badge">Streaming em tempo real</span>
-      <span class="tp-badge">5 testes grátis/dia</span>
+      <span class="tp-badge">Gratuito · sem limite</span>
       <span class="tp-badge">Sem cadastro</span>
     </div>
   </div>
@@ -174,7 +174,7 @@
     <div class="limit-info">
       <div class="limit-label">Testes gratuitos hoje</div>
       <div class="limit-track"><div class="limit-fill" id="limit-fill" style="width:0%"></div></div>
-      <div class="limit-text"><span id="limit-used">0</span> de <span id="limit-max">5</span> usados</div>
+      <div class="limit-text">Gratuito · powered by Gemini 2.0 Flash</div>
     </div>
     <a href="premium.html" class="upgrade-btn">🚀 Premium: ilimitado →</a>
   </div>
@@ -241,7 +241,7 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
       <div class="tp-panel">
         <div class="tp-panel-head">
           <span class="tp-panel-title"><span class="dot"></span>Resposta da IA</span>
-          <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-3);" id="model-label">Claude Sonnet · Balanceado</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-3);" id="model-label">Gemini 2.0 Flash · Balanceado</span>
         </div>
         <div class="tp-output" id="output">
           <div class="tp-placeholder">
@@ -256,7 +256,7 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
         <div class="tp-stats" id="tp-stats" style="display:none;">
           <span>⏱ Tempo: <strong id="stat-time">—</strong></span>
           <span>📊 Tokens aprox.: <strong id="stat-tokens">—</strong></span>
-          <span>🤖 Modelo: <strong>Claude Sonnet</strong></span>
+          <span>🤖 Modelo: <strong>Gemini 2.0 Flash</strong></span>
         </div>
       </div>
     </div>
@@ -302,7 +302,7 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
 ═══════════════════════════════════════════════════════════════════════ */
 (function(){
   var LIMIT_KEY = 'promptbr_test_limit';
-  var DAILY_MAX = 5;
+  var DAILY_MAX = 999999; // Gemini é gratuito — sem limite prático
   var currentPersona = 'balanced';
   var sessionHistory = [];
   var isRunning = false;
@@ -310,11 +310,11 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
 
   /* ── PERSONAS ──────────────────────────────────────────── */
   var personas = {
-    balanced: { label:'Claude Sonnet · Balanceado', temp:0.7,
+    balanced: { label:'Gemini 2.0 Flash · Balanceado', temp:0.7,
       system:'Você é um assistente inteligente e útil. Responda sempre em português brasileiro de forma clara, direta e bem estruturada.' },
-    creative: { label:'Claude Sonnet · Criativo', temp:1.0,
+    creative: { label:'Gemini 2.0 Flash · Criativo', temp:1.0,
       system:'Você é um assistente criativo e inovador. Responda sempre em português brasileiro com linguagem envolvente, ideias originais e perspectivas únicas. Seja expressivo e use exemplos memoráveis.' },
-    precise: { label:'Claude Sonnet · Preciso', temp:0.2,
+    precise: { label:'Gemini 2.0 Flash · Preciso', temp:0.2,
       system:'Você é um assistente técnico e preciso. Responda sempre em português brasileiro com foco em exatidão, dados concretos, estrutura clara e linguagem objetiva. Evite opiniões sem embasamento.' }
   };
 
@@ -428,28 +428,37 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
 
     var persona = personas[currentPersona];
 
-    // ── URL do proxy (Cloudflare Worker) ──────────────────
-    // Após criar o Worker, substitua pela sua URL real.
-    // Ex: 'https://promptbr-proxy.SEU-USER.workers.dev'
-    var PROXY_URL = 'https://promptbr-proxy.SEU-USUARIO.workers.dev';
+    // ── Gemini 2.0 Flash — API gratuita do Google ─────────
+    // Chave gratuita em: aistudio.google.com/apikey
+    var GEMINI_KEY = 'SUA_GEMINI_API_KEY';
+    var GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=' + GEMINI_KEY;
+
+    // Montar prompt com system instruction
+    var fullPrompt = persona.system + '\n\n' + text;
 
     try{
-      var response = await fetch(PROXY_URL, {
+      var response = await fetch(GEMINI_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          system: persona.system,
-          messages: [{ role: 'user', content: text }],
-          stream: true
+          contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
+          generationConfig: {
+            temperature: currentPersona === 'creative' ? 1.0 : currentPersona === 'precise' ? 0.2 : 0.7,
+            maxOutputTokens: 1500
+          }
         })
       });
 
       if(!response.ok){
-        var err = await response.json().catch(function(){ return {}; });
-        throw new Error(err.error?.message || 'Erro na API (status ' + response.status + ')');
+        var errData = await response.json().catch(function(){ return {}; });
+        var errMsg = errData?.error?.message || 'Erro ' + response.status;
+        if(response.status === 400 && GEMINI_KEY === 'SUA_GEMINI_API_KEY'){
+          throw new Error('CHAVE_NAO_CONFIGURADA');
+        }
+        throw new Error(errMsg);
       }
 
-      // Streaming
+      // Streaming SSE do Gemini
       var reader = response.body.getReader();
       var decoder = new TextDecoder();
       var fullText = '';
@@ -465,11 +474,12 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
           var line = lines[i].trim();
           if(!line.startsWith('data:')) continue;
           var data = line.slice(5).trim();
-          if(data === '[DONE]') break;
+          if(!data || data === '[DONE]') continue;
           try{
             var parsed = JSON.parse(data);
-            if(parsed.type === 'content_block_delta' && parsed.delta?.text){
-              fullText += parsed.delta.text;
+            var part = parsed?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if(part){
+              fullText += part;
               out.innerHTML = formatMarkdown(fullText);
               out.appendChild(cursor);
               out.scrollTop = out.scrollHeight;
@@ -509,25 +519,26 @@ Crie 5 títulos para um artigo sobre [tema] voltado para [público]."></textarea
       var btnRetry = document.getElementById('btn-retry');
       if(btnRetry) btnRetry.onclick = runPrompt;
 
-      // Incrementar limite
-      incrementLimit();
+      // Não tem mais limite diário — só contar para analytics
       updateLimitUI();
-
-      // Adicionar ao histórico
       addToHistory(text, fullText);
-
-      // Analytics
       if(typeof gtag === 'function') gtag('event','test_prompt',{persona:currentPersona, chars:text.length});
 
     }catch(err){
       var msg = err.message || 'Erro desconhecido.';
-      var isProxyError = msg.includes('fetch') || msg.includes('Failed') || msg.includes('NetworkError');
-      var isNotConfigured = PROXY_URL.includes('SEU-USUARIO');
-      var displayMsg = isNotConfigured
-        ? '⚙️ <strong>Proxy não configurado.</strong> Siga as instruções no arquivo <code>cloudflare-worker.js</code> para ativar o Testar IA.'
-        : isProxyError
-          ? '🌐 <strong>Erro de conexão.</strong> Verifique se o Worker está ativo em: <code>' + PROXY_URL + '</code>'
-          : '⚠️ ' + msg;
+      var displayMsg;
+      if(msg === 'CHAVE_NAO_CONFIGURADA' || GEMINI_KEY === 'SUA_GEMINI_API_KEY'){
+        displayMsg = '⚙️ <strong>Configure sua chave gratuita do Gemini:</strong><br><br>'
+          + '1. Acesse <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--green)">aistudio.google.com/apikey</a><br>'
+          + '2. Clique em <strong>Create API Key</strong><br>'
+          + '3. Copie a chave e substitua <code>SUA_GEMINI_API_KEY</code> no arquivo <code>testar-prompt.html</code>';
+      } else if(msg.includes('API_KEY_INVALID') || msg.includes('invalid')){
+        displayMsg = '🔑 <strong>Chave inválida.</strong> Verifique se copiou a chave corretamente de <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--green)">aistudio.google.com/apikey</a>';
+      } else if(msg.includes('fetch') || msg.includes('Failed') || msg.includes('Network')){
+        displayMsg = '🌐 <strong>Erro de conexão.</strong> Verifique sua internet e tente novamente.';
+      } else {
+        displayMsg = '⚠️ ' + msg;
+      }
       out.innerHTML = '<div class="tp-error">' + displayMsg + '</div>';
     }finally{
       isRunning = false;
