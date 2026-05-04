@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotebookLM: O Guia Completo para Estudar e Pesquisar com IA do Google — PromptBR</title>
+  <meta name="description" content="Guia completo do NotebookLM: como usar a IA do Google para estudar documentos, criar podcasts automáticos, resumir pesquisas e organizar conhecimento. Passo a passo em português.">
+  <link rel="canonical" href="https://brprompt.tec.br/artigo-notebooklm-guia-completo.html">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(77,166,255,.05) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--blue);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .steps-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 26px;margin:24px 0;counter-reset:steps;}
+    .step{display:flex;gap:16px;margin-bottom:18px;align-items:flex-start;}
+    .step:last-child{margin-bottom:0;}
+    .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-mono);}
+    .step-num.green{background:var(--green);color:#000;}
+    .step-body{flex:1;}
+    .step-title{font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px;}
+    .step-desc{font-size:13.5px;color:var(--text-2);line-height:1.65;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-ZK59708GWD');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🎧 NotebookLM: transforme documentos em podcast com IA</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🎧 NotebookLM: transforme documentos em podcast com IA</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<section class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Google · Estudo · Pesquisa com IA</div>
+    <h1>NotebookLM: O Guia Completo para Estudar e Pesquisar com IA do Google</h1>
+    <p class="desc">O NotebookLM é a ferramenta do Google que transforma qualquer documento — PDF, artigo, planilha ou site — em um assistente de IA personalizado. Aprenda a usar para estudar, pesquisar e até gerar podcasts automáticos dos seus materiais.</p>
+    <div class="art-meta">
+      <span>📅 Maio 2026</span>
+      <span>⏱ 14 min de leitura</span>
+      <span>🏷 Google · Estudo · Ferramentas</span>
+    </div>
+  </div>
+</section>
+
+<div class="art-wrap">
+
+  <ins class="adsbygoogle" style="display:block;margin-bottom:32px;" data-ad-client="ca-pub-3823120055728050" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>O que é o NotebookLM e por que é diferente</h2>
+  <p>O NotebookLM é uma ferramenta gratuita do Google que combina armazenamento de documentos com um modelo de linguagem avançado — atualmente o Gemini. A ideia central é simples mas poderosa: você carrega seus próprios documentos e a IA responde perguntas, faz resumos e gera conteúdo baseado exclusivamente no que você forneceu — não no conhecimento geral da internet.</p>
+  <p>Isso resolve um problema importante de ferramentas como o ChatGPT e o Claude no modo padrão: quando você pergunta sobre um documento específico, o modelo usa seu treinamento geral para tentar responder, o que pode gerar imprecisões. No NotebookLM, a IA só tem acesso ao que está nos seus documentos — e cita as fontes de cada resposta, com referência à página e trecho exato.</p>
+  <p>Desde seu lançamento e expansão global, o NotebookLM ganhou popularidade especialmente entre estudantes universitários, pesquisadores, jornalistas e profissionais que trabalham com grandes volumes de documentos. A funcionalidade de geração de podcast — que transforma seus documentos em uma conversa de dois locutores em áudio — viralizou e trouxe o serviço para o mainstream.</p>
+
+  <h2>Como acessar e criar seu primeiro notebook</h2>
+  <p>O NotebookLM está disponível gratuitamente em <strong>notebooklm.google.com</strong>. Você precisa de uma conta Google para acessar. Não há limite de uso definido na versão gratuita, mas usuários com Google One AI Premium têm prioridade no processamento e funcionalidades extras.</p>
+
+  <div class="steps-box">
+    <div class="step">
+      <div class="step-num green">1</div>
+      <div class="step-body"><div class="step-title">Acesse notebooklm.google.com</div><div class="step-desc">Faça login com sua conta Google e clique em "Novo notebook".</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num green">2</div>
+      <div class="step-body"><div class="step-title">Adicione suas fontes</div><div class="step-desc">Clique em "+ Adicionar fontes". Você pode carregar PDFs, documentos do Google Drive, URLs de sites, texto copiado manualmente, vídeos do YouTube (via URL) e arquivos de áudio.</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num green">3</div>
+      <div class="step-body"><div class="step-title">Aguarde o processamento</div><div class="step-desc">O NotebookLM processa e indexa os documentos. Para PDFs longos, isso pode levar de 30 segundos a 2 minutos.</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num green">4</div>
+      <div class="step-body"><div class="step-title">Comece a conversar</div><div class="step-desc">Use o chat à direita para fazer perguntas, pedir resumos ou solicitar qualquer análise baseada nos seus documentos.</div></div>
+    </div>
+  </div>
+
+  <h2>Formatos aceitos como fonte</h2>
+  <p>O NotebookLM aceita uma variedade de formatos que cobre a maioria dos casos de uso:</p>
+  <ul>
+    <li><strong>PDFs</strong> — até 500MB por arquivo, incluindo PDFs escaneados (com OCR automático)</li>
+    <li><strong>Google Docs e Google Slides</strong> — direto do Drive, com sincronização automática quando o documento é atualizado</li>
+    <li><strong>URLs de sites</strong> — o NotebookLM acessa e indexa o conteúdo da página</li>
+    <li><strong>Vídeos do YouTube</strong> — transcreve e indexa o conteúdo falado</li>
+    <li><strong>Arquivos de áudio</strong> — MP3, WAV, M4A (transcreve automaticamente)</li>
+    <li><strong>Texto colado manualmente</strong> — útil para conteúdo que não está em arquivo</li>
+  </ul>
+  <p>Cada notebook pode ter até 50 fontes, e cada fonte pode ter até 500.000 palavras. Isso é suficiente para um livro técnico completo, uma coleção de artigos acadêmicos ou todos os documentos de um projeto de pesquisa.</p>
+
+  <h2>Recurso 1: Chat com citação de fontes</h2>
+  <p>O chat do NotebookLM é o recurso central. Você faz perguntas e a IA responde citando o trecho exato do documento onde encontrou a informação. Clicando na citação, você vai direto ao trecho no documento original — o que é essencial para pesquisa acadêmica e jornalismo.</p>
+
+  <div class="prompt-box">Exemplos de perguntas para o chat do NotebookLM:
+
+"Qual é a metodologia usada neste artigo?"
+"Quais são as principais conclusões do capítulo 3?"
+"Encontre todas as referências ao conceito de X neste documento"
+"Quais são as contradições entre os argumentos apresentados?"
+"Resuma os pontos principais em 5 bullet points"
+"Qual é a posição do autor sobre [tema]? Cite as passagens relevantes"
+"Compare como os dois documentos tratam o tema de [assunto]"
+"Quais dados estatísticos este relatório apresenta sobre [tema]?"</div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <p><strong>Dica importante:</strong> O NotebookLM só responde com base no que está nos seus documentos. Se você perguntar algo que não está coberto pelas fontes, ele vai informar que não encontrou a informação — o que é uma feature, não um bug. Isso garante que as respostas são rastreáveis.</p>
+  </div>
+
+  <h2>Recurso 2: Guia de estudo automático</h2>
+  <p>Um dos recursos mais úteis para estudantes é o "Guia de estudo" — gerado automaticamente pelo NotebookLM a partir dos seus documentos. Ele cria um conjunto estruturado de perguntas e respostas, conceitos-chave, glossário e um resumo executivo. É o equivalente a ter um professor que leu todo o material e preparou um roteiro de revisão para você.</p>
+  <p>Para acessar, clique em "Gerar guia de estudo" no painel de notas. O processo leva cerca de 1 minuto para documentos de tamanho médio. O resultado pode ser exportado como documento do Google Docs.</p>
+
+  <h3>Como usar o guia de estudo para revisão ativa</h3>
+  <p>A técnica mais eficaz é usar o guia de estudo para revisão espaçada. Após gerar o guia, exporte para o Google Docs e transforme as perguntas em flashcards usando o Anki ou o Quizlet. Dessa forma, o NotebookLM faz o trabalho de extrair o conhecimento relevante e você usa ferramentas de memorização comprovadas para retê-lo.</p>
+
+  <h2>Recurso 3: Audio Overview — o podcast dos seus documentos</h2>
+  <p>O recurso que viralizou o NotebookLM é o Audio Overview — ele gera um podcast de 10 a 20 minutos com dois locutores discutindo o conteúdo dos seus documentos de forma natural e conversacional. O resultado é surpreendentemente realista, com os locutores fazendo perguntas um ao outro, dando exemplos e debatendo os pontos mais importantes.</p>
+
+  <div class="steps-box">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body"><div class="step-title">Carregue seus documentos no notebook</div><div class="step-desc">Funciona melhor com 2 a 10 documentos relacionados ao mesmo tema.</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><div class="step-title">Clique em "Audio Overview" no painel direito</div><div class="step-desc">A opção fica na seção "Estúdio de notebook".</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body"><div class="step-title">Aguarde a geração (5–15 minutos)</div><div class="step-desc">O processo é mais demorado porque gera áudio sintetizado, não apenas texto.</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body"><div class="step-title">Ouça e baixe o podcast</div><div class="step-desc">O áudio pode ser baixado em MP3 para ouvir offline, no carro, na academia ou em qualquer lugar.</div></div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">🎧</span>
+    <p><strong>Caso de uso prático:</strong> Carregue os slides de uma aula ou capítulos de um livro técnico e gere o Audio Overview. Use o podcast para revisar o conteúdo enquanto se exercita ou se desloca. É uma forma de transformar tempo "perdido" em estudo ativo.</p>
+  </div>
+
+  <h2>Recurso 4: Notas e organização de conhecimento</h2>
+  <p>O NotebookLM tem um sistema de notas integrado onde você pode salvar respostas importantes do chat, adicionar suas próprias anotações e organizar o conhecimento extraído dos documentos. As notas ficam vinculadas ao notebook e podem ser exportadas para o Google Docs.</p>
+  <p>Uma técnica eficaz é usar o NotebookLM como segunda etapa de processamento: primeiro você lê o documento original e marca o que é importante, depois carrega no NotebookLM e usa o chat para aprofundar os pontos marcados, salvando as respostas como notas. O resultado é um documento de síntese muito mais rico do que um resumo convencional.</p>
+
+  <h2>Casos de uso por perfil</h2>
+
+  <h3>Para estudantes universitários</h3>
+  <p>Carregue artigos científicos, capítulos de livros e slides das aulas em um notebook por disciplina. Use o chat para entender conceitos difíceis com explicações baseadas nos seus próprios materiais, gere guias de estudo automáticos antes das provas e crie podcasts para revisar enquanto se desloca.</p>
+
+  <div class="prompt-box">Perguntas úteis para estudantes:
+
+"Explique o conceito de [X] usando apenas as definições presentes nestes artigos"
+"Quais são as diferenças entre a abordagem do autor A e do autor B sobre [tema]?"
+"Crie 20 questões de múltipla escolha sobre o conteúdo deste capítulo"
+"Quais são os argumentos que eu precisaria dominar para uma prova sobre este tema?"
+"Identifique as lacunas de conhecimento: o que este material não cobre sobre [tema]?"</div>
+
+  <h3>Para pesquisadores e analistas</h3>
+  <p>Carregue um conjunto de papers sobre um tema e use o NotebookLM para mapear rapidamente o estado da arte, identificar autores-chave, encontrar contradições entre estudos e extrair dados estatísticos de múltiplos documentos de uma vez. Isso que levaria dias de leitura linear pode ser feito em horas.</p>
+
+  <h3>Para profissionais com muito conteúdo para processar</h3>
+  <p>Carregue relatórios de mercado, atas de reuniões, documentos de projeto ou transcrições de entrevistas. Use o chat para extrair insights específicos, comparar versões de documentos e gerar resumos executivos sem precisar ler tudo na íntegra.</p>
+
+  <div class="prompt-box">Perguntas úteis para profissionais:
+
+"Quais são as principais recomendações deste relatório? Liste em ordem de prioridade"
+"Existem inconsistências entre os dados apresentados nos documentos A e B?"
+"Extraia todos os números e métricas mencionados neste relatório"
+"Crie um resumo executivo de 300 palavras deste documento para apresentar ao board"
+"Quais riscos foram identificados nestes documentos que ainda não foram endereçados?"</div>
+
+  <h3>Para jornalistas e escritores</h3>
+  <p>Carregue documentos de pesquisa — estudos, relatórios oficiais, declarações públicas — e use o NotebookLM para cruzar informações, verificar afirmações e encontrar citações relevantes. A rastreabilidade das respostas (com referência à página e trecho) é especialmente valiosa para jornalismo de dados e investigativo.</p>
+
+  <h2>Limitações que você precisa conhecer</h2>
+  <p>O NotebookLM tem algumas limitações importantes. Primeiro, ele não acessa a internet em tempo real — as fontes são os documentos que você carregou, e nada mais. Se você precisar de informações atualizadas que não estão nos documentos, precisará de uma ferramenta diferente.</p>
+  <p>Segundo, PDFs escaneados com qualidade baixa ou fontes muito incomuns podem ter problemas no OCR — o texto extraído pode conter erros que afetam a qualidade das respostas. Sempre verifique se os PDFs carregados têm o texto legível (você consegue selecionar o texto no PDF).</p>
+  <p>Terceiro, o Audio Overview ainda está disponível principalmente em inglês, com suporte parcial ao português. As vozes e a naturalidade da conversa são melhores em inglês — mas o texto em português funciona bem no chat.</p>
+
+  <h2>NotebookLM vs ChatGPT vs Perplexity para pesquisa</h2>
+  <p>A diferença fundamental é o escopo. O ChatGPT e o Claude respondem com base no treinamento geral mais os documentos que você cole na conversa — útil para perguntas abertas, mas sem rastreabilidade precisa. O Perplexity busca na internet em tempo real com citações de fontes públicas — ideal para pesquisa de informações atuais. O NotebookLM trabalha exclusivamente com seus documentos privados, com citações precisas e rastreáveis — ideal para pesquisa profunda em um corpus fechado de materiais.</p>
+  <p>Para o melhor resultado em pesquisa acadêmica e profissional, a combinação que funciona é: use o Perplexity para descobrir o que existe sobre um tema, baixe os melhores artigos e relatórios, e carregue no NotebookLM para análise profunda.</p>
+
+  <div class="nl-cta-art">
+    <h3>📬 Ferramentas de IA toda semana na sua caixa de entrada</h3>
+    <p>A newsletter do PromptBR traz as melhores ferramentas e prompts toda segunda-feira, de graça.</p>
+    <p class="ebook-line">🎁 Bônus: e-book "8 Formas de Ganhar Dinheiro com Claude AI"</p>
+    <a href="newsletter.html">Assinar grátis →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-gemini-google-guia-completo.html">
+      <div class="nav-label">← Anterior</div>
+      <div class="nav-title">Gemini do Google: guia completo para brasileiros</div>
+    </a>
+    <a href="artigo-ia-para-estudar.html">
+      <div class="nav-label">Próximo →</div>
+      <div class="nav-title">Como usar IA para estudar mais rápido</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-gemini-google-guia-completo.html">Guia Gemini</a></li><li><a href="artigo-ia-para-estudar.html">IA para Estudar</a></li><li><a href="artigo-perplexity-ai-guia.html">Perplexity AI</a></li><li><a href="artigo-produtividade-com-ia.html">Produtividade</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var b=document.getElementById('back-to-top');if(!b)return;window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.visibility='visible';b.style.transform='translateY(0)';}else{b.style.opacity='0';b.style.visibility='hidden';b.style.transform='translateY(12px)';}},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});b.addEventListener('mouseenter',function(){b.style.background='#00ff88';});b.addEventListener('mouseleave',function(){b.style.background='var(--green)';});})();</script>
+</body></html>

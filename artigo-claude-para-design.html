@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude para Design: Como Criar Interfaces, Protótipos e Componentes com IA — PromptBR</title>
+  <meta name="description" content="Guia completo do Claude para Design: como criar layouts, componentes de interface, protótipos e sistemas de design usando inteligência artificial. Prompts prontos para designers e desenvolvedores.">
+  <link rel="canonical" href="https://brprompt.tec.br/artigo-claude-para-design.html">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
+    .art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 40%,rgba(0,230,118,.06) 0%,transparent 60%);}
+    .art-inner{max-width:740px;margin:0 auto;position:relative;z-index:1;}
+    .art-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .art-kicker::before{content:'';width:20px;height:2px;background:var(--green);}
+    .art-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+    .art-hero .desc{font-size:1.05rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--text-3);}
+    .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+    .art-wrap h2{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin:40px 0 14px;letter-spacing:-.02em;}
+    .art-wrap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin:28px 0 10px;}
+    .art-wrap p{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:18px;}
+    .art-wrap ul,.art-wrap ol{padding-left:22px;margin-bottom:18px;}
+    .art-wrap li{font-size:15px;line-height:1.8;color:var(--text-2);margin-bottom:6px;}
+    .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius-lg);padding:20px 22px;margin:20px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;}
+    .tip-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-lg);padding:18px 22px;margin:20px 0;display:flex;gap:12px;}
+    .tip-box .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);}
+    .table-wrap{overflow-x:auto;margin:20px 0;}
+    .comp-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+    .comp-table th{background:var(--bg-3);padding:11px 14px;text-align:left;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+    .comp-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);}
+    .badge-ok{background:rgba(0,230,118,.12);color:#00e676;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;}
+    .badge-med{background:rgba(255,180,0,.12);color:#ffb300;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;}
+    .art-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .art-nav a{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s;text-decoration:none;}
+    .art-nav a:hover{border-color:rgba(0,230,118,.3);}
+    .nav-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px;}
+    .nav-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;}
+    .nl-cta-art{background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:48px 0;}
+    .nl-cta-art h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+    .nl-cta-art p{color:var(--text-2);margin-bottom:8px;}
+    .nl-cta-art .ebook-line{font-size:12px;color:var(--green);font-weight:600;margin-bottom:20px;}
+    .nl-cta-art a{display:inline-block;background:var(--green);color:#000;padding:13px 32px;border-radius:var(--radius);font-weight:800;font-size:15px;transition:background .2s;}
+    .nl-cta-art a:hover{background:#00ff88;}
+    .ticker{background:var(--green);padding:9px 0;overflow:hidden;}
+    .ticker-track{display:flex;animation:ticker 36s linear infinite;white-space:nowrap;}
+    .ticker-item{padding:0 32px;font-size:12px;font-weight:700;letter-spacing:.03em;color:#000;border-right:1px solid rgba(0,0,0,.15);flex-shrink:0;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK59708GWD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','wait_for_update':500});gtag('config','G-ZK59708GWD');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3823120055728050" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="reading-bar"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="noticias.html">Notícias</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">🎨 Claude para Design — crie interfaces com IA</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+    <span class="ticker-item">🎨 Claude para Design — crie interfaces com IA</span>
+    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
+    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
+    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
+    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
+  </div>
+</div>
+
+<section class="art-hero">
+  <div class="art-inner">
+    <div class="art-kicker">Ferramentas · Design com IA · Claude</div>
+    <h1>Claude para Design: Como Criar Interfaces, Protótipos e Componentes com IA</h1>
+    <p class="desc">A Anthropic expandiu as capacidades do Claude com ferramentas nativas de criação visual. Veja como designers e desenvolvedores estão usando o Claude para gerar layouts, sistemas de design e protótipos em minutos — com prompts prontos para começar hoje.</p>
+    <div class="art-meta">
+      <span>📅 Maio 2026</span>
+      <span>⏱ 13 min de leitura</span>
+      <span>🏷 Design · Ferramentas · Claude</span>
+    </div>
+  </div>
+</section>
+
+<div class="art-wrap">
+
+  <ins class="adsbygoogle" style="display:block;margin-bottom:32px;" data-ad-client="ca-pub-3823120055728050" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>O que mudou com o Claude para Design</h2>
+  <p>Por muito tempo, a separação entre design e desenvolvimento foi uma das maiores fontes de atrito em times de produto. O designer cria no Figma, o desenvolvedor recebe os assets e precisa reinterpretar cada detalhe em código. Com o Claude para Design, esse gap começa a se fechar de forma prática.</p>
+  <p>A atualização mais recente da Anthropic expandiu as capacidades do Claude com ferramentas nativas de criação visual. O modelo agora consegue gerar componentes de interface em HTML, CSS e React a partir de descrições em linguagem natural, criar sistemas de design completos com tokens de cor e tipografia, produzir protótipos interativos básicos diretamente no navegador e sugerir melhorias de acessibilidade e UX em interfaces existentes.</p>
+  <p>A diferença para o Figma AI e o Adobe Firefly é que o Claude trabalha diretamente em código — o que significa que o output é imediatamente utilizável por um desenvolvedor, sem precisar de uma etapa de exportação ou re-implementação. Para times pequenos e freelancers, isso muda completamente o fluxo de trabalho.</p>
+
+  <h2>Caso de uso 1: Criando componentes de interface do zero</h2>
+  <p>O caso de uso mais imediato é a criação de componentes isolados — botões, cards, formulários, navbars, modais — que seguem um sistema de design específico. Em vez de procurar no Dribbble ou adaptar templates genéricos, você descreve o componente e o Claude gera o código.</p>
+
+  <div class="prompt-box">Crie um componente de card de produto para e-commerce em HTML e CSS puro.
+
+Especificações:
+- Imagem do produto no topo (proporção 4:3, placeholder com gradiente escuro)
+- Badge de desconto no canto superior direito (vermelho, texto "−30%")
+- Nome do produto (fonte bold, 16px, máx 2 linhas com ellipsis)
+- Preço riscado + preço atual em verde
+- Avaliação com estrelas (1-5) e número de reviews
+- Botão "Adicionar ao carrinho" full-width na base
+
+Sistema de design:
+- Cores: fundo #0a0a0a, texto #f5f5f5, acento #00e676
+- Border-radius: 12px
+- Sombra sutil no hover com transição de 200ms
+- Responsivo: adaptável de 200px a 400px de largura</div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <p><strong>Dica:</strong> Quanto mais específico você for sobre o sistema de design — cores exatas, tipografia, espaçamentos — mais preciso será o resultado. Se sua empresa tem um design system documentado, cole as principais variáveis de CSS no prompt.</p>
+  </div>
+
+  <h2>Caso de uso 2: Sistemas de design e tokens</h2>
+  <p>Um dos trabalhos mais demorados no início de qualquer projeto é definir o sistema de design: paleta de cores, escala tipográfica, espaçamentos, border-radius, sombras. Com o Claude, você consegue um ponto de partida sólido em minutos.</p>
+
+  <div class="prompt-box">Crie um sistema de design completo para uma startup de fintech brasileira.
+
+Personalidade da marca: moderna, confiável, acessível. Não bancária tradicional — mais próxima de Nubank e Inter do que de Bradesco.
+
+Gere:
+1. Paleta de cores primária (5 tons) + semântica (sucesso, erro, aviso, info)
+2. Escala tipográfica com font-size, line-height e font-weight para: display, h1, h2, h3, body, small, caption
+3. Escala de espaçamento (4px base)
+4. Tokens de border-radius (4 tamanhos)
+5. Sombras (3 níveis de elevação)
+
+Formate como variáveis CSS (:root) prontas para usar.</div>
+
+  <h3>Resultado esperado</h3>
+  <p>O Claude gera um bloco de variáveis CSS estruturado que você cola diretamente no seu arquivo global e começa a usar. Para equipes que trabalham com Figma em paralelo, esse output serve como base para criar os estilos de texto e os color styles no Figma — mantendo consistência entre o design e o código.</p>
+
+  <h2>Caso de uso 3: Protótipos interativos em HTML</h2>
+  <p>Precisa mostrar uma ideia rapidamente para um cliente ou stakeholder sem passar horas no Figma? O Claude consegue gerar protótipos funcionais em HTML com interações básicas — cliques, hover states, transições, até fluxos simples de múltiplas telas.</p>
+
+  <div class="prompt-box">Crie um protótipo interativo de onboarding de 3 etapas para um app de investimentos.
+
+Etapa 1 — Boas-vindas: nome do usuário + botão "Começar"
+Etapa 2 — Perfil de investidor: 3 opções (Conservador, Moderado, Arrojado) com descrição breve de cada
+Etapa 3 — Confirmação: resumo das escolhas + botão "Criar minha conta"
+
+Requisitos:
+- Navegação entre etapas com botão Avançar/Voltar
+- Indicador de progresso no topo (etapa 1/3, 2/3, 3/3)
+- Animação suave de fade entre as telas
+- Dark theme: fundo #0f0f0f, acento #00e676
+- Responsivo para mobile (max-width: 400px centralizado)
+- HTML + CSS + JS em um único arquivo</div>
+
+  <h2>Caso de uso 4: Revisão e melhoria de interfaces existentes</h2>
+  <p>Uma das funcionalidades mais úteis é usar o Claude para revisar interfaces que você já tem. Cole o código HTML/CSS de uma tela ou componente e peça uma análise de acessibilidade, hierarquia visual, consistência e boas práticas.</p>
+
+  <div class="prompt-box">Analise este formulário de cadastro e sugira melhorias de UX e acessibilidade:
+
+[cole o HTML do formulário aqui]
+
+Avalie:
+1. Hierarquia visual e ordem de leitura
+2. Labels e instruções claras
+3. Estados de erro e validação
+4. Contraste e legibilidade (WCAG AA)
+5. Usabilidade em mobile
+6. Acessibilidade (ARIA, keyboard navigation)
+
+Para cada problema encontrado, forneça o código corrigido.</div>
+
+  <h2>Caso de uso 5: Gerando variações de UI para teste A/B</h2>
+  <p>Times de produto que fazem testes A/B frequentemente precisam de variações rápidas de um componente — um botão com copy diferente, um card com layout alterado, uma hero section com CTA em posição diferente. O Claude acelera muito essa parte do processo.</p>
+
+  <div class="prompt-box">Tenho esta seção hero de landing page:
+
+[cole o HTML/CSS da seção]
+
+Crie 3 variações para teste A/B, cada uma com uma hipótese diferente:
+
+Variação A: Foco no benefício principal — "economize tempo"
+Variação B: Foco em prova social — número de usuários/resultados
+Variação C: Foco em urgência — oferta limitada ou trial grátis
+
+Mantenha o mesmo layout base, mude apenas copy, hierarquia e CTA.
+Adicione um comentário no código indicando a hipótese de cada variação.</div>
+
+  <h2>Claude para Design vs Figma AI vs Adobe Firefly</h2>
+  <div class="table-wrap">
+    <table class="comp-table">
+      <thead><tr><th>Critério</th><th>Claude</th><th>Figma AI</th><th>Adobe Firefly</th></tr></thead>
+      <tbody>
+        <tr><td>Output em código</td><td><span class="badge-ok">Nativo (HTML/CSS/React)</span></td><td><span class="badge-med">Requer exportação</span></td><td><span class="badge-med">Não</span></td></tr>
+        <tr><td>Geração de imagens</td><td><span class="badge-med">Não nativo</span></td><td><span class="badge-ok">Sim</span></td><td><span class="badge-ok">Sim</span></td></tr>
+        <tr><td>Design system</td><td><span class="badge-ok">Tokens em CSS</span></td><td><span class="badge-ok">Integrado ao Figma</span></td><td><span class="badge-med">Parcial</span></td></tr>
+        <tr><td>Prototipação</td><td><span class="badge-ok">HTML interativo</span></td><td><span class="badge-ok">Visual nativo</span></td><td><span class="badge-med">Não</span></td></tr>
+        <tr><td>Curva de aprendizado</td><td><span class="badge-ok">Baixa (linguagem natural)</span></td><td><span class="badge-ok">Baixa</span></td><td><span class="badge-ok">Baixa</span></td></tr>
+        <tr><td>Integração com dev</td><td><span class="badge-ok">Direta (é código)</span></td><td><span class="badge-med">Via Dev Mode</span></td><td><span class="badge-med">Manual</span></td></tr>
+        <tr><td>Preço</td><td>R$90/mês (Pro)</td><td>Incluído no Figma</td><td>Incluído no Creative Cloud</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Quem se beneficia mais do Claude para Design</h2>
+  <p><strong>Desenvolvedores front-end</strong> são os que mais ganham com essa mudança. Em vez de receber um design no Figma e reimplementar tudo do zero, eles podem descrever o que precisam e usar o output do Claude como ponto de partida — economizando horas em componentes repetitivos como tabelas, formulários e layouts de página.</p>
+  <p><strong>Designers que sabem código</strong> (os chamados "design engineers") encontram no Claude um parceiro que acelera a prototipação técnica. Você consegue validar uma ideia em código muito mais rápido do que aprendendo as nuances de uma ferramenta nova.</p>
+  <p><strong>Founders e empreendedores solo</strong> sem budget para contratar um designer conseguem criar MVPs visualmente consistentes usando o Claude como ferramenta principal — especialmente se combinado com um design system como Tailwind ou shadcn/ui.</p>
+  <p><strong>Times de produto pequenos</strong> que precisam iterar rapidamente conseguem usar o Claude para gerar variações, testar hipóteses e documentar o design system — sem depender de um designer disponível para cada pequena mudança.</p>
+
+  <h2>Limites e o que o Claude ainda não faz bem</h2>
+  <p>É importante ser honesto: o Claude para Design não substitui um designer experiente. Ele não tem julgamento estético refinado, não entende contexto de marca de forma profunda e não consegue criar identidades visuais originais com o mesmo resultado que um profissional dedicado.</p>
+  <p>Interfaces geradas puramente por IA tendem a ser funcionais mas genéricas — elas seguem padrões estabelecidos em vez de criar algo distinto. Para produtos que precisam de diferenciação visual forte, o Claude é melhor usado como ferramenta de aceleração do designer, não como substituto.</p>
+  <p>Outro limite: animações complexas, micro-interações sofisticadas e motion design ainda exigem habilidade técnica e julgamento humano para ficarem bons. O Claude consegue gerar as bases, mas o refinamento fino ainda é trabalho do profissional.</p>
+
+  <h2>Como começar agora mesmo</h2>
+  <p>Você não precisa esperar nenhuma atualização especial — o Claude já tem essas capacidades disponíveis na versão Pro (claude.ai) e via API. Comece com um projeto simples: pegue um componente que você precisa construir hoje e, em vez de codificar do zero, descreva para o Claude. Use o output como rascunho e refine.</p>
+  <p>A curva de aprendizado para escrever bons prompts de design é mais curta do que parece. Em 2 a 3 sessões de experimentação, você vai ter uma intuição de como descrever especificações para obter resultados consistentes. E a economia de tempo começa já na primeira semana.</p>
+
+  <div class="nl-cta-art">
+    <h3>📬 Prompts de design toda semana</h3>
+    <p>A newsletter do PromptBR traz os melhores prompts para designers e devs toda segunda-feira.</p>
+    <p class="ebook-line">🎁 Bônus: e-book gratuito "8 Formas de Ganhar Dinheiro com Claude AI"</p>
+    <a href="newsletter.html">Assinar grátis →</a>
+  </div>
+
+  <div class="art-nav">
+    <a href="artigo-cursor-ai-programacao.html">
+      <div class="nav-label">← Anterior</div>
+      <div class="nav-title">Cursor AI: o editor de código com IA</div>
+    </a>
+    <a href="artigo-claude-vs-chatgpt.html">
+      <div class="nav-label">Próximo →</div>
+      <div class="nav-title">Claude vs ChatGPT: qual usar no trabalho?</div>
+    </a>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-cursor-ai-programacao.html">Cursor AI</a></li><li><a href="artigo-claude-vs-chatgpt.html">Claude vs ChatGPT</a></li><li><a href="artigo-ia-para-criadores-de-conteudo.html">IA p/ Criadores</a></li><li><a href="artigo-produtividade-com-ia.html">Produtividade</a></li></ul></div>
+  <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>🇧🇷 Feito com IA no Brasil</span></div></footer>
+<script src="global.js"></script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:2px solid rgba(0,230,118,.3);padding:16px 24px;font-family:system-ui,sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6);">
+  <div style="max-width:940px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;"><p style="font-size:13px;color:#ccc;margin:0 0 3px;line-height:1.5;">🍪 <strong style="color:#fff;">Usamos cookies</strong> para analytics e anúncios. <a href="cookies.html" style="color:#00e676;text-decoration:underline;">Cookies</a> · <a href="privacidade.html" style="color:#00e676;text-decoration:underline;">Privacidade</a></p><p style="font-size:11px;color:#555;margin:0;">Conformidade com LGPD · Lei nº 13.709/2018</p></div>
+    <div style="display:flex;gap:10px;flex-shrink:0;"><button id="cb-accept" style="background:#00e676;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Aceitar todos</button><button id="cb-essential" style="background:transparent;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:6px;font-size:12px;cursor:pointer;">Só essenciais</button></div>
+  </div>
+</div>
+<script>(function(){var K='promptbr_consent';var b=document.getElementById('cookie-banner');function apply(a,d){if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':a?'granted':'denied','ad_storage':d?'granted':'denied'});}try{var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.ts){apply(s.analytics!==false,s.ads!==false);return;}}catch(e){}b.style.display='block';document.getElementById('cb-accept').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:true,ads:true,ts:Date.now()}));apply(true,true);b.style.display='none';};document.getElementById('cb-essential').onclick=function(){localStorage.setItem(K,JSON.stringify({essential:true,analytics:false,ads:false,ts:Date.now()}));apply(false,false);b.style.display='none';};})();</script>
+<button id="back-to-top" aria-label="Voltar ao topo" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--green);color:#000;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s;box-shadow:0 4px 16px rgba(0,230,118,.35);z-index:800;font-size:18px;">↑</button>
+<script>(function(){var b=document.getElementById('back-to-top');if(!b)return;window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.visibility='visible';b.style.transform='translateY(0)';}else{b.style.opacity='0';b.style.visibility='hidden';b.style.transform='translateY(12px)';}},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});b.addEventListener('mouseenter',function(){b.style.background='#00ff88';});b.addEventListener('mouseleave',function(){b.style.background='var(--green)';});})();</script>
+</body></html>
