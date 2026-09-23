@@ -1,187 +1,124 @@
-# PromptBR 🇧🇷
+# PromptBR
 
-A maior biblioteca de prompts em português. Ferramentas de IA, tutoriais e newsletter semanal.
+Portal brasileiro de **prompts, conteúdo prático e educação aplicada em inteligência artificial**, construído como produto web estático de baixo custo.
 
----
+O projeto reúne uma biblioteca aberta com **145+ prompts em português**, artigos, ferramentas e newsletter, com foco em tornar casos de uso de IA mais acessíveis para quem trabalha, estuda ou cria conteúdo.
 
-## 📁 Estrutura do Projeto
+**Site:** https://brprompt.tec.br
 
+> **Status:** produto público em evolução. O repositório concentra a aplicação web, conteúdo editorial e estrutura de publicação.
+
+## Objetivo
+
+Grande parte do conteúdo técnico sobre IA nasce em inglês e costuma exigir que o usuário descubra sozinho como transformar conceitos em instruções úteis.
+
+O PromptBR foi criado para reduzir essa barreira com três camadas:
+
+1. **biblioteca pesquisável de prompts**;
+2. **conteúdo editorial sobre ferramentas e aplicações de IA**;
+3. **distribuição recorrente por newsletter**.
+
+## O que o produto entrega
+
+- biblioteca organizada por categorias;
+- busca e filtros para localizar prompts;
+- cópia rápida dos prompts;
+- artigos sobre automação, LLMs, produtividade e ferramentas;
+- páginas dedicadas a ferramentas e casos de uso;
+- newsletter integrada ao ecossistema do projeto;
+- estrutura preparada para SEO e publicação independente;
+- experiência responsiva em HTML, CSS e JavaScript sem framework obrigatório.
+
+## Arquitetura
+
+O PromptBR foi intencionalmente mantido simples:
+
+```text
+conteúdo + interface estática
+          ↓
+HTML / CSS / JavaScript
+          ↓
+GitHub Pages
+          ↓
+domínio próprio
 ```
+
+Esse formato reduz dependências de infraestrutura, custo de hospedagem e complexidade operacional.
+
+## Estrutura do repositório
+
+O projeto cresceu para além da estrutura inicial e atualmente inclui páginas editoriais, biblioteca, ferramentas e ativos públicos.
+
+```text
 promptbr/
-├── index.html                ← Home principal
-├── css/
-│   └── global.css            ← Estilos de todas as páginas
-├── js/
-│   └── global.js             ← Scripts compartilhados
-├── pages/
-│   ├── prompts.html          ← Biblioteca de prompts (busca + filtro + copiar)
-│   ├── noticias.html         ← Notícias sobre IA
-│   ├── newsletter.html       ← Landing page da newsletter
-│   ├── blog.html             ← (próxima etapa)
-│   ├── sobre.html            ← (próxima etapa)
-│   └── privacidade.html      ← (próxima etapa — obrigatório para AdSense)
-└── assets/                   ← Coloque imagens aqui
+├── index.html
+├── prompts.html
+├── ferramentas.html
+├── newsletter.html
+├── artigos e guias
+├── global.css
+├── global.js
+├── assets/
+├── CNAME
+├── ads.txt
+└── README.md
 ```
 
----
+## Stack
 
-## 🚀 PASSO A PASSO: Subir no GitHub Pages
+`HTML5` · `CSS3` · `JavaScript` · `GitHub Pages` · `SEO técnico` · `Beehiiv`
 
-### PASSO 1 — Criar conta no GitHub
-1. Acesse **https://github.com**
-2. Clique em **Sign up**
-3. Preencha: nome de usuário, email, senha
-4. Confirme o email que chegar
+## Decisões de produto
 
----
+### Site estático antes de backend complexo
 
-### PASSO 2 — Criar o repositório
-1. Depois de logado, clique no **+** no canto superior direito
-2. Clique em **New repository**
-3. Preencha:
-   - **Repository name:** `promptbr`
-   - **Description:** A maior biblioteca de prompts em português
-   - Marque **Public** (obrigatório para GitHub Pages grátis)
-4. Clique no botão verde **Create repository**
+A primeira versão prioriza distribuição, navegação e conteúdo. Um backend permanente não é necessário para servir a maior parte da experiência.
 
----
+### Conteúdo como parte do produto
 
-### PASSO 3 — Fazer upload dos arquivos
-1. Na tela do repositório recém criado, clique em:
-   **"uploading an existing file"**
-2. Abra o explorador de arquivos no seu computador
-3. **Selecione TODOS os arquivos e pastas** do projeto PromptBR
-4. **Arraste** para a área de upload do GitHub
-5. Role a página para baixo
-6. Escreva uma mensagem: `primeiro commit`
-7. Clique no botão verde **Commit changes**
-8. Aguarde o upload terminar (pode demorar 1-2 minutos)
+O repositório não é apenas uma landing page. A biblioteca, os artigos e as ferramentas formam o próprio produto e servem como laboratório de conteúdo assistido por IA, arquitetura web simples e aquisição orgânica.
 
----
+### IA como apoio, não como selo de qualidade
 
-### PASSO 4 — Ativar o GitHub Pages
-1. No repositório, clique em **Settings** (engrenagem, no menu superior)
-2. Na barra lateral esquerda, clique em **Pages**
-3. Em **Source**, selecione **Deploy from a branch**
-4. Em **Branch**, selecione **main** e a pasta **/ (root)**
-5. Clique em **Save**
-6. Aguarde 2-3 minutos
-7. Aparecerá o link do seu site:
-   **https://SEU-USUARIO.github.io/promptbr**
+Prompts e artigos precisam ser revisados como conteúdo editorial. O uso de IA no processo de criação não elimina a necessidade de validação humana, atualização e contexto.
 
-✅ **Pronto! Seu site está no ar.**
+## Desenvolvimento local
 
----
+Não há etapa obrigatória de build.
 
-### PASSO 5 — Atualizar o site no futuro
-Sempre que quiser atualizar o site:
-1. No repositório, clique no arquivo que quer editar
-2. Clique no lápis ✏️ (Edit this file)
-3. Faça as alterações
-4. Clique em **Commit changes**
-5. O site atualiza automaticamente em ~1 minuto
-
----
-
-## 💰 MONETIZAÇÃO — Google AdSense
-
-### Antes de solicitar aprovação, você precisa:
-- [ ] Site publicado com URL própria (GitHub Pages funciona)
-- [ ] Mínimo 10-15 artigos/páginas com conteúdo original
-- [ ] Página "Sobre" criada
-- [ ] Página "Política de Privacidade" criada (obrigatório)
-- [ ] Página "Contato" criada
-
-### Como cadastrar no AdSense:
-1. Acesse **https://adsense.google.com**
-2. Clique em **Começar**
-3. Entre com sua conta Google
-4. Informe a URL do seu site GitHub Pages
-5. Aguarde aprovação (7 a 14 dias úteis)
-
-### Como inserir os anúncios:
-Após aprovação, o AdSense te dá um código assim:
-```html
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+```bash
+python3 -m http.server 8000
 ```
 
-Cole no `<head>` de cada página HTML. Depois substitua os blocos:
-```html
-<!-- <div class="ad-box">📢 Espaço publicitário...</div> -->
-```
-Por:
-```html
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+Depois, abra:
+
+```text
+http://localhost:8000
 ```
 
-### Posições de anúncio no projeto:
-| Posição | Formato | Localização no código |
-|---|---|---|
-| Leaderboard topo | 728×90 | Logo após o nav/hero |
-| In-feed | 728×90 | Entre cards de artigos |
-| Retângulo mid | 336×280 | Meio do conteúdo |
-| Sidebar half | 300×600 | Topo da sidebar |
-| Sidebar rect | 300×250 | Meio da sidebar |
-| Footer | 728×90 | Antes do rodapé |
+## Publicação
 
----
+O domínio `brprompt.tec.br` é configurado por `CNAME` e a aplicação é compatível com publicação via GitHub Pages.
 
-## 📬 NEWSLETTER — Beehiiv
+Alterações no conteúdo são versionadas no mesmo repositório, mantendo histórico editorial e técnico.
 
-1. Acesse **https://beehiiv.com** e crie conta gratuita
-2. Crie sua publicação chamada "PromptBR"
-3. Copie o link de inscrição gerado pelo Beehiiv
-4. Substitua o formulário em `newsletter.html` pelo embed do Beehiiv
-   (eles fornecem o código HTML na plataforma)
+## Limitações atuais
 
----
+- conteúdo e páginas ainda seguem uma arquitetura predominantemente estática;
+- parte do catálogo exige revisão periódica por mudanças rápidas em modelos e produtos de IA;
+- não há CMS dedicado;
+- automações editoriais e métricas não estão centralizadas neste repositório;
+- a estrutura de testes ainda pode evoluir.
 
-## 📊 ANALYTICS — Google Analytics
+## Próximos passos
 
-Cole antes do `</head>` em todas as páginas:
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
+- separar conteúdo estruturado da apresentação;
+- automatizar validação de links e páginas;
+- ampliar testes de navegação e acessibilidade;
+- criar pipeline editorial versionado;
+- consolidar analytics e métricas de conteúdo;
+- documentar critérios de revisão e atualização dos prompts.
 
----
+## Sobre este projeto
 
-## ➕ Como adicionar novo prompt
-
-1. Abra `pages/prompts.html`
-2. Copie um bloco `<div class="pcard">...</div>`
-3. Altere:
-   - `data-category="categoria"` — para o filtro funcionar
-   - `id="pXX"` — número único (p21, p22, etc.)
-   - O conteúdo dentro do `<pre class="prompt-txt">`
-   - O título em `.pc-title`
-   - Os badges de categoria e nível
-4. Salve e faça commit no GitHub
-
----
-
-## ➕ Como adicionar nova notícia
-
-1. Abra `pages/noticias.html`
-2. Copie um bloco `<div class="nr">...</div>`
-3. Altere o conteúdo
-4. Salve e faça commit
-
----
-
-## 🎯 Próximas páginas a criar
-
-- `pages/blog.html` — listagem de artigos
-- `pages/artigo-chatgpt.html` — primeiro artigo completo
-- `pages/sobre.html` — quem somos
-- `pages/privacidade.html` — obrigatório para AdSense
-
----
-
-Feito com IA no Brasil 🇧🇷
+O PromptBR demonstra uma abordagem de **produto digital enxuto**, combinando desenvolvimento web, publicação contínua, conteúdo sobre IA e experimentação de aquisição orgânica com infraestrutura simples.
