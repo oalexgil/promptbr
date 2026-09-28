@@ -232,3 +232,148 @@ p{color:var(--text-2)}
   .pb-actions .btn{width:100%}
   .footer-grid{grid-template-columns:1fr}
 }
+
+
+/* =========================================================
+   PromptBR daily-use editorial refinement · Sep 2026
+   Keep the brand, reduce the "developer terminal" feeling.
+   ========================================================= */
+:root{
+  --green:#c8f36a;
+  --green-dim:#aeda54;
+  --green-glow:rgba(200,243,106,.11);
+  --surface:#101c19;
+  --surface-2:#17241f;
+  --radius:14px;
+  --radius-lg:20px;
+}
+body::before{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(200,243,106,.055),transparent 26%),
+    radial-gradient(circle at 93% 11%,rgba(149,184,255,.045),transparent 25%),
+    linear-gradient(180deg,#08110f 0%,#0b1512 100%);
+}
+body::after{opacity:.07}
+h1{font-size:clamp(2.65rem,5.6vw,5.15rem)}
+h2{font-size:clamp(1.75rem,3.2vw,3rem)}
+.eyebrow,.section-kicker{
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.035em;
+  text-transform:none;
+}
+.nav{height:66px;background:rgba(8,17,15,.91)}
+.nav-logo-name .nav-logo-br{
+  font-family:var(--font-body);
+  font-size:9px;
+  letter-spacing:0;
+  text-transform:none;
+  padding:5px 8px;
+}
+.nav-links a{font-size:13px}
+.pb-hero::before{
+  background:
+    radial-gradient(circle at 75% 20%,rgba(200,243,106,.075),transparent 28%),
+    radial-gradient(circle at 5% 55%,rgba(149,184,255,.045),transparent 24%);
+  mask-image:none;
+}
+.pb-hero-inner{
+  padding:72px 24px 62px;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+  gap:48px;
+  align-items:center;
+}
+.pb-kicker{
+  font-family:var(--font-body);
+  font-weight:800;
+  letter-spacing:.025em;
+  text-transform:none;
+  font-size:11px;
+}
+.pb-kicker::before{width:7px;height:7px;box-shadow:none}
+.pb-hero h1{font-size:clamp(3rem,5.7vw,5.25rem);max-width:760px}
+.pb-hero-copy>p{font-size:clamp(.98rem,1.25vw,1.08rem);line-height:1.72;max-width:640px}
+.pb-proof{margin-top:32px}
+.pb-proof span{
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:700;
+  text-transform:none;
+  letter-spacing:0;
+}
+.pb-hero-panel{
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(23,36,31,.92),rgba(12,23,19,.92));
+}
+.pb-hero-panel-head{
+  font-family:var(--font-body);
+  font-size:10px;
+  text-transform:none;
+  letter-spacing:.02em;
+}
+.pb-stack small{
+  font-family:var(--font-body);
+  font-weight:800;
+  text-transform:none;
+  letter-spacing:.02em;
+}
+.pb-section{padding:68px 24px}
+.pb-section-head{grid-template-columns:.82fr 1.18fr;gap:34px;margin-bottom:28px}
+.pb-section-head h2{font-size:clamp(1.8rem,3.3vw,2.85rem);line-height:1.08}
+.pb-section-head p{font-size:14px}
+.pb-tile{min-height:205px;padding:20px;border-radius:18px}
+.pb-tile .num{font-family:var(--font-body);font-size:10px;font-weight:800}
+.pb-tile h3{margin-top:28px;font-size:1.28rem;line-height:1.16}
+.pb-feature{min-height:320px}
+.pb-feature-art::before{
+  content:"ideia → contexto → resultado";
+  font-size:clamp(1.55rem,3.2vw,3.25rem);
+  letter-spacing:-.045em;
+  color:rgba(244,245,236,.16);
+}
+.pb-page-hero{padding:68px 24px 46px}
+.pb-page-hero h1{font-size:clamp(2.65rem,5vw,4.7rem);max-width:780px}
+.pb-page-hero p{font-size:16px}
+.card-cat,.pc-cat,.pf-cat,.pl-cat,.card-meta,.pc-meta,.pf-meta,.pl-meta{
+  font-family:var(--font-body)!important;
+  letter-spacing:.02em!important;
+  text-transform:none!important;
+}
+.card,.post-card,.post-featured{border-radius:18px!important}
+.pc-thumb-img,.pf-thumb-img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.pc-thumb:has(.pc-thumb-img),.pf-thumb:has(.pf-thumb-img){
+  padding:0;
+  opacity:1!important;
+  overflow:hidden;
+}
+.daily-model-note{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-top:18px;
+  color:var(--text-3);
+  font-size:11px;
+}
+.daily-model-note span{
+  padding:6px 9px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.025);
+}
+@media(max-width:900px){
+  .pb-hero-inner{grid-template-columns:1fr;padding-top:58px;gap:30px}
+}
+@media(max-width:640px){
+  h1{font-size:clamp(2.35rem,12vw,3.7rem)}
+  .pb-hero h1{font-size:clamp(2.65rem,12vw,4rem)}
+  .pb-page-hero h1{font-size:clamp(2.45rem,11vw,3.7rem)}
+  .pb-section{padding:52px 18px}
+}
