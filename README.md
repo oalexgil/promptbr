@@ -1,124 +1,89 @@
 # PromptBR
 
-Portal brasileiro de **prompts, conteúdo prático e educação aplicada em inteligência artificial**, construído como produto web estático de baixo custo.
+**IA útil, aplicada ao trabalho real.**
 
-O projeto reúne uma biblioteca aberta com **145+ prompts em português**, artigos, ferramentas e newsletter, com foco em tornar casos de uso de IA mais acessíveis para quem trabalha, estuda ou cria conteúdo.
+PromptBR is a Brazilian, Portuguese-first hub for practical artificial intelligence. It started as a prompt library and is being rebuilt as a distribution and learning layer for prompts, tools, guides, experiments and products that solve real tasks.
 
 **Site:** https://brprompt.tec.br
 
-> **Status:** produto público em evolução. O repositório concentra a aplicação web, conteúdo editorial e estrutura de publicação.
+## Purpose
 
-## Objetivo
-
-Grande parte do conteúdo técnico sobre IA nasce em inglês e costuma exigir que o usuário descubra sozinho como transformar conceitos em instruções úteis.
-
-O PromptBR foi criado para reduzir essa barreira com três camadas:
-
-1. **biblioteca pesquisável de prompts**;
-2. **conteúdo editorial sobre ferramentas e aplicações de IA**;
-3. **distribuição recorrente por newsletter**.
-
-## O que o produto entrega
-
-- biblioteca organizada por categorias;
-- busca e filtros para localizar prompts;
-- cópia rápida dos prompts;
-- artigos sobre automação, LLMs, produtividade e ferramentas;
-- páginas dedicadas a ferramentas e casos de uso;
-- newsletter integrada ao ecossistema do projeto;
-- estrutura preparada para SEO e publicação independente;
-- experiência responsiva em HTML, CSS e JavaScript sem framework obrigatório.
-
-## Arquitetura
-
-O PromptBR foi intencionalmente mantido simples:
+Reduce the distance between:
 
 ```text
-conteúdo + interface estática
-          ↓
-HTML / CSS / JavaScript
-          ↓
-GitHub Pages
-          ↓
-domínio próprio
+"I saw a new AI tool"
+        ↓
+"What is it actually good for?"
+        ↓
+"How do I use it in my context?"
+        ↓
+"Can I repeat the result?"
 ```
 
-Esse formato reduz dependências de infraestrutura, custo de hospedagem e complexidade operacional.
+The product is organized around tasks instead of hype.
 
-## Estrutura do repositório
+## Current assets
 
-O projeto cresceu para além da estrutura inicial e atualmente inclui páginas editoriais, biblioteca, ferramentas e ativos públicos.
+- **245 prompts** in Portuguese in the public library;
+- long-form guides and tutorials;
+- task-first AI tools directory;
+- Beehiiv newsletter;
+- SEO-ready static publishing on GitHub Pages;
+- legal/privacy pages;
+- room for first-party labs and products as they become public.
 
-```text
-promptbr/
-├── index.html
-├── prompts.html
-├── ferramentas.html
-├── newsletter.html
-├── artigos e guias
-├── global.css
-├── global.js
-├── assets/
-├── CNAME
-├── ads.txt
-└── README.md
-```
+## Editorial principles
+
+1. **Utility before novelty.** A topic should change an action, decision or workflow.
+2. **Context before magic prompts.** Good output depends on objective, constraints and verification.
+3. **Transparent AI use.** AI-assisted content still requires human review.
+4. **Brazilian context.** Portuguese that sounds natural and tools/examples relevant to local users.
+5. **No invented proof.** Traffic, subscribers, performance and product claims must be measured before publication.
+
+## Information architecture
+
+- `index.html` — positioning and main routes;
+- `prompts.html` — searchable prompt library;
+- `ferramentas.html` — tools organized by task;
+- `blog.html` + `artigo-*.html` — guides and editorial archive;
+- `newsletter.html` — real Beehiiv signup;
+- `sobre.html` — purpose and editorial model;
+- `privacidade.html`, `cookies.html`, `termos.html` — legal pages;
+- `global.css` / `global.js` — shared 2026 identity and behavior.
+
+## Brand
+
+The 2026 identity moves away from the generic "green terminal" AI aesthetic.
+
+- dark ink base;
+- acid-lime signal color;
+- editorial typography;
+- modular prompt/cursor mark;
+- clear hierarchy and wide whitespace;
+- technology shown as a working system, not as sci-fi decoration.
+
+See `BRAND.md`.
+
+## Role in the wider ecosystem
+
+PromptBR is primarily a **distribution asset**. Free prompts and useful guides attract search and recurring readers; newsletter and task pages create owned distribution. First-party tools can later plug into this structure when they have a public, testable value proposition.
 
 ## Stack
 
-`HTML5` · `CSS3` · `JavaScript` · `GitHub Pages` · `SEO técnico` · `Beehiiv`
+`HTML` · `CSS` · `JavaScript` · `GitHub Pages` · `Beehiiv`
 
-## Decisões de produto
+The static-first architecture remains deliberate: low operating cost, fast pages and minimal infrastructure until a feature actually requires a backend.
 
-### Site estático antes de backend complexo
-
-A primeira versão prioriza distribuição, navegação e conteúdo. Um backend permanente não é necessário para servir a maior parte da experiência.
-
-### Conteúdo como parte do produto
-
-O repositório não é apenas uma landing page. A biblioteca, os artigos e as ferramentas formam o próprio produto e servem como laboratório de conteúdo assistido por IA, arquitetura web simples e aquisição orgânica.
-
-### IA como apoio, não como selo de qualidade
-
-Prompts e artigos precisam ser revisados como conteúdo editorial. O uso de IA no processo de criação não elimina a necessidade de validação humana, atualização e contexto.
-
-## Desenvolvimento local
-
-Não há etapa obrigatória de build.
+## Development
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Depois, abra:
+Open `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
+## Current redesign branch
 
-## Publicação
+`redesign/ai-aplicada-hub`
 
-O domínio `brprompt.tec.br` é configurado por `CNAME` e a aplicação é compatível com publicação via GitHub Pages.
-
-Alterações no conteúdo são versionadas no mesmo repositório, mantendo histórico editorial e técnico.
-
-## Limitações atuais
-
-- conteúdo e páginas ainda seguem uma arquitetura predominantemente estática;
-- parte do catálogo exige revisão periódica por mudanças rápidas em modelos e produtos de IA;
-- não há CMS dedicado;
-- automações editoriais e métricas não estão centralizadas neste repositório;
-- a estrutura de testes ainda pode evoluir.
-
-## Próximos passos
-
-- separar conteúdo estruturado da apresentação;
-- automatizar validação de links e páginas;
-- ampliar testes de navegação e acessibilidade;
-- criar pipeline editorial versionado;
-- consolidar analytics e métricas de conteúdo;
-- documentar critérios de revisão e atualização dos prompts.
-
-## Sobre este projeto
-
-O PromptBR demonstra uma abordagem de **produto digital enxuto**, combinando desenvolvimento web, publicação contínua, conteúdo sobre IA e experimentação de aquisição orgânica com infraestrutura simples.
+The redesign preserves the existing content archive while gradually retiring stale positioning and unverified marketing claims.
