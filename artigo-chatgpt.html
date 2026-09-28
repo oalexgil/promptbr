@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatGPT do Zero ao Avançado — PromptBR</title>
-  <meta name="description" content="Guia completo do ChatGPT em português: prompt engineering, Custom Instructions, GPTs personalizados e técnicas avançadas.">
+  <title>ChatGPT em 2026: prompts, arquivos, pesquisa e trabalho prático — PromptBR</title>
+  <meta name="description" content="Guia prático do ChatGPT em 2026 com GPT-5.6: como pedir melhor, trabalhar com arquivos, pesquisar, revisar respostas e criar fluxos reutilizáveis.">
   <link rel="stylesheet" href="global.css">
   <style>
     .art-hero{background:var(--bg-2);border-bottom:1px solid var(--border);padding:60px 24px 48px;position:relative;overflow:hidden;}
@@ -82,168 +82,86 @@
 </head>
 <body>
 <div id="reading-bar"></div>
-<nav class="nav"><div class="nav-inner">
-  <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt="PromptBR"><span class="nav-logo-name">Prompt<span class="dot">.</span>BR<span class="nav-logo-br">🇧🇷</span></span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Início</a></li><li><a href="blog.html" class="active">Blog</a></li>
-    <li><a href="prompts.html" class="hot">⚡ Prompts</a></li><li><a href="packs.html">📦 Packs</a></li><li><a href="noticias.html">Notícias</a></li>
-    <li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li>
-  </ul>
-  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</div></nav>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
-    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
-    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
-    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
-    <span class="ticker-item">🔥 GPT-5.5 lançado — mais autônomo e poderoso</span>
-    <span class="ticker-item">📚 245+ prompts em português disponíveis</span>
-    <span class="ticker-item">🤖 Meta lança Muse Spark para desafiar OpenAI</span>
-    <span class="ticker-item">⚡ Gemini Deep Research agora em pt-BR</span>
-    <span class="ticker-item">💼 Vagas de Engenheiro de Prompt crescem 340% no Brasil</span>
-  </div>
-</div>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt=""><span class="nav-logo-name">PromptBR <span class="nav-logo-br">IA aplicada</span></span></a><ul class="nav-links"><li><a href="index.html">Início</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="ferramentas.html">Ferramentas</a></li><li><a href="blog.html" class="active">Guias</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="newsletter.html" class="nav-cta">Newsletter →</a></li></ul><button class="nav-hamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button></div></nav>
 
 <div class="art-hero">
   <div class="art-inner">
     <div class="art-kicker">Guia Completo · ChatGPT</div>
-    <h1>ChatGPT do zero ao avançado: o guia definitivo em português</h1>
-    <p class="desc">Prompt engineering, Custom Instructions, GPTs personalizados e os atalhos que usuários avançados usam — mas ninguém explica. Testamos tudo por 30 dias.</p>
-    <div class="art-meta">
-      <span>📅 12 Abr 2026</span><span>⏱️ 14 min</span><span>👁️ 4.2k leituras</span>
-    </div>
+    <h1>ChatGPT em 2026: prompts, arquivos, pesquisa e trabalho prático</h1>
+    <p class="desc">O ChatGPT mudou muito além do “campo de texto”. Este guia foi refeito para GPT-5.6 e para o jeito atual de trabalhar com arquivos, pesquisa, ferramentas e tarefas mais longas.</p>
+    <div class="art-meta"><span>📅 Atualizado em 28 set 2026</span><span>⏱️ 9 min</span><span>✓ Guia revisado</span></div>
   </div>
 </div>
 
 <div class="art-wrap">
-  <p>O ChatGPT tem mais de 100 milhões de usuários, mas a grande maioria usa apenas 10% do potencial da ferramenta. Este guia cobre tudo: da estrutura correta de um prompt até técnicas que a maioria nunca viu.</p>
+  <p>O jeito mais útil de pensar no ChatGPT hoje é como uma interface para <strong style="color:var(--text);">conversar, pesquisar, trabalhar com arquivos e executar tarefas</strong>. Um bom prompt continua importante, mas ele é só uma parte do fluxo.</p>
 
-  <h2>1. A estrutura de um prompt eficaz</h2>
-  <p>Todo prompt poderoso tem quatro elementos:</p>
+  <h2>1. Comece pela tarefa</h2>
+  <p>Evite abrir o chat pensando “qual prompt poderoso eu uso?”. Descreva o resultado que você quer, dê o contexto necessário, explique o que não pode acontecer e escolha um formato de saída.</p>
+  <div class="prompt-box">Objetivo: [resultado]
+
+Contexto:
+[informações que a IA precisa conhecer]
+
+Restrições:
+[o que não pode acontecer]
+
+Entregue:
+[formato: lista, tabela, email, plano, resumo...]
+
+Critério de sucesso:
+[o que uma boa resposta precisa conter]
+
+Se faltar algo essencial, faça no máximo 3 perguntas antes de responder.</div>
+
+  <h2>2. GPT-5.6: use capacidade proporcional à dificuldade</h2>
+  <p>A família GPT-5.6 foi desenhada com diferentes níveis de velocidade e capacidade. Para uma mensagem rápida, revisão simples ou lista, não há motivo para gastar mais raciocínio do que a tarefa precisa. Para análise complexa, código, ciência ou trabalho de conhecimento, vale aumentar o esforço quando a interface oferecer essa opção.</p>
+
+  <h2>3. Arquivos: peça mapa antes de conclusão</h2>
+  <p>Ao anexar um PDF, planilha ou documento longo, peça primeiro a estrutura, os dados principais e os pontos de dúvida. Depois faça perguntas específicas. Isso reduz o risco de uma conclusão baseada só nos trechos mais evidentes.</p>
+  <div class="prompt-box">Antes de responder à minha pergunta sobre este arquivo:
+1. identifique a estrutura;
+2. liste os dados ou argumentos centrais;
+3. marque lacunas e contradições;
+4. diga quais trechos sustentam a conclusão.
+
+Depois responda: [pergunta].</div>
+
+  <h2>4. Pesquisa: fonte primeiro, síntese depois</h2>
+  <p>Quando a resposta depende de informação atual, peça pesquisa e links para as fontes originais. Não trate o texto gerado como substituto do material de origem, especialmente em temas financeiros, jurídicos, médicos ou notícias.</p>
+
+  <h2>5. Fluxos reutilizáveis: prefira instruções que sobrevivem</h2>
+  <p>O produto está mudando de recursos antigos baseados em GPTs personalizados para fluxos com instruções reutilizáveis, Work e plugins/conexões. Se você estiver construindo um processo novo, evite depender de uma função específica que já tenha aposentadoria anunciada.</p>
+
+  <div class="tip-box"><div class="tip-icon">!</div><p>A OpenAI anunciou em setembro de 2026 planos de aposentar GPTs personalizados e oferecer migração para plugins. Para processos novos, vale pensar em instruções, arquivos e conexões de forma mais portátil.</p></div>
+
+  <h2>6. “Pense passo a passo” não é o segredo</h2>
+  <p>Modelos atuais já conseguem raciocinar internamente. Em vez de pedir cadeia de pensamento, peça algo que você possa verificar: premissas, fontes, cálculo final, checklist, tabela comparativa ou critérios usados.</p>
+  <div class="prompt-box">Não preciso do seu raciocínio interno.
+Mostre apenas:
+- premissas usadas;
+- dados relevantes;
+- resultado;
+- pontos de incerteza;
+- como eu posso verificar.</div>
+
+  <h2>7. Um hábito que melhora quase tudo</h2>
+  <p>Depois da primeira resposta, não comece do zero. Diga o que ficou bom, o que não serviu e qual restrição apareceu. Conversas iterativas tendem a funcionar melhor do que tentar colocar todas as condições em um prompt gigantesco.</p>
+
+  <h2>Fontes oficiais</h2>
   <ul>
-    <li><strong>Papel:</strong> "Atue como..." define o contexto de conhecimento.</li>
-    <li><strong>Contexto:</strong> O que a IA precisa saber sobre sua situação.</li>
-    <li><strong>Tarefa:</strong> O que exatamente você quer que ela faça.</li>
-    <li><strong>Formato/Restrições:</strong> Como deve ser a resposta e o que evitar.</li>
+    <li><a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">OpenAI — GPT-5.6</a></li>
+    <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" target="_blank" rel="noopener">OpenAI — notas de versão do ChatGPT</a></li>
   </ul>
 
-  <div class="prompt-box">Atue como redator especialista em comunicação corporativa.
-
-Contexto: Preciso comunicar ao meu time a mudança do Trello para o Notion. A transição começa em 2 semanas.
-
-Tarefa: Escreva um email interno que explique a mudança positivamente, mencione os benefícios e tranquilize quem tem medo de mudança.
-
-Formato: Email com assunto, saudação, 3 parágrafos curtos e assinatura. Tom amigável. Máx. 200 palavras.</div>
-
-  <div class="tip-box"><div class="tip-icon">💡</div><p><strong>Dica pro:</strong> Quanto mais específico o papel, melhor. "Redator com 10 anos em comunicação interna de empresas de tecnologia" supera "redator corporativo".</p></div>
-
-  <h2>2. Custom Instructions: configure uma vez, use sempre</h2>
-  <p>Custom Instructions é o recurso mais subestimado do ChatGPT. Acesse: Menu → Personalizar ChatGPT.</p>
-
-  <h3>Campo "O que você quer que o ChatGPT saiba sobre você?"</h3>
-  <div class="prompt-box">Sou [profissão] brasileiro. Trabalho com [área]. Meu nível técnico é [básico/intermediário/avançado]. Uso o ChatGPT para [tarefas principais]. Contexto: [descreva seu projeto/empresa].</div>
-
-  <h3>Campo "Como você quer que o ChatGPT responda?"</h3>
-  <div class="prompt-box">Sempre responda em português brasileiro. Seja direto — evite enrolação. Use marcadores em listas. Ao sugerir código, use blocos formatados. Quando não souber algo, diga claramente. Sem linguagem corporativa vazia.</div>
-
-  <h2>3. GPTs Personalizados: seu assistente especializado</h2>
-  <p>GPTs são versões personalizadas do ChatGPT criadas para tarefas específicas. Crie um GPT "assistente de email", outro "professor de inglês", outro para revisar contratos.</p>
-  <p>Para criar: ChatGPT → Explorar GPTs → Criar. Leva menos de 10 minutos.</p>
-
-  <div class="tip-box"><div class="tip-icon">🔥</div><p><strong>GPTs mais úteis para brasileiros:</strong> Revisor de Português BR, Assistente de Concursos, Coach de LinkedIn Brasil, Analista Financeiro BR.</p></div>
-
-  <h2>4. Chain of Thought: raciocínio passo a passo</h2>
-  <p>Para problemas complexos, adicione ao final: <strong>"Pense passo a passo antes de responder."</strong> Isso reduz erros em cálculos, análises e decisões.</p>
-
-  <div class="prompt-box">Preciso decidir: contratar CLT ou usar freelancers para um projeto de 6 meses.
-
-Considere: custo total, flexibilidade, qualidade, risco e impacto no fluxo de caixa.
-
-Pense passo a passo antes de dar sua recomendação final.</div>
-
-  <h2>5. Few-Shot Prompting: mostre exemplos</h2>
-  <p>Quando precisa de um estilo específico, mostre exemplos. A IA aprende o padrão e replica.</p>
-
-  <div class="prompt-box">Reescreva os títulos no estilo dos exemplos:
-
-Original: "Como usar IA"
-Reescrito: "7 formas de usar IA que vão te economizar 3h por semana"
-
-Original: "Marketing digital em 2026"
-Reescrito: "Marketing em 2026: o que morreu, sobreviveu e explodiu"
-
-Agora reescreva: "Gestão de tempo para empreendedores"</div>
-
-  <h2>6. Iteração: o segredo dos usuários avançados</h2>
-  <p>Usuários iniciantes aceitam a primeira resposta. Os avançados iteram. Após a primeira resposta, tente:</p>
-  <ul>
-    <li>"Agora refaça em metade do tamanho"</li>
-    <li>"Torne isso mais persuasivo"</li>
-    <li>"E se o público fosse mais técnico?"</li>
-    <li>"Qual a principal fraqueza dessa abordagem?"</li>
-    <li>"Crie 3 versões completamente diferentes"</li>
-  </ul>
-
-  <div class="tip-box"><div class="tip-icon">⚡</div><p><strong>Técnica avançada:</strong> Pergunte ao final: "O que eu deveria ter pedido que não pedi?" — você vai se surpreender.</p></div>
-
-  <h2>7. Análise de documentos com GPT-4o</h2>
-  <p>Faça upload de PDFs, imagens, contratos, planilhas. Exemplos:</p>
-  <ul>
-    <li>Contrato: "Liste todas as cláusulas que me prejudicam"</li>
-    <li>Extrato bancário: "Categorize meus gastos e aponte os maiores"</li>
-    <li>Artigo em inglês: "Resuma em português em 5 pontos"</li>
-    <li>Planilha: "Qual mês teve a maior variação percentual?"</li>
-  </ul>
-
-  <h2>Conclusão</h2>
-  <p>O ChatGPT cresce com o uso. Comece hoje com as Custom Instructions — você vai notar a diferença nas primeiras conversas.</p>
-
-  <div class="nl-cta-art">
-    <h3>Todo prompt que você viu aqui — e muito mais</h3>
-    <p>Toda segunda: 1 prompt testado, 1 ferramenta nova e as notícias de IA que importam. Grátis.</p>
-    <p style="font-size:12px;color:var(--green);margin:-8px 0 16px;font-weight:600;">🎁 Bônus exclusivo: e-book <em>8 Formas de Monetizar com Claude AI</em></p>
-    <a href="newsletter.html">Assinar a newsletter →</a>
-  </div>
-
-  <div class="art-nav">
-    <a href="artigo-automacao.html">
-      <div class="nav-label">← Artigo anterior</div>
-      <div class="nav-title">Make vs n8n vs Zapier: comparativo 2026</div>
-    </a>
-    <a href="artigo-midjourney.html">
-      <div class="nav-label">Próximo artigo →</div>
-      <div class="nav-title">Midjourney v7: técnicas para imagens profissionais</div>
-    </a>
-  </div>
-
-  <!-- ── LEIA TAMBÉM ─────────────────────────────────────────────── -->
-  <div class="rel-block">
-    <div class="rel-label">📖 Leia também</div>
-    <div class="rel-grid">
-      <a href="artigo-claude-vs-chatgpt.html" class="rel-card">
-        <span class="rel-arrow">→</span>
-        <span class="rel-title">Claude vs ChatGPT: qual usar em 2026?</span>
-      </a>
-      <a href="artigo-gpt55-vs-claude.html" class="rel-card">
-        <span class="rel-arrow">→</span>
-        <span class="rel-title">GPT-5.5 vs Claude: comparativo completo</span>
-      </a>
-      <a href="guia-engenharia-prompt.html" class="rel-card">
-        <span class="rel-arrow">→</span>
-        <span class="rel-title">Guia de Engenharia de Prompt</span>
-      </a>
-    </div>
-  </div>
-  <!-- ── FIM LEIA TAMBÉM ──────────────────────────────────────────── -->
+  <div class="nl-cta-art"><h3>Quer começar sem montar prompt do zero?</h3><p>Escolha uma tarefa na biblioteca e adapte os campos entre colchetes.</p><a href="prompts.html">Abrir biblioteca de prompts →</a></div>
+  <div class="art-nav"><a href="blog.html"><div class="nav-label">← Voltar</div><div class="nav-title">Todos os guias</div></a><a href="artigo-gpt55-vs-claude.html"><div class="nav-label">Comparativo →</div><div class="nav-title">GPT-5.6 vs Claude Sonnet 5.5</div></a></div>
 </div>
 
 <footer class="footer"><div class="footer-grid">
-  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>A maior biblioteca de prompts em português.</p></div>
+  <div class="footer-about"><a href="index.html" class="nav-logo-wrap"><img src="logo.svg" style="height:28px;" alt="PromptBR"></a><p>Prompts práticos em português para o dia a dia.</p></div>
   <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html">Início</a></li><li><a href="blog.html">Blog</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
-  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney v7</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
+  <div class="footer-col"><h4>Artigos</h4><ul><li><a href="artigo-chatgpt.html">Guia ChatGPT</a></li><li><a href="artigo-automacao.html">Make vs n8n</a></li><li><a href="artigo-midjourney.html">Midjourney V8.2</a></li><li><a href="artigo-curriculo.html">Currículo com IA</a></li></ul></div>
   <div class="footer-col"><h4>Institucional</h4><ul><li><a href="termos.html">Termos de Uso</a></li>
 <li><a href="privacidade.html">Privacidade</a></li>
 <li><a href="cookies.html">Cookies</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li></ul></div>
