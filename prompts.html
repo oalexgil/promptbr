@@ -14,14 +14,15 @@
     .ph h1{margin-bottom:12px;}.ph h1 span{color:var(--green);}
     .ph p{max-width:520px;line-height:1.7;}
     .ph-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
-    .filter-bar{background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:var(--nav-h);z-index:100;padding:14px 24px;}
-    .filter-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
-    .search-box{position:relative;flex:1;min-width:200px;}
+    .filter-bar{background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:var(--nav-h);z-index:100;padding:16px 24px 18px;}
+    .filter-inner{max-width:var(--max-w);margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:stretch;}
+    .search-box{position:relative;width:100%;min-width:0;}
     .search-box::before{content:"\2315";position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-3);}
-    #prompt-search{width:100%;padding:10px 14px 10px 38px;background:var(--bg-3);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);font-size:13.5px;outline:none;transition:border-color .2s;font-family:var(--font-body);}
+    #prompt-search{width:100%;min-height:44px;padding:10px 42px 10px 38px;background:var(--bg-3);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);font-size:13.5px;outline:none;transition:border-color .2s;font-family:var(--font-body);}
     #prompt-search:focus{border-color:var(--green);}
-    .filter-pills{display:flex;gap:7px;flex-wrap:wrap;}
-    .fp{padding:7px 15px;background:var(--bg-3);border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);white-space:nowrap;font-family:var(--font-body);}
+    .filter-pills{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0;padding:0;}
+    .fp{min-height:38px;padding:0 16px;background:var(--bg-3);border:1px solid var(--border);border-radius:999px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-2);white-space:nowrap;font-family:var(--font-body);display:inline-flex;align-items:center;justify-content:center;line-height:1;}
+    .filter-pills .fp:first-child{margin-left:0;}
     .fp:hover{border-color:var(--green);color:var(--green);}.fp.active{background:var(--green);color:#000;border-color:var(--green);}
     .prompts-page{max-width:var(--max-w);margin:0 auto;padding:36px 24px 80px;}
     .pc-count{font-family:var(--font-mono);font-size:12px;color:var(--text-3);margin-bottom:24px;}.pc-count strong{color:var(--green);}
@@ -74,8 +75,10 @@
       .prompt-txt{max-height:140px;font-size:11px;overflow-x:auto;overflow-y:auto;-webkit-overflow-scrolling:touch;}
       .copy-btn{padding:9px 14px;font-size:13px;min-height:40px;}
       .fav-btn{font-size:17px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;}
-      .filter-bar{padding:10px 16px;}
-      .fp{padding:8px 13px;font-size:12px;min-height:36px;}
+      .filter-bar{padding:12px 16px 14px;}
+      .filter-inner{gap:11px;}
+      .filter-pills{gap:7px;}
+      .fp{padding:0 13px;font-size:12px;min-height:36px;}
     }
 
     /* ── CONTADOR ANIMADO ────────────────────────────────── */
@@ -150,26 +153,27 @@
   </div>
 </div></section>
 
-<div class="filter-bar"><div class="filter-inner">
-  <div class="search-box">
-    <input type="text" id="prompt-search" placeholder="Buscar por título, categoria ou palavra-chave...">
-    <button class="search-clear" id="search-clear" title="Limpar busca">✕</button>
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="search-box">
+      <input type="text" id="prompt-search" placeholder="Buscar por título, categoria ou palavra-chave...">
+      <button class="search-clear" id="search-clear" title="Limpar busca">✕</button>
+    </div>
+    <div class="filter-pills" aria-label="Categorias de prompts">
+      <button class="fp active" data-filter="todos">Todos</button>
+      <button class="fp" data-filter="trabalho">Trabalho</button>
+      <button class="fp" data-filter="escrita">Escrita</button>
+      <button class="fp" data-filter="estudo">Estudo</button>
+      <button class="fp" data-filter="programacao">Codigo</button>
+      <button class="fp" data-filter="marketing">Marketing</button>
+      <button class="fp" data-filter="financas">Financas</button>
+      <button class="fp" data-filter="criatividade">Criatividade</button>
+      <button class="fp" data-filter="saude">Saúde</button>
+      <button class="fp" data-filter="juridico">Jurídico</button>
+      <button class="fp" data-filter="programacao">IA & Tech</button>
+    </div>
   </div>
-  </div>
-  <div class="filter-pills">
-    <button class="fp active" data-filter="todos">Todos</button>
-    <button class="fp" data-filter="trabalho">Trabalho</button>
-    <button class="fp" data-filter="escrita">Escrita</button>
-    <button class="fp" data-filter="estudo">Estudo</button>
-    <button class="fp" data-filter="programacao">Codigo</button>
-    <button class="fp" data-filter="marketing">Marketing</button>
-    <button class="fp" data-filter="financas">Financas</button>
-    <button class="fp" data-filter="criatividade">Criatividade</button>
-    <button class="fp" data-filter="saude">Saúde</button>
-    <button class="fp" data-filter="juridico">Jurídico</button>
-    <button class="fp" data-filter="programacao">IA & Tech</button>
-  </div>
-</div></div>
+</div>
 <div class="fav-tab-bar">
   <button class="fav-tab active" id="tab-todos">Todos os prompts</button>
   <button class="fav-tab" id="tab-favs">⭐ Meus Favoritos <span class="fav-count-badge" id="fav-badge">0</span></button>
