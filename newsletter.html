@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Newsletter PromptBR — uma seleção de IA que vale testar</title><meta name="description" content="Receba uma seleção de aplicações, ferramentas, prompts e aprendizados de IA em português."><link rel="stylesheet" href="global.css">
+<link rel="canonical" href="https://brprompt.tec.br/newsletter.html"><title>Newsletter PromptBR — uma seleção de IA que vale testar</title><meta name="description" content="Receba uma seleção de aplicações, ferramentas, prompts e aprendizados de IA em português."><link rel="stylesheet" href="global.css">
 <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script></head><body>
 <div id="reading-bar"></div><nav class="nav"><div class="nav-inner">
 <a href="index.html" class="nav-logo-wrap"><img src="logo.svg" class="nav-logo-svg" alt=""><span class="nav-logo-name">PromptBR <span class="nav-logo-br">IA aplicada</span></span></a>
@@ -10,7 +10,8 @@
 <main class="pb-section">
 <div class="pb-newsletter-box reveal">
 <span class="eyebrow">Assinatura gratuita</span><h2>Receba o próximo envio.</h2><p>A inscrição é processada pelo Beehiiv. Você pode cancelar pelos links disponíveis nos próprios emails.</p>
-<iframe src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;height:405px;border:0;background:transparent"></iframe>
+<iframe id="newsletter-form" title="Inscrição na newsletter PromptBR" src="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;height:405px;border:0;background:transparent"></iframe>
+<p><a id="form-direto" href="https://subscribe-forms.beehiiv.com/ea3811a9-6b61-4b29-aa47-41200a53a11a">Abrir o formulário em outra página</a></p>
 </div>
 <div class="pb-grid-3" style="margin-top:28px">
 <article class="pb-tile"><span class="num">APLICAR</span><h3>Um uso concreto</h3><p>Uma forma de transformar IA em processo, não apenas em curiosidade.</p></article>
@@ -22,4 +23,16 @@
 <div class="footer-col"><h4>Explorar</h4><ul><li><a href="prompts.html">Prompts</a></li><li><a href="ferramentas.html">Ferramentas</a></li><li><a href="blog.html">Guias</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
 <div class="footer-col"><h4>Projeto</h4><ul><li><a href="sobre.html">Sobre</a></li><li><a href="mailto:contato@brprompt.tec.br">Contato</a></li><li><a href="https://github.com/oalexgil/promptbr">GitHub</a></li></ul></div>
 <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacidade.html">Privacidade</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="termos.html">Termos</a></li></ul></div>
-</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>Feito no Brasil · atualizado continuamente</span></div></footer><script src="global.js"></script></body></html>
+</div><div class="footer-bottom"><span>© 2026 PromptBR</span><span>Feito no Brasil · atualizado continuamente</span></div></footer><script src="global.js"></script><script>
+if (new URLSearchParams(location.search).get('interesse') === 'ai-fidelity') {
+  document.querySelector('.pb-newsletter-box h2').textContent = 'Receba novidades do AI Fidelity Pack.';
+  document.querySelector('.pb-newsletter-box p').textContent = 'Você vai assinar a newsletter gratuita do PromptBR, que também divulgará o lançamento do pack. Pode cancelar em qualquer edição.';
+  const form = document.getElementById('newsletter-form');
+  const url = new URL(form.src);
+  url.searchParams.set('utm_source', 'promptbr');
+  url.searchParams.set('utm_medium', 'site');
+  url.searchParams.set('utm_campaign', 'ai-fidelity');
+  form.src = url.href;
+  document.getElementById('form-direto').href = url.href;
+}
+</script></body></html>
