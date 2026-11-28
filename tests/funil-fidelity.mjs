@@ -11,7 +11,7 @@ const inline = html => [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1
 test('Vitrine leva à amostra e ao cadastro gratuito', () => {
   assert.match(read('index.html'), /href="produto-ai-fidelity.html">Ver amostra e preço de lançamento/);
   assert.match(product, /<summary style="[^"]*">Experimentar a revisão/);
-  assert.equal(product.match(/type="checkbox"/g).length, 3);
+  assert.equal(product.match(/<fieldset>[\s\S]*?<\/fieldset>/)[0].match(/type="checkbox"/g).length, 3);
   assert.match(product, /id="fidelityBuy"[^>]+href="newsletter.html\?interesse=ai-fidelity"/);
   runInNewContext(inline(product), {window: {}});
 });
