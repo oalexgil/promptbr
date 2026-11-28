@@ -30,3 +30,9 @@ Para conteúdo, registrar visualizações e retenção no YouTube Analytics, cus
 Limiares escolhidos para o primeiro experimento. Antes de 200 visitantes qualificados com rastreamento verificado, considerar a amostra insuficiente. Com 200 visitantes e menos de 5 cadastros atribuídos, revisar proposta ou origem antes de produzir outro pack. Com 10 ou mais cadastros atribuídos, priorizar o piloto pago, sujeito à autorização. Entre esses limites, testar outra origem e reavaliar após mais 100 visitas. Expandir catálogo somente após pelo menos 5 compras confirmadas, entrega verificada e contribuição positiva. Registrar reembolsos e horas antes de reinvestir.
 
 A R$ 29, 345 vendas somam R$ 10.005 brutos. Cenário ilustrativo com 1% de conversão exigiria cerca de 34.500 visitas qualificadas por mês. Ainda faltam medições para prever volume e prazo.
+
+## Revisão de 28/11/2026
+
+A oferta passa a medir visitas com a propriedade GA4 já usada no site e o evento fidelity_signup_click para o botão de cadastro. O controle de preferência fica junto da oferta. O código só carrega a tag com aceite explícito e usa a preferência já registrada no site. A URL enviada na configuração omite a consulta e a referência anterior. A contagem abrange visitantes que consentiram e pode sofrer bloqueio pelo navegador.
+
+Validar recebimento na propriedade GA4 por página, evento e período. No Beehiiv, filtrar cadastros confirmados pela campanha ai-fidelity no mesmo intervalo, descontando inscrições de teste. Um clique não comprova inscrição. Sem totais agregados confirmados nos dois provedores, manter a oferta em validação. A homologação de pagamento depende de acesso Stripe em modo de teste.
