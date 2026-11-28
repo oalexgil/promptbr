@@ -36,3 +36,7 @@ A R$ 29, 345 vendas somam R$ 10.005 brutos. Cenário ilustrativo com 1% de conve
 A oferta passa a medir visitas com a propriedade GA4 já usada no site e o evento fidelity_signup_click para o botão de cadastro. O controle de preferência fica junto da oferta. O código só carrega a tag com aceite explícito e usa a preferência já registrada no site. A URL enviada na configuração omite a consulta e a referência anterior. A contagem abrange visitantes que consentiram e pode sofrer bloqueio pelo navegador.
 
 Validar recebimento na propriedade GA4 por página, evento e período. No Beehiiv, filtrar cadastros confirmados pela campanha ai-fidelity no mesmo intervalo, descontando inscrições de teste. Um clique não comprova inscrição. Sem totais agregados confirmados nos dois provedores, manter a oferta em validação. A homologação de pagamento depende de acesso Stripe em modo de teste.
+
+### Distribuição orgânica — guia editorial
+
+Publicado guia-mockup-capa-de-livro.html, com exemplo próprio, entrada pelo blog e pelo artigo de design. A inscrição direta pelo guia acrescenta utm_content=guia-capa à campanha ai-fidelity. Quem chega pelo guia e depois navega pela oferta usa a campanha geral. Confirmar o conteúdo atribuído em relatório privado antes de avaliar resultado. Priorizar distribuição gratuita e manutenção do conteúdo existente.

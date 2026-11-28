@@ -31,6 +31,7 @@ if (new URLSearchParams(location.search).get('interesse') === 'ai-fidelity') {
   const url = new URL(form.src);
   url.searchParams.set('utm_source', 'promptbr');
   url.searchParams.set('utm_medium', 'site');
+  if (new URLSearchParams(location.search).get('origem') === 'guia-capa') url.searchParams.set('utm_content', 'guia-capa');
   url.searchParams.set('utm_campaign', 'ai-fidelity');
   form.src = url.href;
   document.getElementById('form-direto').href = url.href;
